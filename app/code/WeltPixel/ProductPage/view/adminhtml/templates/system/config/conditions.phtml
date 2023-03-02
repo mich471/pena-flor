@@ -1,0 +1,26 @@
+<?php
+// @codingStandardsIgnoreFile
+
+/** @var $block \Magento\Framework\View\Element\Template */
+
+$inputHtml = $block->getConditionInputHtml();
+$newChildUrl = $block->getNewChildUrl();
+$_jsObjectName = $block->getHtmlId();
+?>
+<fieldset id="<?= $_jsObjectName?>" class="fieldset">
+    <div class="rule-tree">
+        <div class="rule-tree-wrapper">
+            <?= $inputHtml ?>
+        </div>
+    </div>
+</fieldset>
+<script>
+    require([
+        "Magento_Rule/rules",
+        "prototype"
+    ], function(VarienRulesForm){
+
+        window.<?= /* @noEscape */ $_jsObjectName ?> = new VarienRulesForm('<?= /* @noEscape */ $_jsObjectName ?>', '<?= /* @noEscape */ $newChildUrl ?>');
+
+    });
+</script>

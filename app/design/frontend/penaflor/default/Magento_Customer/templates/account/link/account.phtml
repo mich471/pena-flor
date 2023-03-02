@@ -1,0 +1,31 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var \Magento\Customer\Block\Account\AccountLink $block */
+
+?>
+<div class="my-account menu-container">
+    
+    <?= $block->getChildHtml() ?>
+    <ul class="groupmenu" data-bind="scope: 'customer'">
+        <!-- ko if: customer().firstname  -->
+        <li>
+            <span class="info-user" data-bind="text: new String('<?= $block->escapeHtml(__('Welcome, %1!', '%1')) ?>').replace('%1', customer().fullname)"></span>
+        </li>
+        <li><a href="<?php echo $block->getUrl('customer/account') ?>"> <span>Mi cuenta</span></a></li>
+        <li><a href="<?php echo $block->getUrl('sales/order/history') ?>"><span>Mis pedidos</span></a></li>
+        <li><a href="<?php echo $block->getUrl('customer/account/edit') ?>"><span>Información de mi Cuenta</span></a></li>
+        <li><a href="<?php echo $block->getUrl('vault/cards/listaction') ?>"><span>Metodos de pago</span></a></li>
+        <li><a href="<?php echo $block->getUrl('customer/account/logout') ?>"><span>Cerrar sesión</span></a></li>
+        <!-- /ko -->
+        <!-- ko ifnot: customer().firstname  -->
+        <li><a class="login trigger-auth-popup" href="javascript:void(0);"><span>Iniciar sesión</span></a></li>
+        <!-- /ko -->
+    </ul>
+        
+</div>

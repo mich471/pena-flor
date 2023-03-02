@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:tac:Magento_Widget:etc/widget.xsd">
+    <widget class="TAC\RedirectFamilia\Block\Widget\DynamicMenu" id="TAC_dynamic_menu">
+        <label>Dynamic Menu</label>
+        <description>Show dynamic menu based on user group</description>
+    </widget>
+</widgets>

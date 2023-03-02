@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="customer_login">
+        <observer name="sociallogin_login_observer" instance="WeltPixel\SocialLogin\Observer\LoginObserver" />
+    </event>
+    <event name="customer_register_success">
+        <observer name="sociallogin_register_observer" instance="WeltPixel\SocialLogin\Observer\RegistrationObserver" />
+    </event>
+    <event name="checkout_onepage_controller_success_action">
+        <observer name="sociallogin_order_user" instance="WeltPixel\SocialLogin\Observer\OrderUser" />
+    </event>
+    <event name="layout_load_before">
+        <observer name="add_ajaxlogin_signedout_handle" instance="WeltPixel\SocialLogin\Observer\AddSignedOutHandleObserver" />
+    </event>
+</config>

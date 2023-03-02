@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\View\Page\Config\Structure">
+        <plugin name="weltpixel-frontendoptions-page-config-structure"
+                type="WeltPixel\FrontendOptions\Plugin\PageConfigStructure" sortOrder="10"/>
+    </type>
+    <preference for="Magento\Contact\Block\ContactForm" type="WeltPixel\FrontendOptions\Block\ContactForm" />
+    <type name="Magento\ReCaptchaUi\Model\IsCaptchaEnabledInterface">
+        <plugin name="weltpixel-frontendoptions-recaptcha-isenabled"
+                type="WeltPixel\FrontendOptions\Plugin\Captcha\IsCaptchaEnabled" sortOrder="5"/>
+    </type>
+    <type name="Magento\ReCaptchaUi\Model\UiConfigResolverInterface">
+        <plugin name="weltpixel-frontendoptions-recaptcha-configresolver"
+                type="WeltPixel\FrontendOptions\Plugin\Captcha\ConfigResolver" sortOrder="5"/>
+    </type>
+    <type name="Magento\ReCaptchaUi\Model\CaptchaTypeResolverInterface">
+        <plugin name="weltpixel-frontendoptions-recaptcha-typeresolver"
+                type="WeltPixel\FrontendOptions\Plugin\Captcha\TypeResolver" sortOrder="5"/>
+    </type>
+</config>

@@ -1,0 +1,16 @@
+<?php
+$_product = $block->getProduct();
+
+$_getVarietal = $_product->getResource()->getAttribute('varietal'); 
+$varietal = $_getVarietal->getFrontend()->getValue($_product);
+?>
+
+<?php if ($_product->getTypeId() != "bundle"):?>
+<div class="varietal">
+	<?php
+	if($varietal !="No"){
+		echo $varietal ;
+	} 
+	?>
+</div>
+<?php endif;?>

@@ -1,0 +1,987 @@
+title,identifier,content,is_active,custom_js,css_global
+"WeltPixel Size Chart",weltpixel_size_chart,"
+<div class=""guide-wrapper"">
+    <div class=""guide-row"">
+        <h1>Size Guide</h1>
+        <div class=""intro-copy"">Not sure what size to get? Let us help you find the perfect fit. We think you’ll find
+            this guide helpful, but if you still have questions send us an email at
+            <strong>support@mystore.com</strong> or call us at <strong>1-800-123-1234</strong>. Your comfort is
+            our promise.</div>
+        <div class=""intro-copy mob-copy"">Not sure what size to get? We think you’ll find this guide helpful, but if you
+            still have questions send us an email at <strong>support@mystore.com</strong> or call us at
+            <strong>1-123-123-1234</strong>.</div>
+    </div>
+    <div class=""row row-spacing guide-row mob-pad"">
+        <ul>
+            <li class=""guide-btn list-active"" data-modal=""#chart-woman"">Women</li>
+            <li class=""guide-btn"" data-modal=""#chart-men"">Men</li>
+            <li class=""guide-btn"" data-modal=""#chart-teen"">Teen</li>
+            <li class=""guide-btn"" data-modal=""#chart-kids"">Kids</li>
+            <li class=""guide-btn"" data-modal=""#chart-footwear"">Footwear</li>
+            <li class=""guide-btn"" data-modal=""#chart-dogpjs"">Dog Pajamas</li>
+        </ul>
+        <select id=""guide-opt"">
+            <option value=""#chart-woman"">Women</option>
+            <option value=""#chart-men"">Men</option>
+            <option value=""#chart-teen"">Teen</option>
+            <option value=""#chart-kids"">Kids</option>
+            <option value=""#chart-footwear"">Footwear</option>
+            <option value=""#chart-dogpjs"">Dog Pajamas</option>
+        </select>
+        <!--Tables-->
+        <div id=""chart-woman"" class=""guide-fabric-modal modal-active"">
+            <div class=""welt-img"">
+            <img loading=""lazy"" src=""{{media url=""wysiwyg/size_chart/welt-size-chart-woman.jpeg""}}"" alt=""Women Sizing""></div>
+            <table class=""welt-table"" style=""min-width: 258px;"">
+                <tbody>
+                    <tr>
+                        <td class=""table-head"" colspan=""7"">Women</td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <th>Chest</th>
+                        <th>Waist</th>
+                        <th>Hip</th>
+                    </tr>
+                    <tr>
+                        <th>XS <br>0-2</th>
+                        <td>32-34</td>
+                        <td>26-28</td>
+                        <td>35-37</td>
+                    </tr>
+                    <tr>
+                        <th>S <br>4-6</th>
+                        <td>34-36</td>
+                        <td>28-30</td>
+                        <td>37-39</td>
+                    </tr>
+                    <tr>
+                        <th>M <br>8-10</th>
+                        <td>36-38</td>
+                        <td>30-32</td>
+                        <td>39-41</td>
+                    </tr>
+                    <tr>
+                        <th>L <br>12-14</th>
+                        <td>39-42</td>
+                        <td>33-35</td>
+                        <td>42-44</td>
+                    </tr>
+                    <tr>
+                        <th>XL <br>16-18</th>
+                        <td>43-45</td>
+                        <td>36-38</td>
+                        <td>44-46</td>
+                    </tr>
+                    <tr>
+                        <th>XXL <br>18-20</th>
+                        <td>46-48</td>
+                        <td>39-41</td>
+                        <td>47-49</td>
+                    </tr>
+                    <tr>
+                        <td style=""text-align: left;"" colspan=""7""><strong>How to Measure</strong>
+                            <br><br><strong>Chest:</strong> Measure around the fullest part of chest, keeping the
+                            measuring tape up under arms and around shoulder blades. <br><br><strong>Waist:</strong>
+                            Measure around waist (not over pants) at the natural waistline.
+                            <br><br><strong>Hip:</strong> Measure around the fullest part of hips while standing
+                            straight with heels together. <br><br><span style=""font-style: italic;"">*Size chart is a
+                                general guide. It may include sizes that are unavailable for this item. All measurements
+                                are in inches unless otherwise noted.</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id=""chart-men"" class=""guide-fabric-modal"">
+            <div class=""welt-img""><img loading=""lazy"" src=""{{media url=""wysiwyg/size_chart/welt-size-chart-men.jpeg""}}"" alt=""Men Sizing""></div>
+            <div class=""table-overflow"">
+                <table class=""welt-table"" style=""min-width: 250px;"">
+                    <tbody>
+                        <tr>
+                            <td class=""table-head"" colspan=""6"">Men</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <th>Chest</th>
+                            <th>Waist</th>
+                            <th>Neck</th>
+                        </tr>
+                        <tr>
+                            <th>S <br>36/38</th>
+                            <td>36-38</td>
+                            <td>28-30</td>
+                            <td>14-14.5</td>
+                        </tr>
+                        <tr>
+                            <th>M <br>38/40</th>
+                            <td>38-40</td>
+                            <td>32-34</td>
+                            <td>15-15.5</td>
+                        </tr>
+                        <tr>
+                            <th>L <br>40/42</th>
+                            <td>42-44</td>
+                            <td>36-38</td>
+                            <td>16-16.5</td>
+                        </tr>
+                        <tr>
+                            <th>XL <br>46/48</th>
+                            <td>46-48</td>
+                            <td>40-42</td>
+                            <td>17-17.5</td>
+                        </tr>
+                        <tr>
+                            <th>XXL <br>50/52</th>
+                            <td>50-52</td>
+                            <td>44-46</td>
+                            <td>18-18.5</td>
+                        </tr>
+                        <tr>
+                            <td style=""text-align: left;"" colspan=""7""><strong>How to Measure</strong>
+                                <br><br><strong>Chest:</strong> Measure around the fullest part of chest, keeping the
+                                measuring tape up under arms and around shoulder blades. <br><br><strong>Waist:</strong>
+                                Measure around waist (not over pants) at the natural waistline.
+                                <br><br><strong>Neck:</strong> Measure around the neck allowing the measuring tape to
+                                lay on the neck base comfortably. <br><br><span style=""font-style: italic;"">*Size chart
+                                    is a general guide. It may include sizes that are unavailable for this item. All
+                                    measurements are in inches unless otherwise noted.</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div id=""chart-teen"" class=""guide-fabric-modal"">
+            <div class=""welt-img""><img loading=""lazy"" style=""max-height: 832px;"" src=""{{media url=""wysiwyg/size_chart/welt-size-chart-teens.jpeg""}}"" alt=""Teens Sizing""></div>
+            <div class=""table-overflow"">
+                <table class=""welt-table"" style=""min-width: 314px;"">
+                    <tbody>
+                        <tr>
+                            <td class=""table-head"" colspan=""6"">Teen</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <th>Chest</th>
+                            <th>Waist</th>
+                            <th>Hip</th>
+                            <th>Height</th>
+                        </tr>
+                        <tr>
+                            <th>XS <br>7/8</th>
+                            <td>26-28</td>
+                            <td>22-24</td>
+                            <td>27-29</td>
+                            <td>52-54</td>
+                        </tr>
+                        <tr>
+                            <th>S <br>9/10</th>
+                            <td>28-30</td>
+                            <td>24-25</td>
+                            <td>29-30</td>
+                            <td>55-56</td>
+                        </tr>
+                        <tr>
+                            <th>M <br>11/12</th>
+                            <td>30-31</td>
+                            <td>25-26</td>
+                            <td>30-32</td>
+                            <td>57-59</td>
+                        </tr>
+                        <tr>
+                            <th>L <br>13/14</th>
+                            <td>31-32</td>
+                            <td>26-28</td>
+                            <td>32-34</td>
+                            <td>60-62</td>
+                        </tr>
+                        <tr>
+                            <th>XL <br>15/16</th>
+                            <td>32-33</td>
+                            <td>28-30</td>
+                            <td>34-36</td>
+                            <td>62-63</td>
+                        </tr>
+                        <tr>
+                            <td style=""text-align: left;"" colspan=""7""><strong>How to Measure</strong>
+                                <br><br><strong>Chest:</strong> Measure around the fullest part of chest, keeping the
+                                measuring tape up under arms and around shoulder blades. <br><br><strong>Waist:</strong>
+                                Measure around waist (not over pants) at the natural waistline.
+                                <br><br><strong>Hip:</strong> Measure around the fullest part of hips while standing
+                                straight with heels together. <br><br><strong>Height:</strong> Measure from the top of
+                                the head and pull the tape straight down to the floor. Stand straight with both feet
+                                together (bare feet only). <br><br><span style=""font-style: italic;"">*Size chart is a
+                                    general guide. It may include sizes that are unavailable for this item. All
+                                    measurements are in inches unless otherwise noted.</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class=""scroll-more show-450"">Swipe for more →</div>
+        </div>
+        <div id=""chart-kids"" class=""guide-fabric-modal"">
+            <div class=""welt-img""><img loading=""lazy"" style=""max-height: 861px;"" src=""{{media url=""wysiwyg/size_chart/welt-size-chart-kids.jpeg""}}"" alt=""Kids Sizing""></div>
+            <div class=""table-overflow"">
+                <table class=""welt-table"" style=""min-width: 467px;"">
+                    <tbody>
+                        <tr>
+                            <td class=""table-head"" colspan=""12"">Kids</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <th>Chest</th>
+                            <th>Waist</th>
+                            <th>Hip</th>
+                            <th>Inseam</th>
+                            <th>Height</th>
+                        </tr>
+                        <tr>
+                            <th>2T</th>
+                            <td>20-20.5</td>
+                            <td>20-20.5</td>
+                            <td>20-21</td>
+                            <td>14-15</td>
+                            <td>33-35</td>
+                        </tr>
+                        <tr>
+                            <th>3T</th>
+                            <td>20.5-21</td>
+                            <td>20.5-21</td>
+                            <td>21-22</td>
+                            <td>15-16</td>
+                            <td>35-38</td>
+                        </tr>
+                        <tr>
+                            <th>4T</th>
+                            <td>21-22</td>
+                            <td>21.5-22</td>
+                            <td>22-23</td>
+                            <td>16-17</td>
+                            <td>38-41</td>
+                        </tr>
+                        <tr>
+                            <th>5/6</th>
+                            <td>22-24</td>
+                            <td>22-23</td>
+                            <td>23-25</td>
+                            <td>17-20</td>
+                            <td>41-49</td>
+                        </tr>
+                        <tr>
+                            <th>7/8</th>
+                            <td>24-26</td>
+                            <td>23-25</td>
+                            <td>25-28.5</td>
+                            <td>20-24</td>
+                            <td>49-55</td>
+                        </tr>
+                        <tr>
+                            <th>10/12</th>
+                            <td>26-30</td>
+                            <td>25-27</td>
+                            <td>28.5-32</td>
+                            <td>24-28</td>
+                            <td>55-60</td>
+                        </tr>
+                        <tr>
+                            <th>14/16</th>
+                            <td>30-33</td>
+                            <td>27-30</td>
+                            <td>32-36</td>
+                            <td>28-30</td>
+                            <td>60-63</td>
+                        </tr>
+                        <tr>
+                            <td style=""text-align: left;"" colspan=""7""><strong>How to Measure</strong>
+                                <br><br><strong>Chest:</strong> Measure around the fullest part of chest, keeping the
+                                measuring tape up under arms and around shoulder blades. <br><br><strong>Waist:</strong>
+                                Measure around waist (not over pants) at the natural waistline.
+                                <br><br><strong>Hip:</strong> Measure around the fullest part of hips while standing
+                                straight with heels together. <br><br><strong>Height:</strong> Measure from the top of
+                                the head and pull the tape straight down to the floor. Stand straight with both feet
+                                together (bare feet only). <br><br><span style=""font-style: italic;"">*Size chart is a
+                                    general guide. It may include sizes that are unavailable for this item. All
+                                    measurements are in inches unless otherwise noted.</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class=""scroll-more show-640"">Swipe for more →</div>
+        </div>
+        <div id=""chart-footwear"" class=""guide-fabric-modal"">
+            <div class=""table-overflow"">
+                <table class=""welt-table"" style=""min-width: 570px;"">
+                    <tbody>
+                        <tr>
+                            <td class=""table-head"" colspan=""7"">Footwear</td>
+                        </tr>
+                        <tr>
+                            <th>Women's</th>
+                            <td>XS<br>5.5-6</td>
+                            <td>S<br>7-8</td>
+                            <td>M<br>9-10</td>
+                            <td>L<br>10.5-11</td>
+                            <td>XL<br>12-12.5</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <th>Men's</th>
+                            <td>XS<br>4.5-5</td>
+                            <td>S<br>6-7</td>
+                            <td>M<br>8-9</td>
+                            <td>L<br>9.5-10</td>
+                            <td>XL<br>11-11.5</td>
+                            <td>XXL<br>12.0-12.5</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class=""scroll-more show-775"">Swipe for more →</div>
+        </div>
+        <div id=""chart-dogpjs"" class=""guide-fabric-modal"">
+            <div class=""welt-img""><img loading=""lazy"" src=""{{media url=""wysiwyg/size_chart/welt-size-chart-dogpj.jpeg""}}"" alt=""Dog Pajamas Sizing""></div>
+            <div class=""table-overflow"">
+                <table class=""welt-table"" style=""max-width: 500px;"">
+                    <tbody>
+                        <tr>
+                            <td class=""table-head"" colspan=""7"">Dog Pajamas</td>
+                        </tr>
+                        <tr>
+                            <th>XS<br><span class=""nowrap"">8-12</span></th>
+                            <td>Fits Toy Poodle, Chihuahua, Yorkshire Terrier</td>
+                        </tr>
+                        <tr>
+                            <th>S<br><span class=""nowrap"">12-16</span></th>
+                            <td>Fits Jack Russell Terrier, Pug</td>
+                        </tr>
+                        <tr>
+                            <th>M<br><span class=""nowrap"">16-20</span></th>
+                            <td>Fits Beagle, Dachsund</td>
+                        </tr>
+                        <tr>
+                            <th>L<br><span class=""nowrap"">20-24</span></th>
+                            <td>Fits Schnauzer, Cocker Spaniel</td>
+                        </tr>
+                        <tr>
+                            <th>XL<br><span class=""nowrap"">24-28</span></th>
+                            <td>Fits Pit Bull, Labrador and Golden Retrievers, German Shepherd</td>
+                        </tr>
+                        <tr>
+                            <td style=""text-align: left;"" colspan=""7""><strong>How to Measure</strong>
+                                <br><br><strong>Length:</strong> Measure your pet from the base of its neck to the base
+                                of its tail. Bump up a size if your pet has a thick coat, broad chest, or broad
+                                underside. <br><br><span style=""font-style: italic;"">*Size chart is a general guide. It
+                                    may include sizes that are unavailable for this item. All measurements are in inches
+                                    unless otherwise noted.</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+",1,"
+ var optionsAvbl= document.querySelectorAll(""[data-modal]"");
+
+    optionsAvbl.forEach(option => {
+        option.addEventListener(""click"", (e) => {
+            changeSizeChartModal(e.target.getAttribute(""data-modal"").substring(1)),
+            option.classList.add(""list-active"")
+        });
+    });
+
+var select = document.querySelector(""#guide-opt"");
+
+select.addEventListener(""change"", () => {
+    var selectedString = select.options[select.selectedIndex].value;
+changeSizeChartModal(selectedString.substring(1))
+})
+    var modals = document.querySelectorAll("".guide-fabric-modal"");
+
+    function changeSizeChartModal(selectedId) {
+        optionsAvbl.forEach(option => {
+            option.classList.remove(""list-active"");
+        });
+        modals.forEach(modal => {
+            var modalId = modal.id;
+            if(modalId == selectedId)
+                modal.classList.add(""modal-active"");
+            else
+                modal.classList.remove(""modal-active"");
+        })
+    }
+","
+
+.guide-wrapper {
+    font-family: 'Poppins', Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: .2px;
+    color: #3C3C3C;
+    max-width: 1300px;
+    margin: auto;
+}
+
+.row-spacing {
+    padding-top: 50px;
+}
+
+.row.row-spacing.guide-row {
+    max-width: 100%;
+    margin: 0;
+}
+
+.guide-row {
+    text-align: center;
+}
+
+.guide-row h1,
+h2 {
+    font-family: 'Poppins', Arial, sans-serif;
+    color: #3A4369;
+    font-weight: 600;
+}
+
+.guide-row h1 {
+    font-size: 28px;
+    padding-bottom: 50px;
+    margin-bottom: 0;
+}
+
+.guide-row h2 {
+    font-size: 20px;
+}
+
+.guide-row p {
+    text-align: left;
+    padding-top: 50px;
+    max-width: 680px;
+    margin: auto;
+}
+
+.guide-row ul {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    margin: auto 20%;
+    padding: 0 0 20px 0;
+}
+
+.guide-row ul li {
+    list-style: none;
+}
+
+.guide-blue-600,
+.welt-title {
+    color: #3A4369;
+    font-weight: 600;
+}
+
+.intro-copy{width:64%;margin:auto;}
+
+.guide-divider {
+    border-bottom: 1px solid #707070;
+    max-width: 320px;
+    width: 40%;
+    padding-top: 50px;
+    margin: auto;
+}
+
+.guide-fabric-list {
+    padding-top: 50px;
+}
+
+.guide-fabric-list ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+.guide-fabric-list ul li {
+    width: 155px;
+    height: 210px;
+    background-color: #f4f4f4;
+    list-style: none;
+    margin-bottom: 12px;
+    padding: 35px 12px;
+    cursor: pointer;
+    display: flex;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    flex-flow: column wrap;
+    justify-content: start;
+    opacity: 1;
+    transition: opacity .25s ease-in-out;
+    -moz-transition: opacity .25s ease-in-out;
+    -webkit-transition: opacity .25s ease-in-out;
+}
+
+.guide-fabric-list ul li:hover {
+    opacity: .5;
+}
+
+.guide-fabric-list ul li p {
+    text-align: center;
+    padding-top: 15px;
+    margin: 0;
+    color: #7c7c7c;
+    font-size: 13px;
+    font-weight: 100;
+    letter-spacing: .2px;
+}
+
+.guide-btn {
+    cursor: pointer;
+}
+
+#guide-opt {
+    display: none;
+}
+
+.fabric-btn {
+    cursor: pointer;
+    opacity: 1;
+    transition: opacity .25s ease-in-out;
+    -moz-transition: opacity .25s ease-in-out;
+    -webkit-transition: opacity .25s ease-in-out;
+}
+
+.fabric-btn:hover {
+    opacity: 0.5;
+}
+
+.gfl-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #3A4369;
+}
+
+.guide-fabric-modal {
+    padding: 35px;
+    background-color: #ffffff;
+    margin: auto;
+    display: none;
+}
+
+.table-overflow {
+    overflow-x: scroll;
+    -ms-overflow-style: none;
+    overflow-style: none;
+}
+
+.table-overflow::-webkit-scrollbar{
+    display: none;
+}
+
+.modal-active {
+    display: block;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+}
+
+.scroll-more {
+    text-align: right;
+    display: none;
+}
+
+.fabric-title {
+    font-family: 'Poppins', Arial, sans-serif;
+    color: #3A4369;
+    font-weight: 600;
+    font-size: 20px;
+    border-bottom: 1px solid #707070;
+    padding-right: 50px;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.fabric-title span {
+    color: #7C7C7C;
+    font-size: 14px;
+    font-weight: 200;
+    padding-left: 50px;
+}
+
+.fabric-title-ul {
+    font-family: 'Poppins', Arial, sans-serif;
+    color: #3A4369;
+    font-weight: 600;
+    font-size: 20px;
+    margin-left: -1em;
+}
+
+
+.line-cta {
+    margin-top: 20px;
+}
+
+.line-cta a {
+    font-size: 14px;
+    text-decoration: underline;
+    color: #3A4369;
+    font-weight: 600;
+}
+
+.line-cta a:hover {
+    text-decoration: none;
+}
+
+.list-arrow {
+    display-none;
+}
+
+.list-active {
+    border-bottom: #3A4369 solid 2px;
+}
+
+.box-493 {
+    width: 493px;
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    justify-content: space-between;
+}
+
+.size-links {
+    width: 158px;
+    height: 297px;
+    background-color: #f4f4f4;
+    text-align: right;
+}
+
+.size-links ul {
+    text-align: left;
+    height: 239px;
+    margin-top: 29px;
+    margin-bottom: 29px;
+    display: flex;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    flex-flow: column wrap;
+    justify-content: space-around;
+}
+
+.size-links ul li {
+    color: #3A4369;
+    font-weight: 600;
+}
+
+.size-divs {
+    width: 320px;
+    background-color: #f4f4f4;
+    text-align: left;
+}
+
+.size-divs ul {
+    text-align: left;
+    height: 100%;
+    width: 100%;
+    margin-left: 0;
+    margin-top: 0;
+    background-color: #f4f4f4;
+    display: flex;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    flex-flow: column wrap;
+    justify-content: space-around;
+}
+
+.welt-img {
+    max-width: 500px;
+    margin-right: 25px;
+}
+/**Table CSS**/
+
+table.welt-table tr td.table-head {
+    background-color: #838383;
+    color: #ffffff;
+    text-align: left;
+    font-size: 1.2em;
+    letter-spacing: 1px;
+}
+
+table.welt-table {
+    border: #e6e6e6 solid 1px;
+    margin: auto;
+    text-align: center;
+    max-width: 640px;
+}
+
+.welt-table tr,
+.welt-table td,
+.welt-table th {
+    border: #e6e6e6 solid 1px;
+    vertical-align: middle;
+    text-align: center;
+}
+
+table.welt-table tbody tr th {
+    color: #3A4369;
+    font-weight: 600;
+    padding: 0.95385rem;
+}
+
+table.welt-table tbody tr td {
+    vertical-align: middle;
+}
+
+table.welt-table tr:nth-of-type(even) {
+    background-color: #ededed;
+}
+
+table.welt-table tr:nth-of-type(odd) {
+    background-color: #fafafa;
+}
+
+.welt-title {
+    text-align: center;
+    display: none;
+}
+
+.welt-copy-box {
+    display: inline-block;
+    font-size: 13px;
+}
+
+.welt-copy-sm {
+    font-size: 12px;
+    font-style: italic;
+    line-height: 20px;
+    max-width: 580px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    padding-top: 50px;
+}
+
+li.fabric-btn.fabric-arrow::after {
+    content: ""\203A"";
+    padding-left: 10px;
+}
+
+.link-active {
+    border-bottom: red solid 1px;
+}
+
+.copy-bold {
+    font-weight: 600;
+    padding-right: 20px;
+}
+
+.size-div-link {
+    position: absolute;
+    background-color: #f4f4f4;
+    display: none;
+}
+
+#welt-twin {
+    display: block;
+}
+
+.guide-cta a {
+    width: 320px;
+    background-color: #3A4369;
+    color: #ffffff;
+    font-size: 16px;
+    display: inline-block;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-decoration: none;
+}
+
+.guide-cta a:hover {
+    background-color: #656875;
+}
+
+.nowrap{white-space:nowrap}
+.mob-copy{display:none;}
+/**********Media Queries**********/
+
+@media all and (max-width: 960px) {
+    .guide-wrapper {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+    .guide-fabric-list ul {
+        justify-content: flex-start;
+    }
+    .guide-fabric-list ul li {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    .guide-row ul {
+        margin: auto 10%;
+    }
+    .modal-active {
+        flex-direction: column-reverse;
+    }
+    .welt-img {
+        margin: 50px auto auto auto;
+    }
+    .show-960 {
+        display: block;
+    }
+}
+
+@media all and (max-width:870px) {
+    .show-870 {display: block;}
+    .intro-copy{width:70%;}
+}
+
+@media all and (max-width:775px) {
+    .show-775 {display: block;}
+}
+
+@media all and (max-width: 640px) {
+    .intro-copy{width:95%;}
+
+    .modal-inner-wrap .modal-content {
+    	padding: 0px
+    }
+
+    #guide-opt {
+        display: block;
+    }
+    .guide-btn {
+        display: none;
+    }
+    .guide-fabric-list ul {
+        justify-content: flex-start;
+        flex-flow: column;
+    }
+    .guide-fabric-list ul li {
+        width: 100%;
+        height: auto;
+        text-align: left;
+        padding: 15px;
+        position: relative;
+    }
+    .guide-fabric-list ul li p {
+        text-align: left;
+        padding-top: 5px;
+    }
+    .guide-fabric-modal {
+        width: 100%;
+        height: auto;
+        margin: auto;
+    }
+    .fabric-box-group {
+        flex-flow: column nowrap;
+    }
+    .fabric-title {
+        text-align: center;
+        padding-right: 0;
+        border-bottom: none;
+    }
+    .fabric-box img {
+        width: 100%;
+        padding-right: 0;
+    }
+    ._lgc-css .slick-slider {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .guide-cta a {
+        width: 90%;
+    }
+    .size-links,
+    .fabric-title span {
+        display: none;
+    }
+    .welt-title {
+        display: block;
+        padding-bottom: 20px;
+        padding-top: 30px;
+    }
+    .size-div-link {
+        display: block;
+    }
+    .size-divs {
+        width: 90%;
+        text-align: center;
+    }
+    .welt-slider {
+        display: block;
+        background-color: #f4f4f4;
+        margin-top: 10px;
+    }
+    .box-493 {
+        height: 400px;
+        display: none;
+    }
+    .welt-copy-sm {
+        max-width: none;
+        text-align: left;
+    }
+    .welt-copy-box {
+        width: 48%;
+        text-align: left;
+    }
+    table.welt-table tbody tr td {
+        padding: 0.95385rem 0.45385rem;
+    }
+    .copy-bold {
+        text-align: right;
+    }
+    .box-493 ul li {
+        align-self: center;
+    }
+    .list-arrow {
+        height: 100%;
+        width: 100%;
+        background-image: url({{media url=""pub/media/wysiwyg/size_chart/welt-size-chart-woman""}});
+        background-repeat: no-repeat;
+        background-size: 35px 35px;
+        background-position: right;
+        margin: -15px;
+        position: absolute;
+    }
+    ._lgc-css .slick-dots {
+        width: 100%;
+        bottom: auto;
+    }
+    .show-640 {
+        display: block;
+    }
+}
+
+@media all and (max-width:450px) {
+    .show- {display: block;}
+}
+
+@media all and (max-width:414px){
+    .guide-fabric-modal{padding: 35px 0;}
+    .mob-pad{padding-top: 25px;}
+    .guide-row h1 {padding-bottom: 25px;}
+}
+
+@media all and (max-width:375px){
+    .guide-fabric-modal{padding: 35px 0px;}
+}
+
+@media all and (max-width:320px){
+    .guide-fabric-modal{padding: 35px 0 0 0;}
+    .intro-copy{width:100%;display:none;}
+    .mob-copy{display:block;}
+    table.welt-table tbody tr th {padding: 0.95385rem .1rem;}
+}
+"
+
+

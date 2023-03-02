@@ -1,0 +1,244 @@
+<?php $_helper = $this->helper('Magento\Catalog\Helper\Output'); ?>
+<?php $_product = $block->getProduct(); ?>
+<?php 
+$_getMaridaje = $_product->getResource()->getAttribute('maridaje'); 
+$maridaje = $_getMaridaje->getFrontend()->getValue($_product);
+
+$_getProceso = $_product->getResource()->getAttribute('proceso_de_elaboracion'); 
+if($_getProceso){$proceso = $_getProceso->getFrontend()->getValue($_product);}
+
+$_getTemperatura = $_product->getResource()->getAttribute('temperatura_de_servicio'); 
+$temperatura = $_getTemperatura->getFrontend()->getValue($_product);
+
+$_getEnologo = $_product->getResource()->getAttribute('enologo'); 
+$enologo = $_getEnologo->getFrontend()->getValue($_product);
+
+$_getRegion = $_product->getResource()->getAttribute('region'); 
+$region = $_getRegion->getFrontend()->getValue($_product);
+
+$_getProvincia = $_product->getResource()->getAttribute('provincia'); 
+$provincia = $_getProvincia->getFrontend()->getValue($_product);
+
+$_getSuelo = $_product->getResource()->getAttribute('composicion_del_suelo'); 
+$suelo = $_getSuelo->getFrontend()->getValue($_product);
+
+$_getPresentacion = $_product->getResource()->getAttribute('presentacion_ml'); 
+$presentacion = $_getPresentacion->getFrontend()->getValue($_product);
+
+$_getAlcohol = $_product->getResource()->getAttribute('graduacion_alcoholica'); 
+$alcohol = $_getAlcohol->getFrontend()->getValue($_product);
+
+$_getAcidez = $_product->getResource()->getAttribute('acidez_total'); 
+$acidez = $_getAcidez->getFrontend()->getValue($_product);
+
+$_getContBodega = $_product->getResource()->getAttribute('contenido_bodega'); 
+$contenidoBodega = $_getContBodega->getFrontend()->getValue($_product);
+
+$_getCata = $_product->getResource()->getAttribute('notas_de_cata'); 
+$cata = $_getCata->getFrontend()->getValue($_product);
+
+?>
+
+<div class="extended-info-prod">
+	<div class="left-info-block">
+        <?php
+            if(isset($proceso)):
+        ?>
+		<div class="attr-item">
+			<h4 class="icon-proceso">
+				<span>Proceso</span>
+			</h4>
+			<div class="attr-info">
+				<p>
+					<?php echo isset($proceso) ? $proceso : ''; ?>
+				</p>
+			</div>
+		</div>
+        <?php endif; ?>
+        <?php if(isset($maridaje)):?>
+		<div class="attr-item">
+			<h4 class="icon-maridaje">
+				<span>Maridaje</span>
+			</h4>
+			<div class="attr-info">
+				<p>
+					<?php echo $maridaje; ?>
+				</p>
+			</div>
+		</div>
+        <?php endif; ?>
+        <?php if(isset($temperatura)):?>
+		<div class="attr-item">
+			<h4 class="icon-temperatura">
+				<span>Temperatura ideal de consumo</span>
+			</h4>
+			<div class="attr-info">
+				<p>
+					<?php echo $temperatura; ?>
+				</p>
+			</div>
+		</div>
+        <?php endif; ?>
+		<?php if($cata): ?>
+		<div class="attr-notas-de-cata">
+			<div class="attr-item">
+				<h4 class="icon-cata">
+					<span>Notas de cata</span>
+				</h4>
+				<div class="attr-info">
+					<p>
+						<?php echo $cata; ?>
+					</p>
+				</div>
+			</div>
+		</div>
+		<?php endif;?>
+	</div>
+	<div class="right-info-block">
+		<div class="video-block">
+			<?php echo $contenidoBodega;?>
+		</div>
+		<div class="attr-wrapper">
+            <?php if(isset($Region)):?>
+			<div class="attr-item">
+				<h4 class="icon-enologo">
+					<span>Enólogo</span>
+				</h4>
+				<div class="attr-info">
+					<p>
+						<?php echo $enologo; ?>
+					</p>
+				</div>
+			</div>
+            <?php endif;?>
+            <?php if(isset($Region)):?>
+			<div class="attr-item">
+				<h4 class="icon-ubicacion">
+					<span>Región</span>
+				</h4>
+				<div class="attr-info">
+					<p>
+						<?php echo $region; ?>, <?php echo $provincia; ?>
+					</p>
+				</div>
+			</div>
+            <?php endif;?>
+            <?php if(isset($suelo)):?>
+			<div class="attr-item">
+				<h4 class="icon-enologo">
+					<span>Enólogo</span>
+				</h4>
+				<div class="attr-info">
+					<p>
+						<?php echo $enologo; ?>
+					</p>
+				</div>
+			</div>
+            <?php endif;?>
+            <?php if(isset($suelo)):?>
+			<div class="attr-item">
+				<h4 class="icon-ubicacion">
+					<span>Región</span>
+				</h4>
+				<div class="attr-info">
+					<p>
+						<?php echo $region; ?>
+					</p>
+				</div>
+			</div>
+            <?php endif;?>
+            <?php if(isset($suelo)):?>
+			<div class="attr-item">
+				<h4 class="icon-suelo">
+					<span>Suelo</span>
+				</h4>
+				<div class="attr-info">
+					<p>
+						<?php echo $suelo; ?>
+					</p>
+				</div>
+			</div>
+            <?php endif;?>
+
+
+
+		</div>
+		<div class="attr-wrapper">
+            <?php if(isset($suelo)):?>
+			<div class="attr-item">
+				<h4 class="icon-presentacion">
+					<span>Presentación</span>
+				</h4>
+				<div class="attr-info">
+					<p>
+						<?php echo $presentacion; ?>
+					</p>
+				</div>
+			</div>
+            <?php endif;?>
+            <?php if(isset($suelo)):?>
+			<div class="attr-item">
+				<h4 class="icon-copa">
+					<span>Graduación alcohólica</span>
+				</h4>
+				<div class="attr-info">
+					<p>
+						<?php echo $alcohol; ?>
+					</p>
+				</div>
+			</div>
+            <?php endif;?>
+            <?php if(isset($suelo)):?>
+			<div class="attr-item">
+				<h4 class="icon-acidez">
+					<span>Acidez</span>
+				</h4>
+				<div class="attr-info">
+					<p>
+						<?php echo $acidez; ?>
+					</p>
+				</div>
+			</div>
+            <?php endif;?>
+		</div>
+
+	</div>
+</div>
+
+<div class="videos-cont">
+	<i class="fa fa-times-circle closeer"></i>
+	<iframe width="100%" height="506" class="video-play" src="" frameborder="0" allowfullscreen></iframe>
+</div>
+
+
+
+
+<script type="text/javascript">
+require(['jquery','domReady!'],function($){
+    $('<div class="overlayNew video-modal"></div>').appendTo('body');
+    if($('.video-link').length){
+		urlVid = $('.video-link').html().replace('/watch?v=','/embed/');
+		if($(window).width()>500){
+			$('.video-play').attr('height','506');
+		}else{
+			$('.video-block').prependTo(".left-info-block");
+			$('.video-play').attr('height','150');
+		}
+		$('.video-block').on('click', function(e){
+		    e.preventDefault();
+		    $('.videos-cont, .overlayNew.video-link').fadeIn();
+		   	$('.video-play').attr('src',urlVid+'?autoplay=1&showinfo=0&controls=');
+	    });
+		$('.videos-cont, .overlayNew.video-link').on("mousewheel", function() {
+		     return false;
+		});
+		$('.overlayNew, .videos-cont .closeer').on('click', function(){
+		    $('.overlayNew').fadeOut(200);
+		    $('.videos-cont').fadeOut();
+		    $('.video-play').attr('src', '');
+		});
+    	
+    }
+});
+       
+</script>

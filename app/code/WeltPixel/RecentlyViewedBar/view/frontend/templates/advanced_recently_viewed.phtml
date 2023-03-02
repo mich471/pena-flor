@@ -1,0 +1,103 @@
+<?php $configData = $this->getConfigData(); ?>
+<?php if ($configData['is_visible']):?>
+    <?php
+        $helper = $this->helper('WeltPixel\RecentlyViewedBar\Helper\Data');
+        $enableCMS =  $configData['enable_cms'] ? '' : ' arv-full-grid';
+        $enableSL =  $configData['enable_sl'] ? 'sl-integration' : ' ';
+        $isAddToCartEnabled = $configData['is_add_to_cart_enabled'] ? '' : 'add_to_cart_disabled';
+        $isJustAddToCart = $configData['is_just_add_to_cart'] ? 'no-buttons' : '';
+        $containerClass = 'arv-wrapper ' . $isAddToCartEnabled . ' ' . $isJustAddToCart . ' ' . $enableCMS . ' ' . $enableSL;
+        $buttonTextColor = $configData['button_text_color'];
+        $buttonColor = $configData['button_color'];
+        $buttonPosition = $helper->getButtonPosition();
+        $buttonLabelIcon = $helper->getButtonLabelIcon();
+        $buttonTooltipText = $helper->getButtonTooltipText();
+
+        switch ($buttonPosition) {
+            case 'left':
+                $buttonMarginLeft = $helper->getButtonMarginLeft();
+                $buttonMarginRight = '';
+                break;
+            case 'right':
+                $buttonMarginRight = $helper->getButtonMarginRight();
+                $buttonMarginLeft = '';
+                break;
+            default :
+                $buttonMarginLeft = '';
+                $buttonMarginRight = '';
+        }
+
+        $buttonIconContent = ($configData['button_label'] ? ($buttonLabelIcon === '1' ? '<span class="icon-line-eye"></span>' : '') :
+            ($buttonLabelIcon === '1' ? '<span class="icon-line-eye icon-bigger"></span>' : ''));
+
+        $buttonTooltipText = ($buttonTooltipText ? '<span class="tooltip-recently-viewed-text">'. $buttonTooltipText .'</span> ' : '');
+        $buttonMarginLeft = ($buttonMarginLeft ? 'margin-left:' . $buttonMarginLeft : '');
+        $buttonMarginRight = ($buttonMarginRight ? 'margin-right:' . $buttonMarginRight : '');
+
+    ?>
+    <div class="<?php echo $containerClass; ?>">
+        <div class="arv-button arv-btn-<?php echo $buttonPosition ?>" id="arv_btn" style="<?php echo $buttonMarginLeft ?>">
+            <span class="arv-slider-btn" style="background-color: <?php echo $buttonColor; ?>; color: <?php echo $buttonTextColor; ?>; position: relative; <?php echo $buttonMarginRight ?>">
+                <?php echo $buttonIconContent ?>
+                <?php echo $buttonTooltipText ?>
+                <?php echo $configData['button_label']; ?>
+            </span>
+        </div>
+        <div class="arv-content" id="arv-content">
+            <?php if ($configData['enable_cms']):?>
+                <div class="arv-cms" style="height: <?php echo $block->getItemHeight(); ?>px">
+                    <?php echo $this->loadCmsBlock()->toHtml(); ?>
+                </div>
+            <?php endif;?>
+            <div class="arv-no-items">
+                <?php echo __('No recently views items'); ?>
+            </div>
+            <?php if ($block->isUICompatible()):?>
+                <span class="arv-clear"><?=__('Clear All');?></span>
+            <?php endif;?>
+            <div class="arv-item-list inline-block" style="height: <?php echo $block->getItemHeight(); ?>px">
+                <?php if ($block->isUICompatible()):?>
+                    <?php echo $this->loadRecentlyViewedWidget()->toHtml(); ?>
+                <?php else:?>
+                    <div id="recently_viewed"></div>
+                <?php endif; ?>
+
+            </div>
+        </div>
+    </div>
+    <script>
+        require(['jquery','arv'], function($){
+            $(document).ready(function() {
+                window.isCustomer = '<?php echo $this->helper('WeltPixel\RecentlyViewedBar\Helper\Data')->isCustomerLoggedIn(); ?>';
+                arv.init();
+                arv.clearArv();
+                arv.secondBtn();
+
+                $(window).scroll(function () {
+                    arv.createArv();
+                });
+
+                arv.arvSlideUp();
+
+                $(document).mouseup(function () {
+                   arv.outsideClick();
+                });
+
+            });
+        });
+    </script>
+
+    <?php if (!$block->isUICompatible()):?>
+        <script type="text/x-magento-init">
+            {
+                "#recently_viewed": {
+                    "arvAjax": {
+                        "ajaxUrl": "<?php echo $block->getUrl('arv/recentlyviewed/index') ?>",
+                        "requestType": "recently_viewed"
+                    }
+                }
+
+            }
+        </script>
+    <?php endif;?>
+<?php endif;?>

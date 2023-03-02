@@ -1,0 +1,134 @@
+<?php $priceData = $this->getPriceConfigData()?>
+<?php $priceIsInputType = $this->priceIsInputType()?>
+<div id="slider-range"></div>
+<div class="wp-slider-inp">
+    <div class="wp-slider-inp-range">
+        <?php if($priceIsInputType): ?>
+            <input type="text" id="amount_from" class="wp-price-slider-inp inp-type" />
+        <?php else : ?>
+            <label for="amount"><?=__('Price:')?></label>
+            <div class="price-value-wrapper">
+            <span class="wp-slider-currency"><?=$priceData['currency']?></span>
+            <span id="amount_from" class="wp-price-slider-inp"></span>
+        <?php endif;?>
+
+        <span class="wp-slider-range-separator">-</span>
+
+        <?php if($priceIsInputType): ?>
+            <input type="text" id="amount_to" class="wp-price-slider-inp inp-type" />
+        <?php else : ?>
+            <span class="wp-slider-currency"><?=$priceData['currency']?></span>
+            <span id="amount_to" class="wp-price-slider-inp"></span>
+            </div>
+        <?php endif;?>
+        <a href="<?=$this->getSliderApplyUrl()?>" class="wp-price-slider-a" id="wp_ln_price_slider"><?= __('Apply')?></a>
+    </div>
+
+</div>
+
+<script>
+    require(['jquery', 'jquery-ui-modules/effect-slide', 'jquery-ui-modules/mouse', 'jquery-ui-modules/widget', 'jquery-ui-modules/slider', 'jqueryTouch'], function($){
+        $( function() {
+            var priceIsInputType = <?= $priceIsInputType ?  'true': 'false'?>;
+            var priceSearchArr = getPriceParam();
+            var priceSearchMinInp = (priceSearchArr) ? priceSearchArr[0] : <?=$priceData['min']?>;
+            var priceSearchMaxInp = (priceSearchArr) ? priceSearchArr[1] : <?=$priceData['max']?>;
+            $("#slider-range").slider({
+                range: true,
+                min: <?=$priceData['minX']?>,
+                max: <?=$priceData['maxX']?>,
+                step: <?=$priceData['step']?>,
+                values: [ priceSearchMinInp , priceSearchMaxInp ],
+                slide: function( event, ui ) {
+                    if(priceIsInputType) {
+                        $("#amount_from").val(ui.values[0]);
+                        $("#amount_to").val(ui.values[1]);
+                    } else {
+                        $("#amount_from").text(ui.values[0]);
+                        $("#amount_to").text(ui.values[1]);
+                    }
+
+                    var priceParam = 'price=' + ui.values[0] + '-' + ui.values[1],
+                        link = window.location.href,
+                        cleanLink = removeParam('price', removeParam('p', link)),
+                        sliderLink = cleanLink + getSeparator(cleanLink) +priceParam;
+                    $('#wp_ln_price_slider').attr('href', sliderLink);
+
+                }
+            });
+
+            if(priceIsInputType) {
+                $("#amount_from" ).val($( "#slider-range" ).slider( "values", 0 ));
+                $('#amount_to').val($( "#slider-range" ).slider( "values", 1 ));
+            } else {
+                $("#amount_from" ).text($( "#slider-range" ).slider( "values", 0 ));
+                $('#amount_to').text($( "#slider-range" ).slider( "values", 1 ));
+            }
+
+            $('.wp-price-slider-inp').on('keyup', function() {
+                var minPrice = (priceIsInputType) ? $("#amount_from" ).val() : $("#amount_from" ).text(),
+                    maxPrice = (priceIsInputType) ? $("#amount_to" ).val() :$("#amount_to" ).text(),
+                    cleanLink = removeParam('price', removeParam('p', window.location.href)),
+                    priceParam = 'price=' + minPrice + '-' + maxPrice,
+                    sliderLink = cleanLink + getSeparator(cleanLink) + priceParam;
+                $('#wp_ln_price_slider').attr('href', sliderLink);
+            });
+
+            /** get parameter separator from link*/
+            function getSeparator(link) {
+                var sep = link.indexOf('?');
+                if(sep !== -1) {
+                    return '&';
+                }
+
+                return '?';
+            }
+
+            /** remove existing 'price' parameter from url */
+            function removeParam(key, url) {
+                if (!url) url = window.location.href;
+                var hashParts = url.split('#'),
+                    regex = new RegExp("([?&])" + key + "=.*?(&|#|$)", "i");
+
+                if (hashParts[0].match(regex)) {
+                    url = hashParts[0].replace(regex, '$1');
+                    url = url.replace(/([?&])$/, '');
+                    if (typeof hashParts[1] !== 'undefined' && hashParts[1] !== null)
+                        url += '#' + hashParts[1];
+                }
+
+                return url;
+            }
+
+            /** get 'price' parameter value from link */
+            function getPriceParam() {
+                var priceArr = false;
+
+                var params = parseQueryString();
+                var price = params['price'];
+                if(price) {
+                    var priceArr = price.split("-");
+
+                }
+
+                return priceArr;
+            }
+
+            function parseQueryString(){
+                var str = window.location.search;
+                var objURL = {};
+
+                str.replace(
+                    new RegExp( "([^?=&]+)(=([^&]*))?", "g" ),
+                    function( $0, $1, $2, $3 ){
+                        objURL[ $1 ] = $3;
+                    }
+                );
+                return objURL;
+            }
+
+        });
+    });
+
+
+</script>

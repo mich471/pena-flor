@@ -1,0 +1,61 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/** @var \Magento\Store\Block\Switcher $block */
+?>
+<?php $_helper = $this->helper('WeltPixel\Multistore\Helper\Data'); ?>
+<?php $_utilityHelper = $this->helper('WeltPixel\Backend\Helper\Utility'); ?>
+<?php if (count($block->getStores())>1) : ?>
+    <?php $id = $block->getIdModifier() ? '-' . $block->getIdModifier() : '' ?>
+    <div class="switcher language switcher-language" data-ui-id="language-switcher" id="switcher-language<?= $block->escapeHtmlAttr($id) ?>">
+        <strong class="label switcher-label"><span><?= $block->escapeHtml(__('Language')) ?></span></strong>
+        <div class="actions dropdown options switcher-options">
+            <div class="action toggle switcher-trigger"
+                 id="switcher-language-trigger<?= $block->escapeHtmlAttr($id) ?>"
+                 data-mage-init='{"dropdown":{}}'
+                 data-toggle="dropdown"
+                 data-trigger-keypress-button="true">
+                <strong class="view-<?= $block->escapeHtml($block->getCurrentStoreCode()) ?>">
+                    <span><?= $block->escapeHtml($block->getStoreName()) ?></span>
+                </strong>
+            </div>
+            <ul class="dropdown switcher-dropdown"
+                data-target="dropdown">
+                <?php foreach ($block->getStores() as $_lang) : ?>
+                    <?php $image = $_helper->getImageUrl($_lang->getId()); ?>
+                    <?php if ($_lang->getId() != $block->getCurrenftStoreId()) : ?>
+                    <li class="view-<?= $block->escapeHtml($_lang->getCode()) ?> switcher-option-mobile">
+                        <?php if ($_helper->getStoreViewOptionMobile() == 'both' || $_helper->getStoreViewOptionMobile() == 'store_image'): ?>
+                                <a href="<?= $block->escapeUrl($block->getViewModel()->getTargetStoreRedirectUrl($_lang)) ?>">
+                                    <img src="<?php echo $image ?>" alt="<?php echo $block->escapeHtml($_lang->getName()) ?>" />
+                                </a>
+                        <?php endif; ?>
+                        <?php if ($_helper->getStoreViewOptionMobile() == 'both' || $_helper->getStoreViewOptionMobile() == 'store_name'): ?>
+                                <a class="nav-switcher-label" href="<?= $block->escapeUrl($block->getViewModel()->getTargetStoreRedirectUrl($_lang)) ?>">
+                                    <?= $block->escapeHtml($_lang->getName()) ?>
+                                </a>
+                        <?php endif; ?>
+                    </li>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+    </div>
+    <style>
+        <?php
+        $imgHeight = $_helper->getImageHeight();
+        $imgWidth = $_helper->getImageWidth();
+        $barWidth = $_helper->getBarWidth();
+        ?>
+        ul.switcher-dropdown li img{
+            height: <?php echo $imgHeight; ?>;
+        <?php if ($imgWidth) : ?>
+            width: <?php echo $imgWidth; ?>;
+        <?php endif; ?>
+        }
+    </style>
+<?php endif; ?>
+

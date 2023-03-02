@@ -1,0 +1,341 @@
+<?php
+/** @var \WeltPixel\Quickview\Block\ConfirmationPopup $block */
+/** @var \Magento\Catalog\Block\Product\AbstractProduct $productViewModel */
+/** @var \Magento\Framework\Pricing\Helper\Data $priceHelper */
+/** @var \Magento\Catalog\Helper\Data $taxHelper */
+
+$priceHelper = $this->helper('Magento\Framework\Pricing\Helper\Data');
+$taxHelper = $this->helper('Magento\Catalog\Helper\Data');
+$productViewModel = $block->getProductViewModel();
+$lastAddedProductId = $block->getLastAddedProductId();
+$popupDetails = $block->getPopupDetails();
+$lastAddedProductDetails = reset($popupDetails['items']);
+if (!$lastAddedProductDetails) {
+    return;
+}
+$productImgSrc = $lastAddedProductDetails['product_image']['src'];
+$productImgAlt = $lastAddedProductDetails['product_image']['alt'];
+$productUrl = $lastAddedProductDetails['product_url'];
+$productOptions = $lastAddedProductDetails['options'];
+$productName = $lastAddedProductDetails['product_name'];
+$productPrice = $lastAddedProductDetails['product_price'];
+$productInitialPrice = $lastAddedProductDetails['product_initial_price'];
+$productFinalPrice = $lastAddedProductDetails['product_final_price'];
+$subtotal = $popupDetails['subtotal'];
+$summaryCount = $popupDetails['summary_count'];
+$summaryCountLabel = ($summaryCount > 1) ? __('items') : __('item');
+$staticBlockContent = $popupDetails['static_block_content'];
+$displayCarousel = $popupDetails['display_carousel'];
+$carouselTitle = trim($popupDetails['carousel_title']);
+$popupTitle = trim($popupDetails['popup_title']);
+$carouselProducts = $popupDetails['carousel_products'];
+$lastAddedProductType = $popupDetails['product_type'];
+$lastAddedProduct = $popupDetails['product'];
+$image = 'related_products_list';
+$carouselType = $block->getData('carousel_type');
+if (isset($lastAddedProductDetails['product_price_value']) && isset($lastAddedProductDetails['product_price_value']['incl_tax'])) {
+    $productInitialPrice = $taxHelper->getTaxPrice($lastAddedProduct, $productInitialPrice, true);
+    $productFinalPrice = $lastAddedProductDetails['product_price_value']['incl_tax'];
+}
+
+?>
+<div class="wp-confirmation-popup">
+    <div class="added-to-cart-msg">
+        <?= $popupTitle ?>
+    </div>
+    <div class="product-wrapper">
+        <a class="product-item-photo" href="<?= $productUrl ?>" title="<?= $productName ?>">
+            <span class="product-image-container">
+                <span class="product-image-wrapper" >
+                    <img class="product-image-photo" src="<?= $productImgSrc ?>" alt="<?= $productImgAlt ?>">
+                </span>
+            </span>
+        </a>
+        <div class="product-item-details">
+            <strong class="product-item-name">
+                <a href="<?= $productUrl ?>"><?= $productName ?></a>
+            </strong>
+
+            <?php  if ($productOptions): ?>
+            <div class="product options" >
+                <div class="content">
+                    <dl class="product options list">
+                        <?php foreach ($productOptions as $option) : ?>
+                            <?php if (is_array($option['value'])) : ?>
+                                <?php foreach ($option['value'] as $optionValue) : ?>
+                                    <dt class="label"><?= $optionValue ?></dt>
+                                <?php endforeach; ?>
+                            <?php else : ?>
+                                <dt class="label"><?= $option['label'] ?>:</dt>
+                                <dd class="values">
+                                    <?= $option['value'] ?>
+                                </dd>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </dl>
+                </div>
+            </div>
+            <?php endif; ?>
+        </div>
+        <div class="product-item-pricing">
+            <div class="price-container">
+                    <span class="price-wrapper">
+                        <?php if (!in_array($lastAddedProductType, [\Magento\Bundle\Model\Product\Type::TYPE_CODE]) && ( $productFinalPrice != $productInitialPrice) ) : ?>
+                            <span class="price new-price"><?= $priceHelper->currency($productFinalPrice, true, false) ?></span>
+                            <span class="price original-price"><?= $priceHelper->currency($productInitialPrice, true, false) ?></span>
+                        <?php else : ?>
+                        <?= $productPrice ?>
+                        <?php endif; ?>
+                    </span>
+            </div>
+        </div>
+    </div>
+    <div class="cart-details-wrapper">
+        <div class="subtotal">
+            <span class="label"><?= __('Cart subtotal'); ?>:</span>
+            <span class="subtotal-value"><?= $subtotal ?></span>
+            <span class="total-items">( <?= $summaryCount . ' ' . $summaryCountLabel ?> )</span>
+        </div>
+        <div class="action-buttons">
+            <a class="action primary cart-checkout" href="<?= $block->getUrl('checkout', ['_secure' => true]);?>">
+                <span><?= __('Go to Checkout'); ?></span>
+            </a>
+            <button class="action secondary continue-shopping">
+                <span><?= __('Continue shopping'); ?></span>
+            </button>
+        </div>
+    </div>
+    <?php if ($staticBlockContent) : ?>
+    <div class="cms-block-wrapper">
+        <?= $staticBlockContent; ?>
+    </div>
+    <?php endif; ?>
+    <?php if ($displayCarousel && $carouselProducts && $carouselProducts->getSize()) : ?>
+    <?php $items = $carouselProducts->getItems(); ?>
+    <div class="carousel-products-wrapper">
+        <?php if ($carouselTitle) : ?>
+        <div class="carosuel-title"><?= $carouselTitle ?></div>
+        <?php endif; ?>
+        <div class="products wrapper grid products-grid">
+            <ol class="products list items product-items owl-carousel-products-popup">
+                <?php $iterator = 1; ?>
+                <?php foreach ($items as $_item): ?>
+                    <?php /* @escapeNotVerified */ echo($iterator++ == 1) ? '<li class="item product product-item">' : '</li><li class="item product product-item">' ?>
+                    <div class="product-item-info">
+                        <a href="<?php /* @escapeNotVerified */ echo $productViewModel->getProductUrl($_item) ?>" class="product photo product-item-photo">
+                            <?php echo $productViewModel->getImage($_item, $image)->toHtml(); ?>
+                        </a>
+                        <div class="product details product-item-details">
+                            <strong class="product name product-item-name">
+                                <a class="product-item-link" title="<?php echo $block->escapeHtml($_item->getName()) ?>" href="<?php /* @escapeNotVerified */ echo $productViewModel->getProductUrl($_item) ?>">
+                                    <?php echo $block->escapeHtml($_item->getName()) ?>
+                                </a>
+                            </strong>
+                            <?php /* @escapeNotVerified */ echo $productViewModel->getProductPrice($_item); ?>
+                        </div>
+                    </div>
+                    <?php echo($iterator == count($items)+1) ? '</li>' : '' ?>
+                <?php endforeach ?>
+            </ol>
+            <div id="pre-div">
+                <?php $loaderHelper = $this->helper('WeltPixel\OwlCarouselSlider\Helper\ImageLoader'); ?>
+                <?php if ($loaderHelper->useDefaultLoader() ) : ?>
+                    <div class="cssload-loader">
+                        <div class="cssload-inner cssload-one"></div>
+                        <div class="cssload-inner cssload-two"></div>
+                        <div class="cssload-inner cssload-three"></div>
+                    </div>
+                <?php else : ?>
+                    <table class="imageloader-loader">
+                        <tbody>
+                        <tr>
+                            <td>
+                                <img src="<?= $loaderHelper->getLoadingImageUrl() ?>" />
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+    <?php
+    try {
+        /* @var WeltPixel\OwlCarouselSlider\Helper\Products $helper */
+        $helper = $this->helper('WeltPixel\OwlCarouselSlider\Helper\Products');
+        $helperCustom = $this->helper('WeltPixel\OwlCarouselSlider\Helper\Custom');
+        $breakpoint = $helperCustom->getBreakpointConfiguration();
+        $sliderConfiguration = $helper->getSliderConfiguration($carouselType);
+        $sliderConfig = json_encode($sliderConfiguration);
+        $sliderPrevLabel = 'prev';
+        $sliderNextLabel = 'next';
+        $sliderNavPrevClass = 'owl-prev';
+        $sliderNavNextClass = 'owl-next';
+        $slideBy = ($sliderConfiguration['slide_by']) ? $sliderConfiguration['slide_by'] : 1;
+        $sliderNavDesignVersion = array_key_exists('nav_design', $sliderConfiguration) ? $sliderConfiguration['nav_design'] : \WeltPixel\OwlCarouselSlider\Model\Config\Source\PrevNextDesign::DESIGN1_CAROUSEL_SIDE;
+        if ($sliderNavDesignVersion == \WeltPixel\OwlCarouselSlider\Model\Config\Source\PrevNextDesign::DESIGN2_UNDER_CAROUSEL) {
+            $sliderNavPrevClass .= ' owl-prev-bottom owl-label-show';
+            $sliderNavNextClass .= ' owl-next-bottom owl-label-show';
+            $sliderPrevLabel = array_key_exists('nav_prev_label', $sliderConfiguration) ? $sliderConfiguration['nav_prev_label'] : 'prev';
+            $sliderNextLabel = array_key_exists('nav_next_label', $sliderConfiguration) ? $sliderConfiguration['nav_next_label'] : 'next';
+        }
+    } catch (\Exception $ex) {}
+    ?>
+    <script>
+    require(['jquery', 'owl_carousel', 'owl_config' ],
+        function ($) {
+            $(document).ready(function() {
+                var slider_config = <?php echo $sliderConfig; ?>,
+                    carouselElement = $('.owl-carousel-products-popup'),
+                    windowWidth = $(window).width(),
+                    carouselWidth = carouselElement.width(),
+                    carouselContainer = carouselWidth + 120,
+
+                    items = ((slider_config.items >= 0 && slider_config.items != null) ? slider_config.items : 2),
+
+                    stagePadding = slider_config.stagePadding != '' ? parseInt(slider_config.stagePadding) : 0,
+
+                    sPBrk_1 = slider_config.stagePadding_brk1 != '' ? parseInt(slider_config.stagePadding_brk1) : 0,
+                    sPBrk_2 = slider_config.stagePadding_brk2 != '' ? parseInt(slider_config.stagePadding_brk2) : 0,
+                    sPBrk_3 = slider_config.stagePadding_brk3 != '' ? parseInt(slider_config.stagePadding_brk3) : 0,
+                    sPBrk_4 = slider_config.stagePadding_brk4 != '' ? parseInt(slider_config.stagePadding_brk4) : 0,
+                    rtl = parseInt(slider_config.rtl) == 1 ? true : false,
+                    navClass = [ '<?= $sliderNavPrevClass ?>', '<?= $sliderNavNextClass ?>' ],
+                    navText = [ '<?= $sliderPrevLabel ?>', '<?= $sliderNextLabel ?>' ];
+
+                if (rtl) {
+                    navClass = navClass.reverse();
+                    navText = navText.reverse();
+                }
+
+                /** Lazyload bug when fewer items exist in the carousel then the ones displayed */
+                carouselElement.on('initialized.owl.carousel', function(event){
+                    var scopeSize = event.page.size,
+                        navBtnL = carouselElement.find('.owl-prev'),
+                        navBtnR = carouselElement.find('.owl-next');
+
+                    if(event.item.count <= event.page.size) {
+                        navBtnL.css('display', 'none');
+                        navBtnR.css('display', 'none');
+                    }
+
+                    for (var i = 0; i < scopeSize; i++){
+                        var imgsrc = $(event.target).find('.owl-item').eq(i).find('img').attr('data-src');
+                        $(event.target).find('.owl-item').eq(i).find('img').attr('src', imgsrc);
+                        $(event.target).find('.owl-item').eq(i).find('img').attr('style', 'opacity: 1;');
+                    }
+                    setTimeout(function(){
+                        $('.owl-thumbs').each(function() {
+                            if (!$('.owl-thumbs').children().length) {$(this).remove();}
+                        });
+                    }, 370);
+                });
+
+                carouselElement.on('initialized.owl.carousel', function(event) {
+                    setTimeout(function(){
+                        carouselElement.trigger('next.owl.carousel');
+                        carouselElement.trigger('prev.owl.carousel');
+                        $('.owl-thumbs').each(function() {
+                            if (!$('.owl-thumbs').children().length) {$(this).remove();}
+                        });
+                        $('.cssload-loader').parent().remove();
+                    }, 370);
+                });
+
+                carouselElement.owlCarousel({
+                    nav                 :parseInt(slider_config.nav) == 1 ? true : false,
+                    navClass            :navClass,
+                    navText             :navText,
+                    dots                :parseInt(slider_config.dots) == 1 ? true : false,
+                    dotsEach            :parseInt(slider_config.dotsEach) == 1 ? true : false,
+                    center              :parseInt(slider_config.center) == 1 ? true : false,
+                    items               :items,
+                    loop                :parseInt(slider_config.loop) == 1 ? true : false,
+                    margin              :parseInt(slider_config.margin) != '' ? parseInt(slider_config.margin) : 0,
+                    stagePadding        :parseInt(slider_config.center) == 1 ? 0 : stagePadding,
+                    lazyLoad            :parseInt(slider_config.lazyLoad) == 1 ? true : false,
+                    autoplay            :parseInt(slider_config.autoplay) == 1 ? true : false,
+                    autoplayTimeout     :(slider_config.autoplayTimeout > 0 && slider_config.autoplayTimeout != null) ? parseInt(slider_config.autoplayTimeout) : 3000,
+                    autoplayHoverPause  :parseInt(slider_config.autoplayHoverPause) == 1 ? true : false,
+                    navSpeed            :(parseInt(slider_config.navSpeed) > 0 && slider_config.navSpeed != null) ? parseInt(slider_config.navSpeed) : 0,
+                    dotsSpeed           :(parseInt(slider_config.dotsSpeed) > 0 && slider_config.dotsSpeed != null) ? parseInt(slider_config.dotsSpeed) : 0,
+                    rtl                 :rtl,
+                    autoHeight          :false,
+                    slideBy             :'<?php echo $slideBy ?>',
+
+
+                    responsive:{
+                <?php echo $breakpoint['breakpoint_1']; ?>:{
+                    nav             :parseInt(slider_config.nav_brk1) == 1 ? true : false,
+                        dots            :parseInt(slider_config.dots_brk1) == 1 ? true : false,
+                        dotsEach        :parseInt(slider_config.dotsEach_brk1) == 1 ? true : false,
+                        items           :(slider_config.items_brk1  >= 0 && slider_config.items_brk1 != null) ? parseInt(slider_config.items_brk1) : items,
+                        center          :parseInt(slider_config.center_brk1) == 1 ? true : false,
+                        stagePadding    :parseInt(slider_config.center) == 1 ? 0 : sPBrk_1,
+                },
+                <?php echo $breakpoint['breakpoint_2']; ?>:{
+                    nav             :parseInt(slider_config.nav_brk2) == 1 ? true : false,
+                        dots            :parseInt(slider_config.dots_brk2) == 1 ? true : false,
+                        dotsEach        :parseInt(slider_config.dotsEach_brk2) == 1 ? true : false,
+                        items           :(slider_config.items_brk2  >= 0 && slider_config.items_brk2 != null) ? parseInt(slider_config.items_brk2) : items,
+                        center          :parseInt(slider_config.center_brk2) == 1 ? true : false,
+                        stagePadding    :parseInt(slider_config.center) == 1 ? 0 : sPBrk_2,
+                },
+                <?php echo $breakpoint['breakpoint_3']; ?>:{
+                    nav             :parseInt(slider_config.nav_brk3) == 1 ? true : false,
+                        dots            :parseInt(slider_config.dots_brk3) == 1 ? true : false,
+                        dotsEach        :parseInt(slider_config.dotsEach_brk3) == 1 ? true : false,
+                        items           :(slider_config.items_brk3  >= 0 && slider_config.items_brk3 != null) ? parseInt(slider_config.items_brk3) : items,
+                        center          :parseInt(slider_config.center_brk3) == 1 ? true : false,
+                        stagePadding    :parseInt(slider_config.center) == 1 ? 0 : sPBrk_3,
+                },
+                <?php echo $breakpoint['breakpoint_4']; ?>:{
+                    nav             :parseInt(slider_config.nav_brk4) == 1 ? true : false,
+                        dots            :parseInt(slider_config.dots_brk4) == 1 ? true : false,
+                        dotsEach        :parseInt(slider_config.dotsEach_brk4) == 1 ? true : false,
+                        items           :(slider_config.items_brk4  >= 0 && slider_config.items_brk4 != null) ? parseInt(slider_config.items_brk4) : items,
+                        center          :parseInt(slider_config.center_brk4) == 1 ? true : false,
+                        stagePadding    :parseInt(slider_config.center) == 1 ? 0 : sPBrk_4,
+                }
+            }
+            });
+
+                var carouselControls = carouselElement.find('.owl-nav');
+                if (carouselContainer >= windowWidth) {
+                    carouselControls.find('.owl-prev').css({
+                        'left': 0,
+                        'top': -15
+                    });
+                    carouselControls.find('.owl-next').css({
+                        'right': 0,
+                        'top': -15
+                    });
+                }
+
+                carouselElement.on('initialized.owl.carousel', function(event){
+                    navBtnL = carouselElement.find('.owl-prev'),
+                        navBtnR = carouselElement.find('.owl-next');
+
+                    if(event.item.count <= event.page.size) {
+                        navBtnL.css('display', 'none');
+                        navBtnR.css('display', 'none');
+                    }
+                });
+
+            });
+        });
+    </script>
+    <?php endif; ?>
+</div>
+
+<script>
+    requirejs(['jquery'],
+        function   ($) {
+            $(document).ready(function() {
+                $('.continue-shopping').bind('click', function() {
+                    $('.mfp-close').trigger('click');
+                });
+
+            });
+        });
+</script>

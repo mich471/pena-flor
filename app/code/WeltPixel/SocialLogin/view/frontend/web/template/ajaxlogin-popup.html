@@ -1,0 +1,178 @@
+<div class="block-authentication sl-popup"
+     data-bind="afterRender: setAjaxModelElement, blockLoader: isLoading"
+     style="display: none">
+
+    <div class="block block-new-customer"
+         data-bind="attr: {'data-label': $t('or')}">
+        <div class="block-title">
+            <a href="#" id="sl_login_tab_title">
+                <strong id="block-customer-ajaxlogin-heading alink"
+                    role="heading"
+                    aria-level="2"
+                    class="sl-ajaxlogin-title"
+                    data-bind="i18n: 'Login',click: showLogin, css: {active :logClicked() > 0}"></strong>
+            </a>
+            <span class="sl-ajaxlogin-title-space" data-bind="i18n: 'or'"></span>
+            <a href="#" id="sl_register_tab_title">
+                <strong id="block-new-customer-heading alink"
+                        role="heading"
+                        aria-level="2"
+                        class="sl-ajaxlogin-title"
+                    data-bind="i18n: 'Create an Account',click: showRegister, css: {active :regClicked() > 0}"></strong>
+            </a>
+        </div>
+
+        <!-- ko foreach: getRegion('messages') -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+        <!--/ko-->
+        <!-- ko foreach: getRegion('before') -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+        <!-- /ko -->
+        <div class="block-content" aria-labelledby="block-customer-login-heading" id="login_section">
+            <form class="form form-login"
+                  method="post"
+                  data-bind="event: {submit: login }"
+                  id="ajaxlogin-form">
+                <div class="fieldset login" data-bind="attr: {'data-hasrequired': $t('* Required Fields')}">
+                    <div class="field email required">
+                        <label class="label" for="ajaxlogin-email"><span data-bind="i18n: 'Email Address'"></span></label>
+                        <div class="control">
+                            <input name="username"
+                                   id="ajaxlogin-email"
+                                   type="email"
+                                   class="input-text"
+                                   data-bind="attr: {autocomplete: autocomplete}"
+                                   data-validate="{required:true, 'validate-email':true}">
+                        </div>
+                    </div>
+                    <div class="field password required">
+                        <label for="ajaxlogin-pass" class="label"><span data-bind="i18n: 'Password'"></span></label>
+                        <div class="control">
+                            <input name="password"
+                                   type="password"
+                                   class="input-text"
+                                   id="ajaxlogin-pass"
+                                   data-bind="attr: {autocomplete: autocomplete}"
+                                   data-validate="{required:true}">
+                        </div>
+                    </div>
+                    <!-- ko foreach: getRegion('additional-login-form-fields') -->
+                    <!-- ko template: getTemplate() --><!-- /ko -->
+                    <!-- /ko -->
+                    <div class="actions-toolbar">
+                        <div class="primary">
+                            <button type="submit" class="action login primary" name="send" id="ajaxlogin-send">
+                                <span data-bind="i18n: 'Sign In'"></span>
+                            </button>
+                        </div>
+                        <div class="secondary">
+                            <a class="action" data-bind="attr: {href: forgotPasswordUrl}">
+                                <span data-bind="i18n: 'Forgot Your Password?'"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="block-content" id="registration_section" aria-labelledby="block-new-customer-heading" style="display: none">
+            <form class="form create"
+                  method="post"
+                  data-bind="event: {submit: register}"
+                  id="ajaxregister-form">
+                <div class="fieldset register" data-bind="attr: {'data-hasrequired': $t('* Required Fields')}">
+                    <div class="field firstname required">
+                        <label class="label" for="ajaxregister-firstname"><span data-bind="i18n: 'First Name'"></span></label>
+                        <div class="control">
+                            <input name="firstname"
+                                   id="ajaxregister-firstname"
+                                   type="text"
+                                   class="input-text"
+                                   data-bind="attr: {autocomplete: autocomplete}"
+                                   data-validate="{required:true}">
+                        </div>
+                    </div>
+                    <div class="field lastname required">
+                        <label class="label" for="ajaxregister-lastname"><span data-bind="i18n: 'Last Name'"></span></label>
+                        <div class="control">
+                            <input name="lastname"
+                                   id="ajaxregister-lastname"
+                                   type="text"
+                                   class="input-text"
+                                   data-bind="attr: {autocomplete: autocomplete}"
+                                   data-validate="{required:true}">
+                        </div>
+                    </div>
+
+                    <div class="field choice newsletter">
+                        <input type="checkbox"
+                               name="is_subscribed"
+                               id="ajaxregister_is_subscribed"
+                               data-bind="attr:{title: $t('Sign Up for Newsletter')} "
+                               value="1"
+                               class="checkbox">
+                        <label for="ajaxregister_is_subscribed" class="label"><span data-bind="i18n: 'Sign Up for Newsletter'"></span></label>
+                    </div>
+
+                    <div class="field email required">
+                        <label class="label" for="ajaxregister-email"><span data-bind="i18n: 'Email Address'"></span></label>
+                        <div class="control">
+                            <input name="email"
+                                   id="ajaxregister-email"
+                                   type="email"
+                                   class="input-text"
+                                   data-bind="attr: {autocomplete: autocomplete}"
+                                   data-validate="{required:true, 'validate-email':true}">
+                        </div>
+                    </div>
+
+                    <div class="field password required">
+                        <label for="ajaxlogin-pass" class="label"><span data-bind="i18n: 'Password'"></span></label>
+                        <div class="control">
+                            <input name="password"
+                                   type="password"
+                                   class="input-text"
+                                   id="ajaxregister-pass"
+                                   data-bind="attr: {autocomplete: autocomplete}"
+                                   data-validate="{required:true}">
+                        </div>
+                    </div>
+
+                    <div class="field password required">
+                        <label for="ajaxlogin-pass" class="label"><span data-bind="i18n: 'Confirm Password'"></span></label>
+                        <div class="control">
+                            <input name="password_confirmation"
+                                   type="password"
+                                   class="input-text"
+                                   id="ajaxregister-pass-confirm"
+                                   data-bind="attr: {autocomplete: autocomplete}"
+                                   data-validate="{required:true, equalTo:'#ajaxregister-pass'}">
+                        </div>
+                    </div>
+
+                    <!-- ko foreach: getRegion('additional-register-form-fields') -->
+                    <!-- ko template: getTemplate() --><!-- /ko -->
+                    <!-- /ko -->
+                    <div class="actions-toolbar">
+                        <div class="primary">
+                            <button type="submit" class="action login primary" name="send" id="ajaxregister-send">
+                                <span data-bind="i18n: 'Create'"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="block block-customer-login"
+         data-bind="attr: {'data-label': $t('or')}">
+
+        <div class="block-content">
+            <div class="sociallogin-or">
+                <span data-bind="i18: 'OR'"></span>
+            </div>
+            <div data-bind="html: socialloginButtons"></div>
+        </div>
+
+    </div>
+</div>

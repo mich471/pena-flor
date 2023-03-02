@@ -1,0 +1,167 @@
+{
+    "name": "lyracons/project-gpf",
+    "description": "Tienda online de Grupo Peñaflor",
+    "type": "project",
+    "version": "2.4.1",
+    "license": "proprietary",
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "allow-plugins": {
+            "magento/magento-composer-installer": true,
+            "magento/*": true,
+            "laminas/*": true,
+            "cweagans/composer-patches": true
+        }
+    },
+    "repositories": {
+        "magento": {
+            "type": "composer",
+            "url": "https://repo.magento.com/"
+        },
+        "lyracons": {
+            "type": "composer",
+            "url": "https://repo.packagist.com/lyracons/magento-modules/"
+        },
+        "amasty.com": {
+            "type": "composer",
+            "url": "https://composer.amasty.com/community/"
+        },
+        "amasty2.com": {
+            "type": "composer",
+            "url": "https://composer1.amasty.com/enterprise/"
+        },
+        "plumrocket": {
+            "type": "composer",
+            "url": "https://store.plumrocket.com/repo/"
+        },
+        "summa": {
+            "type": "composer",
+            "url": "https://assets.summasolutions.com.ar/"
+        }
+    },
+    "require": {
+        "amasty/label": "1.13.5",
+        "amasty/module-one-step-checkout-pro-package": "^2.1",
+        "codazon/theme-fastest": "2.9.9.4",
+        "cweagans/composer-patches": "^1.6",
+        "facebook/facebook-for-magento2": "^1.4",
+        "lyracons/metapackage-andreani": "1.0.0",
+        "lyracons/module-address-normalizer": "1.1.7",
+        "lyracons/module-age-block": "1.0.0",
+        "lyracons/module-andreani-api-fields": "1.0.0",
+        "lyracons/module-bundles-override-minqty": "~1.0.0",
+        "lyracons/module-cancel-orders": "^1.0",
+        "lyracons/module-enhanced-ecommerce": "~1.0.0",
+        "lyracons/module-qty-increment": "1.0.6",
+        "lyracons/module-recommender": "1.0.0",
+        "magento/magento-cloud-metapackage": ">=2.4.1 <2.4.2",
+        "magento/magento-cloud-patches": "1.0.16",
+        "magento/quality-patches": "1.1.22",
+        "mageplaza/module-better-maintenance": "^4.0",
+        "magmodules/m2-googleshopping": "1.2.5",
+        "markshust/magento2-module-disabletwofactorauth": "^2.0",
+        "msp/cmsimportexport": "^1.0",
+        "onelogin/php-saml": "^4.0",
+        "summasolutions/m2-cron-executor": "^104.4",
+        "summasolutions/m2-mercadopago": "104.1.1.13",
+        "swg/m2-index-monitor": "^103.1",
+        "webshopapps/module-matrixrate": "^20.4"
+    },
+    "suggest": {
+        "ext-pcntl": "Need for run processes in parallel mode"
+    },
+    "conflict": {
+        "gene/bluefoot": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Magento\\Setup\\": "setup/src/Magento/Setup/",
+            "Magento\\": "app/code/Magento/",
+            "Zend\\Mvc\\Controller\\": "setup/src/Zend/Mvc/Controller/"
+        },
+        "psr-0": {
+            "": [
+                "app/code/",
+                "generated/code/"
+            ]
+        },
+        "files": [
+            "app/etc/NonComposerComponentRegistration.php"
+        ],
+        "exclude-from-classmap": [
+            "**/dev/**",
+            "**/update/**",
+            "**/Test/**"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Magento\\Sniffs\\": "dev/tests/static/framework/Magento/Sniffs/",
+            "Magento\\Tools\\": "dev/tools/Magento/Tools/",
+            "Magento\\Tools\\Sanity\\": "dev/build/publication/sanity/Magento/Tools/Sanity/",
+            "Magento\\TestFramework\\Inspection\\": "dev/tests/static/framework/Magento/TestFramework/Inspection/",
+            "Magento\\TestFramework\\Utility\\": "dev/tests/static/framework/Magento/TestFramework/Utility/"
+        }
+    },
+    "minimum-stability": "alpha",
+    "prefer-stable": true,
+    "extra": {
+        "component_paths": {
+            "trentrichardson/jquery-timepicker-addon": "lib/web/jquery/jquery-ui-timepicker-addon.js",
+            "components/jquery": [
+                "lib/web/jquery.js",
+                "lib/web/jquery/jquery.min.js",
+                "lib/web/jquery/jquery-migrate.js"
+            ],
+            "blueimp/jquery-file-upload": "lib/web/jquery/fileUploader",
+            "components/jqueryui": [
+                "lib/web/jquery/jquery-ui.js"
+            ],
+            "twbs/bootstrap": [
+                "lib/web/jquery/jquery.tabs.js"
+            ],
+            "tinymce/tinymce": "lib/web/tiny_mce_4"
+        },
+        "magento-force": true,
+        "magento-deploystrategy": "copy",
+        "magento-deploy-ignore": {
+            "magento/magento2-base": [
+                "/dev/tools/grunt/configs/themes.js",
+                "/pub/errors/default/503.phtml",
+                "/.gitignore"
+            ]
+        },
+        "composer-exit-on-patch-failure": true,
+        "patches": {
+            "andreani/module-andreani-magento-2.3": {
+                "Github #17: Validaciones faltantes": "https://github.com/barbazul/magento-2.3/pull/1.patch"
+            },
+            "magento/framework": {
+                "Github 29991: Can't remove layout update after add during new widget creation": "patches/composer/github-issue-29991.diff"
+            },
+            "magento/module-checkout": {
+                "Fix #46536 - código js en dirección de billing": "patches/composer/fix-billing-address-js-function.diff"
+            },
+            "magento/module-customer": {
+                "Github 31644: AbstractAddress setData('custom_attributes', AttributeValue[]) breaks customAttributes": "patches/composer/github-issue-31644.patch"
+            },
+            "magento/module-sales-rule": {
+                "Impossible to apply a cart price rule based on Subtotal (Incl. Tax) number": "patches/composer/MDVA-31399__adds_new_option_subtotal_including_tax_to_cart_price_rule_condition__2.3.5-p2_v1.patch"
+            },
+            "codazon/module-theme-options": {
+                "Fix Codazon_ThemeOptions casting of boolean vars": "patches/composer/fix-codazon-theme-options.diff",
+                "Disable Less preprocessor to allow static-assets-deploy without DB": "patches/composer/fix-static-assets-deploy.diff",
+                "Make default CSP URLs secure": "patches/composer/fix-codazon-csp-urls.diff"
+            },
+            "codazon/ajaxcartpro": {
+                "Fix Codazon_checking theme name in order to display mini cart": "patches/composer/fix-codazon-ajaxcart-theme-name-control.diff",
+                "Fix missing layout files that apply increase and decrease buttons on product qty": "patches/composer/fix-codazon-ajaxcart-addtocart-increase-and-decrease.diff"
+            },
+            "vertex/module-address-validation": {
+                "Fix Vertex address edition on backend": "patches/composer/fix-vertex-edit-backend-order.diff"
+            }
+        },
+        "enable-patching": "true"
+    }
+}

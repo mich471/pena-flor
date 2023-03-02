@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <title>Contacto</title>
+    </head>
+    <body>
+        <referenceBlock name="page.main.title">
+            <action method="setPageTitle">
+                <argument name="title" translate="true" xsi:type="string">Contact</argument>
+            </action>
+        </referenceBlock>
+        <referenceBlock name="content">
+            <block class="Magento\Framework\View\Element\Template"
+                   name="contact.map"
+                   before="-"
+                   template="Magento_Contact::store_map.phtml">
+            </block>
+        </referenceBlock>
+        <referenceContainer name="content">
+            <container name="content.contact" htmlTag="div" htmlClass="row">
+                <container name="content.left" htmlTag="div" htmlClass="col-sm-24">
+                    <block class="Magento\Contact\Block\ContactForm"
+                           name="contactForm"
+                           template="Magento_Contact::form.phtml">
+                        <container name="form.additional.info" label="Form Additional Info"/>
+                    </block>
+                </container>
+                <container name="content.right" htmlTag="div" htmlClass="col-sm-12">
+                    <block class="Magento\Framework\View\Element\Template"
+                           name="contact.map"
+                           before="-"
+                           template="Magento_Contact::store_map.phtml"/>
+                </container>
+            </container>
+        </referenceContainer>
+        <referenceContainer name="page.wrapper">
+            <container name="cms.content.wrapper" htmlTag="div" htmlClass="cms-content-wrapper">
+            </container>
+        </referenceContainer>
+        <!--
+        <referenceContainer name="content">
+            <block class="Magento\Cms\Block\Page" name="cms_page"/>
+        </referenceContainer>
+        -->
+        <move element="header.container" destination="cms.content.wrapper" before='-'/>
+        <move element="main.content" destination="cms.content.wrapper" after='header.container'/>
+    </body>
+    <referenceBlock name="breadcrumbs" remove="true" />
+</page>

@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/layout_generic.xsd">
+    <container name="root">
+        <block class="WeltPixel\AdvancedWishlist\Block\Customer\Collections" name="advancedwishlist.customer.collections" as="advancedwishlist_customer_collections" template="WeltPixel_AdvancedWishlist::customer/collections.phtml" >
+            <block class="Magento\Wishlist\Block\Customer\Wishlist\Item\Column\Image" name="customer.multiple.wishlist.item.image" template="WeltPixel_AdvancedWishlist::multiwishlist/item/image.phtml" />
+        </block>
+    </container>
+</layout>

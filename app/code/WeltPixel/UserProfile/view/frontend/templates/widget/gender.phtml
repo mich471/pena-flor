@@ -1,0 +1,25 @@
+<?php
+
+// @codingStandardsIgnoreFile
+
+/** @var \WeltPixel\UserProfile\Block\Widget\Gender $block */
+?>
+<div class="field field-gender<?php if ($block->isRequired()) echo ' required'; ?>">
+    <label class="label" for="gender"><span><?= $block->escapeHtml(__('Gender')) ?></span></label>
+    <div class="control">
+        <select
+            name="gender"
+            id="gender"
+            class="input-select <?php if ($block->isRequired()) echo ' required-entry' ?> "
+            <?php if ($block->isRequired()) echo ' data-validate="{required:true}"' ?>
+        >
+        <?php foreach ($block->getOptions() as $k => $v): ?>
+            <option
+                value="<?= $k ?>"
+                <?php if ($k == $block->getGender()): ?> selected="selected"<?php endif; ?>>
+                <?= $v ?>
+            </option>
+        <?php endforeach ?>
+        </select>
+    </div>
+</div>

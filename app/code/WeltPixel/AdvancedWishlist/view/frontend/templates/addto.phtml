@@ -1,0 +1,126 @@
+<?php
+
+// @codingStandardsIgnoreFile
+
+/** @var \WeltPixel\AdvancedWishlist\Block\WishlistAddto $block */
+$isMultiWishslitEnabled = $block->isMultiWishlistEnabled();
+$isAjaxWishslitEnabled = $block->isAjaxWishlistEnabled();
+
+$isShareWishlistEnabled = $block->isShareWishlistEnabled();
+$isPriceAlertEnabled = $block->isPriceAlertEnabled();
+$isPublicWishlistEnabled = $block->isPublicWishlistEnabled();
+?>
+<?php if ($isMultiWishslitEnabled) : ?>
+<div class="multiple-wishlists-selector-container">
+    <div class="modal-title" data-role="title">
+        <?= __('Select Wishlist') ?>
+    </div>
+    <select class="wp-wishlist-selector" name="wp-multi-wishlist-id">
+    </select>
+
+    <div class="add-new-wishlist-container">
+        <form class="form form-wishlist-add"
+          action="<?= $block->getUrl('wp_collection/multiwishlist/update', ['_secure' =>  true]) ?>"
+          method="post"
+          id="form-wishlist-add"
+          data-mage-init='{"validation":{}}'>
+        <?php echo $block->getBlockHtml('formkey'); ?>
+        <input type="hidden" name="wishlist-add-id" id="wishlist-add-id" value="" />
+        <input type="hidden" name="wishlist-add-new" id="wishlist-add-new" value="1" />
+        <fieldset class="fieldset wishlist-edit" data-hasrequired="* Required Fields">
+            <div class="field wishlist-name required">
+                <label class="label" for="wishlist-name"><span><?= __('Wishlist Name'); ?></span></label>
+                <div class="control">
+                    <input name="wishlist-new-name" value="" placeholder="<?= __('Wishlist Name'); ?>" autocomplete="off" id="wishlist-new-name" type="text" class="input-text" title="<?= __('Wishlist Name'); ?>" data-validate="{required:true}">
+                </div>
+            </div>
+            <?php if ($isShareWishlistEnabled) : ?>
+                <div class="field wishlist-disable-share required">
+                    <label class="label" for="wishlist-new-disable-share"><span><?= __('Disable Share'); ?></span></label>
+                    <div class="control">
+                        <select name="wishlist-new-disable-share" id="wishlist-new-disable-share">
+                            <option value="0"><?= __('No') ?></option>
+                            <option value="1"><?= __('Yes') ?></option>
+                        </select>
+                    </div>
+                </div>
+            <?php else: ?>
+                <input type="hidden" name="wishlist-new-disable-share" id="wishlist-new-disable-share" value="" >
+            <?php endif; ?>
+
+            <?php if ($isPublicWishlistEnabled) : ?>
+                <div class="field wishlist-new-disable-public required">
+                    <label class="label" for="wishlist-new-disable-public"><span><?= __('This Collection is'); ?></span></label>
+                    <div class="control">
+                        <select name="wishlist-new-disable-public" id="wishlist-new-disable-public">
+                            <option value="0"><?= __('Public') ?></option>
+                            <option value="1"><?= __('Private') ?></option>
+                        </select>
+                    </div>
+                </div>
+            <?php else: ?>
+                <input type="hidden" name="wishlist-new-disable-public" id="wishlist-new-disable-public" value="" >
+            <?php endif; ?>
+
+            <?php if ($isPriceAlertEnabled) : ?>
+                <div class="field wishlist-disable-pricealert required">
+                    <label class="label" for="wishlist-new-disable-pricealert"><span><?= __('Disable Price Alert'); ?></span></label>
+                    <div class="control">
+                        <select name="wishlist-new-disable-pricealert" id="wishlist-new-disable-pricealert">
+                            <option value="0"><?= __('No') ?></option>
+                            <option value="1"><?= __('Yes') ?></option>
+                        </select>
+                    </div>
+                </div>
+            <?php else : ?>
+                <input type="hidden" name="wishlist-new-disable-pricealert" id="wishlist-new-disable-pricealert" value="" >
+            <?php endif; ?>
+            <div class="wp-errors"></div>
+            <div class="actions-toolbar">
+                <div class="primary">
+                    <button type="submit" class="action savewishlist primary" name="addnewwishlist" id="addnewwishlist">
+                        <span><?php echo __('Save'); ?></span>
+                    </button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+    </div>
+</div>
+<script>
+    requirejs(['jquery',  'WeltPixel_AdvancedWishlist/js/weltpixel_wishlist_addto'],
+        function   ($, wishlistAddTo) {
+            $(document).ready(function() {
+                wishlistAddTo.initMultiWishlist({
+                    getWishlistsUrl: "<?= $block->getUrl('wp_collection/multiwishlist/get', ['_secure' =>  true]) ?>",
+                    ajaxWishlist: <?= ($isAjaxWishslitEnabled) ? 'true' : 'false' ?>
+                });
+
+                $('.form-wishlist-add').submit(function(e) {
+                    var form = $(this);
+                    wishlistAddTo.submitWishlistCreation(form);
+                    e.preventDefault();
+                });
+
+                $('#wishlist-new-disable-share').bind('change', function() {
+                    if ($(this).val() == 1) {
+                        $('.wishlist-new-disable-public').hide();
+                    } else {
+                        $('.wishlist-new-disable-public').show();
+                    }
+                });
+            });
+        });
+</script>
+<?php elseif ($isAjaxWishslitEnabled) :?>
+<script>
+    requirejs(['jquery',  'WeltPixel_AdvancedWishlist/js/weltpixel_wishlist_addto'],
+        function   ($, wishlistAddTo) {
+            $(document).ready(function() {
+                wishlistAddTo.initAjaxWishlist({
+                    ajaxWishlist: true
+                });
+            });
+        });
+</script>
+<?php endif; ?>

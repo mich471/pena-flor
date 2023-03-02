@@ -1,0 +1,274 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+?>
+<?php
+/**
+ * Category layered navigation
+ *
+ * @var $block WeltPixel\LayeredNavigation\Block\Navigation
+ */
+
+$_helper = $this->helper('\WeltPixel\LayeredNavigation\Helper\Data');
+$isAjaxMode = $block->isAjaxMode();
+$isAutoClose = $block->isAutoClose();
+$isAutoCloseClass = ($isAutoClose) ? 'auto-close' : 'manual-close';
+$jsClass = ($isAjaxMode) ? 'WeltPixel_LayeredNavigation/js/product/list/toolbar' : false;
+
+/* Horizontal Sidebar Design Settings */
+$sidebarStyle = $_helper->getSidebarStyle();
+$selectedFilters = $_helper->getSelectedFiltersOptions();
+$horizontalBoxShadow = $_helper->getHorizontalBoxShadow();
+$horizontalSbDesignVersion = ($sidebarStyle === '3' ? $_helper->getHorizontalSidebarDesignVersion() : '');
+$filterPosition = ($horizontalSbDesignVersion === 'v2' ? $_helper->getHorizontalSidebarFilterPosition() : '');
+$reverseOrderClass = ($horizontalSbDesignVersion === 'v2' ? 'reverse-order' : '');
+$horizontalDesignClass = ($horizontalSbDesignVersion === '' ? '' : 'horizontal-' . $horizontalSbDesignVersion);
+$filterAlignmentClass = ($horizontalSbDesignVersion === 'v2' ? 'filter-align-' . $filterPosition : '');
+$selectedFiltersClass = ($selectedFilters === '1' ? 'show-selected-filters' : 'hide-selected-filters');
+$horizontalBoxShadowClass =  ($sidebarStyle === '2' && $horizontalBoxShadow === '1' ? '' : 'no-box-shadow');
+
+/* Horizontal Sidebar Design V3 Settings */
+$filtersBorder = ($_helper->getHorizontalFiltersBorder() ? $_helper->getHorizontalFiltersBorder() : '');
+$filtersBorderRadius = ($_helper->getHorizontalFiltersBorderRadius() ?  $_helper->getHorizontalFiltersBorderRadius() : '');
+$filterButtonColor = ($horizontalSbDesignVersion === 'v3' ? $_helper->getHorizontalV3FiltersButtonColor() : '');
+$filterTextColor = ($horizontalSbDesignVersion === 'v3' ? $_helper->getHorizontalV3FiltersTextColor() : '');
+$filterButtonHoverColor = ($horizontalSbDesignVersion === 'v3' ? $_helper->getHorizontalV3FiltersButtonHoverColor() : '');
+$filterTextHoverColor = ($horizontalSbDesignVersion === 'v3' ? $_helper->getHorizontalV3FiltersTextHoverColor() : '');
+$filtersBorderColor = ($_helper->getHorizontalFiltersBorderColor() ?  $_helper->getHorizontalFiltersBorderColor() : '');
+
+/* Sticky Filters */
+$mobileBreakpoint = ($_helper->getMobileThreshold() === '' ? '768' : $_helper->getMobileThreshold());
+$isStickyFiltersEnabled = ($horizontalSbDesignVersion === 'v2' ? $_helper->isHorizontalSidebarStickyEnabled() : '0');
+
+?>
+<div class="wp-filters <?php if ($isAjaxMode) echo 'wp-filters-ajax' ?>">
+    <?= /* @escapeNotVerified */
+    $block->getFilterButtonHtml() ?>
+</div>
+<?php if ($block->canShowBlock()): ?>
+    <div class="block filter <?= $horizontalBoxShadowClass ?> <?=$isAutoCloseClass?> <?= $horizontalDesignClass ?> <?= $filterAlignmentClass ?> <?= $selectedFiltersClass ?>" id="layered-filter-block"
+         data-mage-init='{"collapsible":{"openedState": "active", "collapsible": true, "active": false, "collateral": { "openedState": "filter-active", "element": "body" } }}'>
+        <?php $filtered = count($block->getLayer()->getState()->getFilters()) ?>
+        <div class="block-title filter-title" data-count="<?= /* @escapeNotVerified */
+        $filtered ?>">
+            <strong data-role="title"><?= /* @escapeNotVerified */
+                __('Shop By') ?></strong>
+        </div>
+        <div class="block-content filter-content <?= $reverseOrderClass ?>">
+            <?php if ($horizontalSbDesignVersion === 'v2') : ?>
+                <div class="filter-actions-wrapper">
+            <?php endif; ?>
+                    <?php if ($selectedFilters === '1') : ?>
+                        <?= $block->getChildHtml('state') ?>
+                    <?php endif; ?>
+                <?php if ($block->getLayer()->getState()->getFilters()): ?>
+                    <div class="block-actions filter-actions">
+                        <a href="<?= /* @escapeNotVerified */
+                        $block->getClearUrl() ?>" class="action clear filter-clear"><span><?= /* @escapeNotVerified */
+                                __('Clear All') ?></span></a>
+                    </div>
+                <?php endif; ?>
+            <?php if ($horizontalSbDesignVersion === 'v2') : ?>
+                </div>
+            <?php endif; ?>
+            <?php $activeFilters = $block->getActiveFilters() ?>
+            <?php $wrapOptions = false; ?>
+            <?php foreach ($block->getFilters() as $k => $filter): ?>
+        <?php $attributeId = (!$block->isCategoryFilter($filter) && !$block->isRatingFilter($filter)) ? $filter->getData('attribute_model')->getAttributeId() : 0; ?>
+        <?php $categoryVisibility = $this->getCategoryVisibility($attributeId)?>
+        <?php if ($filter->getItemsCount() && $categoryVisibility): ?>
+        <?php if (!$wrapOptions): ?>
+            <strong role="heading" aria-level="2" class="block-subtitle filter-subtitle"><?= /* @escapeNotVerified */
+                __('Shopping Options') ?></strong>
+            <div class="filter-options" id="narrow-by-list" data-role="content"
+                 data-mage-init='{"accordion":{"openedState": "active", "collapsible": true, "active": "<?php echo $activeFilters; ?>", "multipleCollapsible": true, "animate":{ "duration" :300, "easing":"easeOutCubic"}}}'>
+                <?php $wrapOptions = true; ?>
+                <?php endif; ?>
+                <div data-role="collapsible" class="filter-options-item">
+                    <?php $block->getChildBlock('renderer')->setAttributeId($filter) ?>
+                    <div data-role="title" class="filter-options-title">
+                        <?= /* @escapeNotVerified */ __($filter->getName()) ?></div>
+                    <div id="attr_<?php echo $attributeId ?>" data-role="content"
+                         class="filter-options-content">
+                        <?php if ($horizontalSbDesignVersion === 'v3'):?>
+                            <div class="filter-options-content-title"> <?= /* @escapeNotVerified */ __($filter->getName()) ?></div>
+                        <?php endif;?>
+                        <?= /* @escapeNotVerified */ $block->getChildBlock('renderer')->render($filter) ?></div>
+                </div>
+                <?php endif; ?>
+                <?php endforeach; ?>
+                <?php if ($wrapOptions): ?>
+            </div>
+        <?php else: ?>
+            <script>
+                require([
+                    'jquery'
+                ], function ($) {
+                    $('#layered-filter-block').addClass('filter-no-options');
+
+                });
+            </script>
+            <?php endif; ?>
+        </div>
+    </div>
+<?php endif; ?>
+<div class="wp-ln-overlay"></div>
+<div class="wp-ln-slider-js" data-mage-init='<?= /* @escapeNotVerified */ $block->getWidgetOptionsJson() ?>'>
+    <script>
+        require(['jquery', 'jquery-ui-modules/effect-slide'], function($) {
+
+            if ($('body').hasClass('slider-layer')) {
+                $('body.slider-layer #layered-filter-block').addClass('slide-in-filter');
+            }
+
+            if ($('body').hasClass('slider-down-layer') && $(window).width() >= <?php echo $mobileBreakpoint ?>) {
+                var noOfColumns = '<?=$block->noOfColumns()?>',
+                    boxHeight   = '<?=$block->boxHeight()?>',
+                    filterHeight = '<?=$block->filterColumnHeight()?>',
+                    productWrapperMarginTop = (parseInt(boxHeight.substring(0, boxHeight.length - 2)) + 50) + 'px';
+                $('body.slider-down-layer #layered-filter-block').addClass('slide-down-filter');
+                $('body.slider-down-layer .slide-down-filter').css({'height':boxHeight});
+                $('body.slider-down-layer .slide-down-filter .filter-options-item').css({'width':noOfColumns, 'height':filterHeight});
+            }
+
+
+            if($('.slide-in-filter').length) {
+                $('.wp-ln-overlay').click(pageReset);
+                $('.wp-filters').click(pageSettings);
+
+
+                function pageSettings() {
+                    $('.block-search, a.logo').css({'z-index': '5'});
+                    $('body').addClass('wp-ln-open').css({'height': '100%', 'overflow': 'hidden'});
+                    $('nav.navigation').css({'z-index': '1'});
+                    $('div.columns').css({'z-index': '6'});
+                    $('.wp-ln-overlay').fadeIn(100, 'linear', function () {
+                        $('.slide-in-filter').delay(350).show("slide", {direction: "left"});
+                    });
+                }
+
+                function pageReset() {
+                    $('.slide-in-filter').hide('slide', {direction: "left"}, 500, function () {
+                        $('body').removeClass('wp-ln-open').css({'height': 'auto', 'overflow': 'auto'});
+                        $('.wp-ln-overlay').hide();
+                        $('div.page-header').css({'z-index': ''});
+                        $('div.columns').css({'z-index': '1'});
+                        /** $('nav.navigation').css({'z-index': '3'}); */
+                        $('.block-search, a.logo').css({'z-index': '5'});
+                        $('.page-wrapper .nav-sections:not(.sticky-header-nav)').removeAttr('style');
+                    });
+                }
+            } else if($('.slide-down-filter').length) {
+
+                $('.wp-filters').on('click', lnSlideDown);
+
+
+                function lnSlideDown() {
+                    $('.wp-filters').off('click');
+                    $('body').attr('data-pwmt', productWrapperMarginTop);
+
+                    $('.products.wrapper').animate({marginTop: productWrapperMarginTop},
+                        {
+                            duration:500,
+                            complete: function() {
+                                $('.wp-filters span.wp-slide-down-add').addClass('active');
+                            }
+
+                    });
+                    $('.wp-slide-down-add:not(active)').off('click');
+                    $('.slide-down-filter').slideDown(500, function() {
+                        $('.wp-filters').on('click', lnSlideUp);
+                    });
+                }
+
+                function lnSlideUp() {
+                    $('.wp-filters').off('click');
+                    $('.slide-down-filter').slideUp(
+                    {
+                        duration: 500,
+                        start: function(){
+                            $('.products.wrapper').animate(
+                                {
+                                    marginTop: '0px'
+                                },
+                                {
+                                    duration:500,
+                                    complete: function() {
+                                        $('.wp-filters span.wp-slide-down-add').removeClass('active');
+                                        $('.wp-filters').on('click', lnSlideDown);
+                                    },
+                                    queue: false
+                                }
+                                );
+
+                         },
+                        queue: false
+                    });
+                }
+
+            } else {
+                $('body.slider-layer .toolbar-products').css({'margin-left': '0px'});
+            }
+        });
+
+        <?php if ($jsClass): ?>
+            require.config({
+                map: {
+                    '*': {
+                        "productListToolbarForm": "<?= $jsClass; ?>"
+                    }
+                }
+            });
+        <?php endif; ?>
+
+        require(['wpFilterSelect', 'wpInstantSearch', 'wpShowMoreLess'], function(){
+            wpFilterSelect.markSelected();
+            wpInstantSearch.searchOptions();
+            wpShowMoreLess.initMoreLess();
+        });
+
+        <?php if ($isStickyFiltersEnabled) : ?>
+        require([
+            "jquery",
+            "WeltPixel_LayeredNavigation/js/stickyFilters"
+        ], function($, stickyFilters){
+            $(document).ready(function () {
+                'use strict';
+                let mobileThreshold = "768",
+                    isStickyFiltersEnabled = "<?= $isStickyFiltersEnabled ?>";
+                    stickyFilters.init(mobileThreshold, isStickyFiltersEnabled);
+            });
+
+        });
+        <?php endif; ?>
+    </script>
+
+</div>
+<?php if ($horizontalSbDesignVersion === 'v3') : ?>
+<style>
+    body.page-layout-1column #layered-filter-block.horizontal-v3 .block-content.filter-content .filter-options .filter-options-item .filter-options-title{
+        background-color: <?php echo $filterButtonColor ?>;
+        color: <?php echo $filterTextColor ?>;
+        border: <?php echo $filtersBorder ?>;
+        border-radius: <?php echo $filtersBorderRadius ?>;
+        border-color: <?php echo $filtersBorderColor ?>;;
+    }
+    body.page-layout-1column #layered-filter-block.horizontal-v3 .block-content.filter-content .filter-options .filter-options-item .filter-options-title:after {
+        color: <?php echo $filterTextColor ?>;
+    }
+    body.page-layout-1column #layered-filter-block.horizontal-v3 .block-content.filter-content .filter-options .filter-options-item .filter-options-title:hover,
+    body.page-layout-1column #layered-filter-block.horizontal-v3 .block-content.filter-content .filter-options .filter-options-item.active .filter-options-title,
+    body.page-layout-1column #layered-filter-block.horizontal-v3 .block-content.filter-content .filter-options .filter-options-item.active .filter-options-title:after{
+        background-color: <?php echo $filterButtonHoverColor ?> ; ;
+        color: <?php echo $filterTextHoverColor ?> ;
+    }
+    body.page-layout-1column #layered-filter-block.horizontal-v3 .block-content.filter-content .filter-options .filter-options-item .filter-options-title:hover::after {
+        color:  <?php echo $filterTextHoverColor ?>;
+    }
+</style>
+<?php endif; ?>
+

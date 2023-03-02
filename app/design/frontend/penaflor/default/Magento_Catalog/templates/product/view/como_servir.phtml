@@ -1,0 +1,11 @@
+<?php
+$_product = $block->getProduct();
+
+$_getComoServir = $_product->getResource()->getAttribute('como_servir');
+if (!$_getComoServir)
+	return; //out
+
+$comoServir = $_getComoServir->getFrontend()->getValue($_product);
+if($comoServir !="No"){
+	echo $comoServir ;
+}

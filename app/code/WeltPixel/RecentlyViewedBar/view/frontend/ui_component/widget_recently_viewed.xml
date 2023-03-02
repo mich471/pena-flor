@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <columns name="widget_columns" component="Magento_Catalog/js/product/list/listing" template="Magento_Catalog/product/list/listing">
+        <column name="image" component="Magento_Catalog/js/product/list/columns/image" sortOrder="0" displayArea="general-area">
+            <settings>
+                <label translate="true">Image</label>
+                <bodyTmpl>WeltPixel_RecentlyViewedBar/product/list/columns/image_with_borders</bodyTmpl>
+            </settings>
+        </column>
+    </columns>
+</listing>

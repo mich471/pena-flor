@@ -1,0 +1,22 @@
+//
+//  Mobile (styles-m.css)
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s) {
+    .theme-pearl.cms-home{
+        .page-wrapper{
+            .columns{
+                [data-content-type="row"]{
+                    .block-static-block{
+                        .contenedor-productos-imagenes{
+                            display: none !important;
+                        }
+                        .conte-segundo-block{
+                            display: none !important;
+                        }
+                    }
+                }                    
+            }
+        }
+    }
+}

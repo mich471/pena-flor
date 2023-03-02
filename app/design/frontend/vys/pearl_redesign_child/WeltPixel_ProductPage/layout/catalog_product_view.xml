@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+        <referenceBlock name="product.info.main">
+        	<block class="Magento\Catalog\Block\Product\View" name="product.info.bodega" template="product/view/bodega.phtml" before="-" />
+        	<block class="Magento\Catalog\Block\Product\View" name="product.info.varietal" template="product/view/varietal.phtml"/>
+                <block class="Magento\Catalog\Block\Product\View" name="product.info.bodegas" template="product/view/bodegas.phtml" />
+        </referenceBlock>
+        <move element="page.main.title" destination="product.info.main" after="product.info.bodega"/>
+        <move element="product.info.varietal" destination="product.info.main" after="page.main.title"/>
+        <move element="product.info.bodegas" destination="page.wrapper" before="footer" />
+        
+</page>

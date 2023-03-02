@@ -1,0 +1,40 @@
+<script type="text/javascript">
+    require([
+        'jquery',
+        'jquery/ui',
+        'slick'
+    ], function($) {
+        $(document).ready(function() {
+            $(".personal-experto .pagebuilder-column-group").slick({
+                dots: false,
+                    arrows: true,
+                    infinite: true,
+                    slidesToShow:2,
+                    autoplay:true,
+                    autoplaySpeed:3000,
+                    mobileFirst:true,
+                    responsive: [
+                        {
+                        breakpoint: 450,
+                            settings: {
+                                slidesToShow: 2,
+                            }
+                        },
+                        {
+                        breakpoint: 1023,
+                            settings: {
+                                slidesToShow: 4,
+                            }
+                        },
+                        {
+                        breakpoint: 1366,
+                            settings: {
+                                slidesToShow: 4,
+                            }
+                        }
+                    ]
+            });
+            // console.log(slick);
+        });
+    })
+</script>

@@ -1,0 +1,54 @@
+<?php
+// @codingStandardsIgnoreFile
+/** @var \WeltPixel\AdvancedWishlist\Block\Email\Price $block */
+?>
+<?php
+$products = $block->getProducts();
+$priceHelper = $this->helper('Magento\Framework\Pricing\Helper\Data');
+$l = count($products);
+$productsInGrid = 2;
+?>
+<?php if ($products) : ?>
+<br/>
+<h2><?php echo __('Wishlist ') ?><?php echo $this->getWishlist()->getWishlistName(); ?>:</h2>
+<table style="width: 100%; text-align: center">
+    <tr>
+    <?php
+    $i = 0;
+    foreach ($products as $product) : $i++ ?>
+        <td class="col product">
+            <p>
+                <a href="<?= /* @escapeNotVerified */  $product->getProductUrl() ?>" title="<?= $block->escapeHtml($product->getName()) ?>" class="product photo">
+                    <?= $block->getImage($product, 'wishlist_price_alert')->toHtml() ?>
+                </a>
+            </p>
+            <p>
+                <a href="<?= $block->escapeUrl($block->getProductUrl($product)) ?>">
+                    <strong><?= $block->escapeHtml($product->getName()) ?></strong>
+                </a>
+            </p>
+            <p>
+                <span style="font-weight: bold;"><?=  __('Old Price') ?>:
+                    <span style="text-decoration:line-through">
+                        <?= $priceHelper->currency($product->getPriceAlertOldPrice(), true, false);?>
+                    </span>
+                </span>
+                <br/>
+                <span style="font-weight: bold; color: #e62626;"><?=  __('New Price') ?>: <?= $priceHelper->currency($product->getPriceAlertNewPrice(), true, false) ?></span>
+            </p>
+        </td>
+        <?php if ($i % $productsInGrid != 0): ?>
+            <td></td>
+        <?php else: ?>
+    </tr>
+    <tr>
+        <td colspan="5">&nbsp;</td>
+    </tr>
+    <?php if ($i < $l): ?>
+    <tr>
+        <?php endif ?>
+        <?php endif ?>
+<?php endforeach; ?>
+</table>
+<hr/>
+<?php endif; ?>

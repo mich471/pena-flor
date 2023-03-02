@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="newsletter_modal" translate="label" sortOrder="50" showInDefault="1" showInWebsite="1"
+                 showInStore="1">
+            <label>Custom Newsletter</label>
+            <tab>customer</tab>
+            <resource>BalloonGroup_Mmegamenu::config_megamenu</resource>
+            <group id="general" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
+                <field id="active" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Is Active</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="cookis" translate="label comment" type="text" sortOrder="20" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Cookis</label>
+                    <depends>
+                        <field id="active">1</field>
+                    </depends>
+                    <comment>Tiempo en segundos para finalizar la cookis</comment>
+                </field>
+
+                <field id="text_poppup" translate="label comment" type="text" sortOrder="25" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Text poppup</label>
+                    <depends>
+                        <field id="active">1</field>
+                    </depends>
+                    <comment>Texto para el poppup</comment>
+                </field>
+
+                <field id="block_modal" translate="label" type="select" sortOrder="30" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Select block modal</label>
+                    <source_model>Magento\Cms\Model\Config\Source\Block</source_model>
+                    <depends>
+                        <field id="active">1</field>
+                    </depends>
+                </field>
+                <field id="recaptcha" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>reCAPTCHA</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="active">1</field>
+                    </depends>
+                </field>
+
+                <field id="image_newsletter" translate="label"
+                       type="Magento\Config\Block\System\Config\Form\Field\File" sortOrder="40" showInDefault="1"
+                       showInWebsite="1">
+                    <label>Image newsletter</label>
+                    <backend_model>Magento\Config\Model\Config\Backend\Image</backend_model>
+                    <upload_dir config="system/filesystem/media" scope_info="1">newsletter</upload_dir>
+                    <depends>
+                        <field id="active">1</field>
+                    </depends>
+                </field>
+            </group>
+
+        </section>
+    </system>
+</config>

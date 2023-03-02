@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add
+                id="WeltPixel_RecentlyViewedBar::RecentlyViewedBar_Label"
+                title="Recently Viewed Bar"
+                module="WeltPixel_RecentlyViewedBar"
+                sortOrder="385"
+                parent="WeltPixel_Backend::WeltPixel"
+                resource="WeltPixel_RecentlyViewedBar::RecentlyViewedBar_Label"
+        />
+        <add
+                id="WeltPixel_RecentlyViewedBar::RecentlyViewedBar_General"
+                title="Recently Viewed Settings"
+                module="WeltPixel_RecentlyViewedBar"
+                action="adminhtml/system_config/edit/section/weltpixel_RecentlyViewedBar/"
+                sortOrder="10"
+                parent="WeltPixel_RecentlyViewedBar::RecentlyViewedBar_Label"
+                resource="WeltPixel_RecentlyViewedBar::RecentlyViewedBar_General"
+        />
+    </menu>
+</config>

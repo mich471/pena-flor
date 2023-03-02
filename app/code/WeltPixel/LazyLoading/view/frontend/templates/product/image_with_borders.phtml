@@ -1,0 +1,34 @@
+<?php
+/** @var $block \Magento\Catalog\Block\Product\Image */
+/** @var $escaper \Magento\Framework\Escaper */
+/** @var \Magento\Framework\View\Helper\SecureHtmlRenderer $secureRenderer */
+?>
+<?php
+$_helper = $this->helper('WeltPixel\LazyLoading\Helper\Data');
+$isRequestAjax = $_helper->isRequestAjax();
+$imgSrc = $_helper->getImageLoader();
+$imgDataOriginal = $block->getImageUrl();
+$pWidth = $_helper->getPlaceholderWidth() ?? '100%';
+if ($isRequestAjax) {
+    $pWidth = '100%';
+    $imgSrc = $imgDataOriginal;
+}
+?>
+
+<span class="product-image-container product-image-container-<?= /* @noEscape */ $block->getProductId() ?>"
+      style="width:<?php /* @escapeNotVerified */ echo $block->getWidth()?>px;">
+    <span class="product-image-wrapper"
+          style="padding-bottom: <?php /* @escapeNotVerified */ echo ($block->getRatio() * 100); ?>%;">
+        <img class="lazy <?= /* @escapeNotVerified */ $block->getClass() ?>"
+             <?php foreach ($block->getCustomAttributes() as $name => $value): ?>
+                 <?= $escaper->escapeHtmlAttr($name) ?>="<?= $escaper->escapeHtmlAttr($value) ?>"
+             <?php endforeach; ?>
+             loading="lazy"
+             src="<?php /* @escapeNotVerified */ echo $imgSrc; ?>"
+             data-original="<?php /* @escapeNotVerified */ echo $imgDataOriginal; ?>"
+             width="<?php /* @escapeNotVerified */ echo $block->getWidth(); ?>"
+             height="<?php /* @escapeNotVerified */ echo $block->getHeight(); ?>"
+             alt="<?php /* @escapeNotVerified */ echo $block->stripTags($block->getLabel(), null, true); ?>"
+             style="max-width:<?php echo $pWidth ?>"/>
+    </span>
+</span>

@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <weltpixel_RecentlyViewedBar>
+            <general>
+                <enable>0</enable>
+                <display_on>1</display_on>
+                <show_attributes>1,2</show_attributes>
+                <show_buttons>1</show_buttons>
+                <enable_cms>0</enable_cms>
+                <enable_sl>0</enable_sl>
+                <button_color>#000000</button_color>
+                <button_text_color>#FFFFFF</button_text_color>
+                <button_label>Recently Viewed</button_label>
+                <item_limit>100</item_limit>
+                <button_margin_right>5%</button_margin_right>
+                <button_margin_left>5%</button_margin_left>
+            </general>
+        </weltpixel_RecentlyViewedBar>
+    </default>
+</config>

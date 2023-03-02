@@ -1,0 +1,16 @@
+<?php
+$_product = $block->getProduct();
+
+$_getDescription = $_product->getResource()->getAttribute('short_description');
+if (!$_getDescription)
+    return; //out
+
+$description = $_getDescription->getFrontend()->getValue($_product);
+?>
+<div class="description">
+	<?php
+	if($description !="No"){
+		echo $description ;
+	} 
+	?>
+</div>

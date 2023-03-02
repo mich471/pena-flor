@@ -1,0 +1,73 @@
+<?php
+$_product = $block->getProduct(); ?>
+<div class="new-tab-principal-catacteristics additional-attributes-wrapper table-wrapper">
+    <table class="data table additional-attributes" id="product-attribute-specs-table">
+        <tbody>
+            <?php
+            $_getVarietal = $_product->getResource()->getAttribute('varietal');
+            $varietal = $_getVarietal->getFrontend()->getValue($_product); ?>
+            <?php if ($varietal) { ?>
+                <tr>
+                    <th class="col label" scope="row">
+                        Varietal
+                    </th>
+                    <th class="col data">
+                        <?= $varietal; ?>
+                    </th>
+                </tr>
+            <?php } ?>
+            <?php
+            $_getBodega = $_product->getResource()->getAttribute('bodega');
+            $bodega = $_getBodega->getFrontend()->getValue($_product);  ?>
+            <?php if ($bodega) { ?>
+                <tr>
+                    <th class="col label" scope="row">
+                        Bodega
+                    </th>
+                    <th class="col data">
+                        <?= $bodega; ?>
+                    </th>
+                </tr>
+            <?php } ?>
+            <?php
+            $_getAñada = $_product->getResource()->getAttribute('cosecha');
+            $añada = $_getAñada->getFrontend()->getValue($_product); ?>
+            <?php if ($añada) { ?>
+                <tr>
+                    <th class="col label" scope="row">
+                        Añada
+                    </th>
+                    <th class="col data">
+                        <?= $añada; ?>
+                    </th>
+                </tr>
+            <?php } ?>
+            <?php
+            $_getBarrica = $_product->getResource()->getAttribute('barrica');
+            $barrica = $_getBarrica->getFrontend()->getValue($_product);  ?>
+            <?php if ($barrica) { ?>
+                <tr>
+                    <th class="col label" scope="row">
+                        Tipo de barrica
+                    </th>
+                    <th class="col data">
+                        <?= $barrica; ?>
+                    </th>
+                </tr>
+            <?php } ?>
+            <?php
+            $_getBarTiempo = $_product->getResource()->getAttribute('tiempo_en_barrica');
+            $barrtiempo = $_getBarTiempo->getFrontend()->getValue($_product);  ?>
+            <?php if ($barrtiempo) { ?>
+                <tr>
+                    <th class="col label" scope="row">
+                        Tiempo de barrica
+                    </th>
+                    <th class="col data">
+                        <?= $barrtiempo; ?>
+                    </th>
+                </tr>
+            <?php } ?>
+        </tbody>
+    </table>
+</div>

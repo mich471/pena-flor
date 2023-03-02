@@ -1,0 +1,16 @@
+<?php
+$_product = $block->getProduct();
+
+$_getName = $_product->getResource()->getAttribute('name');
+if (!$_getName)
+    return; //out
+
+$name = $_getName->getFrontend()->getValue($_product);
+?>
+<div class="name">
+	<?php
+	if($name !="No"){
+		echo $name ;
+	} 
+	?>
+</div>

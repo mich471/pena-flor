@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2018 Lyracons. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <websites>
+        <mascota>
+            <general>
+                <lyracons_ageblock>
+                    <enabled>1</enabled>
+                    <cookie_name>isReachesAgeMascota</cookie_name>
+                    <lifetime_cookie>20000000</lifetime_cookie>
+                    <url_path>age-check-mascota</url_path>
+                    <lightbox_mode>0</lightbox_mode>
+                </lyracons_ageblock>
+            </general>
+        </mascota>
+        <penaflor>
+            <general>
+                <lyracons_ageblock>
+                    <enabled>1</enabled>
+                    <cookie_name>isReachesAgePenaflor</cookie_name>
+                    <lifetime_cookie>20000000</lifetime_cookie>
+                    <url_path></url_path>
+                    <lightbox_mode>1</lightbox_mode>
+                    <lightbox_message>Al ingresar a este sitio usted acepta tener la edad legal para beber en su país.</lightbox_message>
+                </lyracons_ageblock>
+            </general>
+        </penaflor>
+    </websites>
+    <default>
+        <lyracons_addressnormalizer>
+            <general>
+                <google_places_api_key>AIzaSyB8T6TzUM964Tpzc2KMCuSfsDR9vhd1Jbc</google_places_api_key>
+                <countries>AR</countries>
+                <readonlyfields>street,street[0],street_1,city,region,region_id,postcode</readonlyfields>
+                <use_in_customer_form>1</use_in_customer_form>
+            </general>
+        </lyracons_addressnormalizer>
+    </default>
+</config>

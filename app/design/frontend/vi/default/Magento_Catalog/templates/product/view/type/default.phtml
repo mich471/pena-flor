@@ -1,0 +1,42 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+use Magento\Catalog\Block\Product\View\AbstractView;
+use Magento\Framework\App\ObjectManager;
+
+?>
+<?php /* @var $block AbstractView */?>
+
+<?php 
+$_product = $block->getProduct();
+
+// Methods for checking if Salable Quantity <= 0
+$objectManager = ObjectManager::getInstance();
+$stockState = $objectManager->get('\Magento\InventorySalesApi\Api\GetProductSalableQtyInterface');
+$getProductTypesBySkus = $objectManager->get('\Magento\InventoryCatalogApi\Model\GetProductTypesBySkusInterface');
+$isSourceItemManagementAllowedForProductType =  $objectManager->get('\Magento\InventoryConfigurationApi\Model\IsSourceItemManagementAllowedForProductTypeInterface');
+?>
+
+
+<?php
+    /* to avoid exception on some product types when calling $stockState */
+    $productTypesBySkus = $getProductTypesBySkus->execute([$_product->getSku()]);
+    $productType = $productTypesBySkus[$_product->getSku()];
+    $sourceManagementAllowed = $isSourceItemManagementAllowedForProductType->execute($productType);
+    $saleQty = $sourceManagementAllowed ? $stockState->execute($_product->getSku(), 1) : null;
+?> 
+
+<?php if ($block->displayProductStockStatus()) :?>
+    <?php if (!$sourceManagementAllowed || ($_product->isAvailable() && $saleQty > 0)) :?>
+        <div class="stock available" title="<?= $block->escapeHtmlAttr(__('Availability')) ?>">
+            <span><?= $block->escapeHtml(__('In stock')) ?></span>
+        </div>
+    <?php else :?>
+        <div class="stock unavailable" title="<?= $block->escapeHtmlAttr(__('Availability')) ?>">
+            <span><?= $block->escapeHtml(__('Out of stock')) ?></span>
+        </div>
+    <?php endif; ?>
+<?php endif; ?>

@@ -1,0 +1,86 @@
+<?php
+
+/** @var Lyracons\AgeBlock\Block\Modal $block */ ?>
+<?php if ($block->isModalEnabled()) : ?>
+    <div id="modal-custom-age" style="display:none; height:fit-content" class="age-container">
+        <div style="margin: 20px;" id="age-message" class="age-message">
+            <p class="title-age-block" style="font-weight:bold;"><?= /* @escapeNotVerified */ $block->getMessage() ?></p>            
+        </div>
+        <div style="display: none; margin: 20px;" id="no-age-message">
+            <p style=" font-weight: bold; font-size:22px; color:#D4A22C">¡LO SENTIMOS!</p>
+            <p style="margin-top:-5px; font-size:20px; color:#707070">Tenés que tener al menos 18 <br>
+                años para poder ingresar.</p>
+            <a style="color:#D4A22C; text-decoration: underline;" class="button button-back" href="#"> Volver </a>
+        </div>
+    </div>
+    <script type="text/javascript">
+        window.cookieNameAgeBlock = "<?= /* @escapeNotVerified */ $block->getCookieName() ?>";
+        window.isAgeBockModal = true;
+        const targetDiv = document.getElementById("no-age-message");
+        const yesNoButtons = document.getElementById("buttons");
+        const btn = document.getElementById("btnAgeNo");
+        btn.onclick = function() {
+            if (targetDiv.style.display !== "none") {
+                targetDiv.style.display = "none"
+                yesNoButtons.style.display = "none"
+            } else {
+                targetDiv.style.display = "block"
+                yesNoButtons.style.display = "none"
+            }
+        }
+    </script>
+    <script type="text/x-magento-init">
+        {
+        "*": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "modal_age_block": {
+                        "component": "Lyracons_AgeBlock/js/modal-age-block"
+                    }
+                 }
+            }
+        }
+    }
+    </script>
+<?php else : ?>
+    <script type="text/javascript">
+        window.isAgeBockModal = false;
+    </script>
+<?php endif; ?>
+<script type="text/javascript">
+    require([
+        "jquery",
+        "Magento_Ui/js/modal/modal"
+    ], function($, modal) {
+
+
+        var options = {
+            type: "popup",
+            responsive: true,
+            title: "Main title",
+            buttons: [{
+                    text: $.mage.__("SI"),
+                    class: "btnAgeYes",
+                    click: function() {
+                        this.closeModal();
+                        $.cookie("mayor", true);
+                    }
+                },
+                {
+                    text: $.mage.__("NO"),
+                    class: "btnAgeNo",
+                    click: function() {
+                        $("#no-age-message").show(),
+                        $(".title-age-block").hide()                        
+                    }
+                }
+            ]
+        };
+
+
+        if(!$.cookie("mayor")){
+            var popup = modal(options, $("#modal-custom-age"));
+            $("#modal-custom-age").modal("openModal");
+        }
+    });
+</script>

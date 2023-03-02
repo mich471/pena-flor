@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<body>
+		<referenceBlock name="product.info.sku">
+			<action method="setTemplate" ifconfig="weltpixel_product_page/general/remove_sku">
+				<argument name='template' xsi:type='string'></argument>
+			</action>
+		</referenceBlock>
+		<referenceBlock name="product.info.addto">
+			<action method="setTemplate">
+				<argument name='template' xsi:type='string'>WeltPixel_ProductPage::product/view/addto.phtml</argument>
+			</action>
+		</referenceBlock>
+		<referenceBlock name="product.info.addtocart">
+			<action method="setTemplate" ifconfig="weltpixel_product_page/general/qty_type">
+                <argument name="template" xsi:type="helper" helper="WeltPixel\ProductPage\Helper\Data::getQtyTemplate" />
+			</action>
+		</referenceBlock>
+		<referenceBlock name="product.info.addtocart.additional">
+			<action method="setTemplate" ifconfig="weltpixel_product_page/general/qty_type">
+                <argument name="template" xsi:type="helper" helper="WeltPixel\ProductPage\Helper\Data::getQtyTemplate" />
+			</action>
+		</referenceBlock>
+		<referenceBlock name="product.info.details">
+			<action method="setTemplate">
+				<argument name="template" xsi:type="string">WeltPixel_ProductPage::product/view/details.phtml</argument>
+			</action>
+		</referenceBlock>
+		<referenceContainer name="before.body.end">
+			<block class="Magento\Framework\View\Element\Template" name="welpixel.productpage.magnifierzoom" template="WeltPixel_ProductPage::product/view/magnifierzoom.phtml" />
+            <block ifconfig="weltpixel_product_page/prevnext/enable" class="Magento\Catalog\Block\Product\View" name="welpixel.productpage.prevnext.js">
+                <action method="setTemplate">
+                    <argument name='template' xsi:type='string'>WeltPixel_ProductPage::product/prevnext/js.phtml</argument>
+                </action>
+            </block>
+            <block class="WeltPixel\ProductPage\Block\StickyCart" name="weltpixel.productpage.stickycart" template="WeltPixel_ProductPage::product/stickycart/initialize.phtml" >
+                <block class="Magento\Catalog\Block\Product\View" name="wp.product.info.review" as="wp.product.info.review" template="WeltPixel_ProductPage::product/stickycart/review.phtml" />
+                <block class="Magento\Wishlist\Block\Catalog\Product\View\AddTo\Wishlist" name="wp.addto.wishlist" as="wp.addto.wishlist" template="WeltPixel_ProductPage::product/stickycart/wishlist.phtml" />
+            </block>
+		</referenceContainer>
+        <referenceContainer name="product.info.main">
+            <block before="product.info" class="Magento\Framework\View\Element\Template" name="welpixel.productpage.visitorcounter" template="WeltPixel_ProductPage::product/view/visitorcounter.phtml" />
+            <block ifconfig="weltpixel_product_page/size_chart/enable" class="Magento\Catalog\Block\Product\View" name="weltpixel.productpage.sizechart" template="WeltPixel_ProductPage::product/view/sizechart.phtml" after="product.info.price" >
+                <block class="Magento\Cms\Block\Block" name="weltpixel.sizechart.cmsblock">
+                    <arguments>
+                        <argument name="block_id" xsi:type="helper" helper="WeltPixel\ProductPage\Helper\Data::getSizeChartCustomCmsBlock" />
+                    </arguments>
+                </block>
+            </block>
+        </referenceContainer>
+        <referenceContainer name="content">
+            <container name="wp.productpage.prev.next" htmlTag="div" htmlClass="wp-productpage-prev-next"  before="-">
+                <block before="-" ifconfig="weltpixel_product_page/prevnext/enable" class="Magento\Framework\View\Element\Template" name="welpixel.productpage.prevnext" template="WeltPixel_ProductPage::product/prevnext/links.phtml" />
+            </container>
+        </referenceContainer>
+	</body>
+</page>

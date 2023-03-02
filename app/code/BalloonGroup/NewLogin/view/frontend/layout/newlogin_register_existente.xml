@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="BalloonGroup_NewLogin::css/result.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <referenceBlock name="ajax.message.placeholder" remove="true"/>
+        <referenceBlock name="messages" remove="true"/>
+        <referenceBlock name="newlogin-popup" remove="true"/>
+
+        <referenceContainer name="content">
+            <block class="Magento\Framework\View\Element\Template" name="newlogin_existente" template="BalloonGroup_NewLogin::form/existente.phtml"></block>
+        </referenceContainer>
+
+        <referenceContainer name="header.container" remove="true"/>
+        <referenceContainer name="page-header" remove="true"/>
+        <referenceContainer name="top.search" remove="true"/>
+        <!-- <referenceContainer name="footer" remove="true"/> -->
+        <referenceBlock name="page.main.title" remove="true"/>
+        <move element="logo" destination="after.body.start"/>
+    </body>
+</page>

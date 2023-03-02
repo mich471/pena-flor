@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <weltpixel_userprofile>
+            <general>
+                <enable>0</enable>
+                <enable_inline_edit>0</enable_inline_edit>
+                <enable_on_review>0</enable_on_review>
+                <enable_wishlist_display>0</enable_wishlist_display>
+                <avatar_enable>1</avatar_enable>
+                <avatar_required>1</avatar_required>
+                <cover_image_enable>1</cover_image_enable>
+                <cover_image_required>1</cover_image_required>
+                <firstname_enable>1</firstname_enable>
+                <firstname_required>1</firstname_required>
+                <lastname_enable>1</lastname_enable>
+                <lastname_required>1</lastname_required>
+                <gender_enable>1</gender_enable>
+                <gender_required>1</gender_required>
+                <location_enable>0</location_enable>
+                <location_required>0</location_required>
+                <dob_enable>0</dob_enable>
+                <dob_required>0</dob_required>
+                <bio_enable>0</bio_enable>
+                <bio_required>0</bio_required>
+            </general>
+        </weltpixel_userprofile>
+    </default>
+</config>

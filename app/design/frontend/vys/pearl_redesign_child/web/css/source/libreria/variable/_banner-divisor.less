@@ -1,0 +1,41 @@
+//
+//  Desktop (style-l.css)
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .theme-pearl.cms-home {
+        .vinos_premiados {
+            padding: 48px !important;
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__l) {
+    .theme-pearl.cms-home {
+        .vinos_premiados {
+            padding: 62px !important;
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__xl) {
+    .theme-pearl.cms-home {
+        .vinos_premiados {
+            padding: 88px !important;
+        }
+    }
+}
+
+
+
+//
+//  Mobile (styles-m.css)
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s) {
+    .theme-pearl.cms-home {
+        .vinos_premiados {
+            padding: 98px !important;
+        }
+    }
+}

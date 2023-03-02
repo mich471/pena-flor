@@ -1,0 +1,84 @@
+<?php $socialMedia = $this->fetchAnalyticsData()?>
+<?php $totals = $this->fetchAnalyticsTotals()?>
+<?php $lastUpdate = $this->getLastUpdate()?>
+<?php $loadDataText = $lastUpdate ? __('Reload Analytics') : __('Load Analytics');?>
+<div class="page-main-actions">
+    <?php if($lastUpdate):?>
+    <div class="store-switcher store-view">
+        <strong><?=_('Last Update on: ')?></strong><?=$this->getLastUpdate()?>
+    </div>
+    <?php endif;?>
+    <div class="page-actions">
+        <div class="page-actions-inner">
+            <div class="page-actions-buttons">
+                <form action="<?=$this->getRefreshUrl()?>">
+                    <button class="action-primary" type="submit" title="Reload Data"><?= $loadDataText?></button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="sl-dashboard grid-wrapper">
+    <table class="data-grid data-grid-draggable">
+        <thead>
+        <tr>
+            <th class="al-left data-grid-th"><strong><?=__('Customers Types')?></strong></th>
+            <th class="al-right data-grid-th"><strong><?=__('# Users')?></strong></th>
+            <th class="al-right data-grid-th"><strong><?=__('% Users')?></strong></th>
+            <th class="al-right data-grid-th"><strong><?=__('# Orders')?></strong></th>
+            <th class="al-right data-grid-th"><strong><?=__('% Orders')?></strong></th>
+            <th class="al-right data-grid-th"><strong><?=__('# Items')?></strong></th>
+            <th class="al-right data-grid-th"><strong><?=__('% Items')?></strong></th>
+            <th class="al-right data-grid-th"><strong><?=__('Revenue')?></strong></th>
+            <th class="al-right data-grid-th"><strong><?=__('% Revenue')?></strong></th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <?php if(isset($socialMedia['Facebook']) &&
+                isset($socialMedia['Instagram']) &&
+                isset($socialMedia['Google']) &&
+                isset($socialMedia['PayPal']) &&
+                isset($socialMedia['LinkedIn']) &&
+                isset($socialMedia['Amazon']) &&
+                isset($socialMedia['Twitter']) &&
+                isset($socialMedia['Guest']) &&
+                isset($socialMedia['Email & Password'])
+        ):?>
+            <?php foreach($socialMedia as $label => $data) :?>
+                <tr>
+                    <td class="al-left"><?php echo $label;?></td>
+                    <td class="al-right"><?= $data->getUsersNo();?></td>
+                    <td class="al-right"><?= $data->getUsersPrecent();?></td>
+                    <td class="al-right"><?= $data->getOrdersNo();?></td>
+                    <td class="al-right"><?= $data->getOrdersPercent();?></td>
+                    <td class="al-right"><?= $data->getItemsNo();?></td>
+                    <td class="al-right"><?= $data->getItemsPercent();?></td>
+                    <td class="al-right"><?= $data->getRevenue();?></td>
+                    <td class="al-right"><?= $data->getRevenuePercent();?></td>
+                </tr>
+            <?php endforeach;?>
+            </tbody>
+
+            <tfoot>
+                <tr>
+                    <td><strong><?=__('Total')?></strong></td>
+                    <td><strong><?= $totals->getTotalCustomers()?></strong></td>
+                    <td><strong>100%</strong></td>
+                    <td><strong><?= $totals->getTotalOrders()?></strong></td>
+                    <td><strong>100%</strong></td>
+                    <td><strong><?= $totals->getTotalOrdersItems()?></strong></td>
+                    <td><strong>100%</strong></td>
+                    <td><strong><?= $totals->getTotalRevenue()?></strong></td>
+                    <td><strong>100%</strong></td>
+                </tr>
+            </tfoot>
+        <?php else: ?>
+            <tr class="data-grid-tr-no-data">
+                <td colspan="9">We couldn't find any records.</td>
+            </tr>
+        <?php endif;?>
+
+
+    </table>
+</div>

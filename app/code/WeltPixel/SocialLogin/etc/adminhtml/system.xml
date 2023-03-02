@@ -1,0 +1,594 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="weltpixel_sociallogin" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="220"
+                 translate="label">
+            <label>Social Login Pro</label>
+            <tab>weltpixel</tab>
+            <resource>WeltPixel_SocialLogin::SocialLogin</resource>
+            <group id="general" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label">
+                <label>WeltPixel Social Login - General Settings</label>
+                <field id="enabled" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label"
+                       type="select">
+                    <label>Enable Social Login</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enable/Disable WeltPixel Social Login extension.</comment>
+                </field>
+
+                <field id="show_on_cart" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="20" translate="label"
+                       type="select">
+                    <label>Show Social Login On Cart Page</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Show Social Login buttons on cart page.</comment>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+
+                <field id="cart_style" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="25" translate="label"
+                       type="select">
+                    <label>Show Social Login On Cart Page</label>
+                    <source_model>WeltPixel\SocialLogin\Model\Config\Source\CartStyle</source_model>
+                    <comment>Social Login buttons accordion default state</comment>
+                    <depends>
+                        <field id="enabled">1</field>
+                        <field id="show_on_cart">1</field>
+                    </depends>
+                </field>
+
+                <field id="popup" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="30" translate="label"
+                       type="select">
+                    <label>Display Customer Sign In/Create Account in a popup</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Display Customer Sign In/Create Account block in a popup.</comment>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="popup_style" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="35" translate="label"
+                       type="select">
+                    <label>Social Login Popup Style</label>
+                    <source_model>WeltPixel\SocialLogin\Model\Config\Source\PopupStyle</source_model>
+                    <comment><![CDATA[Select the style of the Social Login popup.<br/>
+                    On mobile devices the <strong>Right Side</strong> design is applied.
+                    ]]>
+                    </comment>
+                    <depends>
+                        <field id="enabled">1</field>
+                        <field id="popup">1</field>
+                    </depends>
+                </field>
+                <field id="recently_viewed_integration" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="40" translate="label" >
+                    <label>Enable Recently Viewed Integration</label>
+                    <frontend_model>WeltPixel\Backend\Block\Adminhtml\System\Config\Form\Field\EmptyField</frontend_model>
+                    <comment><![CDATA[
+                    Social Login block can be displayed in the Recently Viewed block.
+                     Requires the <a style="font-size: 14px" target="_blank" href="https://www.weltpixel.com/magento-2-advanced-recently-viewed-products-bar.html">Recently Viewed Extension</a>
+                     installed and integration enabled in the Recently Viewed Extension.
+                            ]]>
+                    </comment>
+                </field>
+
+            </group>
+
+            <group id="fb" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="20" translate="label">
+                <label>Facebook Login</label>
+                <comment>
+                    <![CDATA[
+                    To get the required credentials, head over to <a href="https://developers.facebook.com/" target="_blank">Facebook developers</a> page and create an app.</br>
+                    To create a Facebook App, please visit the <a href="https://developers.facebook.com/docs/apps/" target="_blank">Facebook App development</a> page.</br>
+                    Or consult the WeltPixel Social Login extension <a href="http://weltpixel.com/magento2-social-login.html" target="_blank">documentation</a> page.
+                    ]]>
+                </comment>
+                <field id="fb_enabled" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label"
+                       type="select">
+                    <label>Enable Facebook Login</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enable/Disable Facebook Login.</comment>
+                    <depends>
+                        <field id="weltpixel_sociallogin/general/enabled">1</field>
+                    </depends>
+                </field>
+                <field id="app_id" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Facebook App Id(API Key)</label>
+                    <validate>required-entry</validate>
+                    <depends>
+                        <field id="fb_enabled">1</field>
+                        <field id="weltpixel_sociallogin/general/enabled">1</field>
+                    </depends>
+                </field>
+                <field id="app_secret" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Facebook App Secret(API Secret)</label>
+                    <validate>required-entry</validate>
+                    <depends>
+                        <field id="fb_enabled">1</field>
+                        <field id="weltpixel_sociallogin/general/enabled">1</field>
+                    </depends>
+                </field>
+                <field id="callback" translate="label comment" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>OAuth Redirect URI</label>
+                    <frontend_model>WeltPixel\SocialLogin\Block\Adminhtml\System\Config\Form\CallbackUri</frontend_model>
+                    <comment>
+                        <![CDATA[
+                            This URL(s) should be added in the 'Valid OAuth Redirect URIs' while creating a new Facebook Login application. <span>"https" protocol is required for this provider. If you have multiple stores with different urls, a redirect URL will be generated for each one, make sure to add them all to your social media application.</span>
+                        ]]>
+                    </comment>
+                    <depends>
+                        <field id="fb_enabled">1</field>
+                        <field id="weltpixel_sociallogin/general/enabled">1</field>
+                    </depends>
+                </field>
+                <field id="enable_profile_creation" translate="label" type="select" sortOrder="45" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable User Profile Creation</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="fb_enabled">1</field>
+                        <field id="weltpixel_sociallogin/general/enabled">1</field>
+                    </depends>
+                    <comment>
+                        <![CDATA[
+                            This requires the <a target="_blank" href="https://www.weltpixel.com/magento-2-user-profile.html">User Profile</a> module. <br/>
+                            When new user is created, create also the User Profile based on the fetched customer data.
+                        ]]>
+                    </comment>
+                </field>
+                <!-- to be added in next release
+                <field id="copy_button" translate="label" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <frontend_model>WeltPixel\SocialLogin\Block\Adminhtml\System\Config\Form\Button</frontend_model>
+                    <depends>
+                        <field id="fb_enabled">1</field>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                -->
+            </group>
+
+            <group id="instagram" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="30" translate="label">
+                <label>Instagram Login</label>
+                <comment>
+                    <![CDATA[
+                    Instagram functionality is deprecated.</br>
+                    If you already have a Client registered on Instagram, you can use this functionality until Instagram removes old API completely.
+                    ]]>
+                </comment>
+                <field id="instagram_enabled" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label"
+                       type="select">
+                    <label>Enable Instagram Login</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enable/Disable Instagram Login.</comment>
+                    <depends>
+                        <field id="weltpixel_sociallogin/general/enabled">1</field>
+                    </depends>
+                </field>
+                <field id="app_id" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Instagram Client Id</label>
+                    <validate>required-entry</validate>
+                    <depends>
+                        <field id="instagram_enabled">1</field>
+                        <field id="weltpixel_sociallogin/general/enabled">1</field>
+                    </depends>
+                </field>
+                <field id="app_secret" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Instagram Client Secret</label>
+                    <validate>required-entry</validate>
+                    <depends>
+                        <field id="instagram_enabled">1</field>
+                        <field id="weltpixel_sociallogin/general/enabled">1</field>
+                    </depends>
+                </field>
+                <field id="callback" translate="label comment" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>OAuth Redirect URI</label>
+                    <frontend_model>WeltPixel\SocialLogin\Block\Adminhtml\System\Config\Form\CallbackUri</frontend_model>
+                    <comment>
+                        <![CDATA[
+                            This URL(s) should be added in the 'Valid Redirect URIs' while creating a new Instagram Login application. <span>"https" protocol is required for this provider. If you have multiple stores with different urls, a redirect URL will be generated for each one, make sure to add them all to your social media application.</span>
+                        ]]>
+                    </comment>
+                    <depends>
+                        <field id="instagram_enabled">1</field>
+                        <field id="weltpixel_sociallogin/general/enabled">1</field>
+                    </depends>
+                </field>
+                <field id="enable_profile_creation" translate="label" type="select" sortOrder="45" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable User Profile Creation</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="instagram_enabled">1</field>
+                        <field id="weltpixel_sociallogin/general/enabled">1</field>
+                    </depends>
+                    <comment>
+                        <![CDATA[
+                            This requires the <a target="_blank" href="https://www.weltpixel.com/magento-2-user-profile.html">User Profile</a> module. <br/>
+                            When new user is created, create also the User Profile based on the fetched customer data.
+                        ]]>
+                    </comment>
+                </field>
+                <!--<field id="copy_button" translate="label" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">-->
+                    <!--<frontend_model>WeltPixel\SocialLogin\Block\Adminhtml\System\Config\Form\Button</frontend_model>-->
+                    <!--<depends>-->
+                        <!--<field id="instagram_enabled">1</field>-->
+                        <!--<field id="enabled">1</field>-->
+                    <!--</depends>-->
+                <!--</field>-->
+            </group>
+
+            <group id="google" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="40" translate="label">
+                <label>Google Login</label>
+                <comment>
+                    <![CDATA[
+                    To get the required credentials, head over to <a href="https://console.developers.google.com" target="_blank">Google developers</a> page and create a project.</br>
+                    To create a new Project on Google, please visit <a href="https://console.developers.google.com/projectcreate?previousPage=%2Fprojectselector%2Fapis%2Fdashboard" target="_blank">this Google</a> page.</br>
+                    Or consult the WeltPixel Social Login extension <a href="http://weltpixel.com/magento2-social-login.html" target="_blank">documentation</a> page.
+                    ]]>
+                </comment>
+                <field id="google_enabled" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label"
+                       type="select">
+                    <label>Enable Google Login</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enable/Disable Google Login.</comment>
+                    <depends>
+                        <field id="weltpixel_sociallogin/general/enabled">1</field>
+                    </depends>
+                </field>
+                <field id="app_id" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Google Client Id</label>
+                    <validate>required-entry</validate>
+                    <depends>
+                        <field id="google_enabled">1</field>
+                        <field id="weltpixel_sociallogin/general/enabled">1</field>
+                    </depends>
+                </field>
+                <field id="app_secret" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Google Client Secret</label>
+                    <validate>required-entry</validate>
+                    <depends>
+                        <field id="google_enabled">1</field>
+                        <field id="weltpixel_sociallogin/general/enabled">1</field>
+                    </depends>
+                </field>
+                <field id="callback" translate="label comment" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>OAuth Redirect URI</label>
+                    <frontend_model>WeltPixel\SocialLogin\Block\Adminhtml\System\Config\Form\CallbackUri</frontend_model>
+                    <comment>
+                        <![CDATA[
+                            This URL(s) should be added in the 'Authorized Redirect URIs' while creating a new Google application. <span>"https" protocol is required for this provider. If you have multiple stores with different urls, a redirect URL will be generated for each one, make sure to add them all to your social media application.</span>
+                        ]]>
+                    </comment>
+                    <depends>
+                        <field id="google_enabled">1</field>
+                        <field id="weltpixel_sociallogin/general/enabled">1</field>
+                    </depends>
+                </field>
+                <field id="enable_profile_creation" translate="label" type="select" sortOrder="45" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable User Profile Creation</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="google_enabled">1</field>
+                        <field id="weltpixel_sociallogin/general/enabled">1</field>
+                    </depends>
+                    <comment>
+                        <![CDATA[
+                            This requires the <a target="_blank" href="https://www.weltpixel.com/magento-2-user-profile.html">User Profile</a> module. <br/>
+                            When new user is created, create also the User Profile based on the fetched customer data.
+                        ]]>
+                    </comment>
+                </field>
+                <!-- to be added in next release
+                <field id="copy_button" translate="label" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <frontend_model>WeltPixel\SocialLogin\Block\Adminhtml\System\Config\Form\Button</frontend_model>
+                    <depends>
+                        <field id="google_enabled">1</field>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                -->
+            </group>
+
+            <group id="amazon" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="50" translate="label">
+                <label>Amazon Login</label>
+                <comment>
+                    <![CDATA[
+                    To get the required credentials, head over to <a href="https://sellercentral.amazon.com" target="_blank">Amazon seller central</a> page and register an application.</br>
+                    To create a new application on Amazon, please visit <a href="https://sellercentral.amazon.com/hz/home?" target="_blank">this Amazon</a> page.</br>
+                    Or consult the WeltPixel Social Login extension <a href="http://weltpixel.com/magento2-social-login.html" target="_blank">documentation</a> page.
+                    ]]>
+                </comment>
+                <field id="amazon_enabled" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label"
+                       type="select">
+                    <label>Enable Amazon Login</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enable/Disable Amazon Login.</comment>
+                    <depends>
+                        <field id="weltpixel_sociallogin/general/enabled">1</field>
+                    </depends>
+                </field>
+                <field id="app_id" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Amazon Client Id</label>
+                    <validate>required-entry</validate>
+                    <depends>
+                        <field id="amazon_enabled">1</field>
+                        <field id="weltpixel_sociallogin/general/enabled">1</field>
+                    </depends>
+                </field>
+                <field id="app_secret" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Amazon Client Secret</label>
+                    <validate>required-entry</validate>
+                    <depends>
+                        <field id="amazon_enabled">1</field>
+                        <field id="weltpixel_sociallogin/general/enabled">1</field>
+                    </depends>
+                </field>
+                <field id="callback" translate="label comment" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>OAuth Redirect URI</label>
+                    <frontend_model>WeltPixel\SocialLogin\Block\Adminhtml\System\Config\Form\CallbackUri</frontend_model>
+                    <comment>
+                        <![CDATA[
+                            This URL(s) should be added in the 'Allowed Redirect URLs' while creating a new Amazon Login application. <span>"https" protocol is required for this provider. If you have multiple stores with different urls, a redirect URL will be generated for each one, make sure to add them all to your social media application.</span>
+                        ]]>
+                    </comment>
+                    <depends>
+                        <field id="amazon_enabled">1</field>
+                        <field id="weltpixel_sociallogin/general/enabled">1</field>
+                    </depends>
+                </field>
+                <field id="enable_profile_creation" translate="label" type="select" sortOrder="45" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable User Profile Creation</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="amazon_enabled">1</field>
+                        <field id="weltpixel_sociallogin/general/enabled">1</field>
+                    </depends>
+                    <comment>
+                        <![CDATA[
+                            This requires the <a target="_blank" href="https://www.weltpixel.com/magento-2-user-profile.html">User Profile</a> module. <br/>
+                            When new user is created, create also the User Profile based on the fetched customer data.
+                        ]]>
+                    </comment>
+                </field>
+                <!-- to be added in next release
+                <field id="copy_button" translate="label" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <frontend_model>WeltPixel\SocialLogin\Block\Adminhtml\System\Config\Form\Button</frontend_model>
+                    <depends>
+                        <field id="amazon_enabled">1</field>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                -->
+            </group>
+
+            <group id="twitter" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="60" translate="label">
+                <label>Twitter Login</label>
+                <comment>
+                    <![CDATA[
+                    To get the required credentials, head over to <a href="https://developer.twitter.com/en/apps" target="_blank">Twitter developer</a> page and create an application.</br>
+                    To create a new app on Twitter, please visit <a href="https://developer.twitter.com/en/apps/create" target="_blank">this Twitter</a> page.</br>
+                    Or consult the WeltPixel Social Login extension <a href="http://weltpixel.com/magento2-social-login.html" target="_blank">documentation</a> page.
+                    ]]>
+                </comment>
+                <field id="twitter_enabled" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label"
+                       type="select">
+                    <label>Enable Twitter Login</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enable/Disable Twitter Login.</comment>
+                    <depends>
+                        <field id="weltpixel_sociallogin/general/enabled">1</field>
+                    </depends>
+                </field>
+                <field id="app_id" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Twitter Client Id</label>
+                    <validate>required-entry</validate>
+                    <depends>
+                        <field id="twitter_enabled">1</field>
+                        <field id="weltpixel_sociallogin/general/enabled">1</field>
+                    </depends>
+                </field>
+                <field id="app_secret" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Twitter Client Secret</label>
+                    <validate>required-entry</validate>
+                    <depends>
+                        <field id="twitter_enabled">1</field>
+                        <field id="weltpixel_sociallogin/general/enabled">1</field>
+                    </depends>
+                </field>
+                <field id="callback" translate="label comment" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>OAuth Redirect URI</label>
+                    <frontend_model>WeltPixel\SocialLogin\Block\Adminhtml\System\Config\Form\CallbackUri</frontend_model>
+                    <comment>
+                        <![CDATA[
+                            This URL(s) should be added in the 'Callback URL' while creating new Twitter Login application. <span>"https" protocol is required for this provider. If you have multiple stores with different urls, a redirect URL will be generated for each one, make sure to add them all to your social media application.</span>
+                        ]]>
+                    </comment>
+                    <depends>
+                        <field id="twitter_enabled">1</field>
+                        <field id="weltpixel_sociallogin/general/enabled">1</field>
+                    </depends>
+                </field>
+                <field id="enable_profile_creation" translate="label" type="select" sortOrder="45" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable User Profile Creation</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="twitter_enabled">1</field>
+                        <field id="weltpixel_sociallogin/general/enabled">1</field>
+                    </depends>
+                    <comment>
+                        <![CDATA[
+                            This requires the <a target="_blank" href="https://www.weltpixel.com/magento-2-user-profile.html">User Profile</a> module. <br/>
+                            When new user is created, create also the User Profile based on the fetched customer data.
+                        ]]>
+                    </comment>
+                </field>
+                <!-- to be added in next release
+                <field id="copy_button" translate="label" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <frontend_model>WeltPixel\SocialLogin\Block\Adminhtml\System\Config\Form\Button</frontend_model>
+                    <depends>
+                        <field id="twitter_enabled">1</field>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                -->
+            </group>
+
+            <group id="linkedin" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="70" translate="label">
+                <label>LinkedIn Login</label>
+                <comment>
+                    <![CDATA[
+                    To get the required credentials, head over to <a href="https://www.linkedin.com/developer/apps" target="_blank">LinkedIn developer</a> page and create an application.</br>
+                    To create a new app on LinkedIn, please visit <a href="https://www.linkedin.com/developer/apps/new" target="_blank">this LinkedIn</a> page.</br>
+                    Or consult the WeltPixel Social Login extension <a href="http://weltpixel.com/magento2-social-login.html" target="_blank">documentation</a> page.
+                    ]]>
+                </comment>
+                <field id="linkedin_enabled" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label"
+                       type="select">
+                    <label>Enable LinkedIn Login</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enable/Disable LinkedIn Login.</comment>
+                    <depends>
+                        <field id="weltpixel_sociallogin/general/enabled">1</field>
+                    </depends>
+                </field>
+                <field id="app_id" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>LinkedIn Client Id</label>
+                    <validate>required-entry</validate>
+                    <depends>
+                        <field id="linkedin_enabled">1</field>
+                        <field id="weltpixel_sociallogin/general/enabled">1</field>
+                    </depends>
+                </field>
+                <field id="app_secret" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>LinkedIn Client Secret</label>
+                    <validate>required-entry</validate>
+                    <depends>
+                        <field id="linkedin_enabled">1</field>
+                        <field id="weltpixel_sociallogin/general/enabled">1</field>
+                    </depends>
+                </field>
+                <field id="callback" translate="label comment" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>OAuth Redirect URI</label>
+                    <frontend_model>WeltPixel\SocialLogin\Block\Adminhtml\System\Config\Form\CallbackUri</frontend_model>
+                    <comment>
+                        <![CDATA[
+                            This URL(s) should be added in the 'Authorized Redirect URLs' while creating a new LinkedIn Login application. <span>"https" protocol is required for this provider. If you have multiple stores with different urls, a redirect URL will be generated for each one, make sure to add them all to your social media application.</span>
+                        ]]>
+                    </comment>
+                    <depends>
+                        <field id="linkedin_enabled">1</field>
+                        <field id="weltpixel_sociallogin/general/enabled">1</field>
+                    </depends>
+                </field>
+                <field id="enable_profile_creation" translate="label" type="select" sortOrder="45" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable User Profile Creation</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="linkedin_enabled">1</field>
+                        <field id="weltpixel_sociallogin/general/enabled">1</field>
+                    </depends>
+                    <comment>
+                        <![CDATA[
+                            This requires the <a target="_blank" href="https://www.weltpixel.com/magento-2-user-profile.html">User Profile</a> module. <br/>
+                            When new user is created, create also the User Profile based on the fetched customer data.
+                        ]]>
+                    </comment>
+                </field>
+                <!-- to be added in next release
+                <field id="copy_button" translate="label" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <frontend_model>WeltPixel\SocialLogin\Block\Adminhtml\System\Config\Form\Button</frontend_model>
+                    <depends>
+                        <field id="linkedin_enabled">1</field>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                -->
+            </group>
+
+            <group id="paypal" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="80" translate="label">
+                <label>PayPal Login</label>
+                <comment>
+                    <![CDATA[
+                    To get the required credentials, head over to <a href="https://developer.paypal.com/" target="_blank">PayPal developer</a> page and create an application.</br>
+                    Or consult the WeltPixel Social Login extension <a href="http://weltpixel.com/magento2-social-login.html" target="_blank">documentation</a> page.
+                    ]]>
+                </comment>
+                <field id="paypal_enabled" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label"
+                       type="select">
+                    <label>Enable PayPal Login</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enable/Disable PayPal Login.</comment>
+                    <depends>
+                        <field id="weltpixel_sociallogin/general/enabled">1</field>
+                    </depends>
+                </field>
+                <field id="paypal_sandbox" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="15" translate="label"
+                       type="select">
+                    <label>PayPal Mode</label>
+                    <source_model>WeltPixel\SocialLogin\Model\Config\Source\PaypalMode</source_model>
+                    <comment>
+                        <![CDATA[
+                        Select Live or Sandbox Mode for PayPal App.<br/>
+                        If you select Live Mode make sure your Live PayPal application allows 'Email Address' information.<br/>
+                        PayPal only allows this after you submit the application for review.<br/>
+                        More information in PayPal APP settings -> Login with PayPal -> Advanced options.<br/>
+                        ]]>
+                    </comment>
+                    <depends>
+                        <field id="weltpixel_sociallogin/general/enabled">1</field>
+                        <field id="paypal_enabled">1</field>
+                    </depends>
+                </field>
+                <field id="app_id" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>PayPal Client Id</label>
+                    <validate>required-entry</validate>
+                    <depends>
+                        <field id="paypal_enabled">1</field>
+                        <field id="weltpixel_sociallogin/general/enabled">1</field>
+                    </depends>
+                </field>
+                <field id="app_secret" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>PayPal Client Secret</label>
+                    <validate>required-entry</validate>
+                    <depends>
+                        <field id="paypal_enabled">1</field>
+                        <field id="weltpixel_sociallogin/general/enabled">1</field>
+                    </depends>
+                </field>
+                <field id="callback" translate="label comment" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>OAuth Redirect URI</label>
+                    <frontend_model>WeltPixel\SocialLogin\Block\Adminhtml\System\Config\Form\CallbackUri</frontend_model>
+                    <comment>
+                        <![CDATA[
+                            This URL(s) should be added in the 'Return URL' while creating new PayPal application. <span>"https" protocol is required for this provider. If you have multiple stores with different urls, a redirect URL will be generated for each one, make sure to add them all to your social media application.</span>
+                        ]]>
+                    </comment>
+                    <depends>
+                        <field id="paypal_enabled">1</field>
+                        <field id="weltpixel_sociallogin/general/enabled">1</field>
+                    </depends>
+                </field>
+                <field id="enable_profile_creation" translate="label" type="select" sortOrder="45" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable User Profile Creation</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="paypal_enabled">1</field>
+                        <field id="weltpixel_sociallogin/general/enabled">1</field>
+                    </depends>
+                    <comment>
+                        <![CDATA[
+                            This requires the <a target="_blank" href="https://www.weltpixel.com/magento-2-user-profile.html">User Profile</a> module. <br/>
+                            When new user is created, create also the User Profile based on the fetched customer data.
+                        ]]>
+                    </comment>
+                </field>
+                <!-- to be added in next release
+                <field id="copy_button" translate="label" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <frontend_model>WeltPixel\SocialLogin\Block\Adminhtml\System\Config\Form\Button</frontend_model>
+                    <depends>
+                        <field id="paypal_enabled">1</field>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                -->
+            </group>
+
+        </section>
+    </system>
+</config>

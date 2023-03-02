@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+
+<config>
+    <type name="Magento\Customer\Block\Account\AuthenticationPopup">
+        <plugin name="js_layout_modifier_auth_popup" type="BalloonGroup\AllowGuestCheckoutPopup\Plugin\JsLayoutModifier" disabled="false" sortOrder="100" />
+    </type>
+</config>

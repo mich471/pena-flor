@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <title>WeltPixel Tags Manager</title>
+    </head>
+    <body>
+        <referenceBlock name="menu">
+            <action method="setActive">
+                <argument name="itemId" xsi:type="string">WeltPixel_CmsBlockScheduler::CmsBlockSchedulerTag</argument>
+            </action>
+        </referenceBlock>
+        <referenceContainer name="page.main.actions">
+            <block class="Magento\Backend\Block\Store\Switcher" name="store_switcher">
+                <action method="setUseConfirm">
+                    <argument name="params" xsi:type="string">1</argument>
+                </action>
+            </block>
+        </referenceContainer>
+        <referenceContainer name="content">
+        <block class="WeltPixel\CmsBlockScheduler\Block\Adminhtml\Tag\Edit" name="tag_edit"/>
+        </referenceContainer>
+        <referenceContainer name="left">
+        <block class="WeltPixel\CmsBlockScheduler\Block\Adminhtml\Tag\Edit\Tabs" name="tag_edit_tabs">
+            <block class="WeltPixel\CmsBlockScheduler\Block\Adminhtml\Tag\Edit\Tab\Tag" name="edit_tab_tag"/>
+        	<action method="addTab">
+                <argument name="name" xsi:type="string">main_section</argument>
+                <argument name="block" xsi:type="string">edit_tab_tag</argument>
+            </action>
+        </block>
+        </referenceContainer>
+    </body>
+</page>

@@ -1,0 +1,142 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="weltpixel_megamenu" translate="label" type="text" sortOrder="180" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Mega Menu</label>
+            <tab>weltpixel</tab>
+            <resource>WeltPixel_NavigationLinks::MegamenuSettings</resource>
+            <group id="notification" translate="label" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>WeltPixel Mega Menu Instructions</label>
+                <fieldset_css>weltpixel-recommended-header active</fieldset_css>
+                <field id="notification_msg" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <frontend_model>WeltPixel\NavigationLinks\Block\Adminhtml\System\Config\Notification</frontend_model>
+                </field>
+            </group>
+            <group id="megamenu" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General Settings</label>
+                <field id="enable" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="width_threshold" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Mobile Menu Breakpoint</label>
+                    <validate>validate-number validate-not-negative-number</validate>
+                    <depends>
+                        <field id="weltpixel_megamenu/megamenu/enable">1</field>
+                    </depends>
+                    <comment><![CDATA[Insert the breakpoint when navigation menu changes to mobile look and behavior (value in pixels). Ex. 1050<br/>Note for Pearl Theme users: this value should be
+                    greater than the value from<br/><b>Frontend Options -> Breakpoints -> Screen m</b> field.]]></comment>
+                    <tooltip>This option is useful when the length of navigation menu is longer than the width of the screen.</tooltip>
+                </field>
+            </group>
+            <group id="megamenu_design_settings" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Design Settings</label>
+                <field id="enable" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Design Settings are applied on desktop.</comment>
+                </field>
+                <field id="background_mm_color" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>MegaMenu Background Color</label>
+                    <validate>color {required:false, hash:true}</validate>
+                    <depends>
+                        <field id="weltpixel_megamenu/megamenu_design_settings/enable">1</field>
+                    </depends>
+                    <comment>Select Custom Background color for MegaMenu.</comment>
+                </field>
+                <field id="font_mm_color" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>MegaMenu Font Color</label>
+                    <validate>color {required:false, hash:true}</validate>
+                    <depends>
+                        <field id="weltpixel_megamenu/megamenu_design_settings/enable">1</field>
+                    </depends>
+                    <comment>Select font color for MegaMenu items.</comment>
+                </field>
+                <field id="links_mm_hover_options" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Advance Hover Options</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="weltpixel_megamenu/megamenu_design_settings/enable">1</field>
+                    </depends>
+                </field>
+                <field id="font_mm_hover_color" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>MegaMenu Font Color on Hover</label>
+                    <validate>color {required:false, hash:true}</validate>
+                    <depends>
+                        <field id="weltpixel_megamenu/megamenu_design_settings/enable">1</field>
+                        <field id="weltpixel_megamenu/megamenu_design_settings/links_mm_hover_options">1</field>
+                    </depends>
+                    <comment>Select Font color on hover for MegaMenu items.</comment>
+                </field>
+                <field id="links_mm_hover_underline" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>MegaMenu Hover Effect</label>
+                    <source_model>WeltPixel\NavigationLinks\Model\Attribute\Source\UnderlineOptions</source_model>
+                    <depends>
+                        <field id="weltpixel_megamenu/megamenu_design_settings/enable">1</field>
+                        <field id="weltpixel_megamenu/megamenu_design_settings/links_mm_hover_options">1</field>
+                    </depends>
+                    <comment>Choose the animation effect for the Mega Menu underline when hovering over menu items.</comment>
+                </field>
+                <field id="links_mm_top_level_continuity" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>MegaMenu with color continuity</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="weltpixel_megamenu/megamenu_design_settings/enable">1</field>
+                    </depends>
+                    <comment>Select Yes for First Level Menu Items to get the same background color as the MegaMenu.</comment>
+                </field>
+                <field id="links_mm_overlay_focus" translate="label" type="select" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>MegaMenu-Page Overlay</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="weltpixel_megamenu/megamenu_design_settings/enable">1</field>
+                    </depends>
+                    <comment>Enable overlay on page background to bring MegaMenu into focus.</comment>
+                </field>
+                <field id="links_mm_text_transform" translate="label" type="select" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>MegaMenu Font Text-Transform</label>
+                    <source_model>WeltPixel\NavigationLinks\Model\Attribute\Source\TextTransformOptions</source_model>
+                    <depends>
+                        <field id="weltpixel_megamenu/megamenu_design_settings/enable">1</field>
+                    </depends>
+                    <comment>Select the Text-Transform for all items from MegaMenu.</comment>
+                </field>
+                <field id="links_mm_font_size_l0" translate="label" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Font Size Level 0</label>
+                    <depends>
+                        <field id="weltpixel_megamenu/megamenu_design_settings/enable">1</field>
+                    </depends>
+                    <comment>Set font size for Navigation / Menu Level 0. Example: 20px</comment>
+                </field>
+                <field id="links_mm_font_size_l1" translate="label" type="text" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Font Size Level 1</label>
+                    <comment>Set font size for Navigation / Menu Level 1. Example: 20px</comment>
+                    <depends>
+                        <field id="weltpixel_megamenu/megamenu_design_settings/enable">1</field>
+                    </depends>
+                </field>
+                <field id="links_mm_font_size_l2" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Font Size Level 2</label>
+                    <depends>
+                        <field id="weltpixel_megamenu/megamenu_design_settings/enable">1</field>
+                    </depends>
+                    <comment>Set font size for Navigation / Menu Level 2. Example: 20px</comment>
+                </field>
+                <field id="links_mm_padding" translate="label" type="text" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>MegaMenu Items Padding</label>
+                    <depends>
+                        <field id="weltpixel_megamenu/megamenu_design_settings/enable">1</field>
+                    </depends>
+                    <comment>Insert Padding for MegaMenu Items. Example: 5px 10px 5px 10px</comment>
+                </field>
+                <field id="links_level0_mm_padding" translate="label" type="text" sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>MegaMenu Level 0 Items Padding</label>
+                    <depends>
+                        <field id="weltpixel_megamenu/megamenu_design_settings/enable">1</field>
+                    </depends>
+                    <comment>Insert left right padding for MegaMenu Items. Example: 20px</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

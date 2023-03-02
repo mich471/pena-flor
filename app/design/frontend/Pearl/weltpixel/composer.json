@@ -1,0 +1,46 @@
+{
+    "name": "weltpixel/m2-theme-frontend-weltpixel",
+    "description": "N/A",
+    "require": {
+        "magento/theme-frontend-luma": "*",
+        "weltpixel/m2-weltpixel-backend": "*",
+        "weltpixel/m2-weltpixel-category-page": "*",
+        "weltpixel/module-command": "*",
+        "weltpixel/m2-weltpixel-custom-footer": "*",
+        "weltpixel/m2-weltpixel-custom-header": "*",
+        "weltpixel/m2-weltpixel-design-elements": "*",
+        "weltpixel/m2-weltpixel-mobiledetect": "*",
+        "weltpixel/m2-weltpixel-navigation-links": "*",
+        "weltpixel/m2-weltpixel-product-page": "*",
+        "weltpixel/m2-weltpixel-sample-data": "*",
+        "weltpixel/m2-weltpixel-frontend-options": "*",
+        "weltpixel/m2-weltpixel-quickview": "*",
+        "weltpixel/m2-weltpixel-google-cards": "*",
+        "weltpixel/m2-weltpixel-owl-carousel-slider": "*",
+        "weltpixel/module-smartproducttabs": "*",
+        "weltpixel/m2-weltpixel-h1-title-rewrite": "*",
+        "weltpixel/module-fullpagescroll": "*",
+        "weltpixel/module-instagramwidget": "*",
+        "weltpixel/module-sitemap": "*",
+        "weltpixel/module-google-tag-manager": "*",
+        "weltpixel/m2-weltpixel-quick-cart": "*",
+        "weltpixel/m2-reviews-widget": "*",
+        "weltpixel/m2-weltpixel-multistore": "*",
+        "weltpixel/m2-weltpixel-lazyload": "*",
+        "weltpixel/m2-weltpixel-thankyou-page": "*",
+        "weltpixel/m2-weltpixel-searchautocomplete": "*",
+        "weltpixel/m2-weltpixel-ajax-infinite-scroll": "*",
+        "magento/framework": "*"
+    },
+    "type": "magento2-theme",
+    "version": "101.11.7",
+    "license": [
+        "OSL-3.0",
+        "AFL-3.0"
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ]
+    }
+}

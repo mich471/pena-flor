@@ -1,0 +1,21 @@
+diff --git etc/config.xml etc/config.xml
+index 5c9c0a8..03e3a3d 100644
+--- etc/config.xml
++++ etc/config.xml
+@@ -4,12 +4,12 @@
+         <csp>
+             <mode>
+                 <storefront>
+-                    <report_uri>http://csp-reporting-service.com/my-project/endpoint</report_uri>
++                    <report_uri>https://csp-reporting-service.com/my-project/endpoint</report_uri>
+                 </storefront>
+                 <admin>
+-                    <report_uri>http://csp-reporting-service.com/my-project/endpoint</report_uri>
++                    <report_uri>https://csp-reporting-service.com/my-project/endpoint</report_uri>
+                 </admin>
+             </mode>
+         </csp>
+     </default>
+-</config>
+\ No newline at end of file
++</config>

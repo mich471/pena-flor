@@ -1,0 +1,234 @@
+<?php
+$optionsAllowed = $block->mmOptionsAllowed();
+$imageOptionsAllowed = $block->mmImageOptionsAllowed();
+$megamenuImageAllowed = $block->mmImageUploadOptionsAllowed();
+$megamenuImagePositionOptionsAllowed = $block->mmImagePositionOptionsAllowed();
+?>
+<script>
+    requirejs(['jquery', 'mage/translate'],
+        function ($) {
+            if ($('select[name="weltpixel_mm_display_mode"]').length) {
+                var optionsAllowed = '<?php echo $optionsAllowed ?>',
+                    imageOptionsAllowed = '<?php echo $imageOptionsAllowed ?>',
+                    mmmImageUploadAllowed = '<?php echo $megamenuImageAllowed ?>',
+                    mmImagePositionOptionsAllowed = '<?php echo $megamenuImagePositionOptionsAllowed ?>',
+                    displayMode   = $('select[name="weltpixel_mm_display_mode"]'),
+                    displayAlwaysOptions = ["weltpixel_mm_font_color","weltpixel_mm_font_hover_color", "weltpixel_mm_label_text", "weltpixel_mm_label_font_color", "weltpixel_mm_label_background_color", "weltpixel_mm_label_position"],
+                    imageOptions = $('input[name="weltpixel_mm_image_enable"]'),
+                    imageUploadOptions = [$('input[name="weltpixel_mm_image"]'), $('input[name="weltpixel_mm_image_alt"]')],
+                    imageSpecs = [$('input[name="weltpixel_mm_image_height"]'),$('input[name="weltpixel_mm_image_width"]'), $('select[name="weltpixel_mm_image_name_align"]')],
+                    imagePositionOptions = [$('select[name="weltpixel_mm_image_position"]'), $('input[name="weltpixel_mm_image_radius"]')],
+                    config = {
+                        columnsNumber: $('input[name="weltpixel_mm_columns_number"]'),
+                        columnWidth: $('input[name="weltpixel_mm_column_width"]'),
+                        dynamicColumnsFlag: $('input[name="weltpixel_mm_dynamic_sc_flag"]'),
+                        dynamicColumnsOptions: $('input[name="weltpixel_mm_dynamic_sc_opts"]'),
+                        showArrows: $('input[name="weltpixel_mm_show_arrows"]'),
+                        note1: 'Width of the submenu columns.',
+                        note2: 'Note: please take into consideration the left or right blocks because these blocks will generate one extra column each.',
+                        unavailableNote: 'Some <strong>Mega Menu Options</strong> are available only for the main categories.',
+                        blockFields: {
+                            blockTypeTop: $('select[name="weltpixel_mm_top_block_type"]'),
+                            blockCmsTop: $('select[name="weltpixel_mm_top_block_cms"]'),
+                            blockHtmlTop: $('textarea[name="weltpixel_mm_top_block"]'),
+                            blockTypeRight: $('select[name="weltpixel_mm_right_block_type"]'),
+                            blockCmsRight: $('select[name="weltpixel_mm_right_block_cms"]'),
+                            blockHtmlRight: $('textarea[name="weltpixel_mm_right_block"]'),
+                            blockTypeBottom: $('select[name="weltpixel_mm_bottom_block_type"]'),
+                            blockCmsBottom: $('select[name="weltpixel_mm_bottom_block_cms"]'),
+                            blockHtmlBottom: $('textarea[name="weltpixel_mm_bottom_block"]'),
+                            blockTypeLeft: $('select[name="weltpixel_mm_left_block_type"]'),
+                            blockCmsLeft: $('select[name="weltpixel_mm_left_block_cms"]'),
+                            blockHtmlLeft: $('textarea[name="weltpixel_mm_left_block"]')
+                        }
+                    };
+
+                imageOptions.on('change', function () {
+                    onChangeDisplayImageSpecs($(this), imageSpecs, imagePositionOptions, mmImagePositionOptionsAllowed);
+                })
+
+                if (optionsAllowed) {
+                    /** on document ready */
+                    updateDependencies(displayMode, config);
+
+                    /** on display mode change */
+                    displayMode.on('change', function() {
+                        updateDependencies($(this), config);
+                    });
+
+                    config.dynamicColumnsFlag.on('change', function () {
+                        updateDynamicColumnsDependencies($(this), config);
+                    });
+
+                    /** on block type change */
+                    config.blockFields.blockTypeTop.on('change', function() {
+                        updateBlockVisibility($(this), [config.blockFields.blockCmsTop, config.blockFields.blockHtmlTop]);
+                    });
+                    config.blockFields.blockTypeRight.on('change', function() {
+                        updateBlockVisibility($(this), [config.blockFields.blockCmsRight, config.blockFields.blockHtmlRight]);
+                    });
+                    config.blockFields.blockTypeBottom.on('change', function() {
+                        updateBlockVisibility($(this), [config.blockFields.blockCmsBottom, config.blockFields.blockHtmlBottom]);
+                    });
+                    config.blockFields.blockTypeLeft.on('change', function() {
+                        updateBlockVisibility($(this), [config.blockFields.blockCmsLeft, config.blockFields.blockHtmlLeft]);
+                    });
+                } else {
+
+                    var optionsContainer = $('*[data-index="weltpixel_megamenu"]');
+                    optionsContainer.find('.admin__fieldset').prepend('<p>' + $.mage.__(config.unavailableNote) + '</p>').find('.admin__field').each(function() {
+                        var dataIndex = jQuery(this).attr('data-index');
+                        if (!displayAlwaysOptions.includes(dataIndex)) {
+                            jQuery(this).hide();
+                        }
+                    });
+                }
+                if (imageOptionsAllowed) {
+                    showImageDependencies(imageOptions);
+                    if (imageOptions.val() == 1) {
+                        showImageDependencies(imageSpecs);
+                    } else {
+                        hideImageDependencies(imageSpecs)
+                    }
+                    checkImagePositionOptions();
+                } else {
+                    hideImageDependencies(imageOptions);
+                }
+                if (mmmImageUploadAllowed) {
+                    showImageDependencies(imageUploadOptions);
+                    if (imageOptions.val() == 1) {
+                        showImageDependencies(imageSpecs);
+                    }
+                    checkImagePositionOptions();
+                } else {
+                    hideImageDependencies(imageUploadOptions);
+                }
+            }
+
+            function onChangeDisplayImageSpecs (element, imageSpecs) {
+                if (element.val() == 1) {
+                    showImageDependencies(imageSpecs);
+                    checkImagePositionOptions();
+                } else {
+                    hideImageDependencies(imageSpecs);
+                    checkImagePositionOptions()
+                }
+            }
+
+            function checkImagePositionOptions () {
+                if (mmImagePositionOptionsAllowed && imageOptions.val() == 1) {
+                    showImageDependencies(imagePositionOptions)
+                } else {
+                    hideImageDependencies(imagePositionOptions)
+                }
+            }
+
+            function updateDynamicColumnsDependencies(element, config) {
+                if (element.val() == 1) {
+                    showDependencies([config.dynamicColumnsOptions]);
+                } else {
+                    hideDependencies([config.dynamicColumnsOptions]);
+                }
+            }
+            function updateDependencies(displayMode, config)
+            {
+                switch (displayMode.val()) {
+                    case 'fullwidth':
+                        updateComment(config.columnWidth, config.note1 + ' Allowed values are pixels, percent or auto (E.g.: 130px, 30% or auto).' + "\n" + config.note2);
+                        showDependencies([config.columnsNumber, config.columnWidth, config.dynamicColumnsFlag, config.dynamicColumnsOptions]);
+                        updateDynamicColumnsDependencies(config.dynamicColumnsFlag, config);
+                        hideDependencies([config.showArrows]);
+                        updateAllBlocksVisibility(config.blockFields);
+                        break;
+                    case 'sectioned':
+                        updateComment(config.columnWidth, config.note1 + ' Allowed value is auto (E.g. "auto"). ' + config.note2);
+                        showDependencies([config.columnsNumber, config.columnWidth, config.dynamicColumnsFlag, config.dynamicColumnsOptions]);
+                        updateDynamicColumnsDependencies(config.dynamicColumnsFlag, config);
+                        hideDependencies([config.showArrows]);
+                        updateAllBlocksVisibility(config.blockFields);
+                        break;
+                    case 'boxed':
+                        updateComment(config.columnWidth, '');
+                        hideDependencies([config.columnsNumber, config.columnWidth,  config.dynamicColumnsFlag, config.dynamicColumnsOptions, config.showArrows]);
+                        updateAllBlocksVisibility(config.blockFields);
+                        break;
+                    default:
+                        updateComment(config.columnWidth, '');
+                        hideDependencies(
+                            [
+                                config.columnsNumber,
+                                config.columnWidth,
+                                config.dynamicColumnsFlag,
+                                config.dynamicColumnsOptions,
+                                config.blockFields.blockTypeTop,
+                                config.blockFields.blockTypeRight,
+                                config.blockFields.blockTypeBottom,
+                                config.blockFields.blockTypeLeft,
+                                config.blockFields.blockCmsTop,
+                                config.blockFields.blockHtmlTop,
+                                config.blockFields.blockCmsRight,
+                                config.blockFields.blockHtmlRight,
+                                config.blockFields.blockCmsBottom,
+                                config.blockFields.blockHtmlBottom,
+                                config.blockFields.blockCmsLeft,
+                                config.blockFields.blockHtmlLeft
+                            ]
+                        );
+                        showDependencies([config.showArrows]);
+                        break;
+                }
+            }
+            function hideDependencies(fields)
+            {
+                for (var i = 0; i < fields.length; i++) {
+                    fields[i].closest('.admin__field').addClass('hidden');
+                }
+            }
+            function showDependencies(fields)
+            {
+                for (var i = 0; i < fields.length; i++) {
+                    fields[i].closest('.admin__field').removeClass('hidden');
+                }
+            }
+            function showImageDependencies(options)
+            {
+                for (var i = 0; i < options.length; i++) {
+                    options[i].closest('.admin__field').show();
+                }
+            }
+            function hideImageDependencies(options)
+            {
+                for (var i = 0; i < options.length; i++) {
+                    options[i].closest('.admin__field').hide();
+                }
+            }
+            function updateAllBlocksVisibility(blockFields)
+            {
+                updateBlockVisibility(blockFields.blockTypeTop, [blockFields.blockCmsTop, blockFields.blockHtmlTop]);
+                updateBlockVisibility(blockFields.blockTypeRight, [blockFields.blockCmsRight, blockFields.blockHtmlRight]);
+                updateBlockVisibility(blockFields.blockTypeBottom, [blockFields.blockCmsBottom, blockFields.blockHtmlBottom]);
+                updateBlockVisibility(blockFields.blockTypeLeft, [blockFields.blockCmsLeft, blockFields.blockHtmlLeft]);
+            }
+            function updateBlockVisibility(parent, dependencies)
+            {
+                parent.closest('.admin__field').removeClass('hidden');
+                switch (parent.val()) {
+                    case 'block_cms':
+                        dependencies[0].closest('.admin__field').removeClass('hidden');
+                        dependencies[1].closest('.admin__field').addClass('hidden');
+                        break;
+                    case 'block':
+                        dependencies[0].closest('.admin__field').addClass('hidden');
+                        dependencies[1].closest('.admin__field').removeClass('hidden');
+                        break;
+                    default:
+                        dependencies[0].closest('.admin__field').addClass('hidden');
+                        dependencies[1].closest('.admin__field').addClass('hidden');
+                        break;
+                }
+            }
+            function updateComment(field, comment){
+                field.closest('.admin__field').find('.admin__field-note span').text($.mage.__(comment));
+            }
+        });
+</script>

@@ -1,0 +1,11 @@
+<?php
+$_product = $block->getProduct();
+
+$_getAcercaDe = $_product->getResource()->getAttribute('acerca_de');
+if (!$_getAcercaDe)
+	return; //out
+
+$acercaDe = $_getAcercaDe->getFrontend()->getValue($_product);
+if($acercaDe !="No"){
+	echo $acercaDe ;
+}

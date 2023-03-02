@@ -1,0 +1,102 @@
+<?php
+// @codingStandardsIgnoreFile
+/** @var $block \Magento\Catalog\Block\Product\View */
+/** @var $itemHelper \Lyracons\QtyIncrement\Helper\Data */
+
+use Magento\Framework\App\ObjectManager;
+
+$itemHelper = $this->helper('Lyracons\QtyIncrement\Helper\Data');
+?>
+
+<?php $_product = $block->getProduct();
+// Methods for checking if Salable Quantity <= 0
+$objectManager = ObjectManager::getInstance();
+$stockState = $objectManager->get('\Magento\InventorySalesApi\Api\GetProductSalableQtyInterface');
+$getProductTypesBySkus = $objectManager->get('\Magento\InventoryCatalogApi\Model\GetProductTypesBySkusInterface');
+$isSourceItemManagementAllowedForProductType =  $objectManager->get('\Magento\InventoryConfigurationApi\Model\IsSourceItemManagementAllowedForProductTypeInterface');
+?>
+
+<?php
+    /* to avoid exception on some product types when calling $stockState */
+    $productTypesBySkus = $getProductTypesBySkus->execute([$_product->getSku()]);
+    $productType = $productTypesBySkus[$_product->getSku()];
+    $sourceManagementAllowed = $isSourceItemManagementAllowedForProductType->execute($productType);
+    $saleQty = $sourceManagementAllowed ? $stockState->execute($_product->getSku(), 1) : null;
+?>
+
+
+<?php $buttonTitle = __('Add to Cart'); ?>
+<?php if (!$sourceManagementAllowed || ($_product->isSaleable() && $saleQty > 0)): ?>
+    <div class="box-tocart">
+        <div class="fieldset">
+            <?php if ($block->shouldRenderQuantity()): ?>
+                <div class="field qty">
+                    <label class="label" for="qty"><span><?php /* @escapeNotVerified */
+                            echo __('Qty') ?></span></label>
+                    <div class="control">
+                        <span class="minus">
+                            <button
+                                    type="button"
+                                    title="<?= __('Reduce the quantity'); ?>"
+                                    class="sub-cart"
+                                    data-increment="<?php echo $itemHelper->getQtyIncrementsByProduct($_product); ?>"
+                            >-</button>
+                        </span>
+                        <input type="number"
+                               name="qty_visible"
+                               id="qty_visible"
+                               maxlength="12"
+                               value="<?php /* @escapeNotVerified */
+                               echo (($block->getProductDefaultQty() * 1) > $itemHelper->getQtyIncrementsByProduct($_product)) ?
+                                   ($block->getProductDefaultQty() * 1)
+                                   : $itemHelper->getQtyIncrementsByProduct($_product) ?>"
+                               title="<?php /* @escapeNotVerified */
+                               echo __('Qty') ?>" class="input-text qty"
+                               data-validate="<?php echo $block->escapeHtml(json_encode($block->getQuantityValidators())) ?>"
+                               disabled
+                        />
+                        <input type="number"
+                               name="qty"
+                               id="qty"
+                               maxlength="12"
+                               value="<?php /* @escapeNotVerified */
+                               echo (($block->getProductDefaultQty() * 1) > $itemHelper->getQtyIncrementsByProduct($_product)) ?
+                                   ($block->getProductDefaultQty() * 1)
+                                   : $itemHelper->getQtyIncrementsByProduct($_product) ?>"
+                               title="<?php /* @escapeNotVerified */
+                               echo __('Qty') ?>" class="input-text qty"
+                               data-validate="<?php echo $block->escapeHtml(json_encode($block->getQuantityValidators())) ?>"
+                               style="display: none !important"
+                        />
+                        <span class="plus">
+                            <button
+                                    type="button" title="<?= __('Increase the quantity'); ?>"
+                                    class="plus-cart"
+                                    data-increment="<?php echo $itemHelper->getQtyIncrementsByProduct($_product); ?>"
+                            >+</button>
+                        </span>
+                    </div>
+                </div>
+            <?php endif; ?>
+            <div class="actions">
+                <button type="submit"
+                        title="<?= /* @escapeNotVerified */
+                        $buttonTitle ?>"
+                        class="action primary tocart"
+                        id="product-addtocart-button">
+                    <span><?= /* @escapeNotVerified */
+                        $buttonTitle ?></span>
+                </button>
+                <?= $block->getChildHtml('', true) ?>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>
+<script type="text/x-magento-init">
+    {
+        "#product_addtocart_form": {
+            "Magento_Catalog/js/validate-product": {}
+        }
+    }
+
+</script>

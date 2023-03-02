@@ -1,0 +1,374 @@
+& when (@media-common = true) {
+    .dob-widget-styling() {
+        border: none;
+        background: none;
+    }
+    .profile-wrapper {
+        margin: 0 auto;
+        margin-left: auto;
+        margin-right: auto;
+        float: left;
+        width: 100%;
+        .validation-errors {
+            display: none;
+            border: 2px solid #ff0000;
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: #ffdede;
+        }
+        &.profile-wrapper-no-cover {
+            margin-top: 60px;
+        }
+        .profile-cover-img {
+            background-color: #222;
+            height: 250px;
+            min-width: 100%;
+            width: 100%;
+            margin: 0 auto;
+            clear: both;
+            position: relative;
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            &:before {
+                background: -moz-linear-gradient(to bottom, rgba(34,34,34,0) 0%, #222 100%);
+                background: -webkit-linear-gradient(top, rgba(34,34,34,0) 0%, #222 100%);
+                background: linear-gradient(to bottom, rgba(34,34,34,0) 0%, #222 100%);
+                bottom: 0;
+                content: "";
+                display: block;
+                height: 130px;
+                position: absolute;
+                width: 100%;
+            }
+        }
+        .profile-header-container {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            .profile-avatar {
+                border: none;
+                -webkit-border-radius: 50%;
+                -moz-border-radius: 50%;
+                border-radius: 50%;
+                height: 160px;
+                width: 160px;
+                background-size: cover;
+                background-position: center center;
+                background-repeat: no-repeat;
+                overflow: hidden;
+                position: absolute;
+                top: -60px;
+                background-color: #fff;
+                border: 5px solid white;
+                display: inline-block;
+            }
+            .profile-titles {
+                margin-left: 180px;
+                position: relative;
+                top: 15px;
+                min-height: 110px;
+                .profile-name {
+                    font-size: 22px;
+                    color: #000;
+                    font-weight: bold;
+                    display: inline-block;
+                    margin: 0;
+                    padding-bottom: 5px;
+                }
+                .profile-details {
+                    color: #000;
+                    font-size: 18px;
+                    margin-top: 5px;
+                    font-size: 15px;
+                    .gender-inline-edit {
+                        margin-left: 10px;
+                    }
+                    .dob-inline-edit {
+                        margin-top: 10px;
+                        margin-left: 10px;
+                        width: 200px;
+                        .field-dob {
+                            button.ui-datepicker-trigger {
+                                .dob-widget-styling;
+                                &:hover {
+                                    .dob-widget-styling;
+                                }
+                            }
+                        }
+                    }
+                }
+                .profile-location {
+                    p {
+                        vertical-align: bottom;
+                        font-size: 15px;
+                        display: inline-block;
+                        margin: 0;
+                        padding: 0;
+                        color: #000;
+                    }
+                }
+            }
+        }
+        .profile-feed-container {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            ul.ui-tabs-nav {
+                list-style-type: none;
+                display: flex;
+                justify-content: center;
+                margin-top: 30px;
+                li {
+                    padding: 5px 20px;
+                    font-size: 14px;
+                    text-align: center;
+                    border-top: 2px solid transparent;
+                    a {
+                        color: #999;
+                        &:hover {
+                            text-decoration: none;
+                        }
+                    }
+                    &:hover {
+                        border-top: 2px solid #262626;
+                    }
+                }
+                li.ui-state-active {
+                    border-top: 2px solid #262626;
+                    font-size: 14px;
+                    font-weight: 500;
+                    a {
+                        color: #262626
+                    }
+                }
+            }
+            .profile-feed {
+                width: 100%;
+                margin-bottom: 50px;
+                margin-top: 40px;
+                .profile-feed-wrapper {
+                    width: 100%;
+                    border: 1px solid #c2c2c2;
+                    margin-bottom: 15px;
+                    .no-activity-label {
+                        font-size: 16px;
+                    }
+                    .no-activity-msg {
+                        .profile-name {
+                            font-size: 16px;
+                            font-weight: 600;
+                        }
+                    }
+                    .profile-feed-padding {
+                        padding: 40px;
+                    }
+                    .review-into-details {
+                        font-size: 14px;
+                        margin-bottom: 20px;
+                        position: relative;
+                        .profile-image {
+                            width: 45px;
+                            height: 45px;
+                            -webkit-border-radius: 50px;
+                            -moz-border-radius: 50px;
+                            border-radius: 50px;
+                            position: absolute;
+                            left: -55px;
+                            top: -15px;
+                            border: 1px solid #000;
+                            background-size: cover;
+                            background-position: center center;
+                            background-repeat: no-repeat;
+                            overflow: hidden;
+                            background-color: #fff;
+                            display: inline-block;
+                        }
+                        .profile-name {
+                            font-weight: 600;
+                        }
+                        .product-name {
+                            &:hover, &:active {
+                                text-decoration: none;
+                            }
+                            color: #b1b1b1;
+                        }
+                    }
+                    .rating-summary {
+                        .rating-result {
+                            width: auto;
+                            > span:before, &:before {
+                                font-size: 18px;
+                                height: 18px;
+                                line-height: 18px;
+                            }
+                            > span:before {
+                                color: #000;
+                            }
+                        }
+                        margin-bottom: 20px;
+                    }
+                    .review-title {
+                        font-size: 18px;
+                        font-weight: 800;
+                        margin-bottom: 15px;
+
+                    }
+                    .review-details {
+                        padding-bottom: 25px;
+                        border-bottom: 1px solid #b1b1b1;
+                    }
+                    .review-product {
+                        margin-top: 30px;
+                        float: left;
+                        width: 100%;
+                        .product-image {
+                            float: left;
+                            width: 27%;
+                            margin-right: 3%;
+                        }
+                        .product-details {
+                            float: left;
+                            padding: 0;
+                            width: 68%;
+                            .product-name {
+                                color: #000;
+                                font-size: 18px;
+                                font-weight: 600;
+                                &:hover, &:active {
+                                    text-decoration: none;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .collections-feed {
+                display: none;
+                width: 100%;
+                margin-bottom: 50px;
+                margin-top: 40px;
+                .multiple-wishlist-container {
+                    text-align: center;
+                    .multiple-wishlist-box-wrapper {
+                        float: none;
+                        display: inline-block;
+                        text-align: left;
+                    }
+                }
+            }
+        }
+        .biography-header {
+            margin-top: 0;
+            font-weight: 500;
+            &:before {
+                font-family: "luma-icons";
+                content: '\e627';
+                font-size: 32px;
+                top: 5px;
+                position: relative;
+                padding-right: 15px;
+            }
+        }
+    }
+    .review-details {
+        .userprofile-link {
+            text-decoration: none;
+            color: #000;
+
+            .review-details-value {
+                font-weight: 600;
+            }
+
+            .review-avatar-image {
+                width: 60px;
+                height: 60px;
+                -webkit-border-radius: 50px;
+                -moz-border-radius: 50px;
+                border-radius: 50px;
+                vertical-align: middle;
+                border: 1px solid #000;
+                background-size: cover;
+                background-position: center center;
+                background-repeat: no-repeat;
+                overflow: hidden;
+                background-color: #fff;
+                display: inline-block;
+                margin-left: 5px;
+            }
+        }
+    }
+    .form-edit-profile {
+        position: relative;
+        .public-profile-link {
+            position: absolute;
+            right: 0%;
+            top: -10px;
+            margin: 0;
+        }
+        .field-dob {
+            button.ui-datepicker-trigger {
+                .dob-widget-styling;
+                &:hover {
+                    .dob-widget-styling;
+                }
+            }
+        }
+    }
+    .loader-wrapper {
+        text-align: center;
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s) {
+    .form-edit-profile {
+        position: relative;
+        .public-profile-link {
+            position: relative;
+            left: 0;
+            margin-bottom: 20px;
+            a.view {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    }
+}
+
+// Desktop
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .profile-wrapper {
+        .profile-cover-img {
+            height: 480px;
+        }
+        .profile-header-container {
+            .profile-titles {
+                margin-left: 200px;
+                .profile-name {
+                    font-size: 28px;
+                }
+            }
+        }
+        .profile-feed-container {
+            .profile-feed {
+                float: left;
+                width: 100%;
+                .profile-feed-wrapper {
+                    float: left;
+                    clear: left;
+                    width: 49%;
+                    &:nth-of-type(2n) {
+                        float: right;
+                        clear: right;
+                    }
+                }
+            }
+            .collections-feed {
+                width: 100%;
+                float: left;
+            }
+        }
+    }
+}

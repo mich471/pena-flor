@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <websites>
+        <penaflor>
+            <web>
+                <woowup_traking>
+                    <public_key>jJ3tT1Z3B</public_key>
+                </woowup_traking>
+            </web>
+        </penaflor>
+        <ventainstitucional>
+            <web>
+                <woowup_traking>
+                    <public_key>CRZEawoCE</public_key>
+                </woowup_traking>
+            </web>
+        </ventainstitucional>
+    </websites>
+</config>

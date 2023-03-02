@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  layout="1column"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="WeltPixel_UserProfile::css/content-tools.css" />
+    </head>
+    <body>
+        <referenceBlock name="page.main.title" remove="true"/>
+        <referenceContainer name="content">
+            <block ifconfig="weltpixel_userprofile/general/enable" class="WeltPixel\UserProfile\Block\ViewProfile"
+                   name="weltpixel.userprofile.view"
+               >
+                <action method="setTemplate">
+                    <argument name="template" xsi:type="helper" helper="WeltPixel\UserProfile\Helper\Data::getViewTemplate"/>
+                </action>
+            </block>
+
+        </referenceContainer>
+    </body>
+</page>

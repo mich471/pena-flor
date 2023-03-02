@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="weltpixel_advancedwishlist" translate="label" type="text" sortOrder="270" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Advanced Wishlist Pro</label>
+            <tab>weltpixel</tab>
+            <resource>WeltPixel_AdvancedWishlist::AdvancedWishlistSettings</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Advanced Wishlist General Settings</label>
+                <field id="enable_multiwishlist" translate="label comment" type="select" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Multiple Wishlist</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enable/Disable Multiple Wishlist.</comment>
+                </field>
+                <field id="enable_ajaxwishlist" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Ajax Wishlist</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enable/Disable Ajax Wishlist.</comment>
+                </field>
+                <field id="disable_default_share" translate="label comment" type="select" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Disable Default Share Wishlist Button</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enable/Disable Default Share Wishlist Button.</comment>
+                </field>
+                <field id="enable_sharewishlist" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Share Wishlist</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enable/Disable Share Wishlist.</comment>
+                </field>
+                <field id="sharewishlist_js" translate="label comment" type="textarea" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Sharethis Javascript Code</label>
+                    <depends>
+                        <field id="enable_sharewishlist">1</field>
+                    </depends>
+                    <comment><![CDATA[Paste here the initialization code from <a href="https://www.sharethis.com" target="_blank">https://www.sharethis.com</a>.
+                    <br/> Based on your customization the <a href="https://platform.sharethis.com/inline-share-buttons">Inline Share Buttons</a> will be rendered.
+                    <br/> <b>Js initialization code example</b>: <br/> &lt;script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=5c66d6fd7056550011c4a337&amp;product=inline-share-buttons' async='async'&gt;&lt;/script&gt;]]></comment>
+                </field>
+                <field id="enable_publicwishlist" translate="label comment" type="select" sortOrder="35" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Wishlist Privacy</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="enable_sharewishlist">1</field>
+                    </depends>
+                    <comment><![CDATA[Enable/Disable Wishlist Privacy. <br/> If set to Yes, enables the option to make Wishlists  Private or Public. If Public, Wishlists will be displayed in the User Profile. <br/>Requires the <a href="https://www.weltpixel.com/magento-2-user-profile.html" target="_blank">User Profile Extension</a> and "Enable Wishlist Collection Display" option enabled.]]></comment>
+                </field>
+                <field id="enable_pricealert" translate="label comment" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Enable Price Alert</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enable/Disable Price Alert For Wishlist Items.</comment>
+                </field>
+                <field id="pricealert_frequency" translate="label comment" type="text" sortOrder="50" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Cron Job Frequency</label>
+                    <comment><![CDATA[Specify a valid cron schedule expression. It can be verified <a target="_blank" href="https://crontab.guru">here</a>.]]></comment>
+                    <depends>
+                        <field id="enable_pricealert">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

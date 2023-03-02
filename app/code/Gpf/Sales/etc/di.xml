@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <preference for="Gpf\Sales\Api\Data\ReceiptInterface" type="Gpf\Sales\Model\Receipt"/>
+    <preference for="Gpf\Sales\Api\ReceiptServiceInterface" type="Gpf\Sales\Service\ReceiptService"/>
+
+    <preference for="Magento\Sales\Block\Order\Totals" type="Gpf\Sales\Block\Order\Totals" />
+    <type name="Magento\Sales\Api\OrderRepositoryInterface">
+        <plugin name="gpf-sales-plugin-orderRepository" type="Gpf\Sales\Plugin\OrderRepository" sortOrder="6" />
+    </type>
+
+</config>

@@ -1,0 +1,25 @@
+<?php $_helper = $this->helper('WeltPixel\NavigationLinks\Helper\Data'); ?>
+<?php
+$megaMenuOverlayFocusEnabled = $_helper->getMegaMenuOverlayOption();
+$designSettingsEnabled = $_helper->isDesignSettingsEnabled();
+?>
+
+<?php if($megaMenuOverlayFocusEnabled && $designSettingsEnabled) ?>
+    <div class="overlay-focus-megamenu"></div>
+<?php ?>
+<script>
+    window.screenM = '<?php echo $_helper->getMobileThreshold(); ?>';
+    window.widthThreshold = '<?php echo $_helper->getWidthThreshold(); ?>';
+    window.designSettingsEnabled = '<?php echo $_helper->isDesignSettingsEnabled(); ?>';
+    window.menuFocusOverlay = '<?php echo $_helper->getMegaMenuOverlayOption(); ?>';
+
+    require(['jquery', 'navigationJs' ],
+        function   ($, navigationJs) {
+            $(document).ready(function() {
+                navigationJs.init();
+                $(window).on('resize', function() {
+                    navigationJs.init();
+                });
+            });
+        });
+</script>

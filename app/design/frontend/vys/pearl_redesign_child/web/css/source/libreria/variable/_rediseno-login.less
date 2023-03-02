@@ -1,0 +1,71 @@
+//
+//  Common (styles-m.css)
+//  _____________________________________________
+& when (@media-common = true) {
+    .wf-sourcesanspro-n4-active {
+        .theme-pearl.cms-home {
+            .page-wrapper {
+                .page-main {
+
+                    .page-title-wrapper,
+                    .page-title {
+                        hyphens: auto;
+                        display: none;
+                    }
+                }
+
+                .columns {
+                    .login-container {
+                        .block-new-customer {
+                            .block-title {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+
+
+        }
+    }
+}
+
+
+
+
+//
+//  Desktop (style-l.css)
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum ='min') and (@break =@screen__m) {
+    .wf-sourcesanspro-n4-active {
+        .theme-pearl.cms-home {
+            .page-wrapper {
+                .maincontent {
+                    .page-title-wrapper {
+                        .page-title {
+                            display: none;
+                        }
+                    }
+                }
+
+                .columns {
+                    .login-container {
+                        .block-new-customer {
+                            .block-title {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+/* @media only screen and (max-width: 767px) {
+    .nav-sections .header.links li:nth-of-type(3n) {
+        display: none;
+    }
+} */

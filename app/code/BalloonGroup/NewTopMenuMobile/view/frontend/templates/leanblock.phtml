@@ -1,0 +1,58 @@
+<?php
+$mediaUrl = $block->getMediaUrl();
+?>
+
+<div class="col-12 agregado-mobile" style="padding:0; margin: 0;">
+    <div class="suscribite-contacto">
+        <div class="suscribite">
+            <img src=<?php echo "$mediaUrl"?>wysiwyg/megaphone.svg style="margin:5px; width: 20px;">
+            <p style="color: #000; font-size: 17px; font-weight: bold; margin-bottom:0; padding-left: 9px;">Suscribite
+            </p>
+        </div>
+
+        <div class="contacto">
+            <img src=<?php echo "$mediaUrl"?>wysiwyg/mail.svg style="margin:5px; width: 18px;">
+            <a href='mailto:contacto@vinosyspirits.com' style="padding: 0;">
+                <p style="color: #000; font-size: 17px; font-weight: bold; margin-bottom:0; padding-left: 10px;">
+                    contacto@vinosyspirits.com</p>
+            </a>
+        </div>
+    </div>
+
+    <div class="seguinos">
+        <h4 class="no-padding-mob"
+            style="margin-bottom: 0; color: #d4a22c; font-size: 17px; font-weight: bold;padding-left: 9px;">SEGUINOS
+        </h4>
+        <div class="iconos">
+
+            <a style="padding-left:0;" href="https://www.instagram.com/vinosyspiritsok/" id="inst" target="_blank">
+                <img src=<?php echo "$mediaUrl"?>wysiwyg/instagram.svg
+                    style="color:#d4a22c; margin:5px; width: 32px;"></a>
+
+            <a style="padding: 0 12px;" href="https://www.youtube.com/channel/UCrZrgWvOeOsGJSq8dwcefmA" id="yout"
+                target="_blank">
+                <img src=<?php echo "$mediaUrl"?>wysiwyg/youtube.svg style="color: #d4a22c; margin:5px; width: 20px;">
+            </a>
+
+            <a style="padding-left:0;" href="https://www.facebook.com/VinosySpirits/" id="face" target="_blank">
+                <img src=<?php echo "$mediaUrl"?>wysiwyg/facebook.svg
+                    style="color: #d4a22c; margin:5px; width: 20px;"></a>
+
+        </div>
+    </div>
+</div>
+
+<script>
+require(['jquery'], function($) {
+
+    $(document).on("click", '#inst', function() {
+        window.location.href = 'https://www.instagram.com/vinosyspiritsok/';
+    });
+    $(document).on("click", '#yout', function() {
+        window.location.href = 'https://www.youtube.com/channel/UCrZrgWvOeOsGJSq8dwcefmA';
+    });
+    $(document).on("click", '#face', function() {
+        window.location.href = 'https://www.facebook.com/VinosySpirits/';
+    });
+});
+</script>

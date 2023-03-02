@@ -1,0 +1,44 @@
+<?php
+/** @var $block \Magento\Catalog\Block\Product\View */
+?>
+<?php
+/** @var \WeltPixel\ProductPage\Helper\Data $_helper */
+$_helper = $this->helper('WeltPixel\ProductPage\Helper\Data'); ?>
+<?php $_product = $block->getProduct(); ?>
+<?php $_sizeChartCustomLabel = $_helper->getSizeChartCustomLabel(); ?>
+<?php if ($_helper->isSizeChartAvailableForProduct($_product)) : ?>
+<div class="chart-wrapper">
+    <a href="#" id="size_chart"><?php echo $_sizeChartCustomLabel ?></a>
+</div>
+
+<div class="chart_modal" id="wp-sizechart-popup-modal">
+    <?php echo $block->getChildHtml('weltpixel.sizechart.cmsblock'); ?>
+</div>
+<script>
+    require(
+        [
+            'jquery',
+            'Magento_Ui/js/modal/modal'
+        ],
+        function(
+            $,
+            modal
+        ) {
+            var options = {
+                type: 'popup',
+                responsive: true,
+                innerScroll: true,
+                opened: function($Event) {
+                    $(".modal-footer").hide();
+                }
+            };
+
+            var popup = modal(options, $('#wp-sizechart-popup-modal'));
+            $("#size_chart").on('click',function(){
+                $("#wp-sizechart-popup-modal").modal("openModal");
+            });
+
+        }
+    );
+</script>
+<?php endif; ?>

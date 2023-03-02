@@ -1,0 +1,11 @@
+--- a/vendor/vertex/module-address-validation/Block/Adminhtml/CleanseAddressButton.php
++++ b/vendor/vertex/module-address-validation/Block/Adminhtml/CleanseAddressButton.php
+@@ -32,7 +32,7 @@
+         Context $context,
+         Config $config,
+         Data $backendHelper,
+-        string $prefix = '',
++        ?string $prefix = '',
+         array $data = []
+     ) {
+         $this->config = $config;

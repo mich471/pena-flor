@@ -1,0 +1,40 @@
+<?php
+/**
+ * @var $block Lyracons\AddressNormalizer\Block\CustomerAddress
+ */
+$apiKey = $block->getGoogleApiKey();
+$readonlyFields = $block->getReadonlyFields();
+$allowedCountries = $block->getCountries();
+?>
+<?php if ($block->isUseInCustomerForm() && $apiKey): ?>
+    <div class="field required" id="autocomplete">
+        <label class="label" for="addressAutocomplete">
+            <span><?= /* @noEscape */ __('Dirección: calle, altura, localidad (elegí alguna de las opciones. Si ninguna aplica, deja el detalle en Comentarios de entrega)'); ?></span>
+        </label>
+        <div class="control">
+            <input type="text" id="addressAutocomplete" name="addressAutocomplete"
+                   class="input-text required-entry" aria-required="true" aria-invalid="false"
+                   autocomplete="new-password" onfocus="this.setAttribute(`autocomplete`,`new-password`);">
+        </div>
+    </div>
+<script>
+require([
+    'jquery',
+    'Lyracons_AddressNormalizer/js/customer-address-form-normalizer'
+], function ($, addressNormalizer) {
+    let config = {
+        normalizerGooglePlacesApiKey: "<?= /* @noEscape */ $apiKey; ?>",
+      <?php if ($readonlyFields): ?>
+        readOnlyFields: <?= /* @noEscape */ json_encode($readonlyFields); ?>,
+      <?php endif; ?>
+      <?php if ($allowedCountries): ?>
+        allowedCountries: <?= /* @noEscape */ json_encode($allowedCountries); ?>
+      <?php endif; ?>
+    }
+    // console.table(config);
+    addressNormalizer._create();
+    addressNormalizer.options = config;
+    addressNormalizer._init();
+});
+</script>
+<?php endif; ?>

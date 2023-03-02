@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<config>
+    <preference for="Magento\Theme\Block\Html\Title" type="WeltPixel\TitleRewrite\Block\Html\Title" />
+</config>

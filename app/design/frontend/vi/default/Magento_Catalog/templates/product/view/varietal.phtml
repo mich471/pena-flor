@@ -1,0 +1,16 @@
+<?php
+$_product = $block->getProduct();
+
+$_getVarietal = $_product->getResource()->getAttribute('varietal'); 
+$varietal = $_getVarietal->getFrontend()->getValue($_product);
+?>
+
+<?php
+	$_getVarietal = $_product->getResource()->getAttribute('varietal');
+	$varietal = $_getVarietal->getFrontend()->getValue($_product);
+	if($varietal){
+		echo '<div class="varietal">';
+		echo $varietal;
+		echo '</div>';
+	}
+?>

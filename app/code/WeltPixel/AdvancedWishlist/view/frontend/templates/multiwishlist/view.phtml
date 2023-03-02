@@ -1,0 +1,170 @@
+<?php
+
+// @codingStandardsIgnoreFile
+
+/** @var \WeltPixel\AdvancedWishlist\Block\MultipleWishlist $block */
+$wishlists = $block->getMultipleWishlists();
+$imageBlock = $block->getLayout()->getBlock('customer.multiple.wishlist.item.image');
+$imagesLimit = 6;
+$isShareWishlistEnabled = $block->isShareWishlistEnabled();
+$isPriceAlertEnabled = $block->isPriceAlertEnabled();
+$isPublicWishlistEnabled = $block->isPublicWishlistEnabled();
+?>
+
+
+<a href="#" class="add-multiwishlist">
+    <span><?= __('Add New Wishlist') ?></span>
+</a>
+<div class="multiple-wishlist-container">
+
+<?php
+foreach ($wishlists as $wishlist) :
+    $wishlistName = $wishlist->getWishlistName();
+    $itemsNr = count($wishlist->getItemCollection());
+    $items = $wishlist->getItemCollection()->clear()->setPageSize($imagesLimit)->setCurPage(1)->setOrder('added_at');
+    $wishListImages = [];
+    foreach ($items as $item) {
+        $wishListImages[] =  $imageBlock->setItem($item)->toHtml();
+    }
+?>
+    <a class="multiple-wishlist-element" href="<?= $block->getUrl('wishlist/index/index', ['_secure' =>  true, 'wishlist_id' => $wishlist->getId()])?>">
+        <div class="multiple-wishlist-box-wrapper">
+            <?php for ($i = 0; $i< $imagesLimit; $i++) : ?>
+            <?php $image = isset($wishListImages[$i]) ? $wishListImages[$i] : '' ?>
+            <div class="box"><?= $image ?></div>
+        <?php endfor; ?>
+            <div class="box-bottom">
+                <div class="wishlist-title"><?= $block->escapeHtml($wishlist->getWishlistName()); ?></div>
+                <div class="wishlist-items">
+                    <?= $itemsNr == 1 ? __('1 item') : __('%1 items', $itemsNr); ?>
+                    <?php if ($isPublicWishlistEnabled) : ?>
+                    - <span class="wishlist-privacy <?= ($wishlist->getDisableShare() || $wishlist->getDisablePublic()) ? 'private' : '' ?>"><?= ($wishlist->getDisableShare() || $wishlist->getDisablePublic()) ? __('Private') : __('Public') ?></span>
+                    <?php endif; ?>
+                </div>
+                <span class="edit-multiwishlist"
+                      data-wishlist-id="<?= $wishlist->getWishlistId() ?>"
+                      data-wishlist-disable-share="<?= $wishlist->getDisableShare() ?>"
+                      data-wishlist-disable-public="<?= $wishlist->getDisablePublic() ?>"
+                      data-wishlist-disable-pricealert="<?= $wishlist->getDisablePriceAlert() ?>"
+                ></span>
+            </div>
+        </div>
+    </a>
+
+<?php endforeach; ?>
+</div>
+<div id="wishlist-popup-modal">
+    <div class="modal-title" data-role="title">
+        <?= __('Edit Wishlist') ?>
+    </div>
+    <form class="form form-wishlist-edit"
+          action="<?= $block->getUrl('wp_collection/multiwishlist/update', ['_secure' =>  true]) ?>"
+          method="post"
+          id="form-wishlist-edit"
+          data-mage-init='{"validation":{}}'>
+        <?php echo $block->getBlockHtml('formkey'); ?>
+        <input type="hidden" name="wishlist-id" id="wishlist-id" value="" />
+        <fieldset class="fieldset wishlist-edit" data-hasrequired="* Required Fields">
+            <div class="field wishlist-name required">
+                <label class="label" for="wishlist-name"><span><?= __('Wishlist Name'); ?></span></label>
+                <div class="control">
+                    <input name="wishlist-name" value="" placeholder="<?= __('Wishlist Name'); ?>" autocomplete="off" id="wishlist-name" type="text" class="input-text" title="<?= __('Wishlist Name'); ?>" data-validate="{required:true}">
+                </div>
+            </div>
+            <?php if ($isShareWishlistEnabled) : ?>
+            <div class="field wishlist-disable-share required">
+                <label class="label" for="wishlist-disable-share"><span><?= __('Disable Share'); ?></span></label>
+                <div class="control">
+                    <select name="wishlist-disable-share" id="wishlist-disable-share">
+                        <option value="0"><?= __('No') ?></option>
+                        <option value="1"><?= __('Yes') ?></option>
+                    </select>
+                </div>
+            </div>
+            <?php else: ?>
+                <input type="hidden" name="wishlist-disable-share" id="wishlist-disable-share" value="" >
+            <?php endif; ?>
+
+            <?php if ($isPublicWishlistEnabled) : ?>
+                <div class="field wishlist-disable-public required">
+                    <label class="label" for="wishlist-disable-public"><span><?= __('This Collection is'); ?></span></label>
+                    <div class="control">
+                        <select name="wishlist-disable-public" id="wishlist-disable-public">
+                            <option value="0"><?= __('Public') ?></option>
+                            <option value="1"><?= __('Private') ?></option>
+                        </select>
+                    </div>
+                </div>
+            <?php else: ?>
+                <input type="hidden" name="wishlist-disable-public" id="wishlist-disable-public" value="" >
+            <?php endif; ?>
+
+            <?php if ($isPriceAlertEnabled) : ?>
+                <div class="field wishlist-disable-pricealert required">
+                    <label class="label" for="wishlist-disable-pricealert"><span><?= __('Disable Price Alert'); ?></span></label>
+                    <div class="control">
+                        <select name="wishlist-disable-pricealert" id="wishlist-disable-pricealert">
+                            <option value="0"><?= __('No') ?></option>
+                            <option value="1"><?= __('Yes') ?></option>
+                        </select>
+                    </div>
+                </div>
+            <?php else : ?>
+                <input type="hidden" name="wishlist-disable-pricealert" id="wishlist-disable-pricealert" value="" >
+            <?php endif; ?>
+            <div class="wp-errors"></div>
+            <div class="actions-toolbar">
+                <div class="primary">
+                    <button type="submit" class="action savewishlist primary" name="savewishlist" id="savewishlist">
+                        <span><?php echo __('Save'); ?></span>
+                    </button>
+                </div>
+                <div class="secondary">
+                    <button type="button" class="action deletewishlist secondary" name="deletewishlist" id="deletewishlist">
+                        <span><?php echo __('Delete'); ?></span>
+                    </button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+
+<script>
+    require(['jquery', 'WeltPixel_AdvancedWishlist/js/weltpixel_multiwishlist'],
+        function   ($, multiwishlist) {
+            $(document).ready(function() {
+                var wpErrorsContainer = $('.wp-errors');
+                multiwishlist.init({
+                    errorsContainer: wpErrorsContainer,
+                    deleteUrl: '<?= $block->getUrl('wp_collection/multiwishlist/delete', ['_secure' =>  true])  ?>'
+                });
+                $('.edit-multiwishlist').bind('click', function() {
+                    multiwishlist.editWishlist({
+                        wishlistId: $(this).attr('data-wishlist-id'),
+                        wishlistNameElm: $(this).parent().find('.wishlist-title'),
+                        wishlistPrivacyElm: $(this).parent().find('.wishlist-privacy'),
+                        wishlistData: $(this)
+                    });
+                    $('#wishlist-disable-share').change();
+                    return false;
+                });
+                $('.add-multiwishlist').bind('click', function() {
+                    multiwishlist.addWishlist();
+                    $('#wishlist-disable-share').change();
+                    return false;
+                });
+                $('.form-wishlist-edit').submit(function(e) {
+                    var form = $(this);
+                    multiwishlist.submitWishlist(form);
+                    e.preventDefault();
+                });
+                $('#wishlist-disable-share').bind('change', function() {
+                    if ($(this).val() == 1) {
+                        $('.wishlist-disable-public').hide();
+                    } else {
+                        $('.wishlist-disable-public').show();
+                    }
+                });
+            });
+        });
+</script>

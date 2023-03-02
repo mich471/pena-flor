@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="customer_register_success">
+        <observer name="gpf_customerlogger_customer_register_success_log" instance="Gpf\CustomerLogger\Observer\Customer\RegisterSuccessLog"/>
+    </event>
+    <!--
+    <event name="customer_save_before">
+        <observer name="gpf_customerlogger_customer_save_before_log" instance="Gpf\CustomerLogger\Observer\Customer\CustomerSaveBefore"/>
+    </event>
+    -->
+</config>

@@ -1,0 +1,47 @@
+<?php
+// @codingStandardsIgnoreFile
+
+/** @var \WeltPixel\UserProfile\Block\Customer\Reviews $block */
+?>
+<?php if ($block->getReviews() && count($block->getReviews())): ?>
+    <?php foreach ($block->getReviews() as $review): ?>
+<div class="profile-feed-wrapper">
+    <div class="profile-review profile-feed-padding">
+        <div class="review-into-details">
+            <span class="profile-name"><?= $block->escapeHtml($block->getUserProfileName()) ?></span>
+            <?= __('wrote a review of') ?> <a class="product-name" href="<?= $block->escapeUrl($block->getProductUrl($review)) ?>"><?= $block->escapeHtml($review->getName()) ?></a>
+            <?= __('on') ?> <?= $block->escapeHtml($block->dateFormat($review->getReviewCreatedAt())) ?>
+        </div>
+        <?php if ($review->getSum()): ?>
+            <div class="rating-summary">
+                <div class="rating-result" title="<?= /* @noEscape */ ((int)$review->getSum() / (int)$review->getCount()) ?>%">
+                    <span style="width:<?= /* @noEscape */ ((int)$review->getSum() / (int)$review->getCount()) ?>%;"><span><?= /* @noEscape */ ((int)$review->getSum() / (int)$review->getCount()) ?>%</span></span>
+                </div>
+            </div>
+        <?php endif; ?>
+        <p class="review-title">
+            <?= $block->escapeHtml($review->getTitle()); ?>
+        </p>
+        <div class="review-details">
+            <?= nl2br($block->escapeHtml($review->getDetail())); ?>
+        </div>
+        <div class="review-product">
+            <div class="product-image">
+                <?= $block->getProductImage($review); ?>
+            </div>
+            <p class="product-details">
+                <a class="product-name" href="<?= $block->escapeUrl($block->getProductUrl($review)) ?>"><?= $block->escapeHtml($review->getName()) ?></a>
+            </p>
+        </div>
+        <div class="clearfix"/>
+    </div>
+</div>
+    <?php endforeach; ?>
+<?php else: ?>
+    <div class="profile-feed-wrapper">
+        <div class="profile-review profile-feed-padding">
+            <p class="no-activity-label"><?= __('No Activity Yet'); ?></p>
+            <p class="no-activity-msg"><span class="profile-name"> <?= $block->getUserProfileName() ?></span> <?= __('did not post any reviews or created a public product collection'); ?></p>
+        </div>
+    </div>
+<?php endif; ?>

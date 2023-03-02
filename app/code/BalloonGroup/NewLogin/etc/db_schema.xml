@@ -1,0 +1,55 @@
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="balloon_newlogin_companies" onCreate="migrateDataFromAnotherTable(ballon_newlogin_companies)">
+        <column xsi:type="int" name="company_id" unsigned="true" nullable="false" identity="true"
+                comment="Company ID"/>
+        <column xsi:type="varchar" name="company" nullable="false" length="64" comment="Company name"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Creation Time"/>
+        <column xsi:type="timestamp" name="updated_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Update Time"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="company_id"/>
+        </constraint>
+    </table>
+    <table name="balloon_newlogin_email_domains" onCreate="migrateDataFromAnotherTable(ballon_newlogin_email_domains)">
+        <column xsi:type="int" name="email_domain_id" unsigned="false" nullable="false" identity="true"
+                comment="Email Domain ID"/>
+        <column xsi:type="int" name="company_id" unsigned="true" nullable="false" identity="false"
+                default="0" comment="Company ID"/>
+        <column xsi:type="varchar" name="email_domain" nullable="true" length="255" comment="Email Domain"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Creation Time"/>
+        <column xsi:type="timestamp" name="updated_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Update Time"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="email_domain_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="FK_20EF746392B1AFC20C133D6BE82A403A"
+                    table="balloon_newlogin_email_domains" column="company_id" referenceTable="balloon_newlogin_companies"
+                    referenceColumn="company_id" onDelete="CASCADE"/>
+        <constraint xsi:type="unique" referenceId="AUTHORIZED_ID_UNIQUE">
+            <column name="email_domain"/>
+        </constraint>
+    </table>
+    <table name="balloon_newlogin_authorized_dnis" onCreate="migrateDataFromAnotherTable(balloon_newlogin_authorised_dnis)">
+        <column xsi:type="int" name="authorized_dni_id" unsigned="false" nullable="false" identity="true"
+                comment="Authorized DNI ID" onCreate="migrateDataFrom(authorised_dni_id)"/>
+        <column xsi:type="int" name="company_id" unsigned="true" nullable="false" identity="false"
+                default="0" comment="Company ID"/>
+        <column xsi:type="int" name="authorized_dni" nullable="true" comment="Authorized DNI" onCreate="migrateDataFrom(authorised_dni)" />
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Creation Time"/>
+        <column xsi:type="timestamp" name="updated_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Update Time"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="authorized_dni_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="FK_578A25B9B3B51E531BD731CE66AEE46F"
+                    table="balloon_newlogin_authorized_dnis" column="company_id" referenceTable="balloon_newlogin_companies"
+                    referenceColumn="company_id" onDelete="CASCADE"/>
+        <constraint xsi:type="unique" referenceId="AUTHORIZED_ID_UNIQUE">
+            <column name="authorized_dni"/>
+        </constraint>
+    </table>
+</schema>

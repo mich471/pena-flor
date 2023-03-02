@@ -1,0 +1,32 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+/** @var \Magento\Sales\Block\Order\Email\Items\DefaultItems $block */
+
+/** @var $item Magento\Sales\Model\Order\Item */
+$item = $block->getItem();
+
+/** @var \Magento\Sales\Model\Order $order */
+$order = $item->getOrder();
+?>
+PP
+<?php if ($item->getRowTotal() == $item->getRowTotalInclTax()): ?>
+
+    <?= /* @escapeNotVerified */  $order->formatPrice($item->getRowTotalInclTax()) ?>
+
+<?php else: ?>
+    <?= /* @escapeNotVerified */  $order->formatPrice($item->getRowTotalInclTax()) ?>
+    <br>
+    <p style="font-size:12px">Excl Tax:
+        <del>
+            <?= /* @escapeNotVerified */  $order->formatPrice($item->getRowTotal()) ?>
+        </del>
+    </p>
+<?php endif; ?>

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="page.main.title" remove="true"/>
+        <referenceContainer name="content">
+            <block class="WeltPixel\AdvancedWishlist\Block\Wishlist\ProductList"
+                   name="weltpixel.wishlist.product.list" as="weltpixel.wishlist.product.list"
+                   template="WeltPixel_AdvancedWishlist::product/list.phtml"
+            >
+                <block class="Magento\Wishlist\Block\Customer\Wishlist\Item\Column\Image" name="customer.wishlist.item.image" template="Magento_Wishlist::item/column/image.phtml"/>
+                <block class="Magento\Wishlist\Block\Customer\Wishlist\Item\Column\Info" name="customer.wishlist.item.name" template="Magento_Wishlist::item/column/name.phtml" />
+                <block class="Magento\Wishlist\Block\Customer\Wishlist\Item\Column\Cart" name="customer.wishlist.item.price" template="Magento_Wishlist::item/column/price.phtml">
+                    <block class="Magento\Catalog\Pricing\Render" name="product.price.render.wishlist">
+                        <arguments>
+                            <argument name="price_render" xsi:type="string">product.price.render.default</argument>
+                            <argument name="price_type_code" xsi:type="string">wishlist_configured_price</argument>
+                            <argument name="price_label" xsi:type="boolean">false</argument>
+                            <argument name="zone" xsi:type="string">item_list</argument>
+                        </arguments>
+                    </block>
+                    <block class="Magento\Wishlist\Block\Customer\Wishlist\Item\Options" name="customer.wishlist.item.options" />
+                </block>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

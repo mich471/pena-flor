@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <fieldset name="weltpixel_rich_snippets">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string" translate="true">WeltPixel Rich Snippets Options</item>
+                <item name="collapsible" xsi:type="boolean">true</item>
+                <item name="sortOrder" xsi:type="number">90</item>
+            </item>
+        </argument>
+        <field name="og_meta_image">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">10</item>
+                    <item name="label" translate="true" xsi:type="string">Open Graph Image</item>
+                    <item name="dataType" xsi:type="string">string</item>
+                    <item name="dataScope" xsi:type="string">og_meta_image</item>
+                    <item name="formElement" xsi:type="string">fileUploader</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/form/element/file-uploader</item>
+                    <item name="allowedExtensions" xsi:type="string">jpg jpeg gif png</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="maxFileSize" xsi:type="string">4194304</item>
+                    <item name="uploaderConfig" xsi:type="array">
+                        <item name="url" xsi:type="url" path="weltpixelgooglecards/googlecards/saveogimage"/>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="og_meta_image_alt">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">20</item>
+                    <item name="dataType" xsi:type="string">string</item>
+                    <item name="dataScope" xsi:type="string">og_meta_image_alt</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="scopeLabel" xsi:type="string">[STORE VIEW]</item>
+                    <item name="label" xsi:type="string" translate="true">Open Graph Image ALT</item>
+                    <item name="notice" xsi:type="string" translate="true">
+                        <![CDATA[ Set ALT text for Open Graph Image to improve SEO.]]>
+                    </item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+</form>

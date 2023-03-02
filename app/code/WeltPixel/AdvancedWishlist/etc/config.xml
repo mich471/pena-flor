@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <weltpixel_advancedwishlist>
+            <general>
+                <enable_multiwishlist>0</enable_multiwishlist>
+                <enable_ajaxwishlist>0</enable_ajaxwishlist>
+                <disable_default_share>0</disable_default_share>
+                <enable_sharewishlist>0</enable_sharewishlist>
+                <enable_publicwishlist>0</enable_publicwishlist>
+                <enable_pricealert>0</enable_pricealert>
+                <pricealert_frequency>0 */5 * * *</pricealert_frequency>
+            </general>
+        </weltpixel_advancedwishlist>
+    </default>
+</config>

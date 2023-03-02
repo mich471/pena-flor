@@ -1,0 +1,102 @@
+<?php
+
+// @codingStandardsIgnoreFile
+
+$uniqueid = 'instagram-widget-' . uniqid();
+$imagesPerRow = $this->getData('images_per_row');
+$openImagesInNewTab = ($this->getData('images_in_new_tab')) ? 'target="_blank"' : '';
+$imagesHavePadding = ($this->getData('images_have_padding')) ? 'use-padding' : '';
+$imagesHaveCaption = ($this->getData('images_have_caption')) ? true : false;
+$useImageShuffle = ($this->getData('optimize_image_layout')) ? true : false;
+$useImageLazyLoad = ($this->isLazyLoadEnabled() && $this->getData('enable_lazyload'));
+$showVideos = ($this->getData('show_videos')) ? true : false;
+$description = trim($this->getData('description'));
+$backgroundColor = trim($this->getData('background_color'));
+$title = trim($this->getData('title'));
+$limit = intval($this->getData('limit'));
+$token = $this->getInstagramToken();
+$imagesAltTag = $this->getData('images_alt_text') ?? '0';
+$imagesAltLabel = '';
+
+$lazyloadPlaceholderWidth = $this->getLazyLoadPlaceholderWidth() ?? '100%';
+switch ($imagesAltTag) {
+    case '2':
+        $imagesAltLabel = $block->escapeHtml(trim($this->getData('custom_alt_text')));
+        break;
+    case '0':
+    default:
+        $imagesAltLabel = '';
+        break;
+}
+?>
+<div class="instagram-widget-container " <?php if ($backgroundColor) : ?> style="background-color: <?php echo $backgroundColor; ?>" <?php endif; ?>>
+    <div class="instagram-heading-title center">
+        <?php if ($title) :  ?>
+            <h3><?php /* @escapeNotVerified */ echo $title ?></h3>
+        <?php endif; ?>
+        <?php if ($description) :  ?>
+            <span class="center"><?php /* @escapeNotVerified */ echo $description ?></span>
+        <?php endif; ?>
+    </div>
+    <div id="<?php echo $uniqueid; ?>" class="instagram-photos <?php /* @escapeNotVerified */ echo $imagesPerRow . ' ' . $imagesHavePadding ?>" ></div>
+</div>
+<div class="clear" >&nbsp;</div>
+<script>
+    require([
+        'jquery',
+        'instagramFeedBasic',
+        'shufflejs',
+        'underscore'
+        <?php if ($useImageLazyLoad) : ?>
+     ,'WeltPixel_LazyLoading/js/jquery_lazyload'
+<?php endif  ?>
+        ],
+        function ($, instagramFeedBasic, Shuffle, _) {
+            var $instagramPhotosEl = $('#<?php echo $uniqueid; ?>');
+            if( $instagramPhotosEl.length > 0 ){
+
+                $instagramPhotosEl.each(function() {
+                    var instaGramTarget ='#<?php echo $uniqueid; ?>',
+                        instaGramCount = <?php echo $limit ?>,
+                        instagramToken = '<?php echo $token ?>',
+                        instaImageNewTab = '<?php  echo $openImagesInNewTab ?>',
+                        instaImagePadding = '<?php  echo $imagesHavePadding ?>',
+                        useImageShuffle = '<?php echo $useImageShuffle ?>',
+                        useImageCaption = '<?php echo $imagesHaveCaption ?>',
+                        useImageLazyLoad = '<?php echo $useImageLazyLoad ?>',
+                        showVideos = '<?php echo $showVideos ?>',
+                        lazyLoadPlaceholderWidth = '<?php echo $lazyloadPlaceholderWidth ?>',
+                        instaImageAltTag = <?php echo $imagesAltTag ?>,
+                        instaImageAltLabel = '<?php echo $imagesAltLabel ?>';
+
+
+                    if( !instaGramCount ) { instaGramCount = 6; }
+                    $.instagramFeedBasic({
+                        'container': instaGramTarget,
+                        'items': instaGramCount,
+                        'token': instagramToken,
+                        'image_new_tab' : instaImageNewTab,
+                        'display_captions' : useImageCaption,
+                        'image_padding' : instaImagePadding,
+                        'image_alt_tag': instaImageAltTag,
+                        'image_alt_label': instaImageAltLabel,
+                        'image_lazy_load' : useImageLazyLoad,
+                        'show_videos': showVideos,
+                        'lazy_load_placeholder_width' : lazyLoadPlaceholderWidth,
+                        'after': function() {
+                            if (useImageShuffle) {
+                               new Shuffle($instagramPhotosEl);
+                                if (useImageLazyLoad) {
+                                    $(window).scroll(_.debounce(function () {
+                                        var evt = window.document.createEvent('UIEvents');
+                                        evt.initUIEvent('resize', true, false, window, 0);
+                                        window.dispatchEvent(evt);
+                                    }, 350));
+                                }
+                            }
+                        }
+                    });
+                });
+            }
+        });
+</script>

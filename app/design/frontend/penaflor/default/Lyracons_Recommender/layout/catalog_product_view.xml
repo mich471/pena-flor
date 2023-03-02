@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="catalog.product.related">
+            <block class="Lyracons\Recommender\Block\Recommender" name="catalog.product.related.recommender"
+                   as="recommender_renderer" template="Lyracons_Recommender::recommender.phtml"/>
+        </referenceBlock>
+        <referenceBlock name="catalog.product.upsell">
+            <block class="Lyracons\Recommender\Block\Recommender" name="catalog.product.upsell.recommender"
+                   as="recommender_renderer" template="Lyracons_Recommender::recommender.phtml"/>
+        </referenceBlock>
+    </body>
+</page>

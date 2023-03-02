@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Email:etc/email_templates.xsd">
+    <template id="weltpixel_wishlist_productalert_email_price_template" label="WeltPixel Wishlist Price Alert" file="price_alert.html" type="html" module="WeltPixel_AdvancedWishlist" area="frontend"/>
+</config>

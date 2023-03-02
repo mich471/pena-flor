@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="carriers">
+            <group id="matrixrate">
+                <field id="shipping_method_labels" translate="label comment" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Shipping Method Label</label>
+                    <frontend_model>SummaSolutions\WebShopAppsMatrixRate\Block\Adminhtml\Rate\Label</frontend_model>
+                    <backend_model>Magento\Config\Model\Config\Backend\Serialized\ArraySerialized</backend_model>
+                    <comment>Label to Show With this Method in Front (Please note shipping method title above will show as well)</comment>
+                </field>
+                <field id="condition_from_inclusive" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Include Minimum</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Include condition minimum value as a possible value for rates search</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

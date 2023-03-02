@@ -1,0 +1,34 @@
+<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('service-pv-links')->toHtml();?>
+
+<div class="overlayNew services-modal service-medios-de-pago" style="display:none;">
+	<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('service-pv-medios-de-pago')->toHtml();?>
+</div>
+<div class="overlayNew services-modal service-envio" style="display:none;">
+	<?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('service-pv-envios')->toHtml();?>
+</div>
+<script>
+
+require(['jquery','domReady!'],function($){
+
+		$('.services-show-medios-de-pago').on('click', function(e){
+		    e.preventDefault();
+		    $('.overlayNew').hide();
+		    $('.overlayNew.services-modal.service-medios-de-pago').fadeIn();
+	    });		
+
+	    $('.services-show-envio').on('click', function(e){
+		    e.preventDefault();
+		    $('.overlayNew').hide();
+		    $('.overlayNew.services-modal.service-envio').fadeIn();
+	    });
+		// $('.overlayNew.services-modal').on("mousewheel", function() {
+		//      return false;
+		// });
+
+		$('.overlayNew.services-modal .closeer').on('click', function(){
+		    $('.overlayNew').fadeOut(200);
+		});
+
+});
+       
+</script>

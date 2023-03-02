@@ -1,0 +1,178 @@
+.btt-button {
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    /* image replacement properties */
+    overflow: hidden;
+    text-align:center;
+    white-space: nowrap;
+    background: #ffffff;
+    visibility: hidden;
+    opacity: 0;
+    -webkit-transition: opacity .3s 0s, visibility 0s .3s;
+    -moz-transition: opacity .3s 0s, visibility 0s .3s;
+    transition: opacity .3s 0s, visibility 0s .3s;
+    z-index:100;
+}
+.btt-button:after {
+    font-family: 'luma-icons';
+    position: absolute;
+    content: '\e621';
+    top: 10px;
+    left: 10px;
+}
+.theme-pearl .page-wrapper .btt-button.btt-button-image,.theme-pearl .page-wrapper .btt-button.btt-button-image-default {
+    width: auto;
+    height: auto;
+    padding: 5px 15px;
+    border-width: 0;
+    border-color: transparent;
+    transition: all 0.3s;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    background-color: #fff;
+    color: #0a0a0a;
+}
+
+.btt-button.btt-button-image:hover,.btt-button.btt-button-image-default:hover {
+    transition: all 0.3s;
+    box-shadow: 0 15px 25px -5px #A9A9A9;
+}
+.btt-button.btt-button-image:after, .btt-button.btt-button-image-default:after {
+    content: '';
+}
+.btt-button.btt-button-image:before, .btt-button.btt-button-image-default:before{
+    font-family: 'luma-icons';
+    content: '\e621';
+    top: 10px;
+    left: 10px;
+}
+.theme-pearl .page-wrapper .btt-button.btt-button-image,.theme-pearl .page-wrapper .btt-button.btt-button-image-desktop-only {
+    width: auto;
+    height: auto;
+    padding: 5px 15px;
+    border-width: 0;
+    border-color: transparent;
+    transition: all 0.3s;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    background-color: #fff;
+    color: #0a0a0a;
+}
+.btt-button.btt-button-image:hover,.btt-button.btt-button-image-desktop-only:hover {
+    transition: all 0.3s;
+    box-shadow: 0 15px 25px -5px #A9A9A9;
+}
+.btt-button.btt-button-image:after, .btt-button.btt-button-image-desktop-only:after {
+    content: '';
+}
+.btt-button.btt-button-image:before, .btt-button.btt-button-image-desktop-only:before{
+    font-family: 'luma-icons';
+    content: '\e621';
+    top: 10px;
+    left: 10px;
+}
+.btt-button .icon-chevron-up{
+    align-content: center;
+    vertical-align: middle;
+    text-align: center;
+    color: #000;
+    font-size: 20px;
+    line-height: 38px;
+}
+.btt-button.cd-is-visible, .btt-button.cd-fade-out, .no-touch .btt-button:hover {
+    -webkit-transition: opacity .3s 0s, visibility 0s 0s;
+    -moz-transition: opacity .3s 0s, visibility 0s 0s;
+    transition: opacity .3s 0s, visibility 0s 0s;
+}
+.btt-button.cd-is-visible {
+    /* the button becomes visible */
+    visibility: visible;
+    opacity: 1;
+    z-index: 0;
+}
+.btt-button.cd-fade-out {
+    /* if the user keeps scrolling down, the button is out of focus and becomes less visible */
+    opacity: .5;
+}
+.btt-button.cd-fade-out:hover {
+    opacity: 1;
+}
+.no-touch .btt-button:hover {
+    background-color: #000;
+    opacity: 1;
+}
+.btt-button.btt-button-image .btt-img, .btt-button.btt-button-image-default .btt-img-default {
+    max-height: 70px;
+}
+.btt-button.btt-button-image .btt-label, .btt-button.btt-button-image-default .btt-label-default {
+    color: #303030;
+    font-weight: 400;
+    line-height: 1.1;
+    font-size: 1.4rem;
+    text-align: center;
+}
+.btt-button.btt-button-image .btt-img, .btt-button.btt-button-image-default .btt-img-desktop-only {
+    max-height: 70px;
+}
+.btt-button.btt-button-image .btt-label, .btt-button.btt-button-image-default .btt-label-default, .btt-button.btt-button-image-desktop-only .btt-label-desktop-only {
+    color: #303030;
+    font-weight: 400;
+    line-height: 1.1;
+    font-size: 1.4rem;
+    text-align: center;
+}
+.btt-button .product-reviews-summary, .btt-button .product-reviews-summary {
+    margin: 0;
+}
+.btt-button .product-reviews-summary, .btt-button .product-reviews-summary-default .rating-summary .rating-result, .btt-button .product-reviews-summary-desktop-only .rating-summary .rating-result {
+    float: none !important;
+}
+.btt-button.btt-button-image-default .btt-price-default, .btt-button.btt-button-image .btt-price, .btt-button.btt-button-image-desktop-only .btt-price-desktop-only {
+    font-size: 1.4rem;
+    margin: 0;
+}
+@media (max-width: 767px) {
+    .theme-pearl .page-wrapper .btt-button.btt-button-image-default {
+        height: 40px;
+        width: 40px;
+        background-color: #0a0a0a;
+    }
+
+    .theme-pearl .page-wrapper .btt-button.btt-button-image-default:hover {
+        background-color: #ffffff;
+        border: #232323 1px solid;
+    }
+
+    .btt-button {
+        z-index: 10;
+    }
+
+    .btt-button.btt-button-image-default::after{
+        font-family: 'luma-icons';
+        color: #FFFFFF;
+        position: absolute;
+        content: '\e621';
+        top: 10px;
+        left: 10px;
+    }
+
+    .btt-button.btt-button-image-default:hover::after {
+        color: #000000;
+    }
+
+    .btt-button.cd-is-visible {
+        z-index: 1;
+    }
+
+    .btt-button.btt-button-image-default .btt-img-default,
+    .btt-button.btt-button-image-default .btt-label-default,
+    .btt-button.btt-button-image-default .product-reviews-summary-default,
+    .btt-button.btt-button-image-default .btt-price-default,
+    .btt-button.btt-button-image-default:before,
+    .btt-button.btt-button-image-desktop-only {
+        display: none;
+    }
+}

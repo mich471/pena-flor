@@ -1,0 +1,24 @@
+<?php
+$_helper = $this->helper('WeltPixel\LazyLoading\Helper\Data');
+$imageLoader = $_helper->getImageLoader();
+$negativeMargin = $_helper->startLoadingEarly() ? $_helper->getNegativeMargin() : 0;
+$effectSpeed = $_helper->startLoadingEarly() ? $_helper->getEffectSpeed() : 0;
+?>
+<script type="text/javascript">
+    window.wpLazyLoad = window.wpLazyLoad || {};
+    window.wpLazyLoad.effect = "fadeIn";
+    window.wpLazyLoad.effectspeed = <?php echo $effectSpeed ?>;
+    window.wpLazyLoad.imageloader = "<?php echo $imageLoader ?>";
+    window.wpLazyLoad.threshold = "<?php echo $negativeMargin ?>";
+    require(['jquery', 'WeltPixel_LazyLoading/js/jquery_lazyload'], function($) {
+        $("img.lazy").lazyload({
+            effect: "fadeIn",
+            effectspeed: <?php echo $effectSpeed ?>,
+            imageloader: "<?php echo $imageLoader ?>",
+            threshold: "<?php echo $negativeMargin ?>",
+            load: function(elements_left, settings) {
+                $(this).css({'max-width':'100%'});
+            }
+        });
+    });
+</script>

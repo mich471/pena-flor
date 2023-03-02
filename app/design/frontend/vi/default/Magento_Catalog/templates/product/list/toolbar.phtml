@@ -1,0 +1,87 @@
+<?php
+
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+?>
+<?php
+/**
+ * Product list toolbar
+ *
+ * @var $block \Magento\Catalog\Block\Product\ProductList\Toolbar
+ */
+
+// phpcs:disable Magento2.Security.IncludeFile.FoundIncludeFile
+// phpcs:disable PSR2.Methods.FunctionCallSignature.SpaceBeforeOpenBracket
+?>
+<?php if ($block->getCollection()->getSize()) : ?>
+    <?php $widget = $this->helper(\Magento\Framework\Json\Helper\Data::class)->jsonDecode($block->getWidgetOptionsJson());
+    $widgetOptions = $this->helper(\Magento\Framework\Json\Helper\Data::class)->jsonEncode($widget['productListToolbarForm']);
+    ?>
+    <div class="toolbar toolbar-products" data-mage-init='{"productListToolbarForm":<?= /* @noEscape */ $widgetOptions ?>}'>
+        <?php if ($block->isExpanded()) : ?>
+            <?php include($block->getTemplateFile('Magento_Catalog::product/list/toolbar/viewmode.phtml')) ?>
+        <?php endif; ?>
+
+        <?php include($block->getTemplateFile('Magento_Catalog::product/list/toolbar/amount.phtml')) ?>
+
+        <?= $block->getPagerHtml() ?>
+
+        <?php include($block->getTemplateFile('Magento_Catalog::product/list/toolbar/limiter.phtml')) ?>
+
+        <?php if ($block->isExpanded()) : ?>
+            <?php include($block->getTemplateFile('Magento_Catalog::product/list/toolbar/sorter.phtml')) ?>
+        <?php endif; ?>
+    </div>
+<?php endif ?>
+
+
+<script>
+    function displayProductsInPage() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const currentPage = urlParams.get('p');
+        const priceFilter = urlParams.get('price');
+
+        const productsPerPage = 12;
+        const products = Array.from(document.querySelectorAll(".product-items .product-item"));
+
+        let from, to;
+
+        if (!currentPage) {
+            from = 0;
+            to = productsPerPage - 1;
+        } else if (currentPage != null && !priceFilter) {
+            from = 0;
+            to = productsPerPage - 1;            
+        }
+        else {
+            from = (currentPage - 1) * productsPerPage;
+            to = (currentPage * productsPerPage) - 1;
+        }
+
+        for (let i = 0; i < products.length; i++) {
+            if (i < from || i > to) {
+                products[i].style.display = "none";
+            } else if (!priceFilter) {
+                products[i].style.display = "inline-block";
+            }
+            else {
+                products[i].style.display = "inline-block";
+            }
+        }
+
+        return;
+    }
+
+    displayProductsInPage();
+    // reemplazar por una función que se llame hasta que currentpage no sea null
+    var startTime = new Date().getTime();
+    var interval = setInterval(function() {
+        if (new Date().getTime() - startTime > 5000) {
+            clearInterval(interval);
+            return;
+        }
+        displayProductsInPage();
+    }, 100);
+</script>

@@ -1,0 +1,37 @@
+diff --git a/view/frontend/layout/catalog_product_view.xml b/view/frontend/layout/catalog_product_view.xml
+new file mode 100755
+index 0000000..7934a6b
+--- /dev/null
++++ b/vendor/codazon/ajaxcartpro/view/frontend/layout/catalog_product_view.xml
+@@ -0,0 +1,14 @@
++<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
++	<body>
++		<referenceBlock name="product.info.addtocart">
++			<action method="setTemplate">
++                <argument name="template" xsi:type="string">Codazon_AjaxCartPro::product/view/addtocart.phtml</argument>
++            </action>
++		</referenceBlock>
++		<referenceBlock name="product.info.addtocart.additional">
++			<action method="setTemplate">
++				<argument name="template" xsi:type="string">Codazon_AjaxCartPro::product/view/addtocart.phtml</argument>
++			</action>
++		</referenceBlock>
++	</body>
++</page>
+\ No newline at end of file
+diff --git a/view/frontend/layout/catalog_product_view_type_bundle.xml b/view/frontend/layout/catalog_product_view_type_bundle.xml
+new file mode 100644
+index 0000000..d874554
+--- /dev/null
++++ b/vendor/codazon/ajaxcartpro/view/frontend/layout/catalog_product_view_type_bundle.xml
+@@ -0,0 +1,9 @@
++<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
++	<body>
++		<referenceBlock name="product.info.addtocart.bundle">
++			<action method="setTemplate">
++                <argument name="template" xsi:type="string">Codazon_AjaxCartPro::product/view/addtocart.phtml</argument>
++            </action>
++		</referenceBlock>
++	</body>
++</page>
+\ No newline at end of file

@@ -1,0 +1,23 @@
+{
+    "name": "weltpixel/m2-weltpixel-sample-data",
+    "description": "WeltPixel SmpleData Module",
+    "require": {
+        "magento/module-cms": "*",
+        "magento/module-sample-data": "*",
+        "weltpixel/m2-weltpixel-design-elements": "*"
+    },
+    "type": "magento2-module",
+    "version": "1.10.17",
+    "license": [
+        "OSL-3.0",
+        "AFL-3.0"
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "WeltPixel\\SampleData\\": ""
+        }
+    }
+}

@@ -1,0 +1,124 @@
+& when (@media-common = true) {
+    .theme-pearl.store-view-penaflor.page-products {
+        .page-main {
+            .columns {
+                .toolbar-sorter.sorter {
+                    display: none;
+                }
+                .sidebar {
+                    #layered-filter-block {
+                        .filter-content {
+                            .filter-subtitle{
+                                display: none;
+                            }
+
+                            .filter-options {
+                                .filter-options-title {
+                                    font-size: 16px;
+                                    font-weight: 800;
+                                    &:after {
+                                        display: none;
+                                    }
+
+                                }
+                                .filter-options-content {
+                                    .items {
+                                        .item {
+                                            a {
+                                                &:before {
+                                                    display: none;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            p#toolbar-amount {
+                display: none !important;
+            }
+            .toolbar.toolbar-products {
+                display: flex;
+                justify-content: flex-end;
+                gap: 54px;
+            }
+            .content-filter{
+                .collapse{
+                    height: 0;
+                    visibility: collapse;
+                    overflow: hidden;
+                    transition: height 0.2s;
+                }
+                .no-collapse{
+                      height: auto;
+                      transition: height 0.2s;
+                  }
+                span.span-collapse {
+                    display: flex;
+                    justify-content: end;
+                }
+                span.span-collapse {
+                    position: relative;
+                    bottom: 65px;
+                    font-size: 15px;
+                    gap: 12px;
+                    align-items: center;
+                    font-weight: 700;
+                }
+                .ctegory-filter {
+                    display: inline-grid;
+                    margin-right: 35px;
+                    margin-left: 10px;
+                }
+                .filter-left {
+                    justify-items: start;
+                }
+                h2.titlevin {
+                    font-size: 16px;
+                    padding: 20px 0px 20px;
+                }
+                .butvin {
+                    padding-left: 3px;
+                    text-transform: capitalize;
+                }
+                input[type="checkbox"] {
+                    width: 20px;
+                    height: 20px;
+                }
+                .content-range {
+                    display: flex;
+                    justify-content: space-between;
+                }
+                a.butvin {
+                    color: #B1B1B1;
+                    font-size: 14px;
+                    line-height: 30px;
+                }
+                .labelvin {
+                    color: #B1B1B1;
+                }
+                #range{
+                    height: 5px;
+                    width: 100%;
+                    background-color: @color-black;
+                    border-radius: 50px;
+                    -webkit-appearance: none;
+                }
+                #range::-moz-range-thumb {
+                    width: 25px;
+                    height: 25px;
+                    background-color: black;
+                    border-radius: 50%;
+                    border: 0;
+                }
+                button {
+                    background: transparent;
+                    border: none;
+                }
+            }
+        }
+    }
+}

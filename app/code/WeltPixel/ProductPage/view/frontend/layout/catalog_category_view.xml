@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="search_result_list">
+            <container name="categorysearch.productprevnext.list.additional" as="categorysearch.productprevnext.additional" />
+        </referenceBlock>
+        <referenceContainer name="category.product.list.additional">
+            <block ifconfig="weltpixel_product_page/prevnext/enable" class="WeltPixel\ProductPage\Block\ListedProducts" name="category.product.list.weltpixel.productpage" template="WeltPixel_ProductPage::product/prevnext/list.phtml" />
+        </referenceContainer>
+    </body>
+</page>

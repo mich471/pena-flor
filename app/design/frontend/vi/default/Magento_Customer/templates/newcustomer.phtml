@@ -1,0 +1,28 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var \Magento\Customer\Block\Form\Login\Info $block */
+?>
+<?php if ($block->getRegistration()->isAllowed()): ?>
+<div class="block block-new-customer">
+    <div class="block-title">
+        <strong id="block-new-customer-heading" role="heading" aria-level="2"><?php /* @escapeNotVerified */ echo __('New Customers') ?></strong>
+    </div>
+    <div class="block-content" aria-labelledby="block-new-customer-heading">
+        <p><?php /* @escapeNotVerified */ echo __('¿Sos nuevo en el sitio?') ?></p>
+        <div class="actions-toolbar">
+            <div class="primary">
+                <a href="<?php /* @escapeNotVerified */ echo $block->getCreateAccountUrl() ?>" class="action create primary"><span><?php /* @escapeNotVerified */ echo __('Create an Account') ?></span></a>
+            </div>
+        </div>
+    </div>
+</div>
+<?php endif; ?>
+<div class="logo-login">
+    <img src="<?php echo $this->getViewFileUrl('images/logo_penaflor.png'); ?>" width="220" alt="Grupo Peñaflor"/>
+</div>

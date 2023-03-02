@@ -1,0 +1,57 @@
+<?php
+$product = $block->getProduct();
+$productId = $product->getId();
+?>
+<script>
+    require(['jquery',  'mage/storage', 'jquery/jquery-storageapi'],
+        function ($) {
+            $.cookieStorage.setConf({
+                path: '/',
+                expires: 1,
+                samesite: 'lax'
+            });
+            var productId = "<?= $productId ?>", prevnextFetchInfo = '<?= $block->getUrl("wpproductpage/prevnext/fetch"); ?>',
+                listedProductIds = $.cookieStorage.get('wpListedProductIds');
+
+            function updateProductLinks(updateLinks) {
+                var productIds = Object.keys(updateLinks);
+                $.ajax({
+                    url: prevnextFetchInfo,
+                    method: 'POST',
+                    dataType: 'json',
+                    data: {
+                        'productIds': productIds,
+                    },
+                    success: function (response) {
+                        if (response.result) {
+                            var productInfo = response.productInfo;
+                            for (var i=0; i<productIds.length; i++) {
+                                var prId = productIds[i];
+                                if (productInfo[prId]) {
+                                    $('.wp-productpage-prev-next').css('display', 'block');
+                                    $(updateLinks[prId]).attr('href', productInfo[prId].href).html("<span>" + productInfo[prId].html + "</span>").show();
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+
+            if (listedProductIds) {
+                var currentProductPosition = listedProductIds.indexOf(productId);
+                var productListLength = listedProductIds.length;
+                var updateLinks = {};
+                if (currentProductPosition != -1) {
+                    if (currentProductPosition - 1 >= 0) {
+                        updateLinks[listedProductIds[currentProductPosition - 1]] =  '.wp-pp-prev-link';
+                    }
+                    if (currentProductPosition + 1 < productListLength) {
+                        updateLinks[listedProductIds[currentProductPosition + 1]] =  '.wp-pp-next-link';
+                    }
+                    updateProductLinks(updateLinks);
+                }
+
+            }
+    });
+</script>

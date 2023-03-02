@@ -1,0 +1,42 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="checkout.cart.item.renderers">
+            <referenceBlock name="checkout.cart.item.renderers.default">
+                <action method="setTemplate">
+                    <argument name="template" xsi:type="string">Lyracons_QtyIncrement::cart/item/default.phtml</argument>
+                </action>
+            </referenceBlock>
+            <referenceBlock name="checkout.cart.item.renderers.configurable">
+                <action method="setTemplate">
+                    <argument name="template" xsi:type="string">Lyracons_QtyIncrement::cart/item/default.phtml</argument>
+                </action>
+            </referenceBlock>
+            <referenceBlock name="checkout.cart.item.renderers.simple">
+                <action method="setTemplate">
+                    <argument name="template" xsi:type="string">Lyracons_QtyIncrement::cart/item/default.phtml</argument>
+                </action>
+            </referenceBlock>
+            <referenceBlock name="checkout.cart.item.renderers.bundle">
+                <action method="setTemplate">
+                    <argument name="template" xsi:type="string">Lyracons_QtyIncrement::cart/item/default.phtml</argument>
+                </action>
+            </referenceBlock>
+            <referenceBlock name="checkout.cart.item.renderers.virtual">
+                <action method="setTemplate">
+                    <argument name="template" xsi:type="string">Lyracons_QtyIncrement::cart/item/default.phtml</argument>
+                </action>
+            </referenceBlock>
+            <referenceBlock name="checkout.cart.item.renderers.downloadable">
+                <action method="setTemplate">
+                    <argument name="template" xsi:type="string">Lyracons_QtyIncrement::cart/item/default.phtml</argument>
+                </action>
+            </referenceBlock>
+            <referenceBlock name="checkout.cart.item.renderers.grouped">
+                <action method="setTemplate">
+                    <argument name="template" xsi:type="string">Lyracons_QtyIncrement::cart/item/default.phtml</argument>
+                </action>
+            </referenceBlock>
+        
+        </referenceBlock>
+    </body>
+</page>

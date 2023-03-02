@@ -1,0 +1,40 @@
+<?php
+/**
+ * @var \Formax\Countdown\Block\Widget\Box $block
+ */
+?>
+<?php
+$date = strtotime($block->getData('date'));
+$label = trim($block->getData('title'));
+$skin = $block->getData('skin');
+$link = trim($block->getData('link'));
+$textFinish = trim($block->getData('text_finished'));
+?>
+<?php if (!empty($date)) : ?>
+    
+    <?php if (!empty($link)): ?>
+    <a href="<?= $link ?>" class="countdown-link">
+    <?php endif; ?>
+
+    <span class="countdown-box <?= $skin ?>" data-mage-init='{
+        "Formax_Countdown/js/countdown" : {
+            "finishTxt" : "<?= $textFinish ?>",
+            "date" : <?= $date ?>
+        }
+    }'>
+        <?php if (!empty($label)) : ?>
+        <span class="counter-label"><?= $label ?></span>
+        <?php endif; ?>
+        <!-- <span class="counter-num days" data-symbol="d">00</span> -->
+        <span class="counter-num hours" data-symbol="hs">00</span>
+        <span class="counter-num point">:</span>
+        <span class="counter-num mins" data-symbol="min">00</span>
+        <span class="counter-num point">:</span>
+        <span class="counter-num secs" data-symbol="seg">00</span>
+    </span>
+
+    <?php if (!empty($link)): ?>
+    </a>
+    <?php endif; ?>
+    
+<?php endif; ?>

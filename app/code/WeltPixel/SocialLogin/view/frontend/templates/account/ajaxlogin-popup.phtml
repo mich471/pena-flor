@@ -1,0 +1,33 @@
+<?php
+
+// @codingStandardsIgnoreFile
+
+/** @var \Magento\Customer\Block\Account\AuthenticationPopup $block */
+?>
+
+<div id="ajaxlogin-popup" data-bind="scope:'ajaxLogin'" style="display: none;">
+    <script>
+        window.ajaxLogin = <?= /* @noEscape */ $block->getSerializedConfig() ?>;
+        window.popupStyle = "<?= /* @noEscape */  $this->helper('WeltPixel\SocialLogin\Helper\Data')->getPopupStyle() ?>";
+        window.isEnabled = <?= /* @noEscape */  $this->helper('WeltPixel\SocialLogin\Helper\Data')->isEnabled() ?>;
+    </script>
+    <!-- ko template: getTemplate() --><!-- /ko -->
+    <script type="text/x-magento-init">
+        {
+            "#ajaxlogin-popup": {
+                "Magento_Ui/js/core/app": <?= /* @noEscape */ $block->getJsLayout() ?>
+            }
+        }
+    </script>
+    <script>
+    require([
+        "jquery"
+    ], function($) {
+
+        $(document).on("click", "button.action.login.primary.guest-sign-in", function(event){
+            event.preventDefault();
+            $(".modals-overlay").trigger("click")
+        })
+    })
+    </script>
+</div>

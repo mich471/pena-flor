@@ -1,0 +1,18 @@
+<?php
+
+// @codingStandardsIgnoreFile
+
+/** @var \WeltPixel\UserProfile\Block\Widget\Cover $block */
+?>
+<div class="field field-cover_image<?php if ($block->isRequired()) echo ' required'; ?>">
+    <label class="label" for="cover_image"><span><?= $block->escapeHtml(__('Cover')) ?></span></label>
+    <div class="control">
+        <input type="hidden" name="cover_image_current_image" value="<?= $block->escapeHtmlAttr($block->getCoverImage()) ?>"  />
+        <input accept="image/*" type="file" id="cover_image" name="cover_image" title="<?= $block->escapeHtmlAttr(__('Cover Image')) ?>" class="input-file <?php if ($block->isRequiredValidation()) echo ' required-entry' ?> " <?php if ($block->isRequiredValidation()) echo ' data-validate="{required:true}"' ?> />
+    </div>
+    <?php if ($block->getCoverImage()) : ?>
+        <div class="image_preview" style="margin-top: 20px">
+            <img style="width: 200px; height: 100px" src="<?= $block->getPreviewImage() ?>" alt="<?= $block->escapeHtmlAttr(__('Cover Image Preview')) ?>" />
+        </div>
+    <?php endif; ?>
+</div>

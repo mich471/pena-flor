@@ -1,0 +1,181 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2022 Amasty (https://www.amasty.com)
+ * @package Product Feed for Magento 2
+ */
+?>
+<?php
+/** @var \Amasty\Feed\Block\Adminhtml\Feed\Edit\Tab\Xml\Content $block */
+/** @var \Magento\Framework\Escaper $escaper */
+use Amasty\Feed\Model\OptionSource\Feed\ParentFlag;
+
+$_value       = $block->getElement()->getValue();
+$_htmlId      = $block->getElement()->getHtmlId();
+$_htmlClass   = $block->getElement()->getClass();
+$_htmlName    = $block->getElement()->getName();
+$_readonly    = $block->getElement()->getReadonly();
+$_elementId   = $block->getElement()->getElementId();
+
+$isMerged     = (bool)$block->getData('is_merged_attributes') ?: 0;
+$hiddenClass  = $isMerged ? 'hidden' : '';
+$xmlTableId = "xml_table";
+?>
+
+<div class="field" id="attribute-<?= $escaper->escapeHtml($_htmlId); ?>-container">
+    <label class="label">
+        <span><?= $escaper->escapeHtml($block->getElement()->getLabel()); ?></span>
+    </label>
+
+    <div class="control">
+        <textarea id="<?= $escaper->escapeHtmlAttr($_htmlId); ?>"
+                  name="<?= $escaper->escapeHtmlAttr($_htmlName); ?>"
+                  rows="20"
+                  cols="15"
+                  <?php if ($isMerged): ?>
+                      data-ui-id="fieldset-element-text-rule-result-merged-text"
+                      data-form-part="<?= $escaper->escapeHtmlAttr($block->getData('data-form-part')); ?>"
+                      formelementhookid="<?= $escaper->escapeHtmlAttr($block->getData('element-id')); ?>"
+                  <?php endif; ?>
+                  class="textarea <?= $escaper->escapeHtmlAttr($_htmlClass); ?> <?= /** @noEscape */ $hiddenClass ?>"><?= $block->escapeHtmlInContent($_value); ?></textarea>
+
+        <table class="admin__control-table amasty-xml-table" id=<?= /** @noEscape */ $xmlTableId . '_' . /** @noEscape */ $_htmlId ?>>
+            <thead>
+                <tr>
+                    <?php if (!$isMerged): ?>
+                        <th class="amasty-feed-header"><?= $escaper->escapeHtml(__('Tag')); ?></th>
+                    <?php endif; ?>
+                    <th class="amasty-feed-attribite"><?= $escaper->escapeHtml(__('Attribute')); ?></th>
+                    <?php if (!$isMerged): ?>
+                        <th class="amasty-feed-format"><?= $escaper->escapeHtml(__('Format')); ?></th>
+                        <th class="amasty-feed-optional"><?= $escaper->escapeHtml(__('Optional')); ?></th>
+                    <?php endif; ?>
+                    <th class="amasty-feed-parent"><?= $escaper->escapeHtml(__('Parent')) ?></th>
+                </tr>
+            </thead>
+            <tbody id="<?= $escaper->escapeHtml($_htmlId); ?>_container">
+            <tr>
+                <?php if (!$isMerged): ?>
+                    <td>
+                        <input id="<?= $escaper->escapeHtml($_htmlId); ?>_tag" class="input-text admin__control-text"/>
+                    </td>
+                <?php endif; ?>
+                <td>
+                    <select id="<?= $escaper->escapeHtml($_htmlId); ?>_attribute" class="select admin__control-select">
+                        <?php foreach ($block->getAttributeOptions() as $attributeOption): ?>
+                            <optgroup label="<?= $escaper->escapeHtml($attributeOption['label']); ?>">
+                                <?php foreach ($attributeOption['value'] as $attributeOptionValue): ?>
+                                    <option value="<?= $escaper->escapeHtml($attributeOptionValue['value']); ?>">
+                                        <?= $escaper->escapeHtml($attributeOptionValue['label']); ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </optgroup>
+                        <?php endforeach; ?>
+                    </select>
+                </td>
+                <?php if (!$isMerged): ?>
+                    <td>
+                        <select id="<?= $escaper->escapeHtml($_htmlId); ?>_format" class=" select admin__control-select">
+                            <?php foreach ($block->getFormatOptions() as $formatOption): ?>
+                            <option value="<?= $escaper->escapeHtml($formatOption['value']); ?>">
+                                <?= $escaper->escapeHtml($formatOption['label']); ?>
+                            </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </td>
+                    <td>
+                        <select id="<?= $escaper->escapeHtml($_htmlId); ?>_optional" class=" select admin__control-select">
+                            <?php foreach ($block->getYesNoOptions() as $yesNoOption): ?>
+                                <option value="<?= $escaper->escapeHtml($yesNoOption['value']); ?>">
+                                    <?= $escaper->escapeHtml($yesNoOption['label']); ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </td>
+                <?php endif; ?>
+                <td>
+                    <select id="<?= $escaper->escapeHtml($_htmlId); ?>_parent" class=" select admin__control-select">
+                        <?php foreach ($block->getParentFlagOptions() as $parentFlagOption): ?>
+                            <?php if (!$isMerged || $parentFlagOption['value'] != ParentFlag::YES_IF_EMPTY): ?>
+                                <option value="<?= $escaper->escapeHtml($parentFlagOption['value']); ?>">
+                                    <?= $escaper->escapeHtml($parentFlagOption['label']); ?>
+                                </option>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </select>
+                </td>
+            </tr>
+            <?php if (!$isMerged): ?>
+                <tr class>
+                    <td class="amasty-modify-cell" colspan="5">
+                        <table id="<?= $escaper->escapeHtml($_htmlId); ?>_modify_container">
+
+                        </table>
+                        <a class="amasty-modify-link" href="#" onclick="window.xmlEditor.modifyItem(this); return false;">
+                            <?= $escaper->escapeHtml(__("add modifier")) ?>
+                        </a>
+                    </td>
+                </tr>
+            <?php endif; ?>
+            </tbody>
+            <tfoot>
+                 <tr>
+                    <td colspan="<?= /** @noEscape */ $isMerged ? 2 : 5 ?>" class="col-actions-add">
+                        <?= /** @noEscape */ $block->getInsertButtonHtml(); ?>
+                        <?= /** @noEscape */ $block->getUpdateButtonHtml(); ?>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+
+<script id="modify-template_<?= $escaper->escapeHtml($_htmlId); ?>" type="text/x-magento-template">
+    <tr>
+        <td class="amasty-modify">
+            <select onchange="return xmlEditor.changeModifier(this);"
+                    id="field_row_<%- data.index %>_modify"
+                    class="<?= $escaper->escapeHtml($_htmlClass); ?> required-entry">
+                <?php foreach ($block->getModiftVars() as $modifyId => $modifyName): ?>
+                    <option value="<?= $escaper->escapeHtml($modifyId); ?>">
+                        <?= $escaper->escapeHtml($modifyName); ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+            <input style="display: none;" id="field_row_<%- data.index %>_arg0"
+                   class="<?= $escaper->escapeHtml($_htmlClass); ?>"/>
+            <input style="display: none;" id="field_row_<%- data.index %>_arg1"
+                   class="<?= $escaper->escapeHtml($_htmlClass); ?>"/>
+            <button title="<?= $escaper->escapeHtml(__('Delete')); ?>" type="button"
+                    class="action- scalable delete icon-btn delete-product-option"
+                    id="field_row_<%- data.index %>_delete_button"
+                    onclick="return window.xmlEditor.deleteItem(event);" >
+                <span><?= $escaper->escapeHtml(__('Delete')); ?></span>
+            </button>
+        </td>
+    </tr>
+</script>
+
+<script>
+    require([
+        'Amasty_Feed/js/xml-editor',
+        'mage/template'
+    ], function (xmlEditor, mageTemplate) {
+    //<![CDATA[
+        var editor = new xmlEditor(Math.random().toString(36).substring(2, 15));
+
+        editor.init(
+            mageTemplate(('#modify-template_<?= $escaper->escapeHtml($_htmlId); ?>')),
+            <?= /** @noEscape */ json_encode($escaper->escapeHtml(array_keys($block->getModiftVars()))); ?>,
+            <?= /** @noEscape */ json_encode($block->getArgs()); ?>,
+            "<?= /** @noEscape */ $_htmlId ?>",
+            "<?= /** @noEscape */ $xmlTableId . '_' . /** @noEscape */ $_htmlId ?>",
+            <?= /** @noEscape */ $isMerged ?>
+        );
+
+        if (!window.xmlEditor) {
+            window.xmlEditor = editor;
+        }
+    //]]>
+    })
+</script>

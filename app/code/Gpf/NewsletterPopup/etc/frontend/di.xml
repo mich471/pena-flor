@@ -1,0 +1,5 @@
+<config>
+    <type name="Plumrocket\Newsletterpopup\Controller\Index\Block">
+        <plugin name="Gpf_NewsletterPopup_CheckRestictedSite" type="Gpf\NewsletterPopup\Plugin\CheckRestictedSitePlugin" sortOrder="1" disabled="false" />
+    </type>
+</config>

@@ -1,0 +1,23 @@
+<?php
+/** @var \Magento\Review\Block\Product\Review $block */
+$uniqueid = 'review-widget-'.uniqid();
+?>
+<div id="<?= $uniqueid ?>" ></div>
+
+<?php
+
+// @codingStandardsIgnoreFile
+
+/** @var \Magento\Review\Block\Form $block */
+?>
+
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "WeltPixel_ReviewsWidget/js/process-reviews": {
+                "productReviewUrl": "<?= $block->escapeJs($block->escapeUrl($block->getProductReviewUrl())) ?>",
+                "reviewsSelector": "#<?= $uniqueid ?>"
+            }
+        }
+    }
+</script>

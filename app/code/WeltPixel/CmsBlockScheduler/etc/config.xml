@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <weltpixel_cmsblockscheduler_config>
+            <general>
+                <customer_group>0</customer_group>
+                <date_range>0</date_range>
+                <tag>0</tag>
+            </general>
+        </weltpixel_cmsblockscheduler_config>
+    </default>
+</config>

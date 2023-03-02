@@ -1,0 +1,12 @@
+<?php
+
+// @codingStandardsIgnoreFile
+
+/** @var \WeltPixel\UserProfile\Block\Widget\Location $block */
+?>
+<div class="field field-location<?php if ($block->isRequired()) echo ' required'; ?>">
+    <label class="label" for="location"><span><?= $block->escapeHtml(__('Location')) ?></span></label>
+    <div class="control">
+        <input type="text" id="location" name="location" value="<?= $block->escapeHtmlAttr($block->getLocation()) ?>" title="<?= $block->escapeHtmlAttr(__('Location')) ?>" class="input-text <?php if ($block->isRequired()) echo ' required-entry' ?> " <?php if ($block->isRequired()) echo ' data-validate="{required:true}"' ?> />
+    </div>
+</div>

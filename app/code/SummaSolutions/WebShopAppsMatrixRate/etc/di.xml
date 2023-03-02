@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="SummaSolutions\WebShopAppsMatrixRate\Api\Data\RateInterface"
+                type="SummaSolutions\WebShopAppsMatrixRate\Model\Rate"/>
+    <preference for="SummaSolutions\WebShopAppsMatrixRate\Api\RateRepositoryInterface"
+                type="SummaSolutions\WebShopAppsMatrixRate\Model\RateRepository"/>
+    <preference for="SummaSolutions\WebShopAppsMatrixRate\Api\Data\RateSearchResultInterface"
+                type="SummaSolutions\WebShopAppsMatrixRate\Model\ResourceModel\Carrier\MatrixRate\Collection"/>
+
+    <type name="Magento\Sales\Api\OrderRepositoryInterface">
+          <plugin name="get_external_shipping" type="SummaSolutions\WebShopAppsMatrixRate\Plugin\OrderRepository"/>
+      </type>
+    <type name="WebShopApps\MatrixRate\Model\Carrier\Matrixrate">
+        <plugin name="replace_method_id_by_configured_name"
+                type="SummaSolutions\WebShopAppsMatrixRate\Plugin\ReplaceMethodName"/>
+    </type>
+    <preference for="WebShopApps\MatrixRate\Model\ResourceModel\Carrier\Matrixrate"
+                type="SummaSolutions\WebShopAppsMatrixRate\Model\ResourceModel\Carrier\Matrixrate"/>
+</config>

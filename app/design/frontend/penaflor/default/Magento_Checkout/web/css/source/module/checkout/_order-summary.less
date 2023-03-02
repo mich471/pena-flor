@@ -1,0 +1,229 @@
+// /**
+//  * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+//  * See COPYING.txt for license details.
+//  */
+
+//
+//  Variables
+//  _____________________________________________
+
+@checkout-summary__background-color: @color-white;
+@checkout-summary__padding: 0px @indent__l;
+
+@checkout-summary-title__margin: @indent__s;
+@checkout-summary-mark-value__color: @color-gray60;
+
+@checkout-summary-items__max-height: 370px;
+@checkout-summary-items__padding: 15px;
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+
+    //
+    //  Order Summary
+    //  ---------------------------------------------
+
+    .opc-block-summary {
+        .lib-css(background, @checkout-summary__background-color);
+        .lib-css(margin, 0 0 @checkout-sidebar__margin);
+        .lib-css(padding, @checkout-summary__padding);
+        &:extend(.abs-add-box-sizing all);
+
+        > .title {
+            font-size: 14px;
+            font-weight: bold;
+            text-transform: uppercase;
+            display: block;
+            border-bottom: 1px solid @color-gray80;
+            padding-bottom: 10px;
+        }
+
+        //  Totals table
+        .table-totals {
+            &:extend(.abs-sidebar-totals all);
+            .totals-tax{
+                display: none;
+            }
+        }
+
+        .mark {
+            .value {
+                .lib-css(color, @checkout-summary-mark-value__color);
+                display: block;
+            }
+        }
+
+        .grand.incl {
+            & + .grand.excl {
+                .mark,
+                .amount {
+                    border-top: 0;
+                    .lib-font-size(14);
+                    padding-top: 0;
+
+                    strong {
+                        font-weight: @font-weight__regular;
+                    }
+                }
+            }
+        }
+
+        .not-calculated {
+            font-style: italic;
+        }
+
+        //
+        //  Items list
+        //  ---------------------------------------------
+
+        //  Block title
+        .items-in-cart {
+            > .title {
+                .lib-css(padding, @indent__s 0 @indent__s 0);
+                margin-bottom: 0;
+                position: relative;
+                text-align: left;
+
+                strong {
+                    font-size: 14px;
+                    font-weight: 500;
+                    margin: 0;
+                    text-transform: none;
+                    background: transparent;
+                    padding: 0;
+                }
+            }
+
+            .product {
+                position: relative;
+            }
+        }
+
+        //  Cart items
+        .minicart-items-wrapper {
+            .lib-css(margin, 0 -(@checkout-summary-items__padding) 0 0);
+            .lib-css(max-height, @checkout-summary-items__max-height);
+            .lib-css(padding, @checkout-summary-items__padding @checkout-summary-items__padding 0 0);
+            border: 0;
+            .minicart-items{
+                .product-item{
+                    .product-item-details{
+                        height: auto;
+                        .product.options{
+                            span.toggle{
+                                font-size: 11px;
+                                font-weight: bold;
+                                color: #929292;
+                                &:after{
+                                    font-weight: bold;
+                                    font-size: 11px;
+                                    color: #929292;
+                                }
+                            }
+                            .content{
+                                .item-options{
+                                    margin-bottom: 0;
+                                    padding-bottom: 10px;
+                                    dt{
+                                        display: none;
+                                    }
+                                    dd{
+                                        color: #929292;
+                                        font-size: 10px;
+                                        font-weight: 500;
+                                        margin-bottom: 0;
+                                        .price{
+                                            display: none;
+                                        }
+                                        &:before{
+                                            content: "·";
+                                            font-size: 20px;
+                                            line-height: 1px;
+                                            vertical-align: middle;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .column.main & {
+            .product-item {
+                margin: 0;
+                padding-left: 0;
+                padding-bottom: 0;
+            }
+        }
+
+        .product-item {
+            .product-item-inner {
+                display: table;
+                margin: 0 0 @indent__s;
+                width: 100%;
+            }
+
+            .product-item-name-block {
+                display: table-cell;
+                padding-right: @indent__xs;
+                text-align: left;
+            }
+
+            .subtotal {
+                display: table-cell;
+                text-align: right;
+            }
+
+            .price {
+                font-size: 13px;
+                font-weight: 600;
+            }
+
+            .price-including-tax {
+                & + .price-excluding-tax {
+                    .price {
+                        .lib-font-size(10);
+                    }
+                }
+            }
+        }
+    }
+}
+
+//
+//  Mobile
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s) {
+    .opc-block-summary {
+        > .title {
+            border-bottom: 0;
+            .lib-css(font-size, @checkout-step-title-mobile__font-size);
+            margin-bottom: @indent__base;
+            padding-bottom: 0;
+        }
+
+        .totals {
+            &:extend(.abs-sidebar-totals-mobile all);
+        }
+    }
+}
+
+//
+//  Desktop
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .opc-summary-wrapper {
+        .modal-header {
+            .action-close {
+                display: none;
+            }
+        }
+    }
+}

@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="WeltPixel_CmsBlockScheduler::cmsblockscheduler" title="CMS Block Scheduler" module="WeltPixel_CmsBlockScheduler" sortOrder="100" parent="WeltPixel_Backend::WeltPixel" resource="WeltPixel_CmsBlockScheduler::cmsblockscheduler"/>
+        <add id="WeltPixel_CmsBlockScheduler::systemconfiguration" title="Configuration" module="WeltPixel_CmsBlockScheduler" action="adminhtml/system_config/edit/section/weltpixel_cmsblockscheduler_config/" sortOrder="10" parent="WeltPixel_CmsBlockScheduler::cmsblockscheduler" resource="WeltPixel_CmsBlockScheduler::systemconfiguration"/>
+        <add id="WeltPixel_CmsBlockScheduler::cmsblockscheduler_manage_tags" title="Manage Tags" module="WeltPixel_CmsBlockScheduler" action="cmsblockscheduler/tag" sortOrder="30" parent="WeltPixel_CmsBlockScheduler::cmsblockscheduler" resource="WeltPixel_CmsBlockScheduler::cmsblockscheduler_manage_tags"/>
+    </menu>
+</config>

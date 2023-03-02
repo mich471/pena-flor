@@ -1,0 +1,8 @@
+<?php
+$_product = $block->getProduct();
+/** @var \Lyracons\QtyIncrement\Helper\Data $itemHelper */
+$itemHelper = $this->helper('Lyracons\QtyIncrement\Helper\Data');
+?>
+<div class="qty-increments">
+    <?php /* @escapeNotVerified */ __('Compra mínima: %1 unid.', $itemHelper->getQtyIncrementsByProduct($_product)) ?>
+</div>

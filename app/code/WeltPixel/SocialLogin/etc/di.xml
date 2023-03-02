@@ -1,0 +1,29 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="weltpixel_sociallogin_socialaccounts_listing_data_source" xsi:type="string">WeltPixel\SocialLogin\Model\ResourceModel\Sociallogin\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="WeltPixel\SocialLogin\Model\ResourceModel\Sociallogin\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">weltpixel_sociallogin_customer</argument>
+            <argument name="resourceModel" xsi:type="string">WeltPixel\SocialLogin\Model\ResourceModel\Sociallogin</argument>
+            <argument name="eventPrefix" xsi:type="string">weltpixel_sociallogin_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">sociallogin_grid_collection</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Customer\Block\Account\AuthorizationLink">
+        <plugin name="signin_link" type="WeltPixel\SocialLogin\Plugin\SignInLink"/>
+    </type>
+    <type name="Magento\Customer\Block\Account\RegisterLink">
+        <plugin name="signin_link" type="WeltPixel\SocialLogin\Plugin\CreateAccountLink"/>
+    </type>
+    <type name="WeltPixel\SocialLogin\Block\Widget\Login">
+        <plugin name="widget_login_link" type="WeltPixel\SocialLogin\Plugin\WidgetLoginLink"/>
+    </type>
+    <type name="Magento\Customer\Controller\Account\LoginPost">
+        <plugin name="sociallogin_loginpost" type="WeltPixel\SocialLogin\Plugin\LoginPostPlugin" />
+    </type>
+</config>

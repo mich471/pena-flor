@@ -1,0 +1,55 @@
+<?php
+$_helper = $this->helper('WeltPixel\ProductPage\Helper\Data');
+$productId = $this->getRequest()->getParam('id');
+$intervalCheck = $_helper->getVisitorCounterIntervalCheck() * 1000;
+$isVisitorCounterEnabled = $_helper->isVisitorCounterEnabled();
+$visitorDisplayText = $_helper->getVisitorCounterDisplayText();
+$updateFrequency = $_helper->getVisitorCounterUpdateFrequency();
+$displayLimiter = $_helper->getVisitorCounterDisplayLimit();
+?>
+
+<?php if ($isVisitorCounterEnabled) : ?>
+<div class="visitor_counter_wrapper">
+    <p>
+        <i class="icon-line2-eye"></i>
+        <?= str_replace('{visitor_counter}', '<span id="wp_visitor_counts"></span>' ,$visitorDisplayText) ?>
+    </p>
+</div>
+<script>
+    require(["jquery"], function ($) {
+        $(document).ready(function() {
+            var visitorPushUrl = '<?= $block->getUrl("wpproductpage/visitor/push"); ?>',
+                displayLimiter = <?= $displayLimiter ?>;
+
+            function updateVisitorCounter() {
+                $.ajax({
+                    url: visitorPushUrl,
+                    method: 'POST',
+                    dataType: 'json',
+                    cache: false,
+                    global: false,
+                    data: {
+                        'product_id': '<?= $productId ?>',
+                    },
+                    success: function (response) {
+                        if (response.result) {
+                            $('#wp_visitor_counts').html(response.counter);
+                            if (displayLimiter == 0 || displayLimiter < response.counter) {
+                                $('.visitor_counter_wrapper').show();
+                            } else {
+                                $('.visitor_counter_wrapper').hide();
+                            }
+                        }
+                    }
+                });
+            }
+
+            updateVisitorCounter();
+
+            <?php if ($updateFrequency == \WeltPixel\ProductPage\Model\Config\Source\VisitorCounterUpdateFrequency::UPDATE_REALTIME) : ?>
+            setInterval(updateVisitorCounter, <?= $intervalCheck ?>);
+            <?php endif; ?>
+        });
+    });
+</script>
+<?php endif; ?>

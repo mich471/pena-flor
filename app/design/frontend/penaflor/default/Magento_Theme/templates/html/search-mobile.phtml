@@ -1,0 +1,18 @@
+<div class="search-mobile">
+    <a href="#">
+        <i class="icon-search"></i>
+    </a>
+</div>
+
+<script>
+
+require(['jquery'],function($){
+    if ($(window).width() <= 775) {
+        $(".panel.header").addClass("panel-header-search-mobile");
+        $(".block.block-search").addClass("input-search-mobile");
+        $(".block-search .control").css({"margin": "0px", "padding": "0 20px"});
+        $("#search").css("width", "100%");
+    }
+});
+
+</script>

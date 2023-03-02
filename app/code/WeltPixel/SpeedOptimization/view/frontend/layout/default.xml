@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="default_head_blocks"/>
+    <body>
+        <referenceContainer name="after.body.start">
+            <block class="WeltPixel\SpeedOptimization\Block\Html\Head\Config" name="bundle-config" before="requirejs-config"/>
+        </referenceContainer>
+        <container name="wp.speedoptimization.before.body.end" as="wp_speedoptimization_before_body_end" label="Speed Optimization Before Body End" after="before.body.end">
+            <block class="Magento\Framework\View\Element\Template" template="WeltPixel_SpeedOptimization::before_body_js.phtml" name="before_body_js"/>
+        </container>
+        <referenceContainer name="before.body.end">
+            <block ifconfig="weltpixel_speedoptimization/reqiurejs_bundle_generation/enable" class="WeltPixel\SpeedOptimization\Block\Html\RequireJsCollector" name="bundle-config-collector"  template="WeltPixel_SpeedOptimization::bundling_js_collector.phtml"/>
+        </referenceContainer>
+    </body>
+</page>

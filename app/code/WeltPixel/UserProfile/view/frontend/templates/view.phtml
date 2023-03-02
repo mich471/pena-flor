@@ -1,0 +1,119 @@
+<?php
+
+// @codingStandardsIgnoreFile
+
+/** @var \WeltPixel\UserProfile\Block\ViewProfile $block */
+$profile = $block->getProfile();
+$profileCover = $block->getCoverImage();
+$profileAvatar = $block->getAvatarImage();
+$profileName = $block->getProfileName();
+$isprofileCoverEnabled = $block->isCoverEnabled();
+$isprofileAvatarEnabled = $block->isAvatarEnabled();
+$isProfileNameEnabled = $block->isNameEnabled();
+$isProfileDetailsEnabled = $block->isDetailsEnabled();
+$isProfileLocationEnabled = $block->isLocationEnabled();
+$isProfileBioEnabled = $block->isBioEnabled();
+/** @var \WeltPixel\UserProfile\Helper\Data  $profileHelper */
+$profileHelper = $this->helper('WeltPixel\UserProfile\Helper\Data');
+$isWishlistDisplayEnabled = $profileHelper->isWishlistDisplayEnabled();
+?>
+<div class="profile-wrapper <?php if (!$isprofileCoverEnabled) : echo 'profile-wrapper-no-cover'; endif;?>">
+    <?php if ($isprofileCoverEnabled) : ?>
+    <div class="profile-cover-img"
+         style="background-image: url('<?= $profileCover ?>');">
+    </div>
+    <?php endif; ?>
+    <div class="profile-header-container ">
+        <?php if ($isprofileAvatarEnabled) : ?>
+        <div class="profile-avatar"
+             style="background-image: url('<?= $profileAvatar ?>');">
+        </div>
+        <?php endif; ?>
+        <div class="profile-titles">
+            <?php if ($isProfileNameEnabled) : ?>
+            <div>
+                <h1 class="profile-name"><?= $block->escapeHtml($profileName); ?></h1>
+            </div>
+            <?php endif; ?>
+            <div class="profile-details">
+                <span class="profile-details-content"><?= $block->escapeHtml($block->getProfileDetails()); ?></span>
+            </div>
+            <?php if ($isProfileLocationEnabled) : ?>
+            <div class="profile-location">
+                <p><?= $block->escapeHtml($profile->getLocation()); ?></p>
+            </div>
+            <?php endif; ?>
+        </div>
+    </div>
+    <div id="profile-details-tabs" class="profile-feed-container">
+        <?php if ($isWishlistDisplayEnabled) : ?>
+        <ul class="ui-tabs-nav">
+            <li data-role="title" class="ui-state-active">
+                <a href="#tabs-activity"><?php echo $block->escapeHtml(__('Activity')) ?></a>
+            </li>
+            <li data-role="title">
+                <a href="#tabs-collections"><?php echo $block->escapeHtml(__('Collections')) ?></a>
+            </li>
+        </ul>
+        <?php endif; ?>
+        <div class="profile-feed" id="tabs-activity">
+            <?php if ($isProfileBioEnabled): ?>
+                <div class="profile-feed-wrapper">
+                    <div class="profile-bio profile-feed-padding">
+                        <h2 class="biography-header"><?= $profileName .'\'s ' . __('Bio') ?></h2>
+                        <div class="profile-bio-content">
+                            <?= $block->filterHtmlOutput($profile->getBio()); ?>
+                        </div>
+                    </div>
+                </div>
+            <?php endif; ?>
+            <div class="loader-wrapper activity-loader">
+                <img src="<?= $block->escapeUrl($block->getViewFileUrl('images/loader-2.gif')) ?>" />
+            </div>
+        </div>
+        <?php if ($isWishlistDisplayEnabled) : ?>
+        <div class="collections-feed" id="tabs-collections">
+            <div class="loader-wrapper collections-loader">
+                <img src="<?= $block->escapeUrl($block->getViewFileUrl('images/loader-2.gif')) ?>" />
+            </div>
+        </div>
+        <?php endif; ?>
+    </div>
+</div>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "WeltPixel_UserProfile/js/process-reviews": {
+                "customerReviewsUrl": "<?= $block->escapeJs($block->escapeUrl($block->getCustomerReviewsUrl())) ?>",
+                "reiewsElementSelector": ".profile-feed",
+                "loaderSelector": ".activity-loader"
+            }
+        }
+    }
+</script>
+<?php if ($isWishlistDisplayEnabled) : ?>
+<script>
+    require([
+        'jquery',
+        'jquery-ui-modules/tabs'
+    ], function($){
+        $("#profile-details-tabs").tabs({
+            'active': 0
+        });
+        $('ul.ui-tabs-nav a').click(function(e) {
+            e.preventDefault();
+        });
+    });
+</script>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "WeltPixel_UserProfile/js/process-collections": {
+                "wishlistCollectionsUrl": "<?= $block->escapeJs($block->escapeUrl($block->getCustomerWishlistsUrl())) ?>",
+                "wishlistsElementSelector": ".collections-feed",
+                "loaderSelector": ".collections-loader"
+            }
+        }
+    }
+</script>
+<?php endif; ?>

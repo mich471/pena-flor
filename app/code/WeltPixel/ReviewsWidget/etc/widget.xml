@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+    <widget id="weltpixel_reviewswidget_reviewform" class="WeltPixel\ReviewsWidget\Block\Widget\Review" is_email_compatible="true" placeholder_image="WeltPixel_ReviewsWidget::images/widget_reviewform.png">
+        <label translate="true">WeltPixel Reviews Listing and Form</label>
+        <description>Reviews Listing and Form</description>
+        <parameters>
+            <parameter name="product_id" xsi:type="block" visible="true" required="true" sort_order="10">
+                <label translate="true">Product</label>
+                <description>Select the product</description>
+                <block class="WeltPixel\ReviewsWidget\Block\Adminhtml\Widget\ProductChooser">
+                    <data>
+                        <item name="button" xsi:type="array">
+                            <item name="open" xsi:type="string" translate="true">Select Product...</item>
+                        </item>
+                    </data>
+                </block>
+            </parameter>
+            <parameter name="display_in_carousel" xsi:type="select" visible="true" sort_order="20"
+                       source_model="WeltPixel\ReviewsWidget\Model\Config\Source\YesNo">
+                <label translate="true">Show Product Reviews in a Carousel</label>
+                <description translate="true">
+                    <![CDATA[ Showing Product Reviews in a Carousel requires an additional extension, <a target="_blank" href="https://www.weltpixel.com/owl-carousel-and-slider.html">Magento 2 OWL Carousel & Slider</a>. Please make sure to download and install it to enable this functionality. Please note that Submit Review form will be disabled when Reviews are showcased in a carousel.]]>
+                </description>
+            </parameter>
+        </parameters>
+    </widget>
+    <widget id="weltpixel_reviewswidget_summary" class="WeltPixel\ReviewsWidget\Block\Widget\ReviewSummary" is_email_compatible="true" placeholder_image="WeltPixel_ReviewsWidget::images/widget_reviewform.png">
+        <label translate="true">WeltPixel Reviews Summary</label>
+        <description>Reviews Count and Stars</description>
+        <parameters>
+            <parameter name="product_id" xsi:type="block" visible="true" required="true" sort_order="10">
+                <label translate="true">Product</label>
+                <description>Select the product</description>
+                <block class="WeltPixel\ReviewsWidget\Block\Adminhtml\Widget\ProductChooser">
+                    <data>
+                        <item name="button" xsi:type="array">
+                            <item name="open" xsi:type="string" translate="true">Select Product...</item>
+                        </item>
+                    </data>
+                </block>
+            </parameter>
+            <parameter name="show_add_your_review_link"  xsi:type="select" visible="true" source_model="WeltPixel\ReviewsWidget\Model\Config\Source\YesNoOrdered" sort_order="20">
+                <label translate="true">Show “Add Your Review” link</label>
+            </parameter>
+            <parameter name="show_if_no_reviews"  xsi:type="select" visible="true" source_model="WeltPixel\ReviewsWidget\Model\Config\Source\YesNoOrdered" sort_order="30">
+                <label translate="true">Show widget if number of reviews is 0</label>
+            </parameter>
+            <parameter name="url_link"  xsi:type="select" visible="true" source_model="WeltPixel\ReviewsWidget\Model\Config\Source\UrlLink" sort_order="40">
+                <label translate="true">Url Link</label>
+            </parameter>
+            <parameter name="custom_url_link"  xsi:type="text" visible="true" sort_order="50">
+                <label translate="true">Custom Url</label>
+                <depends>
+                    <parameter name="url_link" value="3" />
+                </depends>
+            </parameter>
+        </parameters>
+    </widget>
+</widgets>

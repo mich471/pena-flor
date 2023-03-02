@@ -1,0 +1,132 @@
+<div class="wp_jsbundling_container" >
+    <button style="display: none" class="startJsBundling primary"><span><?= __('Start Js Bundle Gathering') ?></span></button>
+    <button style="display: none" class="stopJsBundling primary"><span><?= __('Stop Js Bundle Gathering') ?></span></button>
+    <a target="_blank" href="<?= $block->getUrl('wpjsbundling/bundling/download', ['_secure' => true]) ?>" class="downloadJsBundling" style="display: none">
+        <button class="primary"><span><?= __('Download Js Bundle File') ?></span></button>
+    </a>
+</div>
+<style>
+    .wp_jsbundling_container {
+        position: fixed;
+        z-index: 99999;
+        bottom: 100px;
+        right: 50px;
+        background-color: #c3c3c3;
+    }
+    .wp_jsbundling_container button span{
+        color: white;
+        font-size: 16px;
+        padding: 20px;
+    }
+</style>
+
+<script>
+    require(['jquery', 'underscore', 'mage/cookies'],
+        function ($, _) {
+            $( document ).ready(function() {
+                var jsBunldingCookieName = 'wp.speedoptimization.jscollect',
+                    bunlingPushUrl = '<?= $block->getUrl("wpjsbundling/bundling/push"); ?>',
+                    bundlingPageIdentifier  = '<?= $block->getPageFullActionName() ?>', alreadyCollectedRequireResources, wacherInterval,
+                    bundlingCurrentThemePath  = '<?= $block->getCurrentThemePath() ?>';
+
+                function watchBundleJsChanges() {
+                    alreadyCollectedRequireResources = [];
+                    wacherInterval = setInterval(function(){
+                        var collectedRequireResources = [];
+                        _.each(requirejs.s.contexts._.defined, function(value, key, object) {
+                            if ( !key.startsWith("mixins")) {
+                                collectedRequireResources.push(key);
+                            };
+                        });
+                        if (!_.isEqual(collectedRequireResources, alreadyCollectedRequireResources)) {
+                            $.ajax({
+                                url: bunlingPushUrl,
+                                method: 'POST',
+                                dataType: 'json',
+                                cache: false,
+                                global: false,
+                                data: {
+                                    'themePath': bundlingCurrentThemePath,
+                                    'pageIdentifier': bundlingPageIdentifier,
+                                    'modules': collectedRequireResources
+                                },
+                                success: function (result) {}
+                            });
+                        }
+                        alreadyCollectedRequireResources = collectedRequireResources;
+                    }, 2000);
+                }
+
+                $(".startJsBundling").bind('click', function () {
+                    $.cookie(jsBunldingCookieName, true);
+                    var bunldingMap = JSON.stringify(requirejs.s.contexts._.config.map),
+                        bunldingShim = JSON.stringify(requirejs.s.contexts._.config.shim),
+                        bunldingPaths = JSON.stringify(requirejs.s.contexts._.config.paths),
+                        regexpString = /(['"])(https?:\/\/.+?)\1/;
+
+                    bunldingPaths = bunldingPaths.replace(new RegExp(regexpString,'ig'), '"empty:"')
+                    bunldingShim = bunldingShim.replace(new RegExp(regexpString,'ig'), '"empty:"')
+                    bunldingMap = bunldingMap.replace(new RegExp(regexpString,'ig'), '"empty:"')
+
+                    $(this).hide();
+                    $('.downloadJsBundling').hide();
+                    $(".stopJsBundling").delay(1000).fadeIn();
+
+                    $.ajax({
+                        url: bunlingPushUrl,
+                        method: 'POST',
+                        dataType: 'json',
+                        cache: false,
+                        global: false,
+                        data: {
+                            'themePath': bundlingCurrentThemePath,
+                            'configOptions': {
+                                'paths': bunldingPaths,
+                                'shim':  bunldingShim,
+                                'map': bunldingMap
+                            }
+                        },
+                        success: function (result) {}
+                    });
+
+                    watchBundleJsChanges();
+                });
+
+                $(".stopJsBundling").bind('click', function () {
+                    $.cookie(jsBunldingCookieName, null);
+                    clearInterval(wacherInterval);
+                    $.ajax({
+                        url: bunlingPushUrl,
+                        method: 'POST',
+                        dataType: 'json',
+                        cache: false,
+                        global: false,
+                        data: {
+                            'themePath': bundlingCurrentThemePath,
+                            'generateJsFile': true
+                        },
+                        success: function (response) {
+                            if (response.result) {
+                                $('.downloadJsBundling').delay(1000).fadeIn();
+                            } else {
+                                window.alert("There was a problem with the javascript file generation.");
+                            }
+                        }
+                    });
+                    $(this).hide();
+                    $(".startJsBundling").delay(1000).fadeIn();
+                });
+
+                var bundlingJsCollection = $.cookie(jsBunldingCookieName);
+
+                if (bundlingJsCollection) {
+                    watchBundleJsChanges();
+                    $(".startJsBundling").hide();
+                    $(".stopJsBundling").delay(1000).fadeIn();
+                } else {
+                    $(".startJsBundling").delay(1000).fadeIn();
+                    $(".stopJsBundling").hide();
+                }
+            });
+        });
+</script>

@@ -1,0 +1,70 @@
+<strong class="summary title"><!-- ko i18n: 'Cart Summary' --><!-- /ko --></strong>
+<div class="summary-content">
+	<!-- ko if: cartSidebar().summary_count -->
+	<div class="row">
+    	<div class="col-sm-12 col-xs-12"><!-- ko i18n: 'Total Item' --><!-- /ko --></div>
+        <div class="col-sm-12 col-xs-12" data-bind="text: cartSidebar().summary_count"></div>
+    </div>
+	<!-- /ko -->
+    <!-- ko if: cartSidebar().subtotal -->
+	<div class="row">
+    	<div class="col-sm-12 col-xs-12"><!-- ko i18n: 'Subtotal' --><!-- /ko --></div>
+        <div class="col-sm-12 col-xs-12" data-bind="html: cartSidebar().subtotal"></div>
+    </div>
+	<!-- /ko -->
+	<!-- ko if: getCartParam('weltpixel_quickcart_coupon_enabled') -->
+	<div class="block discount"
+	id="quickcart-block-discount"
+	data-mage-init='{"collapsible":{"active": "", "openedState": "active", "saveState": false}}'
+>
+   <div class="title" data-role="title">
+	   <strong id="quickcart-block-discount-heading" role="heading" aria-level="2">
+		   <!-- ko text: $t('Apply Discount Code') --><!-- /ko -->
+	   </strong>
+   </div>
+   <div class="content" data-role="content" aria-labelledby="quickcart-block-discount-heading" style="display: none">
+	   <form id="quickcart-discount-coupon-form"
+			 data-bind="attr: {action: getCartParam('weltpixel_quickcart_coupon_url')}"
+			 method="post"
+			 data-mage-init='{"discountCode":{"couponCodeSelector": "#quickcart-coupon_code",
+									  "removeCouponSelector": "#quickcart-remove-coupon",
+									  "applyButton": "button.action.quickcart-apply",
+									  "cancelButton": "button.action.quickcart-cancel"}}'>
+		   <div class="fieldset coupon">
+			   <input type="hidden" name="remove" id="quickcart-remove-coupon" value="0" />
+			   <div class="field">
+				   <div class="control">
+					   <input type="text"
+							  class="input-text"
+							  id="quickcart-coupon_code"
+							  name="coupon_code"
+							  data-bind="
+							  attr: {placeholder: $t('Enter discount code')},
+							  value: getCartParam('weltpixel_quickcart_coupon_code'),
+							  disable: getCartParam('weltpixel_quickcart_has_coupon_code')"
+					   />
+				   </div>
+			   </div>
+			   <div class="actions-toolbar">
+				   <!-- ko ifnot: getCartParam('weltpixel_quickcart_has_coupon_code') -->
+				   <div class="primary">
+					   <button class="action quickcart-apply primary" type="button" data-bind="attr: {value: $t('Apply Discount')}" >
+						   <span><!-- ko text: $t('Apply Discount') --><!-- /ko --></span>
+					   </button>
+				   </div>
+				   <!-- /ko -->
+				   <!-- ko if: getCartParam('weltpixel_quickcart_has_coupon_code') -->
+				   <div class="primary">
+					   <button  type="button" class="action quickcart-cancel primary" data-bind="attr: {value: $t('Cancel Cupon')}">
+						   <span><!-- ko text: $t('Cancel Coupon') --><!-- /ko --></span>
+					   </button>
+				   </div>
+				   <!-- /ko -->
+			   </div>
+		   </div>
+	   </form>
+   </div>
+</div>
+<!-- /ko -->
+
+</div>

@@ -1,0 +1,48 @@
+<?php
+$subcategoryOptionsAvailable = $block->areSubcategoryOptionsVisible();
+?>
+<script>
+    requirejs(['jquery', 'mage/translate'],
+        function ($) {
+            var subcategoryOptionsavailable = '<?= $subcategoryOptionsAvailable ?>',
+                subCategoryLayout = $('select[name="weltpixel_sc_layout"]'),
+                subCategoryColumnsNr = $('select[name="weltpixel_sc_columns"]'),
+                subCategoryTitlePosition = $('select[name="weltpixel_sc_title_position"]'),
+                subCategoryHide = $('input[name="weltpixel_sc_hide"]'),
+                subCategoryImage = $('input[name="weltpixel_sc_image"]');
+
+
+            if (subCategoryLayout.length) {
+                updateDynamicColumnsDependencies(subCategoryLayout);
+                subCategoryLayout.on('change', function() {
+                    updateDynamicColumnsDependencies($(this));
+                });
+
+                if (subcategoryOptionsavailable) {
+                    showDependencies([subCategoryHide, subCategoryImage]);
+                } else {
+                    hideDependencies([subCategoryHide, subCategoryImage]);
+                }
+
+            }
+            function updateDynamicColumnsDependencies(element) {
+                if (element.val() == 'default') {
+                    hideDependencies([subCategoryColumnsNr,subCategoryTitlePosition]);
+                } else {
+                    showDependencies([subCategoryColumnsNr,subCategoryTitlePosition]);
+                }
+            }
+            function hideDependencies(fields)
+            {
+                for (var i = 0; i < fields.length; i++) {
+                    fields[i].closest('.admin__field').addClass('hidden');
+                }
+            }
+            function showDependencies(fields)
+            {
+                for (var i = 0; i < fields.length; i++) {
+                    fields[i].closest('.admin__field').removeClass('hidden');
+                }
+            }
+        });
+</script>

@@ -1,0 +1,21 @@
+<div class="sl-copy-button">
+    <button id="<?php echo $block->getId() ?>" class="copy-link" data-provider="<?php echo $block->getDataProvider()?>">
+        <span><span><span><?php echo $block->escapeHtml($block->getButtonLabel()); ?></span></span></span>
+    </button>
+    <div id="copied_<?php echo $block->getDataProvider()?>"
+         class="sl-admin-tooltip">
+        <?=__('URL copied to clipboard.')?>
+    </div>
+</div>
+
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "WeltPixel_SocialLogin/js/copy_link":{
+                "id": "<?= $block->getId() ?>",
+                "provider" : "<?= $block->getDataProvider()?>"
+            }
+        }
+
+    }
+</script>

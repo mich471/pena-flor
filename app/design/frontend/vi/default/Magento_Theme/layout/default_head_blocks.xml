@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+		<!-- <link src="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" src_type="url" rel="stylesheet" type="text/css" /> -->
+		<link src="https://fonts.googleapis.com/css?family=Work+Sans:300,400,500,600,700" src_type="url" rel="stylesheet" type="text/css" />
+<!-- 		<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" src_type="url" rel="stylesheet" type="text/css" > -->
+		<script src="Magento_Theme::js/global-script.js"/>
+        <script src="https://assets-cdn.woowup.com/js/webtracking.min.js" type="text/javascript" src_type="url" />
+        <css src="Magento_Theme::css/global.css" />
+        <script src="https://assets-cdn.woowup.com/js/webtracking.min.js" type="text/javascript" src_type="url" />
+    </head>
+</page>

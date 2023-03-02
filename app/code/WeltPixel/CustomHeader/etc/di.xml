@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="WeltPixel\Command\Console\Command\GenerateLessCommand">
+        <arguments>
+            <argument name="generationContainer" xsi:type="array">
+                <item name="WeltPixel_CustomHeader" xsi:type="object">WeltPixel\CustomHeader\Observer\CustomHeaderEditActionControllerSaveObserver</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="WeltPixel\Command\Console\Command\ExportConfigurationsCommand">
+        <arguments>
+            <argument name="sectionContainer" xsi:type="array">
+                <item name="WeltPixel_CustomHeader" xsi:type="string">weltpixel_custom_header</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Theme\Model\Design\Config\MetadataProvider">
+        <arguments>
+            <argument name="metadata" xsi:type="array">
+                <item name="mobile_header_logo_src" xsi:type="array">
+                    <item name="path" xsi:type="string">design/header/mobile_header_logo_src</item>
+                    <item name="fieldset" xsi:type="string">other_settings/welt_mobile_logo</item>
+                    <item name="backend_model" xsi:type="string">Magento\Theme\Model\Design\Backend\Logo</item>
+                    <item name="base_url" xsi:type="array">
+                        <item name="type" xsi:type="string">media</item>
+                        <item name="scope_info" xsi:type="string">1</item>
+                        <item name="value" xsi:type="string">logo</item>
+                    </item>
+                </item>
+                <item name="mobile_logo_width" xsi:type="array">
+                    <item name="path" xsi:type="string">design/header/mobile_logo_width</item>
+                    <item name="fieldset" xsi:type="string">other_settings/welt_mobile_logo</item>
+                </item>
+                <item name="mobile_logo_height" xsi:type="array">
+                    <item name="path" xsi:type="string">design/header/mobile_logo_height</item>
+                    <item name="fieldset" xsi:type="string">other_settings/welt_mobile_logo</item>
+                </item>
+                <item name="mobile_logo_alt" xsi:type="array">
+                    <item name="path" xsi:type="string">design/header/mobile_logo_alt</item>
+                    <item name="fieldset" xsi:type="string">other_settings/welt_mobile_logo</item>
+                </item>
+                <item name="mobile_logo_position" xsi:type="array">
+                    <item name="path" xsi:type="string">design/header/mobile_logo_position</item>
+                    <item name="fieldset" xsi:type="string">other_settings/welt_mobile_logo</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <preference for="Magento\Theme\Block\Html\Header\Logo" type="WeltPixel\CustomHeader\Block\Rewrite\Html\Header\Logo"/>
+</config>

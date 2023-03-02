@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+        <referenceBlock name="product.info.details">
+    <block class="Magento\Catalog\Block\Product\View\Description" name="product.info.extratab" template="product/view/extratab.phtml" group="detailed_info">
+    <arguments>
+        <argument name="at_call" xsi:type="string">getExtratab</argument>
+        <argument name="at_code" xsi:type="string">extratab</argument>
+        <argument name="css_class" xsi:type="string">extratab</argument>
+        <argument name="at_label" xsi:type="string">none</argument>
+        <argument name="title" translate="true" xsi:type="string">Caracteristicas Principales</argument>
+    </arguments>
+    </block>
+</referenceBlock>
+
+</page>

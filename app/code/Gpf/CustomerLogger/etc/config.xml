@@ -1,0 +1,19 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <customer>
+            <gpf_customerlogger>
+                <enabled>0</enabled>
+            </gpf_customerlogger>
+        </customer>
+    </default>
+    <websites>
+        <ventainstitucional>
+            <customer>
+                <gpf_customerlogger>
+                    <enabled>1</enabled>
+                </gpf_customerlogger>
+            </customer>
+        </ventainstitucional>
+    </websites>
+</config>

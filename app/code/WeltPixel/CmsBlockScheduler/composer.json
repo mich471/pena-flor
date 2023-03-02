@@ -1,0 +1,27 @@
+{
+    "name": "weltpixel/cmsblockscheduler",
+    "description": "CMS Block Scheduler Module",
+    "require": {
+        "weltpixel/m2-weltpixel-backend": "*"
+    },
+    "type": "magento2-module",
+    "version": "1.10.17",
+    "license": [
+        "OSL-3.0",
+        "AFL-3.0"
+    ],
+    "authors": [
+        {
+            "email": "support@weltpixel.com",
+            "homepage": "http://www.weltpixel.com/"
+        }
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "WeltPixel\\CmsBlockScheduler\\": ""
+        }
+    }
+}

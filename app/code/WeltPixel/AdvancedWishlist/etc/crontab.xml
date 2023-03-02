@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+    <group id="default">
+        <job name="weltpixel_wishlist_price_alert" instance="WeltPixel\AdvancedWishlist\Cron\PriceAlert" method="execute">
+            <config_path>weltpixel_advancedwishlist/general/pricealert_frequency</config_path>
+        </job>
+    </group>
+</config>

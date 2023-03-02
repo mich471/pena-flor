@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Bundle\Block\Catalog\Product\View\Type\Bundle">
+        <plugin name="Gpf_Catalog::bundleAttributeOne" type="Gpf\Catalog\Plugin\Block\Catalog\Product\View\Type\Bundle" sortOrder="1"  />
+    </type>
+    <type name="Magento\Bundle\Block\Catalog\Product\View\Type\Bundle\Option">
+        <plugin name="Gpf_Catalog::bundleAttribute" type="Gpf\Catalog\Plugin\Block\Catalog\Product\View\Type\Bundle\Option" sortOrder="1"  />
+    </type>
+</config>

@@ -1,0 +1,42 @@
+<?php $buttons = $this->getButtons()?>
+<?php $buttonsCount = count($buttons)?>
+<?php $notLoginPage = $this->getCurrentPageRedirectUrl()?>
+<?php $cartPageAccordionState = $this->accordionStateOnCart()?>
+<?php if(!empty($buttons) && !$this->isCustomerLoggedIn()):?>
+    <div class="sociallogin-wrapper block-customer-login login-container">
+        <div class="block sociallogin-block">
+            <div class="sociallogin-block-title block-title">
+                <strong role="heading" aria-level="2"><?= $block->escapeHtml(__('Login With Social Profile'))?></strong>
+            </div>
+            <div class="sociallogin-padding">
+                <?php foreach ($buttons as $type => $data):?>
+                    <div class="sociallogin-box">
+                        <a class="sociallogin-button button-<?=$type?>"
+                           rel="nofollow"
+                           href="javascript:void(0);"
+                           data-href="<?=$data['endpoint']?>"
+                        >
+                            <span class="sociallogin-icon sl-<?=$type?>"></span>
+
+                        </a>
+                    </div>
+                <?php endforeach;?>
+            </div>
+        </div>
+    </div>
+    <script>
+        if (window.socialloginButtons) {
+            window.emailFormUrl = "<?=$this->getEmailFormUrl()?>";
+            window.twitterOauthUrl = "<?=$this->getTwitterOauthUrl()?>";
+            window.cartPageAccordionState = "<?=$cartPageAccordionState?>";
+            window.isCustomer = "<?=$this->helper('WeltPixel\SocialLogin\Helper\Data')->loggedIn(); ?>";
+            window.isSlCustomPopupUsed = "<?=$this->helper('WeltPixel\SocialLogin\Helper\Data')->isPopupUsed(); ?>";
+            require(['sociallogin'], function(){
+                sl.socialLoginClick();
+                sl.slWidgetInit('<?=$buttonsCount?>');
+                sl.sendEmailClick();
+                sl.emailPopUp();
+            });
+        }
+    </script>
+<?php endif;?>

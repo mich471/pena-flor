@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Backend\App\AbstractAction">
+        <plugin name="weltpixel-googlecards-utility" type="WeltPixel\GoogleCards\Plugin\Utility" sortOrder="1000" />
+    </type>
+    <type name="Magento\Cms\Model\PageRepository">
+        <plugin name="weltpixel-save-og-image" type="WeltPixel\GoogleCards\Plugin\PageRepositoryPlugin" />
+    </type>
+    <type name="Magento\Cms\Model\Page\DataProvider">
+        <plugin name="weltpixel-add-og-image-to-form" type="WeltPixel\GoogleCards\Plugin\PageDataProviderPlugin"/>
+    </type>
+    <type name="Magento\Cms\Model\PageRepository\ValidationComposite">
+        <plugin name="weltpixel-cms-pagerepository-validationcomposition" type="WeltPixel\GoogleCards\Plugin\PageRepositoryValidationCompositionPlugin" />
+    </type>
+</config>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
+   
+    <widget id="bg_weltpixel_category_slider" class="BalloonGroup\WeltpixelWidgets\Block\Slider\Category" placeholder_image="WeltPixel_OwlCarouselSlider::images/product_widget_slider.png">
+        <label translate="true">BG - WeltPixel - Custom Category Product Carousel</label>
+        <description>BG - WeltPixel - Custom Category Product Carousel</description>
+        <parameters>
+            <parameter name="category" xsi:type="block" visible="true" required="true" sort_order="10">
+                <label translate="true">Category</label>
+                <block class="Magento\Catalog\Block\Adminhtml\Category\Widget\Chooser">
+                    <data>
+                        <item name="button" xsi:type="array">
+                            <item name="open" xsi:type="string" translate="true">Select Category...</item>
+                        </item>
+                    </data>
+                </block>
+            </parameter>
+            <parameter name="cache_lifetime" xsi:type="text" visible="true">
+                <label translate="true">Cache Lifetime (Seconds)</label>
+                <description translate="true">86400 by default, if not set. To refresh instantly, clear the Blocks HTML Output cache.</description>
+            </parameter>
+             <parameter name="max_products" xsi:type="text" required="true" visible="true">
+                <label translate="true">Max qty of visible products in slider</label>
+                <description translate="true">It should show only max amount</description>
+            </parameter>
+             <parameter name="slider_name" xsi:type="text" required="true" visible="true">
+                <label translate="true">Unique name of slider in page</label>
+                <description translate="true">It should be unique</description>
+            </parameter>
+        </parameters>
+    </widget>
+    
+</widgets>

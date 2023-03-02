@@ -1,0 +1,69 @@
+<?xml version="1.0" ?>
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:helloworld:Magento_Widget:etc/widget.xsd">
+	<widget class="Formax\Countdown\Block\Widget\Box" id="formax_countdown_box">
+		<label translate="true">Countdown Box</label>
+		<description translate="true">Insert a countdown by setting a final date.</description>
+		<parameters>
+            <parameter name="title" sort_order="10" visible="true" xsi:type="text">
+				<label translate="true">Box Title</label>
+			</parameter>
+			<parameter name="date" sort_order="20" visible="true" xsi:type="block" required="true">
+				<label translate="true">Date</label>
+                <block class="Formax\Countdown\Block\Adminhtml\Widget\Date"/>
+			</parameter>
+            <parameter name="link" sort_order="30" visible="true" xsi:type="text">
+				<label translate="true">Link</label>
+			</parameter>
+            <parameter name="text_finished" sort_order="40" visible="true" xsi:type="text">
+				<label translate="true">Text When Finished</label>
+                <description translate="true">If empty, the countdown will disappear.</description>
+			</parameter>
+            <parameter name="skin" sort_order="50" visible="true" xsi:type="select" required="true">
+                <label translate="true">Skin</label>
+                <options>
+                    <option name="light" value="light" selected="true">
+                        <label>Light</label>
+                    </option>
+                    <option name="dark" value="dark">
+                        <label>Dark</label>
+                    </option>
+                </options>
+            </parameter>
+		</parameters>
+	</widget>
+
+    <widget class="Formax\Countdown\Block\Widget\Action" id="formax_countdown_action">
+		<label translate="true">TextSlider Action</label>
+		<description translate="true">Insert an action button/link in the text slider.</description>
+		<parameters>
+            <parameter name="label" sort_order="10" visible="true" xsi:type="text">
+				<label translate="true">Text</label>
+			</parameter>
+            <parameter name="url" sort_order="20" visible="true" xsi:type="text">
+				<label translate="true">URL</label>
+			</parameter>
+            <parameter name="action_type" sort_order="30" visible="true" xsi:type="select" required="true">
+                <label translate="true">Type</label>
+                <options>
+                    <option name="button" value="button" selected="true">
+                        <label>Button</label>
+                    </option>
+                    <option name="link" value="link">
+                        <label>Link</label>
+                    </option>
+                </options>
+            </parameter>
+            <parameter name="show_on_mobile" sort_order="40" visible="true" xsi:type="select" required="true">
+                <label translate="true">Show Button on Mobile</label>
+                <options>
+                    <option name="yes" value="1" selected="true">
+                        <label>Yes</label>
+                    </option>
+                    <option name="no" value="0">
+                        <label>No</label>
+                    </option>
+                </options>
+            </parameter>
+		</parameters>
+	</widget>
+</widgets>

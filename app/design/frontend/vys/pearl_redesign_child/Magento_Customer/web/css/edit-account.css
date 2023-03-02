@@ -1,0 +1,47 @@
+.theme-pearl.store-view-penaflor h1 {
+    font-size: 2.2rem !important;
+}
+
+.fieldset > .field > .label {
+    font-weight: 500;
+}
+
+.fieldset > .legend {
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.account .legend > span {
+    font-size: 1.6rem !important;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.form-edit-account .fieldset .field .control > input {
+    width: 70%;
+}
+
+.account .page-main .page-title-wrapper .page-title {
+    margin-bottom: 20px;
+}
+
+.theme-pearl.store-view-penaflor input {
+    background: #F4F4F4;
+    border: 1px solid #F4F4F4;
+}
+
+.form-edit-account .fieldset > .field.choice .label {
+    color: #D4A22C;
+    text-decoration: underline;
+}
+
+.form-edit-account .fieldset .field-dob .customer-dob .ui-datepicker-trigger {
+    display: none;
+}
+
+@media(max-width: 780px) {
+    .form-edit-account .fieldset .field .control > input {
+        width: 100%;
+        
+    }
+}

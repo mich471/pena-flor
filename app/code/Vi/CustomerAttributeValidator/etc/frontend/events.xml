@@ -1,0 +1,8 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="controller_action_predispatch_checkout_index_index">
+        <observer name="vi_checkout_customer_attribute_validator" instance="Vi\CustomerAttributeValidator\Observer\CheckoutPredispatch" disabled="false" />
+    </event>
+    <event name="customer_save_before">
+        <observer name="vi_save_nombre_empresa_attribute" instance="Vi\CustomerAttributeValidator\Observer\SaveNombreEmpresaAttribute" disabled="false" />
+    </event>
+</config>

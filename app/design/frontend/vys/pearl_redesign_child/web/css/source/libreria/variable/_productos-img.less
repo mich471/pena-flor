@@ -1,0 +1,80 @@
+//
+//  Desktop (style-l.css)
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .theme-pearl.cms-home {
+        .page-wrapper {
+            .page-main-full-width {
+                .columns {
+                    .contenedor-productos-imagenes {
+                        .pagebuilder-column-group {
+                            .cajas-combinadas-texto{
+                                align-items: center;
+                                width: 585px !important;
+                                height: 507px;
+                                .btn-ver-todos-cajas{
+                                    .pagebuilder-button-secondary {
+                                        background: #d4a22c!important;
+                                        border: none !important;
+                                        color: #fff;
+                                    }
+                                }
+
+                                .cajas-combinadas{
+                                    color: #fff;
+                                    font-size: 45px;
+                                    width: 329px;
+                                    position: relative;
+                                    top: 100px;
+                                    font-style: italic;
+                                }
+                                .variedad-de-selecciondos {
+                                    position: relative;
+                                    top: 110px;
+                                    p{
+                                        margin: 0;
+                                    }
+                                }
+                                .contenedor-btn-ver {
+                                    position: relative;
+                                    top: 110px;
+                                }
+                            }                                                                                                               
+                            .tres-productos-img {
+                                .owl-stage {
+                                    display: flex;
+                                    justify-content: space-between;
+                                    width: 100% !important;
+                                    .owl-item.active {
+                                        margin: 0 50px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .conte-segundo-block{
+                        .pagebuilder-column-group{
+                            .conte-img-whiskies{                                
+                                height: 460px;
+                                .img-whiskies{                                   
+                                    color: #fff;
+                                    font-size: 70px;                                   
+                                    font-style: italic;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@media only screen and (min-width: 768px) {
+    .fotorama__stage > span.wp-product-label > img {
+        transform: scale(1.3);
+        margin: 40px
+    }
+}

@@ -1,0 +1,94 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/**
+ *
+ * @var WeltPixel\CustomHeader\Block\Rewrite\Html\Header\Logo $block
+ */
+$storeName = $block->getThemeName() ? $block->getThemeName() : $block->getLogoAlt();
+$_helper = $this->helper('WeltPixel\CustomHeader\Helper\Data');
+$checkouts = ['checkout_index_index','multishipping_checkout_addresses', 'multishipping_checkout_billing', 'multishipping_checkout_address_newShipping', 'multishipping_checkout_shipping','multishipping_checkout_overview', 'multishipping_checkout_address_editBilling', 'multishipping_checkout_address_selectBilling', 'multishipping_checkout_address_editShipping'];
+?>
+<span data-action="toggle-nav" class="action nav-toggle"><span><?= $block->escapeHtml(__('Toggle Nav')) ?></span></span>
+
+<?php if (!$_helper->isEnabledMobileLogo()) :?>
+    <div class="desktop-logo desktop-logo-all">
+        <a
+            class="logo "
+            href="<?= $block->escapeUrl($block->getUrl('')) ?>"
+            title="<?= $block->escapeHtmlAttr($storeName) ?>"
+            aria-label="store logo">
+            <img src="<?= $block->escapeUrl($block->getLogoSrc()) ?>"
+                 title="<?= $block->escapeHtmlAttr($block->getLogoAlt()) ?>"
+                 alt="<?= $block->escapeHtmlAttr($block->getLogoAlt()) ?>"
+                <?= $block->getLogoWidth() ? 'width="' . $block->escapeHtmlAttr($block->getLogoWidth()) . '"' : '' ?>
+                <?= $block->getLogoHeight() ? 'height="' . $block->escapeHtmlAttr($block->getLogoHeight()) . '"' : '' ?>
+            />
+        </a>
+    </div>
+<?php endif; ?>
+<?php if ($_helper->isEnabledMobileLogo()) :?>
+    <div class="desktop-logo">
+        <a
+            class="logo "
+            href="<?= $block->escapeUrl($block->getUrl('')) ?>"
+            title="<?= $block->escapeHtmlAttr($storeName) ?>"
+            aria-label="store logo">
+            <img src="<?= $block->escapeUrl($block->getLogoSrc()) ?>"
+                 title="<?= $block->escapeHtmlAttr($block->getLogoAlt()) ?>"
+                 alt="<?= $block->escapeHtmlAttr($block->getLogoAlt()) ?>"
+                <?= $block->getLogoWidth() ? 'width="' . $block->escapeHtmlAttr($block->getLogoWidth()) . '"' : '' ?>
+                <?= $block->getLogoHeight() ? 'height="' . $block->escapeHtmlAttr($block->getLogoHeight()) . '"' : '' ?>
+            />
+        </a>
+    </div>
+    <?php if (in_array($block->getRequest()->getFullActionName(), $checkouts)) :?>
+        <div class="mobile-checkout-logo logo-<?= $block->escapeHtmlAttr($block->getMobilePosition()) ?>">
+            <a  class="logo"
+                href="<?= $block->escapeUrl($block->getUrl('')) ?>"
+                title="<?= $block->escapeHtmlAttr($storeName) ?>"
+                aria-label="store logo" >
+                <img src="<?= $block->escapeUrl($block->getTypeLogoSrc('mobile_header_logo_src')) ?>"
+                     title="<?= $block->escapeHtmlAttr($block->getMobileLogoAlt()) ?>"
+                     alt="<?= $block->escapeHtmlAttr($block->getMobileLogoAlt()) ?>"
+                    <?= $block->getMobileLogoWidth() ? 'width="' . $block->escapeHtmlAttr($block->getMobileLogoWidth()) . '"' : '' ?>
+                    <?= $block->getMobileLogoHeight() ? 'height="' . $block->escapeHtmlAttr($block->getMobileLogoHeight()) . '"' : '' ?>
+                />
+            </a>
+        </div>
+    <?php else :?>
+        <?php if($block->escapeHtmlAttr($block->checkMobileLogoUploaded()) && $_helper->isEnabledMobileLogo()) :?>
+            <div class="mobile-logo logo-<?= $block->escapeHtmlAttr($block->getMobilePosition()) ?>">
+                <a  class="logo"
+                    href="<?= $block->escapeUrl($block->getUrl('')) ?>"
+                    title="<?= $block->escapeHtmlAttr($storeName) ?>"
+                    aria-label="store logo" >
+                    <img src="<?= $block->escapeUrl($block->getTypeLogoSrc('mobile_header_logo_src')) ?>"
+                         title="<?= $block->escapeHtmlAttr($block->getMobileLogoAlt()) ?>"
+                         alt="<?= $block->escapeHtmlAttr($block->getMobileLogoAlt()) ?>"
+                        <?= $block->getMobileLogoWidth() ? 'width="' . $block->escapeHtmlAttr($block->getMobileLogoWidth()) . '"' : '' ?>
+                        <?= $block->getMobileLogoHeight() ? 'height="' . $block->escapeHtmlAttr($block->getMobileLogoHeight()) . '"' : '' ?>
+                    />
+                </a>
+            </div>
+        <?php else :?>
+            <div class="desktop-logo desktop-logo-all unset-logo">
+                <a
+                    class="logo "
+                    href="<?= $block->escapeUrl($block->getUrl('')) ?>"
+                    title="<?= $block->escapeHtmlAttr($storeName) ?>"
+                    aria-label="store logo">
+                    <img src="<?= $block->escapeUrl($block->getLogoSrc()) ?>"
+                         title="<?= $block->escapeHtmlAttr($block->getLogoAlt()) ?>"
+                         alt="<?= $block->escapeHtmlAttr($block->getLogoAlt()) ?>"
+                        <?= $block->getLogoWidth() ? 'width="' . $block->escapeHtmlAttr($block->getLogoWidth()) . '"' : '' ?>
+                        <?= $block->getLogoHeight() ? 'height="' . $block->escapeHtmlAttr($block->getLogoHeight()) . '"' : '' ?>
+                    />
+                </a>
+            </div>
+        <?php endif; ?>
+    <?php endif; ?>
+<?php endif; ?>

@@ -1,0 +1,22 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php /** @var $block \Magento\Checkout\Block\Onepage\Success */ ?>
+<div class="checkout-failure">
+	<div class="success-title">
+		<p><?php echo __('Tu pago no ha sido procesado') ?></p>
+	</div>
+    <p><?php /* @escapeNotVerified */ echo __('De persistir el inconveniente por favor comunicate con nosotros<br> a través de nuestro formulario de contacto.') ?></p>
+
+
+	<div class="primary">
+		<a class="action primary continue" href="/contact"><span><?php /* @escapeNotVerified */ echo __('Contacto') ?></span></a>
+	</div>
+	
+</div>

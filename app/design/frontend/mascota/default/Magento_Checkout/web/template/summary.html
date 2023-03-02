@@ -1,0 +1,13 @@
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<div class="opc-block-summary" data-bind="blockLoader: isLoading">
+    <span data-bind="i18n: 'Resumen de tu Pedido'" class="title"></span>
+    <span class="action-modify"><a href="/#modify-order" data-bind="i18n: 'Modificar tu pedido'"></a></span>
+    <!-- ko foreach: elems() -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+    <!-- /ko -->
+</div>

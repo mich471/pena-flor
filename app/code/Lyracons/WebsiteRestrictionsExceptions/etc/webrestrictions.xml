@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_WebsiteRestriction:etc/webrestrictions.xsd">
+
+    <!-- Explicitly allow access to MercadoPago IPN when website restrictions are enabled -->
+    <action path="mercadopago_core_notifications_basic" type="generic"/>
+    <action path="mercadopago_core_notifications_custom" type="generic"/>
+    <!-- new login -->
+    <action path="newlogin_emaildomain_company" type="generic"/>
+    <action path="newlogin_register_error" type="generic"/>
+    <action path="newlogin_register_existente" type="generic"/>
+    <action path="newlogin_register_success" type="generic"/>
+</config>

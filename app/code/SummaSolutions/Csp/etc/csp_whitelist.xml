@@ -1,0 +1,228 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2020 Codazon. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<csp_whitelist xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Csp/etc/csp_whitelist.xsd">
+    <policies>
+        <policy id="font-src">
+            <values>
+                <value id="fonts-gstatic-com" type="host">fonts.gstatic.com</value>
+                <value id="kxcdn-com" type="host">*.kxcdn.com</value>
+            </values>
+        </policy>
+        <policy id="style-src">
+            <values>
+                <value id="googleapis-com" type="host">*.googleapis.com</value>
+                <value id="google-com" type="host">google.com</value>
+                <value id="kxcdn-com" type="host">*.kxcdn.com</value>
+                <value id="gstatic-com" type="host">*.gstatic.com</value>
+            </values>
+        </policy>
+        <policy id="img-src">
+            <values>
+                <value id="scontent-cdninstagram-com" type="host">scontent.cdninstagram.com</value>
+                <value id="data" type="host">data:</value>
+                <value id="kxcdn-com" type="host">*.kxcdn.com</value>
+                <value id="amcglobal-sc-omtrdc-net" type="host">amcglobal.sc.omtrdc.net</value>
+                <value id="twitter-com" type="host">*.twitter.com</value>
+                <value id="googleapis-com" type="host">*.googleapis.com</value>
+                <value id="google-com" type="host">google.com</value>
+                <value id="gstatic-com" type="host">*.gstatic.com</value>
+            </values>
+        </policy>
+        <policy id="script-src">
+            <values>
+                <value id="googleapis-com" type="host">*.googleapis.com</value>
+                <value id="google-com" type="host">google.com</value>
+                <value id="gstatic-com" type="host">*.gstatic.com</value>
+                <value id="cdn-ampproject-org" type="host">cdn.ampproject.org</value>
+                <value id="connect-facebook-net" type="host">connect.facebook.net</value>
+                <value id="www-googletagmanager-com" type="host">www.googletagmanager.com</value>
+                <value id="googletagmanager-com" type="host">googletagmanager.com</value>
+                <value id="kxcdn-com" type="host">*.kxcdn.com</value>
+                <value id="platform-twitter-com" type="host">platform.twitter.com</value>
+                <value id="clarity-ms" type="host">www.clarity.ms</value>
+            </values>
+        </policy>
+        <policy id="frame-src">
+            <values>
+                <value id="facebook-com" type="host">facebook.com</value>
+                <value id="www-facebook-com" type="host">www.facebook.com</value>
+                <value id="kxcdn-com" type="host">*.kxcdn.com</value>
+                <value id="youtube-com" type="host">youtube.com</value>
+                <value id="www-youtube-com" type="host">www.youtube.com</value>
+                <value id="platform-twitter-com" type="host">platform.twitter.com</value>
+                <value id="google-com" type="host">google.com</value>
+            </values>
+        </policy>
+        <policy id="worker-src">
+            <values>
+                <value id="blob" type="host">blob:</value>
+            </values>
+        </policy>
+        <policy id="connect-src">
+            <values>
+                <value id="paypal1" type="host">https://www.paypal.com/xoplatform/logger/api/logger</value>
+                <value id="cdn-ampproject-org" type="host">cdn.ampproject.org</value>
+                <value id="kxcdn-com" type="host">*.kxcdn.com</value>
+                <value id="dpm-demdex-net" type="host">dpm.demdex.net</value>
+                <value id="m-clarity-ms" type="host">m.clarity.ms</value>
+            </values>
+        </policy>
+        <policy id="script-src">
+            <values>
+                <!-- Google -->
+                <value id="google-scr" type="host">*.google.com</value>
+                <!-- Google Optimize-->
+                <value id="googleoptimize-scr" type="host">*.googleoptimize.com</value>
+                <!-- G Static -->
+                <value id="g-static-scr" type="host">*.gstatic.com</value>
+                <!-- Google Tag Manager -->
+                <value id="googletagmanager-scr" type="host">*.googletagmanager.com</value>
+                <!-- Google Apis -->
+                <value id="googleapis-scr" type="host">*.googleapis.com</value>
+                <!-- Google Analytics -->
+                <value id="google-analytics-scr" type="host">*.google-analytics.com</value>
+                <!-- Fanplayr -->
+                <value id="fanplayr-scr" type="host">*.fanplayr.com</value>
+                <!-- Facebook -->
+                <value id="facebook-scr" type="host">*.facebook.net</value>
+                <!-- Yotpo -->
+                <value id="yotpo-scr" type="host">*.yotpo.com</value>
+                <!-- New Relic -->
+                <value id="newrelic-scr" type="host">*.newrelic.com</value>
+                <!-- New Relic Data-->
+                <value id="nr-data-scr" type="host">*.nr-data.net</value>
+                <!-- Doubleclick Data-->
+                <value id="doubleclick-scr" type="host">*.doubleclick.net</value>
+                <!-- Magento Cloud -->
+                <value id="magentosite-cloud-scr" type="host">*.magentosite.cloud</value>
+                <!-- TitanPUSH -->
+                <value id="titanpush" type="host">d12zyq17vm1xwx.cloudfront.net</value>
+                <!-- Webcentrix -->
+                <value id="webcentrix" type="host">f.wcentrix.com</value>
+                <value id="api-webcentrix" type="host">api.wcx.cloud</value>
+                <!-- Crazy Egg -->
+                <value id="crazyegg" type="host">script.crazyegg.com</value>
+                <!-- Icommkt -->
+                <value id="icommkt" type="host">externalassets.icommarketing.com</value>
+                <!-- WoowUp -->
+                <value id="woowup-webtracking" type="host">assets-cdn.woowup.com</value>
+                <!-- Bing Bot -->
+                <value id="bing-bot" type="host">bat.bing.com</value>
+                <value id="clarity" type="host">clarity.ms</value>
+
+            </values>
+        </policy>
+        <policy id="style-src">
+            <values>
+                <!-- Google APIs -->
+                <value id="google-apis-css" type="host">*.googleapis.com</value>
+                <!-- Digital GPF -->
+                <value id="data-style-grupo-penaflor-css" type="host">*.grupo-penaflor.com.ar</value>
+                <!-- Digital V6S-->
+                <value id="data-style-vys-css" type="host">*.vinosyspirits.com</value>
+                <!-- Digital mascota-->
+                <value id="data-style-mascota-css" type="host">*.mascotavineyards.com.ar</value>
+                <!-- Digital tac-->
+                <value id="data-style-tac-css" type="host">*.theargentinecellar.com</value>
+                <!-- Digital local-->
+                <value id="data-style-local-css" type="host">*.gpf.local</value>
+                <!-- Digital qa-->
+                <value id="data-style-qa-css" type="host">*.qa.lyracons.tk</value>
+                <!-- Yotpo -->
+                <value id="yotpo-css-css" type="host">*.yotpo.com</value>
+                <!-- Fonts.net -->
+                <value id="fontsnet-css-css" type="host">*.fonts.net</value>
+                <!-- Magento Cloud -->
+                <value id="magentosite-cloud-css" type="host">*.magentosite.cloud</value>
+                <!-- Webcentrix -->
+                <value id="webcentrix" type="host">f.wcentrix.com</value>
+            </values>
+        </policy>
+        <policy id="img-src">
+            <values>
+                <!-- Yotpo -->
+                <value id="yotpo-img" type="host">*.yotpo.com</value>
+                <!-- Google -->
+                <value id="google-img" type="host">*.google.com</value>
+                <!-- Google Ar -->
+                <value id="googlear-img" type="host">*.google.com.ar</value>
+                <!-- Facebook -->
+                <value id="facebook-img" type="host">*.facebook.com</value>
+                <!-- doubleckick -->
+                <value id="doubleclick-img" type="host">*.doubleclick.net</value>
+                <!-- media.gpf -->
+                <value id="data-image-grupo-penaflor-img" type="host">*.grupo-penaflor.com.ar</value>
+                <!-- media.v&s -->
+                <value id="data-image-vys-img" type="host">*.vinosyspirits.com</value>
+                <!-- media.mascota -->
+                <value id="data-image-mascota-img" type="host">*.mascotavineyards.com.ar</value>
+                <!-- media.tac -->
+                <value id="data-image-tac-img" type="host">*.theargentinecellar.com</value>
+                <!-- media.ml -->
+                <value id="data-image-ml-img" type="host">*.mercadolibre.com</value>
+                <value id="data-image-mlbr-img" type="host">*.mercadolivre.com</value>
+                <!-- media.local -->
+                <value id="data-image-local-img" type="host">*.gpf.local</value>
+                <!-- media.qa -->
+                <value id="data-image-qa-img" type="host">*.qa.lyracons.tk</value>
+                <!-- Data Scheme - Base64 Encoded Images -->
+                <value id="data-image-img" type="host">'self' data:</value>
+                <!-- Img Src - Google Tag Manager -->
+                <value id="google-tag-manager" type="host">www.googletagmanager.com</value>
+                <!-- Img Src - Bat Bing -->
+                <value id="bat-bing" type="host">bat.bing.com</value>
+            </values>
+        </policy>
+        <policy id="connect-src">
+            <values>
+                <!-- Google Analytics -->
+                <value id="google-analytics-conn" type="host">*.google-analytics.com</value>
+                <!-- Yotpo -->
+                <value id="yotpo-conn" type="host">*.yotpo.com</value>
+                <!-- New Relic Data-->
+                <value id="nr-data-conn" type="host">*.nr-data.net</value>
+                <!-- MercadoLibre -->
+                <value id="ml-conn" type="host">*.mercadolibre.com</value>
+                <!-- Icommkt -->
+                <value id="notifications-icommkt" type="host">notifications-icommkt.com</value>
+                <value id="track-icommkt-conn" type="host">track-icommkt.com</value>
+                <!-- AdSense -->
+                <value id="stats-doubleclick" type="host">stats.g.doubleclick.net</value>
+                <!-- Crazy Egg -->
+                <value id="crazyegg" type="host">script.crazyegg.com</value>
+                <!-- WoowUp -->
+                <value id="woowup" type="host">*.woowup.com</value>
+            </values>
+        </policy>
+        <policy id="font-src">
+            <values>
+                <!-- G Static -->
+                <value id="g-static-font" type="host">*.gstatic.com</value>
+                <!-- Googleapis -->
+                <value id="googleapis-font" type="host">*.googleapis.com</value>
+                <!-- Yotpo -->
+                <value id="yotpo-font" type="host">*.yotpo.com</value>
+                <!-- Data Scheme - Base64 Encoded Fonts -->
+                <value id="data-font" type="host">'self' data:</value>
+            </values>
+        </policy>
+        <policy id="frame-src">
+            <values>
+                <!-- Google -->
+                <value id="google-fr" type="host">*.google.com</value>
+                <!-- MercadoPago -->
+                <value id="mercadopago-fr" type="host">*.mercadopago.com.ar</value>
+                <!-- AdSense -->
+                <value id="doubleclick" type="host">*.fls.doubleclick.net</value>
+                <!-- Webcentrix -->
+                <value id="webcentrix" type="host">webcentrix.net</value>
+            </values>
+        </policy>
+
+    </policies>
+</csp_whitelist>

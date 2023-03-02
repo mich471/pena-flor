@@ -1,0 +1,149 @@
+title,page_layout,meta_keywords,meta_description,identifier,content_heading,content,is_active,sort_order,layout_update_xml,custom_theme,custom_root_template,custom_layout_update_xml,custom_theme_from,custom_theme_to,css_global,css_phone_small,css_phone,css_tablet_small,css_tablet,css_desktop,css_desktop_large,custom_js
+"Home Page v16 - PageBuilder",cms-full-width,,,home-page-v16,"","
+<style>#html-body [data-pb-style=GEK862A]{justify-content:center;display:flex;flex-direction:column;background-position:center center;background-size:cover;background-repeat:no-repeat;background-attachment:scroll;text-align:center;min-height:650px;width:100%;margin-bottom:50px;align-self:flex-end}#html-body [data-pb-style=IRPMPR8]{margin-bottom:10px}#html-body [data-pb-style=P5U22O8]{margin-bottom:20px}#html-body [data-pb-style=QJ9HFXG]{display:inline-block}#html-body [data-pb-style=IKY1BDR]{text-align:center;border-style:solid;border-color:#fff;border-width:2px;padding:14px 40px}#html-body [data-pb-style=EEOLN3B],#html-body [data-pb-style=RAB9LOI],#html-body [data-pb-style=RXE91JV]{display:flex;flex-direction:column;background-size:cover;background-repeat:no-repeat;background-attachment:scroll}#html-body [data-pb-style=EEOLN3B]{justify-content:flex-start;background-position:left top}#html-body [data-pb-style=RAB9LOI],#html-body [data-pb-style=RXE91JV]{justify-content:center;width:calc(50% - 30px);margin:50px 15px;align-self:stretch}#html-body [data-pb-style=RAB9LOI]{background-position:center center;min-height:500px}#html-body [data-pb-style=RXE91JV]{background-position:left top}#html-body [data-pb-style=W1B4TBT]{display:inline-block}#html-body [data-pb-style=TA8P90U]{text-align:left;border-style:solid;border-color:#000;border-width:1px;margin-top:10px;margin-bottom:10px;padding:14px 40px}#html-body [data-pb-style=PSL5I20],#html-body [data-pb-style=XXO0Y80]{justify-content:flex-start;display:flex;flex-direction:column;background-position:left top;background-size:cover;background-repeat:no-repeat;background-attachment:scroll}#html-body [data-pb-style=XXO0Y80]{text-align:center;width:33.3333%;margin-top:50px;margin-bottom:50px;padding-left:15px;padding-right:15px;align-self:stretch}#html-body [data-pb-style=JBJNFWK]{border-style:none}#html-body [data-pb-style=F038781],#html-body [data-pb-style=L8GM7E4]{max-width:100%;height:auto}#html-body [data-pb-style=UGY2U3X]{justify-content:flex-start;display:flex;flex-direction:column;background-position:left top;background-size:cover;background-repeat:no-repeat;background-attachment:scroll;text-align:center;width:33.3333%;margin-top:50px;margin-bottom:50px;padding-left:15px;padding-right:15px;align-self:stretch}#html-body [data-pb-style=USPN0AR]{border-style:none}#html-body [data-pb-style=ACUBAT8],#html-body [data-pb-style=N97V21J]{max-width:100%;height:auto}#html-body [data-pb-style=HRWX2VW]{justify-content:flex-start;display:flex;flex-direction:column;background-position:left top;background-size:cover;background-repeat:no-repeat;background-attachment:scroll;text-align:center;width:33.3333%;margin-top:50px;margin-bottom:50px;padding-left:15px;padding-right:15px;align-self:stretch}#html-body [data-pb-style=XNP4E1R]{border-style:none}#html-body [data-pb-style=HWDY5L9],#html-body [data-pb-style=MQ2WFQB]{max-width:100%;height:auto}#html-body [data-pb-style=DY4MRIT],#html-body [data-pb-style=HPL7Y7Y]{justify-content:flex-start;display:flex;flex-direction:column;background-position:left top;background-size:cover;background-repeat:no-repeat;background-attachment:scroll}#html-body [data-pb-style=DY4MRIT]{width:100%;margin-top:50px;margin-bottom:50px;align-self:stretch}#html-body [data-pb-style=F8EOA8C]{text-align:center}#html-body [data-pb-style=X07Y11Q]{justify-content:center;display:flex;flex-direction:column;background-position:left top;background-size:cover;background-repeat:no-repeat;background-attachment:scroll;text-align:center;min-height:400px;width:100%;margin-top:50px;margin-bottom:50px;align-self:stretch}#html-body [data-pb-style=UWEOKDK]{margin-bottom:10px}#html-body [data-pb-style=AH5B5EP],#html-body [data-pb-style=ECYAA88],#html-body [data-pb-style=SYFQV4B]{justify-content:flex-start;display:flex;flex-direction:column;background-position:left top;background-size:cover;background-repeat:no-repeat;background-attachment:scroll}#html-body [data-pb-style=ECYAA88],#html-body [data-pb-style=SYFQV4B]{text-align:center;margin-top:50px;align-self:stretch}#html-body [data-pb-style=SYFQV4B]{width:100%;margin-bottom:50px}#html-body [data-pb-style=ECYAA88]{width:33.3333%}#html-body [data-pb-style=FW61079]{border-style:none}#html-body [data-pb-style=KFMQE0C],#html-body [data-pb-style=XJG097M]{max-width:100%;height:auto}#html-body [data-pb-style=RCJH7GY]{justify-content:flex-start;display:flex;flex-direction:column;background-position:left top;background-size:cover;background-repeat:no-repeat;background-attachment:scroll;text-align:center;width:33.3333%;margin-top:50px;align-self:stretch}#html-body [data-pb-style=SYE64B9]{border-style:none}#html-body [data-pb-style=R231IQG],#html-body [data-pb-style=U2R55OG]{max-width:100%;height:auto}#html-body [data-pb-style=CRJE73O]{justify-content:flex-start;display:flex;flex-direction:column;background-position:left top;background-size:cover;background-repeat:no-repeat;background-attachment:scroll;text-align:center;width:33.3333%;margin-top:50px;align-self:stretch}#html-body [data-pb-style=HID0XQ3]{border-style:none}#html-body [data-pb-style=NKJTFBC],#html-body [data-pb-style=Q96BOQJ]{max-width:100%;height:auto}@media only screen and (max-width: 768px) { #html-body [data-pb-style=FW61079],#html-body [data-pb-style=HID0XQ3],#html-body [data-pb-style=JBJNFWK],#html-body [data-pb-style=SYE64B9],#html-body [data-pb-style=USPN0AR],#html-body [data-pb-style=XNP4E1R]{border-style:none} }</style><div class=""pagebuilder-column-group"" style=""display: flex;"" data-content-type=""column-group"" data-grid-size=""12"" data-element=""main""><div class=""pagebuilder-column top-banner-column"" data-content-type=""column"" data-appearance=""align-bottom"" data-background-images=""{\&quot;desktop_image\&quot;:\&quot;{{media url=wysiwyg/pearl_theme/homepage-v16/pearl_bag_main.jpg}}\&quot;}"" data-element=""main"" data-pb-style=""GEK862A""><div data-content-type=""text"" data-appearance=""default"" data-element=""main"" data-pb-style=""IRPMPR8""><p><span id=""HB05235"" style=""font-size: 48px; color: #ffffff;"">Rediscover who you're meant to be</span></p></div><div data-content-type=""text"" data-appearance=""default"" data-element=""main"" data-pb-style=""P5U22O8""><p><span style=""color: #ffffff; font-size: 18px;"">Luggage for business and pleasure</span></p></div><div data-content-type=""buttons"" data-appearance=""inline"" data-same-width=""false"" data-element=""main""><div data-content-type=""button-item"" data-appearance=""default"" data-element=""main"" data-pb-style=""QJ9HFXG""><a class=""pagebuilder-button-primary"" href=""#"" target=""_blank"" data-link-type=""default"" data-element=""link"" data-pb-style=""IKY1BDR""><span data-element=""link_text"">SHOP NOW</span></a></div></div></div></div><div data-content-type=""row"" data-appearance=""contained"" data-element=""main""><div data-enable-parallax=""0"" data-parallax-speed=""0.5"" data-background-images=""{}"" data-background-type=""image"" data-video-loop=""true"" data-video-play-only-visible=""true"" data-video-lazy-load=""true"" data-video-fallback-src="""" data-element=""inner"" data-pb-style=""EEOLN3B""><div class=""pagebuilder-column-group"" style=""display: flex;"" data-content-type=""column-group"" data-grid-size=""12"" data-element=""main""><div class=""pagebuilder-column"" data-content-type=""column"" data-appearance=""full-height"" data-background-images=""{\&quot;desktop_image\&quot;:\&quot;{{media url=wysiwyg/pearl_theme/homepage-v16/pearl_bag_section1.jpg}}\&quot;}"" data-element=""main"" data-pb-style=""RAB9LOI""></div><div class=""pagebuilder-column text-column"" data-content-type=""column"" data-appearance=""full-height"" data-background-images=""{}"" data-element=""main"" data-pb-style=""RXE91JV""><h2 data-content-type=""heading"" data-appearance=""default"" data-element=""main"">Keep up to date with the latest fashion trends.</h2><div data-content-type=""text"" data-appearance=""default"" data-element=""main""><p>Our products are designed to have the perfect mix of quality and trendiness. We use only the best materials such as 100% imported Alcantara Leather and Egyptian Cotton. Get ready for the Fall Season with the best handbags on the market.</p></div><div data-content-type=""buttons"" data-appearance=""inline"" data-same-width=""false"" data-element=""main""><div data-content-type=""button-item"" data-appearance=""default"" data-element=""main"" data-pb-style=""W1B4TBT""><a class=""pagebuilder-button-primary"" href=""#"" target=""_blank"" data-link-type=""default"" data-element=""link"" data-pb-style=""TA8P90U""><span data-element=""link_text"">SEE THE COLLECTION</span></a></div></div></div></div></div></div><div data-content-type=""row"" data-appearance=""contained"" data-element=""main""><div data-enable-parallax=""0"" data-parallax-speed=""0.5"" data-background-images=""{}"" data-background-type=""image"" data-video-loop=""true"" data-video-play-only-visible=""true"" data-video-lazy-load=""true"" data-video-fallback-src="""" data-element=""inner"" data-pb-style=""PSL5I20""><div class=""pagebuilder-column-group"" style=""display: flex;"" data-content-type=""column-group"" data-grid-size=""12"" data-element=""main""><div class=""pagebuilder-column"" data-content-type=""column"" data-appearance=""full-height"" data-background-images=""{}"" data-element=""main"" data-pb-style=""XXO0Y80""><figure data-content-type=""image"" data-appearance=""full-width"" data-element=""main"" data-pb-style=""JBJNFWK""><a href=""#"" target=""_blank"" data-link-type=""default"" title="""" data-element=""link""><img class=""pagebuilder-mobile-hidden lazy"" src=""{{media url=wysiwyg/pearl_theme/homepage-v16/pearl_middle_bag1.jpg}}"" data-original=""{{media url=wysiwyg/pearl_theme/homepage-v16/pearl_middle_bag1.jpg}}"" alt="""" title="""" data-element=""desktop_image"" data-pb-style=""F038781""><img class=""pagebuilder-mobile-only lazy"" src=""{{media url=wysiwyg/pearl_theme/homepage-v16/pearl_middle_bag1.jpg}}"" data-original=""{{media url=wysiwyg/pearl_theme/homepage-v16/pearl_middle_bag1.jpg}}"" alt="""" title="""" data-element=""mobile_image"" data-pb-style=""L8GM7E4""></a></figure><h2 data-content-type=""heading"" data-appearance=""default"" data-element=""main"">The best materials.</h2><div data-content-type=""text"" data-appearance=""default"" data-element=""main""><p>The bag we carry expresses more about us than any other fashion accessory.&nbsp;</p></div></div><div class=""pagebuilder-column"" data-content-type=""column"" data-appearance=""full-height"" data-background-images=""{}"" data-element=""main"" data-pb-style=""UGY2U3X""><figure data-content-type=""image"" data-appearance=""full-width"" data-element=""main"" data-pb-style=""USPN0AR""><a href=""#"" target=""_blank"" data-link-type=""default"" title="""" data-element=""link""><img class=""pagebuilder-mobile-hidden lazy"" src=""{{media url=wysiwyg/pearl_theme/homepage-v16/pearl_middle_bag2.jpg}}"" data-original=""{{media url=wysiwyg/pearl_theme/homepage-v16/pearl_middle_bag2.jpg}}"" alt="""" title="""" data-element=""desktop_image"" data-pb-style=""ACUBAT8""><img class=""pagebuilder-mobile-only lazy"" src=""{{media url=wysiwyg/pearl_theme/homepage-v16/pearl_middle_bag2.jpg}}"" data-original=""{{media url=wysiwyg/pearl_theme/homepage-v16/pearl_middle_bag2.jpg}}"" alt="""" title="""" data-element=""mobile_image"" data-pb-style=""N97V21J""></a></figure><h2 data-content-type=""heading"" data-appearance=""default"" data-element=""main"">Thoughtfully designed.</h2><div data-content-type=""text"" data-appearance=""default"" data-element=""main""><p>The bag we carry expresses more about us than any other fashion accessory.&nbsp;</p></div></div><div class=""pagebuilder-column"" data-content-type=""column"" data-appearance=""full-height"" data-background-images=""{}"" data-element=""main"" data-pb-style=""HRWX2VW""><figure data-content-type=""image"" data-appearance=""full-width"" data-element=""main"" data-pb-style=""XNP4E1R""><a href=""#"" target=""_blank"" data-link-type=""default"" title="""" data-element=""link""><img class=""pagebuilder-mobile-hidden lazy"" src=""{{media url=wysiwyg/pearl_theme/homepage-v16/pearl_middle_bag3.jpg}}"" data-orginal=""{{media url=wysiwyg/pearl_theme/homepage-v16/pearl_middle_bag3.jpg}}"" alt="""" title="""" data-element=""desktop_image"" data-pb-style=""HWDY5L9""><img class=""pagebuilder-mobile-only lazy"" src=""{{media url=wysiwyg/pearl_theme/homepage-v16/pearl_middle_bag3.jpg}}"" data-original=""{{media url=wysiwyg/pearl_theme/homepage-v16/pearl_middle_bag3.jpg}}"" alt="""" title="""" data-element=""mobile_image"" data-pb-style=""MQ2WFQB""></a></figure><h2 data-content-type=""heading"" data-appearance=""default"" data-element=""main"">Always in style.</h2><div data-content-type=""text"" data-appearance=""default"" data-element=""main""><p>The bag we carry expresses more about us than any other fashion accessory.&nbsp;</p></div></div></div></div></div><div data-content-type=""row"" data-appearance=""contained"" data-element=""main""><div data-enable-parallax=""0"" data-parallax-speed=""0.5"" data-background-images=""{}"" data-background-type=""image"" data-video-loop=""true"" data-video-play-only-visible=""true"" data-video-lazy-load=""true"" data-video-fallback-src="""" data-element=""inner"" data-pb-style=""HPL7Y7Y""><div class=""pagebuilder-column-group"" style=""display: flex;"" data-content-type=""column-group"" data-grid-size=""12"" data-element=""main""><div class=""pagebuilder-column"" data-content-type=""column"" data-appearance=""full-height"" data-background-images=""{}"" data-element=""main"" data-pb-style=""DY4MRIT""><div data-content-type=""html"" data-appearance=""default"" data-element=""main"" data-pb-style=""F8EOA8C"">{{widget type=""WeltPixel\OwlCarouselSlider\Block\Slider\Category"" category=""category/4""}}</div></div></div></div></div><div class=""pagebuilder-column-group"" style=""display: flex;"" data-content-type=""column-group"" data-grid-size=""12"" data-element=""main""><div class=""pagebuilder-column bottom-banner-column section parallax nomargin notopborder container-v4"" data-content-type=""column"" data-appearance=""full-height"" data-background-images=""{\&quot;desktop_image\&quot;:\&quot;{{media url=wysiwyg/pearl_theme/homepage-v16/pearl_materials.jpg}}\&quot;}"" data-element=""main"" data-pb-style=""X07Y11Q""><div data-content-type=""text"" data-appearance=""default"" data-element=""main"" data-pb-style=""UWEOKDK""><p><span style=""font-size: 48px; color: #ffffff;"">The best materials are always the simplest</span></p></div><div data-content-type=""text"" data-appearance=""default"" data-element=""main""><p><span style=""font-size: 18px; color: #ffffff;"">Shop intelligently</span></p></div></div></div><div data-content-type=""row"" data-appearance=""contained"" data-element=""main""><div data-enable-parallax=""0"" data-parallax-speed=""0.5"" data-background-images=""{}"" data-background-type=""image"" data-video-loop=""true"" data-video-play-only-visible=""true"" data-video-lazy-load=""true"" data-video-fallback-src="""" data-element=""inner"" data-pb-style=""AH5B5EP""><div class=""pagebuilder-column-group"" style=""display: flex;"" data-content-type=""column-group"" data-grid-size=""12"" data-element=""main""><div class=""pagebuilder-column"" data-content-type=""column"" data-appearance=""full-height"" data-background-images=""{}"" data-element=""main"" data-pb-style=""SYFQV4B""><div data-content-type=""html"" data-appearance=""default"" data-element=""main"">&lt;ul class=""testimonials-grid grid-3 clearfix""&gt;
+        &lt;li&gt;
+            &lt;div class=""testimonial""&gt;
+                &lt;div class=""testi-image""&gt;
+                    &lt;a href=""#""&gt;&lt;i class=""i-plain i-xlarge icon-user""&gt;&lt;/i&gt;&lt;/a&gt;
+                &lt;/div&gt;
+                &lt;div class=""testi-content""&gt;
+                    &lt;p&gt;Incidunt deleniti blanditiis quas aperiam recusandae consequatur ullam quibusdam cum libero illo
+                        rerum repellendus!&lt;/p&gt;
+                    &lt;div class=""testi-meta""&gt;
+                        John Doe
+                        &lt;span&gt;XYZ Inc.&lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;div class=""testimonial""&gt;
+                &lt;div class=""testi-image""&gt;
+                    &lt;a href=""#""&gt;&lt;i class=""i-plain i-xlarge icon-user""&gt;&lt;/i&gt;&lt;/a&gt;
+                &lt;/div&gt;
+                &lt;div class=""testi-content""&gt;
+                    &lt;p&gt;Natus voluptatum enim quod necessitatibus quis expedita harum provident eos obcaecati id culpa
+                        corporis molestias.&lt;/p&gt;
+                    &lt;div class=""testi-meta""&gt;
+                        Collis Ta'eed
+                        &lt;span&gt;Envato Inc.&lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;div class=""testimonial""&gt;
+                &lt;div class=""testi-image""&gt;
+                    &lt;a href=""#""&gt;&lt;i class=""i-plain i-xlarge icon-user""&gt;&lt;/i&gt;&lt;/a&gt;
+                &lt;/div&gt;
+                &lt;div class=""testi-content""&gt;
+                    &lt;p&gt;Fugit officia dolor sed harum excepturi ex iusto magnam asperiores molestiae qui natus obcaecati
+                        facere sint amet.&lt;/p&gt;
+                    &lt;div class=""testi-meta""&gt;
+                        Mary Jane
+                        &lt;span&gt;Google Inc.&lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;div class=""testimonial""&gt;
+                &lt;div class=""testi-image""&gt;
+                    &lt;a href=""#""&gt;&lt;i class=""i-plain i-xlarge icon-user""&gt;&lt;/i&gt;&lt;/a&gt;
+                &lt;/div&gt;
+                &lt;div class=""testi-content""&gt;
+                    &lt;p&gt;Similique fugit repellendus expedita excepturi iure perferendis provident quia eaque.
+                        Repellendus, vero numquam?&lt;/p&gt;
+                    &lt;div class=""testi-meta""&gt;
+                        Steve Jobs
+                        &lt;span&gt;Apple Inc.&lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;div class=""testimonial""&gt;
+                &lt;div class=""testi-image""&gt;
+                    &lt;a href=""#""&gt;&lt;i class=""i-plain i-xlarge icon-user""&gt;&lt;/i&gt;&lt;/a&gt;
+                &lt;/div&gt;
+                &lt;div class=""testi-content""&gt;
+                    &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus, perspiciatis illum totam dolore
+                        deleniti labore.&lt;/p&gt;
+                    &lt;div class=""testi-meta""&gt;
+                        Jamie Morrison
+                        &lt;span&gt;Adobe Inc.&lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;div class=""testimonial""&gt;
+                &lt;div class=""testi-image""&gt;
+                    &lt;a href=""#""&gt;&lt;i class=""i-plain i-xlarge icon-user""&gt;&lt;/i&gt;&lt;/a&gt;
+                &lt;/div&gt;
+                &lt;div class=""testi-content""&gt;
+                    &lt;p&gt;Porro dolorem saepe reiciendis nihil minus neque. Ducimus rem necessitatibus repellat laborum
+                        nemo quod.&lt;/p&gt;
+                    &lt;div class=""testi-meta""&gt;
+                        Cyan Ta'eed
+                        &lt;span&gt;Tutsplus&lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;</div></div></div></div></div><div class=""pagebuilder-column-group"" style=""display: flex;"" data-content-type=""column-group"" data-grid-size=""12"" data-element=""main""><div class=""pagebuilder-column bottom-image-col"" data-content-type=""column"" data-appearance=""full-height"" data-background-images=""{}"" data-element=""main"" data-pb-style=""ECYAA88""><figure class=""bottom-img"" data-content-type=""image"" data-appearance=""full-width"" data-element=""main"" data-pb-style=""FW61079""><img class=""pagebuilder-mobile-hidden lazy"" src=""{{media url=wysiwyg/pearl_theme/homepage-v16/pearl_bottom_bag1.jpg}}"" data-original=""{{media url=wysiwyg/pearl_theme/homepage-v16/pearl_bottom_bag1.jpg}}"" alt="""" title="""" data-element=""desktop_image"" data-pb-style=""KFMQE0C""><img class=""pagebuilder-mobile-only lazy"" src=""{{media url=wysiwyg/pearl_theme/homepage-v16/pearl_bottom_bag1.jpg}}"" data-original=""{{media url=wysiwyg/pearl_theme/homepage-v16/pearl_bottom_bag1.jpg}}"" alt="""" title="""" data-element=""mobile_image"" data-pb-style=""XJG097M""></figure></div><div class=""pagebuilder-column bottom-image-col"" data-content-type=""column"" data-appearance=""full-height"" data-background-images=""{}"" data-element=""main"" data-pb-style=""RCJH7GY""><figure class=""bottom-img"" data-content-type=""image"" data-appearance=""full-width"" data-element=""main"" data-pb-style=""SYE64B9""><img class=""pagebuilder-mobile-hidden lazy"" src=""{{media url=wysiwyg/pearl_theme/homepage-v16/pearl_bottom_bag2.jpg}}"" data-original=""{{media url=wysiwyg/pearl_theme/homepage-v16/pearl_bottom_bag2.jpg}}"" alt="""" title="""" data-element=""desktop_image"" data-pb-style=""U2R55OG""><img class=""pagebuilder-mobile-only lazy"" src=""{{media url=wysiwyg/pearl_theme/homepage-v16/pearl_bottom_bag2.jpg}}"" data-original=""{{media url=wysiwyg/pearl_theme/homepage-v16/pearl_bottom_bag2.jpg}}"" alt="""" title="""" data-element=""mobile_image"" data-pb-style=""R231IQG""></figure></div><div class=""pagebuilder-column bottom-image-col"" data-content-type=""column"" data-appearance=""full-height"" data-background-images=""{}"" data-element=""main"" data-pb-style=""CRJE73O""><figure class=""bottom-img"" data-content-type=""image"" data-appearance=""full-width"" data-element=""main"" data-pb-style=""HID0XQ3""><img class=""pagebuilder-mobile-hidden lazy"" src=""{{media url=wysiwyg/pearl_theme/homepage-v16/pearl_bottom_bag3.jpg}}"" data-original=""{{media url=wysiwyg/pearl_theme/homepage-v16/pearl_bottom_bag3.jpg}}"" alt="""" title="""" data-element=""desktop_image"" data-pb-style=""Q96BOQJ""><img class=""pagebuilder-mobile-only lazy"" src=""{{media url=wysiwyg/pearl_theme/homepage-v16/pearl_bottom_bag3.jpg}}"" data-original=""{{media url=wysiwyg/pearl_theme/homepage-v16/pearl_bottom_bag3.jpg}}"" alt="""" title="""" data-element=""mobile_image"" data-pb-style=""NKJTFBC""></figure></div></div>
+",1,,,,,,,,"
+.breadcrumbs {
+    display: none;
+}
+.columns .column.main {
+    padding-bottom: 0 !important;
+}
+.top-banner-column {
+    box-shadow:inset 0 0 0 2000px rgba(0, 0, 0, 0.3);
+}
+.bottom-banner-column {
+    box-shadow:inset 0 0 0 2000px rgba(0, 0, 0, 0.3);
+}
+.top-banner-column .pagebuilder-button-primary {
+    background: transparent;
+    font-size: 14px;
+    transition: all .5s;
+}
+.top-banner-column .pagebuilder-button-primary:hover {
+    background: #ffffff;
+    color: #000000 !important;
+    text-shadow: none;
+    transition: all .5s;
+}
+.text-column .pagebuilder-button-primary {
+    font-size: 14px;
+    transition: all .5s;
+}
+.text-column .pagebuilder-button-primary:hover {
+    color: #000000 !important;
+    transition: all .5s;
+}
+.parallax {
+    background-color: transparent;
+    background-attachment: fixed !important;
+    background-position: 50% 0 !important;
+    background-repeat: no-repeat !important;
+    overflow: hidden;
+}
+.bottom-image-col {
+    overflow: hidden;
+}
+.bottom-img {
+    transition: all 1s;
+    transform: scale(1.05);
+}
+.bottom-img:hover {
+    transform: scale(1.1);
+    transition: all 1s;
+}
+.bottom-img > img {
+    max-height: 100% !important;
+    height: 100% !important;
+}
+",,,,,,,

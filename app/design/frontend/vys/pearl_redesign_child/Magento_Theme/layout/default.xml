@@ -1,0 +1,23 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="header-wrapper">
+            <container name="sign-container" htmlTag="div" htmlClass="sign-wrapper" after="minicart">
+                <container name="sign-div" htmlTag="div" htmlClass="sign-container"/>
+            </container>
+        </referenceBlock>
+        <referenceContainer name="footer" htmlClass="container_footer">
+            <block class="Magento\Framework\View\Element\Template" name="slider" before="-" template="Magento_Theme::html/slider.phtml"/>
+            <block class="Magento\Framework\View\Element\Template" name="notas" before="-" template="Magento_Theme::html/novedades-notas.phtml"/>
+        </referenceContainer>
+                
+        <referenceBlock name="customer-account-navigation-downloadable-products-link" remove="true"/>
+        <referenceBlock name="customer-account-navigation-my-credit-cards-link" remove="true"/>
+        <referenceBlock name="customer-account-navigation-customer-balance-link" remove="true"/>
+        <referenceBlock name="catalog.compare.sidebar" remove="true"/>
+        <referenceBlock name="multiple-wishlist_sidebar" remove="true"/>
+
+        <referenceContainer name="before.body.end">
+            <block name="woowup2" template="Magento_Theme::woowup.phtml" /> 
+        </referenceContainer>
+    </body>
+</page>

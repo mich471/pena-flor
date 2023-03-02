@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+		<referenceContainer name="page.wrapper">
+			<container name="pt.perspective" label="Page Perspective Area"  /> <!--htmlTag="div" htmlId="pt-main" htmlClass="pt-perspective"-->
+		</referenceContainer>
+		<referenceContainer name="header.container">
+			<container label="Header Before Slideshow" name="header.before.slidershow" htmlTag="div" htmlClass="before-slideshow-area" before="-">
+				<container name="header.box" htmlClass="box-header" htmlTag="div" before="-">
+					<container name="panel.wrapper.top" htmlClass="panel wrapper" htmlTag="div" before="-">
+					</container>
+					<container name="header.wrapper.middle" htmlClass="header-wrapper-middle sticky-menu" htmlTag="div" after="-">
+					</container>
+				</container>
+			</container>
+			<container label="Header Slideshow" name="header.slidershow" htmlTag="div" htmlClass="slideshow-area slideshow-area-pos" after="header.wrapper.content" />
+		</referenceContainer>
+
+		<move element="logo" destination="header.bottom.content" before="-"/>
+		<move element="header.panel.store" destination="header-wrapper" after="logo"/>
+		<move element="header.links" destination="header.bottom.content" after="logo"/>
+		<move element="minicart" destination="header.bottom.content" before="top.search"/>
+		<!--<referenceBlock name="header-wrapper" htmlClass="header content sticky-menu" />-->
+		<referenceBlock name="currency" remove="true"/>
+		<referenceBlock name="top.links">
+		    <block class="Magento\Customer\Block\Account\Link" name="my-account-link">
+		        <arguments>
+		            <argument name="label" xsi:type="string" translate="true">My Cellar</argument>
+		        </arguments>
+		    </block>
+		</referenceBlock>
+		<referenceBlock name="navigation.sections">
+			<block class="Magento\Framework\View\Element\Template" name="store.links" template="Magento_Theme::html/container.phtml" group="navigation-sections">
+			    <arguments>
+			        <argument name="title" translate="true" xsi:type="string">Account</argument>
+			    </arguments>
+				<container name="store.menu.links" htmlTag="ul" htmlClass="mobile-links-wrapper">
+					<block class="Magento\Customer\Block\Account\Link" name="my-account-link-mobile">
+					    <arguments>
+					        <argument name="label" xsi:type="string" translate="true">My Account</argument>
+					    </arguments>
+					</block>
+					<block class="Magento\Customer\Block\Account\RegisterLink" name="register-link-mobile">
+					    <arguments>
+					        <argument name="label" xsi:type="string" translate="true">Create an Account</argument>
+					    </arguments>
+					</block>
+					<block class="Magento\Customer\Block\Account\AuthorizationLink" name="authorization-link-mobile"
+					       template="account/link/authorization_mobile.phtml"/>
+			   </container>
+			</block>
+
+<!-- 			<referenceBlock name="store.links">
+			</referenceBlock> -->
+		</referenceBlock>
+    </body>
+</page>

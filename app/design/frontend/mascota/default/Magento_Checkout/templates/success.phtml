@@ -1,0 +1,52 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+/** @var $_helper Gpf\Tracking\Helper\Order\Info */
+$_helper = $this->helper('Gpf\Tracking\Helper\Order\Info');
+$_helper->setOrderIncrementId($block->getOrderId());
+?>
+<?php /** @var $block \Magento\Checkout\Block\Onepage\Success */ ?>
+<div class="checkout-success">
+	<div class="success-title">
+		<p><?php echo __('Gracias por visitarnos. Tu pedido está siendo procesado y recibirás un mail de confirmación a la brevedad.') ?></p>
+	</div>
+    <?php if ($block->getOrderId()):?>
+        <?php if ($block->getCanViewOrder()) :?>
+            <p><?php echo __('El número de orden de este pedido es: %1.', sprintf('<a class="order-id" href="%s" class="order-number"><strong>%s</strong></a>', $block->escapeHtml($block->getViewOrderUrl()), $block->escapeHtml($block->getOrderId()))) ?></p>
+        <?php  else :?>
+            <p><?php echo __('El número de orden de este pedido es: <span>%1</span>.', $block->escapeHtml($block->getOrderId())) ?></p>
+        <?php endif;?>
+            <p><?php /* @escapeNotVerified */ //echo __('Estaremos procesando tu pedido y te informaremos la confirmación por e-mail.') ?></p>
+    <?php endif;?>
+
+    <?php echo $block->getAdditionalInfoHtml() ?>
+
+	<div class="primary">
+		<a class="action primary continue" href="<?php /* @escapeNotVerified */ echo $block->getUrl() ?>"><span><?php /* @escapeNotVerified */ echo __('Continuar comprando') ?></span></a>
+	</div>
+
+</div>
+
+<script language="javascript" type="text/javascript">
+    var _imMktOptions = _imMktOptions || <?php echo $_helper->getJsonOrderInfo('Adq');?>;
+    (function() {
+        var icomMkt = document.createElement('script'); icomMkt.type = 'text/javascript'; icomMkt.async = true;
+        icomMkt.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'api.icommarketing.com/js/icomMkt_tracking_jquery.js?time='+ Number(new Date());
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(icomMkt, s);
+    })();
+</script>
+
+<noscript>
+    <div style="display:inline;">
+        <img height="1"
+             width="1"
+             style="border-style:none;"
+             alt=""
+             src="https://api.icommarketing.com/pixel.aspx?<?php echo $_helper->getSerializedOrderInfo('Adq');?>"
+        />
+    </div>
+</noscript>

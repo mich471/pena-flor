@@ -1,0 +1,75 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/** @var $block \Magento\Catalog\Block\Product\View */
+?>
+<?php $_helper = $this->helper('WeltPixel\ProductPage\Helper\Data'); ?>
+<?php $_product = $block->getProduct(); ?>
+<?php $buttonTitle = __('Add to Cart'); ?>
+<?php if ($_product->isSaleable()) :?>
+    <div class="box-tocart">
+        <div class="fieldset">
+            <?php if ($block->shouldRenderQuantity()) :?>
+                <div class="field qty">
+                    <div class="qty-wrapper" data-bind="scope: 'qty_change'">
+                        <button class="qty-button" data-bind="click: decreaseQty">-</button>
+                        <label class="label" for="qty"><span><?= $block->escapeHtml(__('Qty')) ?></span></label>
+                            <input data-bind="value: qty()"
+                                   type="number"
+                                   name="qty"
+                                   id="qty"
+                                   min="<?= $block->getProductDefaultQty() * 1 ?>"
+                                   value="<?= $block->getProductDefaultQty() * 1 ?>"
+                                   title="<?= $block->escapeHtmlAttr(__('Qty')) ?>"
+                                   class="input-text qty plus-minus-input"
+                            />
+                        <button class="qty-button" data-bind="click: increaseQty">+</button>
+                    </div>
+                </div>
+            <?php endif; ?>
+            <div class=<?php echo $_helper->getAddToCartBtnPosition() ;?>>
+                <button type="submit"
+                        title="<?= $block->escapeHtmlAttr($buttonTitle) ?>"
+                        class="action primary tocart"
+                        id="product-addtocart-button">
+                    <span><?= $block->escapeHtml($buttonTitle) ?></span>
+                </button>
+                <?= $block->getChildHtml('', true) ?>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "qty_change": {
+                        "component": "WeltPixel_ProductPage/js/changeQty",
+                        "qtyInput": "#qty"
+                    }
+                 }
+            }
+        }
+    }
+</script>
+<script type="text/x-magento-init">
+    {
+        "#product_addtocart_form": {
+            "Magento_Catalog/js/validate-product": {}
+        }
+    }
+</script>
+<script type="text/javascript">
+    require(['jquery'],function($){
+        setInterval(function(){
+            if($(".page-title-wrapper").length == 0 && $(".theme-pearl.store-view-penaflor .page-wrapper .breadcrumbs .items .item.product strong").length > 0){
+                var productTitle=$(".theme-pearl.store-view-penaflor .page-wrapper .breadcrumbs .items .item.product strong").text()
+                $('<div class="page-title-wrapper product"><h1 class="page-title"><span class="base" data-ui-id="page-title-wrapper" itemprop="name">'+productTitle+'</span></h1></div>').prependTo(".product-info-main")
+            }
+        },1000)
+    })
+</script>

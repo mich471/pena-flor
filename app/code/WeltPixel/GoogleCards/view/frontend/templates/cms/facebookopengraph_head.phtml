@@ -1,0 +1,34 @@
+<?php
+/** @var $block \WeltPixel\GoogleCards\Block\FacebookOpenGraph*/
+?>
+<?php
+$page = $block->getLayout()->getBlock('cms_page')->getPage();
+$fbAppId = trim($block->getAppId());
+$siteName = $block->getSiteName();
+$pageMetaTitle = $page->getMetaTitle() ? $page->getMetaTitle() : $page->getTitle();
+$pageMetaDescription = $page->getMetaDescription();
+$pageOgImage = $block->getCmsPageImage($page);
+$pageOgImageAlt = $page->getData('og_meta_image_alt');
+?>
+<!--  facebook open graph -->
+<?php if ($fbAppId) : ?>
+    <meta property="fb:app_id" content="<?php echo $fbAppId; ?>"/>
+<?php endif; ?>
+<?php if ($siteName) : ?>
+<meta property="og:site_name" content="<?php /* @escapeNotVerified */echo $siteName; ?>"/>
+<?php endif; ?>
+<meta property="og:url" content="<?php echo $block->stripTags($block->getCurrentUrl()); ?>" />
+<meta property="og:type" content="website"/>
+<?php if ($pageMetaTitle) : ?>
+<meta property="og:title" content="<?php /* @escapeNotVerified */ echo $block->escapeQuote($block->stripTags($pageMetaTitle)); ?>" />
+<?php endif; ?>
+<?php if ($pageOgImage) : ?>
+<meta property="og:image" content="<?php /* @escapeNotVerified */echo $block->stripTags($pageOgImage); ?>"/>
+<?php endif; ?>
+<?php if ($pageOgImageAlt) : ?>
+<meta property="og:image_alt" content="<?php echo $block->stripTags($pageOgImageAlt) ?>" />
+<?php endif; ?>
+<?php if ($pageMetaDescription) : ?>
+<meta property="og:description" content="<?php /* @escapeNotVerified */ echo $block->escapeQuote($block->stripTags($pageMetaDescription)); ?>"/>
+<?php endif; ?>
+<!--  facebook open graph -->

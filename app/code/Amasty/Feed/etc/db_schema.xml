@@ -1,0 +1,139 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2022 Amasty (https://www.amasty.com)
+ * @package Product Feed for Magento 2
+ */-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+  <table name="amasty_feed_entity" resource="default" engine="innodb" comment="amasty_feed_entity">
+    <column xsi:type="int" name="entity_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Rule Id"/>
+    <column xsi:type="varchar" name="name" nullable="true" length="255" comment="Name"/>
+    <column xsi:type="varchar" name="filename" nullable="true" length="255" comment="File Name"/>
+    <column xsi:type="varchar" name="feed_type" nullable="true" length="255" comment="Feed Type"/>
+    <column xsi:type="smallint" name="is_active" padding="6" unsigned="false" nullable="false" identity="false" default="0" comment="Is Active"/>
+    <column xsi:type="smallint" name="store_id" padding="5" unsigned="true" nullable="true" identity="false" default="0" comment="Store ID"/>
+    <column xsi:type="varchar" name="execute_mode" nullable="false" length="255" default="manual" comment="Execute Mode"/>
+    <column xsi:type="smallint" name="csv_column_name" padding="6" unsigned="false" nullable="false" identity="false" default="1" comment="Csv Column Name"/>
+    <column xsi:type="text" name="csv_header" nullable="true" comment="Csv Header"/>
+    <column xsi:type="varchar" name="csv_enclosure" nullable="true" length="255" comment="Csv Enclosure"/>
+    <column xsi:type="varchar" name="csv_delimiter" nullable="true" length="255" comment="Csv Delimiter"/>
+    <column xsi:type="varchar" name="format_price_currency" nullable="true" length="255" comment="Format Price Currency"/>
+    <column xsi:type="mediumtext" name="csv_field" nullable="true" comment="Csv Field"/>
+    <column xsi:type="mediumtext" name="xml_header" nullable="true" comment="Xml Header"/>
+    <column xsi:type="varchar" name="xml_item" nullable="true" length="255" comment="Xml Item"/>
+    <column xsi:type="mediumtext" name="xml_content" nullable="true" comment="Xml Content"/>
+    <column xsi:type="mediumtext" name="xml_footer" nullable="true" comment="Xml Footer"/>
+    <column xsi:type="smallint" name="format_price_currency_show" padding="6" unsigned="false" nullable="false" identity="false" default="1" comment="Format Price Currency Show"/>
+    <column xsi:type="varchar" name="format_price_decimals" nullable="false" length="255" default="two" comment="Format Price Decimals"/>
+    <column xsi:type="varchar" name="format_price_decimal_point" nullable="false" length="255" default="dot" comment="Format Price Decimal Point"/>
+    <column xsi:type="varchar" name="format_price_thousands_separator" nullable="false" length="255" default="comma" comment="Format Price Thousands Separator"/>
+    <column xsi:type="varchar" name="format_date" nullable="true" length="255" comment="Format Date"/>
+    <column xsi:type="mediumtext" name="conditions_serialized" nullable="true" comment="Conditions Serialized"/>
+    <column xsi:type="timestamp" name="generated_at" on_update="false" nullable="true" comment="Generated At"/>
+    <column xsi:type="smallint" name="delivery_enabled" padding="6" unsigned="false" nullable="false" identity="false" default="0" comment="Delivery Enabled"/>
+    <column xsi:type="varchar" name="delivery_host" nullable="true" length="255" comment="Delivery Host"/>
+    <column xsi:type="varchar" name="delivery_type" nullable="true" length="255" comment="Delivery Type"/>
+    <column xsi:type="varchar" name="delivery_user" nullable="true" length="255" comment="Delivery User"/>
+    <column xsi:type="varchar" name="delivery_password" nullable="true" length="255" comment="Delivery Password"/>
+    <column xsi:type="varchar" name="delivery_path" nullable="true" length="255" comment="Delivery Path"/>
+    <column xsi:type="smallint" name="delivery_passive_mode" padding="6" unsigned="false" nullable="false" identity="false" default="0" comment="Delivery Passive Mode"/>
+    <column xsi:type="varchar" name="utm_source" nullable="true" length="255" comment="Utm Source"/>
+    <column xsi:type="varchar" name="utm_medium" nullable="true" length="255" comment="Utm Medium"/>
+    <column xsi:type="varchar" name="utm_term" nullable="true" length="255" comment="Utm Term"/>
+    <column xsi:type="varchar" name="utm_content" nullable="true" length="255" comment="Utm Content"/>
+    <column xsi:type="varchar" name="utm_campaign" nullable="true" length="255" comment="Utm Campaign"/>
+    <column xsi:type="smallint" name="is_template" padding="6" unsigned="false" nullable="false" identity="false" default="0" comment="Is Template"/>
+    <column xsi:type="varchar" name="compress" nullable="false" length="255" default="" comment="Compress"/>
+    <column xsi:type="boolean" name="exclude_disabled" nullable="false" comment="Exclude Disabled Products"/>
+    <column xsi:type="boolean" name="exclude_subdisabled" nullable="false" default="false" comment="Exclude Child Products if Parent Product Is Disabled"/>
+    <column xsi:type="boolean" name="exclude_out_of_stock" nullable="false" comment="Exclude Out of Stock Products"/>
+    <column xsi:type="boolean" name="exclude_not_visible" nullable="false" comment="Exclude Not Visible Products"/>
+    <column xsi:type="int" name="products_amount" padding="11" unsigned="false" nullable="false" identity="false" comment="Number of products"/>
+    <column xsi:type="varchar" name="generation_type" nullable="false" length="255" comment="Used generation type"/>
+    <column xsi:type="smallint" name="status" padding="6" unsigned="false" nullable="false" identity="false" comment="Last feed generation status"/>
+    <constraint xsi:type="primary" referenceId="PRIMARY">
+      <column name="entity_id"/>
+    </constraint>
+    <index referenceId="AMASTY_FEED_ENTITY_STORE_ID" indexType="btree">
+      <column name="store_id"/>
+    </index>
+  </table>
+  <table name="amasty_feed_category" resource="default" engine="innodb" comment="amasty_feed_category">
+    <column xsi:type="int" name="feed_category_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Feed Category Id"/>
+    <column xsi:type="varchar" name="code" nullable="true" length="255" comment="Code"/>
+    <column xsi:type="varchar" name="name" nullable="true" length="255" comment="Name"/>
+    <column xsi:type="smallint" name="use_taxonomy" padding="6" unsigned="false" nullable="false" identity="false" comment="Flag to use taxonomy"/>
+    <column xsi:type="varchar" name="taxonomy_source" nullable="false" length="25" comment="Source for taxonomy "/>
+    <constraint xsi:type="primary" referenceId="PRIMARY">
+      <column name="feed_category_id"/>
+    </constraint>
+  </table>
+  <table name="amasty_feed_category_mapping" resource="default" engine="innodb" comment="amasty_feed_category_mapping">
+    <column xsi:type="int" name="entity_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Rule Id"/>
+    <column xsi:type="int" name="feed_category_id" padding="10" unsigned="true" nullable="false" identity="false" default="0" comment="Feed Category ID"/>
+    <column xsi:type="int" name="category_id" padding="10" unsigned="true" nullable="false" identity="false" default="0" comment="Category ID"/>
+    <column xsi:type="varchar" name="variable" nullable="true" length="255" comment="Variable"/>
+    <column xsi:type="boolean" name="skip" nullable="false" comment="Skip this category in feed"/>
+    <constraint xsi:type="primary" referenceId="PRIMARY">
+      <column name="entity_id"/>
+    </constraint>
+    <constraint xsi:type="foreign" referenceId="AMASTY_FEED_CTGR_FEED_CTGR_ID_FEED_CTGR_FEED_CTGR_ID" table="amasty_feed_category_mapping" column="feed_category_id" referenceTable="amasty_feed_category" referenceColumn="feed_category_id" onDelete="CASCADE"/>
+    <index referenceId="AMASTY_FEED_CATEGORY_FEED_CATEGORY_ID" indexType="btree">
+      <column name="feed_category_id"/>
+    </index>
+    <index referenceId="CATALOG_CATEGORY_ENTITY_CATEGORY_ID" indexType="btree">
+      <column name="category_id"/>
+    </index>
+  </table>
+  <table name="amasty_feed_valid_products" resource="default" engine="innodb" comment="amasty_feed_valid_products">
+    <column xsi:type="bigint" name="entity_id" padding="20" unsigned="true" nullable="false" identity="true" comment="Entity Id"/>
+    <column xsi:type="int" name="feed_id" padding="10" unsigned="true" nullable="false" identity="false" default="0" comment="Feed ID"/>
+    <column xsi:type="int" name="valid_product_id" padding="10" unsigned="true" nullable="false" identity="false" default="0" comment="Valid products for conditions"/>
+    <constraint xsi:type="primary" referenceId="PRIMARY">
+      <column name="entity_id"/>
+    </constraint>
+    <constraint xsi:type="foreign" referenceId="AMASTY_FEED_VALID_PRODUCTS_FEED_ID_AMASTY_FEED_ENTITY_ENTITY_ID" table="amasty_feed_valid_products" column="feed_id" referenceTable="amasty_feed_entity" referenceColumn="entity_id" onDelete="CASCADE"/>
+    <index referenceId="AMASTY_FEED_VALID_PRODUCTS_VALID_PRODUCT_ID" indexType="btree">
+      <column name="valid_product_id"/>
+    </index>
+  </table>
+  <table name="amasty_feed_field" resource="default" engine="innodb" comment="amasty_feed_field">
+    <column xsi:type="int" name="feed_field_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Custom Field Id"/>
+    <column xsi:type="varchar" name="code" nullable="true" length="255" comment="Code"/>
+    <column xsi:type="varchar" name="name" nullable="true" length="255" comment="Name"/>
+    <constraint xsi:type="primary" referenceId="PRIMARY">
+      <column name="feed_field_id"/>
+    </constraint>
+    <constraint xsi:type="unique" referenceId="AMASTY_FEED_FIELD_CODE">
+      <column name="code"/>
+    </constraint>
+  </table>
+  <table name="amasty_feed_field_conditions" resource="default" engine="innodb" comment="amasty_feed_field_conditions">
+    <column xsi:type="int" name="entity_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Condition Id"/>
+    <column xsi:type="int" name="feed_field_id" padding="11" unsigned="false" nullable="false" identity="false" comment="Custom Field Id"/>
+    <column xsi:type="mediumtext" name="conditions_serialized" nullable="true" comment="Conditions"/>
+    <column xsi:type="mediumtext" name="result_serialized" nullable="true" comment="Result"/>
+    <constraint xsi:type="primary" referenceId="PRIMARY">
+      <column name="entity_id"/>
+    </constraint>
+  </table>
+  <table name="amasty_feed_google_taxonomy" resource="default" engine="innodb" comment="amasty_feed_google_taxonomy">
+    <column xsi:type="int" name="id" padding="10" unsigned="true" nullable="false" identity="true" comment="ID"/>
+    <column xsi:type="text" name="category" nullable="true" comment="Category"/>
+    <column xsi:type="text" name="language_code" nullable="true" comment="Language Code"/>
+    <constraint xsi:type="primary" referenceId="PRIMARY">
+      <column name="id"/>
+    </constraint>
+  </table>
+  <table name="amasty_feed_schedule" resource="default" engine="innodb" comment="Cron Schedule Execution">
+    <column xsi:type="int" name="id" padding="10" unsigned="true" nullable="false" identity="true" comment="ID"/>
+    <column xsi:type="int" name="cron_time" padding="11" unsigned="false" nullable="true" identity="false" comment="Cron Time Execution"/>
+    <column xsi:type="int" name="cron_day" padding="11" unsigned="false" nullable="true" identity="false" comment="Cron Day Execution"/>
+    <column xsi:type="int" name="feed_id" padding="10" unsigned="true" nullable="false" identity="false" comment="Feed Id"/>
+    <constraint xsi:type="primary" referenceId="PRIMARY">
+      <column name="id"/>
+    </constraint>
+    <constraint xsi:type="foreign" referenceId="AMASTY_FEED_SCHEDULE_FEED_ID_AMASTY_FEED_ENTITY_ENTITY_ID" table="amasty_feed_schedule" column="feed_id" referenceTable="amasty_feed_entity" referenceColumn="entity_id" onDelete="CASCADE"/>
+  </table>
+</schema>

@@ -1,0 +1,12 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+    <update handle="styles"/>
+    <head>
+        <css src="WeltPixel_SocialLogin::css/sl_style.css"/>
+        <title> Social Login - Analytics Dashboard</title>
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block class="WeltPixel\SocialLogin\Block\Adminhtml\Dashboard\Analytics" template="WeltPixel_SocialLogin::dashboard/analytics.phtml"/>
+        </referenceContainer>
+    </body>
+</page>

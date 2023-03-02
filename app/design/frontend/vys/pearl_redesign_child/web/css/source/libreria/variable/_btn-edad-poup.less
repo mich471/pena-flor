@@ -1,0 +1,84 @@
+& when (@media-common =true) {
+    .theme-pearl.cms-home {
+        .modals-wrapper {
+            .modal-inner-wrap {
+                width: 30%;
+
+                .modal-title {
+                    display: none;
+                }
+
+                .modal-content {
+                    padding: 0;
+                }
+
+                .modal-footer {
+                    border-top: none;
+                    padding-top: 0;
+                    display: flex;
+                    justify-content: space-evenly;
+
+                    .btnAgeYes,
+                    .btnAgeNo {
+                        background-color: #d4a22c;
+                        width: 85px;
+                        height: 45px;
+                        font-size: 25px;
+                        border: none;
+                    }
+
+                    .btnAgeYes,
+                    .btnAgeNo:hover {
+                        background-color: #d4a22c;
+                    }
+                }
+            }
+        }
+    }
+
+    @media only screen and (max-width: 767px) {
+        .modal-popup.modal-slide {
+            left: 10px;
+            top: 215px;
+            z-index: 900;
+            right: 10px;
+        }
+
+        .theme-pearl.cms-home .modals-wrapper .modal-inner-wrap {
+            width: 100%;
+            height: fit-content;
+        }
+
+        // header.modal-header {
+        //     display: none;
+        // }
+
+        div#modal-content-0 {
+            padding-top: 3rem;
+        }
+
+        .modal-popup .modal-footer {
+            padding-bottom: 5rem;
+        }
+
+        div#modal-custom-age {
+            text-align: center;
+        }
+
+        div#age-message {
+            font-size: 20px;
+            text-transform: uppercase;
+            color: black;
+        }
+
+        .theme-pearl.store-view-penaflor .modals-wrapper .modal-footer button span {
+            line-height: 23px;
+            padding: 0 20px;
+            font-weight: bold;
+        }
+
+        .theme-pearl.cms-home .modals-wrapper .modal-inner-wrap .modal-footer {
+            justify-content: space-between;
+        }
+    }
+}

@@ -1,0 +1,18 @@
+<?php
+
+// @codingStandardsIgnoreFile
+
+/** @var \WeltPixel\UserProfile\Block\Widget\Avatar $block */
+?>
+<div class="field field-avatar<?php if ($block->isRequired()) echo ' required'; ?>">
+    <label class="label" for="avatar"><span><?= $block->escapeHtml(__('Avatar')) ?></span></label>
+    <div class="control">
+        <input type="hidden" name="avatar_current_image" value="<?= $block->escapeHtmlAttr($block->getAvatar()) ?>" />
+        <input accept="image/*" type="file" id="avatar" name="avatar" title="<?= $block->escapeHtmlAttr(__('Avatar')) ?>" class="input-file <?php if ($block->isRequiredValidation()) echo ' required-entry' ?> " <?php if ($block->isRequiredValidation()) echo ' data-validate="{required:true}"' ?> />
+    </div>
+    <?php if ($block->getAvatar()) : ?>
+    <div class="avatar_image_preview" style="margin-top: 20px">
+        <img style="width: 100px; height: 100px" src="<?= $block->getPreviewImage() ?>" alt="<?= $block->escapeHtmlAttr(__('Avatar Preview')) ?>" />
+    </div>
+    <?php endif; ?>
+</div>

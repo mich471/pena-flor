@@ -1,0 +1,100 @@
+ //
+//  Common (styles-m.css)
+//  _____________________________________________
+& when (@media-common = true){
+    .theme-pearl.cms-home {        
+        .custom-modal-newsletter{
+            .modal-inner-wrap {
+                transform: translateY(50%) !important;
+                width: 40% !important;
+                .modal-header{
+                    .action-close{
+                        top: -5px;
+                    }
+                    .action-close::before{
+                        color: #000 !important;
+                    }
+                }
+                .modal-content{
+                    #custom-modal-newsletter {
+                        .modal-body-content {
+                            display: flex;
+                            justify-content: space-between;
+                            .popup-compra-guiados {
+                                width: 410px;
+                                p {
+                                    margin-bottom: 0;
+                                }
+                            }                            
+                            .banner {
+                                order: 2;
+                                width: 170px;
+                                height: auto !important;
+                                margin-top: 30px;
+                            }
+                            .content-poppup {
+                                width: 400px;
+                                order: 1;
+                                [data-content-type="row"]{
+                                    h2{
+                                        font-size: 17px;
+                                        font-weight: 700;
+                                        margin: 0 !important;
+                                        width: 308px;
+                                    }
+                                }
+                                .recibi-compra{
+                                    margin: 0;
+                                    width: 365px;
+                                    margin-bottom: 15px;
+                                    span{
+                                        font-size: 18px !important;
+                                        font-weight: 800;
+                                    }
+                                }
+                                .enterate-promo{
+                                    margin: 0;
+                                    width: 350px;
+                                    span{
+                                        font-size: 14px !important;
+                                    }
+                                }
+                                .container-newsletter{
+                                    .newsletter{
+                                        .content{
+                                            .form.subscribe{
+                                                flex-direction: column;
+                                                align-items: normal;
+                                                .newsletter{
+                                                    .control{
+                                                        #newsletter{
+                                                            border: none;
+                                                            background: #f4f4f4;
+                                                            margin-bottom: 10px;
+                                                            width: 350px;
+                                                            height: 45px;
+                                                        }
+                                                    }
+                                                    .control::before{
+                                                        display: none;
+                                                    }
+                                                }
+                                                .actions{
+                                                    margin: 20px 0;
+                                                    #newsletterButton{
+                                                        background: #d4a22c;
+                                                        border: none;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }                
+            }
+        }
+    }
+}

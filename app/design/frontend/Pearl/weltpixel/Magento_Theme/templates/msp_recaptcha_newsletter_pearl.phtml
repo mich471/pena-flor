@@ -1,0 +1,29 @@
+<?php
+/** @var $block Magento\ReCaptchaUi\Block\ReCaptcha */
+?>
+<div
+    class="field-recaptcha"
+    id="wpn-pearl-<?= /* @noEscape */ $block->getRecaptchaId() ?>-container"
+    data-bind="scope:'<?= /* @noEscape */ $block->getRecaptchaId() ?>'"
+>
+    <!-- ko template: getTemplate() --><!-- /ko -->
+</div>
+
+<script type="text/javascript">
+    require(['jquery', 'domReady!'], function ($) {
+        if ($('#newsletter-footer').length) {
+            $('#wpn-pearl-<?= /* @noEscape */ $block->getRecaptchaId() ?>-container')
+                .appendTo('#newsletter-footer');
+        } else {
+            $('#wpn-pearl-<?= /* @noEscape */ $block->getRecaptchaId() ?>-container').remove();
+        }
+    });
+</script>
+
+<script type="text/x-magento-init">
+{
+    "#wpn-pearl-<?= /* @noEscape */ $block->getRecaptchaId() ?>-container": {
+        "Magento_Ui/js/core/app": <?= /* @noEscape */ $block->getJsLayout() ?>
+    }
+}
+</script>

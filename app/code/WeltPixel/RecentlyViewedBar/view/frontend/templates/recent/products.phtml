@@ -1,0 +1,107 @@
+<?php /* @var \WeltPixel\RecentlyViewedBar\Block\RecentProducts $this */ ?>
+
+<?php $configData    = $this->getConfigData(); ?>
+<?php $enabled       = $configData['is_enabled']; ?>
+<?php $showPrice     = $configData['show_price']; ?>
+<?php $showName     = $configData['show_name']; ?>
+<?php $showImage     = $configData['show_image']; ?>
+<?php $showAddToCart = $configData['show_addtocart']; ?>
+<?php $showWishlist  = $configData['show_addtowishlist']; ?>
+<?php $showCompare   = $configData['show_addtocompare']; ?>
+<?php if(!$enabled){ return; } ?>
+
+<?php
+$products = $this->getProductCollection();
+if(!count($products)) { return; }
+$productsType = $this->getData('products_type');
+?>
+
+<div class="admin__data-grid-outer-wrap">
+    <div class="block widget block-viewed-products-grid">
+        <div class="block-content">
+            <div class="products-grid">
+                <ol class="product-items">
+                    <?php foreach($products as $product) : ?>
+                    <li class="product-item">
+                        <div class="product-item-info">
+                            <?php
+                            if($showImage):
+                                $_imagehelper = $this->helper('Magento\Catalog\Helper\Image');
+                                $productImage = $_imagehelper->init($product, 'category_page_list')->constrainOnly(FALSE)->keepAspectRatio(TRUE)->keepFrame(TRUE)->resize(480, 600)->getUrl();
+                                $productUrl = $product->getUrlModel()->getUrl($product);
+                                ?>
+                                <a href="<?= $productUrl;?>" class="product-item-info">
+                                    <span class="product-image-container" style="width:240px">
+                                        <span class="product-image-wrapper" style="padding-bottom: 125%">
+                                            <img src="<?=$productImage;?>" alt="<?=$product->getName();?>" class="product-image-photo">
+                                        </span>
+                                    </span>
+                                </a>
+                            <?php endif;?>
+                            <div class="product-item-details">
+                                <?php if($showName):?>
+                                    <strong class="product-item-name"><?=$product->getName();?></strong>
+                                <?php endif;?>
+                                <?php if($showPrice):?>
+                                    <?php /* @escapeNotVerified */ echo $this->getProductPrice($product); ?>
+                                <?php endif;?>
+                            </div>
+                        </div>
+
+                        <div class="product-item-actions arv-prod-item">
+                            <?php if($showAddToCart) : ?>
+                                <div class="actions-primary">
+                                    <?php if ($product->isSaleable()): ?>
+                                        <?php if ($product->getTypeInstance()->hasRequiredOptions($product)): ?>
+                                            <button class="action tocart primary" data-mage-init='{"redirectUrl": {"url": "<?php /* @escapeNotVerified */ echo $block->getAddToCartUrl($product) ?>"}}' type="button" title="<?php /* @escapeNotVerified */ echo __('View More') ?>">
+                                                <span><?php /* @escapeNotVerified */ echo __('View More') ?></span>
+                                            </button>
+                                        <?php else: ?>
+                                            <?php $postDataHelper = $this->helper('Magento\Framework\Data\Helper\PostHelper');
+                                            $postData = $postDataHelper->getPostData($block->getAddToCartUrl($product), ['product' => $product->getEntityId()])
+                                            ?>
+                                            <button class="action tocart primary"
+                                                    data-post='<?php /* @escapeNotVerified */ echo $postData; ?>'
+                                                    type="button" title="<?php /* @escapeNotVerified */ echo __('Add to Cart') ?>">
+                                                <span><?php /* @escapeNotVerified */ echo __('Add to Cart') ?></span>
+                                            </button>
+                                        <?php endif; ?>
+                                    <?php else: ?>
+                                        <?php if ($product->getIsSalable()): ?>
+                                            <div class="stock available"><span><?php /* @escapeNotVerified */ echo __('In stock') ?></span></div>
+                                        <?php else: ?>
+                                            <div class="stock unavailable"><span><?php /* @escapeNotVerified */ echo __('Out of stock') ?></span></div>
+                                        <?php endif; ?>
+                                    <?php endif; ?>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+                        <div class="actions-secondary arv-prod-item-sec" data-role="add-to-links">
+                            <?php if ($showWishlist || $showCompare): ?>
+                                <div class="secondary-addto-links actions-secondary" data-role="add-to-links">
+
+                                    <?php if ($this->helper('Magento\Wishlist\Helper\Data')->isAllow() && $showWishlist): ?>
+                                        <a href="#" data-post='<?php /* @escapeNotVerified */ echo $block->getAddToWishlistParams($product); ?>'  class="action towishlist icon-line-heart" data-action="add-to-wishlist" title="<?php /* @escapeNotVerified */ echo __('Add to Wish List') ?>">
+                                        </a>
+                                    <?php endif; ?>
+
+                                    <?php if ($showCompare): ?>
+                                        <?php
+                                        $compareHelper = $this->helper('Magento\Catalog\Helper\Product\Compare');
+                                        ?>
+                                        <a href="#" class="action tocompare"
+                                           data-post='<?php /* @escapeNotVerified */ echo $compareHelper->getPostDataParams($product);?>'
+                                           data-role="add-to-links"
+                                           title="<?php /* @escapeNotVerified */ echo __('Add to Compare'); ?>">
+                                        </a>
+                                    <?php endif; ?>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+                    </li>
+                    <?php endforeach;?>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>

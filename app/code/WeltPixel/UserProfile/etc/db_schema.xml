@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="weltpixel_user_profile" resource="default" engine="innodb" comment="WeltPixel user Profile">
+        <column xsi:type="int" name="profile_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Profile Id"/>
+        <column xsi:type="int" name="customer_id" padding="10" unsigned="true" nullable="false" identity="false" default="0" comment="Customer id"/>
+        <column xsi:type="varchar" name="username" nullable="false" length="20" comment="Profile Username"/>
+        <column xsi:type="varchar" name="avatar" nullable="true" length="255" default="" comment="Profile Image"/>
+        <column xsi:type="varchar" name="cover_image" nullable="true" length="255" default="" comment="Profile Cover Image"/>
+        <column xsi:type="varchar" name="first_name" nullable="true" length="255" default="" comment="Profile First Name"/>
+        <column xsi:type="varchar" name="last_name" nullable="true" length="255" default="" comment="Profile Last Name"/>
+        <column xsi:type="varchar" name="location" nullable="true" length="255" default="" comment="Profile Location"/>
+        <column xsi:type="date" name="dob" nullable="true" comment="Profile Date of birth"/>
+        <column xsi:type="text" name="bio"  nullable="true" comment="Profile Bio" />
+        <column xsi:type="varchar" name="gender" length="32" nullable="true" default="" comment="Profile Gender"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="profile_id"/>
+        </constraint>
+        <constraint xsi:type="unique" referenceId="WELTPIXEL_USER_PROFILE_CUSTOMER_ID">
+            <column name="customer_id"/>
+        </constraint>
+        <constraint xsi:type="unique" referenceId="WELTPIXEL_USER_PROFILE_USERNAME">
+            <column name="username"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="WELTPIXEL_USER_PROFILE_CUSTOMER_ID_CUSTOMER_ENTITY_ENTITY_ID"
+                    column="customer_id" referenceTable="customer_entity"
+                    referenceColumn="entity_id" onDelete="CASCADE"/>
+    </table>
+</schema>

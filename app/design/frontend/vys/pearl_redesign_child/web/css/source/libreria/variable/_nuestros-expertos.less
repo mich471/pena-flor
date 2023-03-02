@@ -1,0 +1,109 @@
+//
+//  Common (styles-m.css)
+//  _____________________________________________
+& when (@media-common = true) {
+    .theme-pearl.cms-home{
+        .page-wrapper{
+            .page-main-full-width{
+                .columns{
+                    [data-content-type="row"]{
+                        .block-static-block{
+                            .personal-experto{
+                                position: relative;
+                                .pagebuilder-column-group{
+                                    width: 85%;
+                                    justify-content: center;
+                                    .martin-moletin, .victoria-mingo, .pablo-buzzo, .martin-mondragon{
+                                        display: flex !important;
+                                        flex-direction: column;
+                                        align-items: center;
+                                    }
+                                    button.slick-prev.slick-arrow, .slick-next.slick-arrow {
+                                        background-color: transparent !important;
+                                        border: none;
+                                    }
+                                }                                
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+//
+//  Mobile (styles-m.css)
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s) {
+    .theme-pearl.cms-home{
+        .page-wrapper{
+            .page-main-full-width{
+                .columns{
+                    [data-content-type="row"]{
+                        .block-static-block{
+                            .personal-experto{
+                                .title-experto{
+                                    h2{
+                                        font-size: 15px;
+                                        text-align: left !important;
+                                    }
+                                }                                
+                                .texto-personal-expero{
+                                    display: none;
+                                }
+                                .pagebuilder-column-group{
+                                    .slick-prev:before, .slick-next:before, .slick-prev:after, .slick-next:after {
+                                        color: #fff !important;
+                                        font-size: 38px;
+                                        opacity: 1;
+                                    }
+                                    .slick-slide.slick-current.slick-active, .slick-slide.slick-active, .slick-slide.slick-cloned.slick-active, .slick-slide.slick-cloned, .slick-slide{
+                                        width: 155px !important;
+                                        margin: 0 15px;
+                                    }
+                                    .martin-moletin, .victoria-mingo, .pablo-buzzo, .martin-mondragon{
+                                        margin: 0 10px;
+                                        display: flex !important;
+                                        flex-direction: column;
+                                        align-items: center;
+                                    }
+                                    img.pagebuilder-mobile-hidden {
+                                        width: 225px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m){
+    .theme-pearl.cms-home{
+        .page-wrapper{
+            .page-main-full-width{
+                .columns{
+                    [data-content-type="row"]{
+                        .block-static-block{
+                            .personal-experto{
+                                .pagebuilder-column-group{                                    
+                                    button.slick-prev.slick-arrow {
+                                        position: absolute;
+                                        left: -60px;
+                                        top: 133px;
+                                    }
+                                    button.slick-next.slick-arrow {
+                                        right: -50px;
+                                        top: 133px;
+                                    }
+                                }                                
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

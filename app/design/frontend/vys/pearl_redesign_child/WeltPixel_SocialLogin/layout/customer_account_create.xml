@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="customer.login.container">
+            <block class="WeltPixel\SocialLogin\Block\ButtonDataProvider"
+                   ifconfig="weltpixel_sociallogin/general/enabled"
+                   name="sl-login-button"
+                   as="sl_login_buttons"
+                   template="WeltPixel_SocialLogin::buttons.phtml"/>
+        </referenceContainer>
+
+        <referenceBlock name="sl-login-button" remove="true"/>
+
+    </body>
+</page>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="customer_account_navigation">
+            <block class="Magento\Customer\Block\Account\SortLinkInterface" ifconfig="weltpixel_userprofile/general/enable" name="customer-account-userprofile-link">
+                <arguments>
+                    <argument name="path" xsi:type="helper"  helper="WeltPixel\UserProfile\Helper\Data::getEditProfileLink"></argument>
+                    <argument name="label" xsi:type="string" translate="true">My Profile</argument>
+                    <argument name="sortOrder" xsi:type="number">240</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

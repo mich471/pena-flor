@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="WeltPixel\SmartProductTabs\Model\SmartProductTabs">
+        <plugin name="reindex_ruleid_products" type="WeltPixel\SmartProductTabs\Plugin\Indexer\ReindexRuleIdProducts" sortOrder="1" />
+    </type>
+    <type name="Magento\Catalog\Block\Product\View\Details">
+        <plugin name="weltpixel_smartproducttabs_product_view_details" type="WeltPixel\SmartProductTabs\Plugin\Tabs\Details" />
+    </type>
+</config>

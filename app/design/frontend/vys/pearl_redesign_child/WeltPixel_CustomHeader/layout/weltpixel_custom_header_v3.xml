@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <move element="minicart" destination="header.panel" before="-"/>
+        
+        <referenceBlock name="header.panel">
+            <container name="sign-container" htmlTag="div" htmlClass="sign-wrapper" after="minicart">
+                <container name="sign-div" htmlTag="div" htmlClass="sign-container"/>
+            </container>
+            <container name="div.wishlist.links" htmlTag="div" htmlClass="wishlist-link-div" before="minicart" >
+                <block class="Magento\Framework\View\Element\Html\Link" name="wishlist-link-div" >
+                    <arguments>
+                        <argument name="label" xsi:type="string" translate="true">wishlist</argument>
+                        <argument name="path" xsi:type="string" translate="true">wishlist</argument>
+                        <argument name="class" xsi:type="string">wishlist-link</argument>
+                    </arguments>
+                </block>
+            </container>
+            <container name="logomobile" htmlTag="div" htmlClass="logomobile">
+                <block class="Magento\Theme\Block\Html\Header\Logo" name="logo-header"/>
+            </container>
+        </referenceBlock>
+        <move element="authorization-link-login" destination="sign-div" after="-"/>
+        <move element="register-link" destination="sign-div" after="-"/>
+    </body>
+</page>

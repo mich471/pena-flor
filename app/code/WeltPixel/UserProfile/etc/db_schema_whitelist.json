@@ -1,0 +1,23 @@
+{
+    "weltpixel_user_profile": {
+        "column": {
+            "profile_id": true,
+            "customer_id": true,
+            "username": true,
+            "avatar": true,
+            "cover_image": true,
+            "first_name": true,
+            "last_name": true,
+            "location": true,
+            "dob": true,
+            "bio": true,
+            "gender": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "WELTPIXEL_USER_PROFILE_CUSTOMER_ID": true,
+            "WELTPIXEL_USER_PROFILE_USERNAME": true,
+            "WELTPIXEL_USER_PROFILE_CUSTOMER_ID_CUSTOMER_ENTITY_ENTITY_ID": true
+        }
+    }
+}

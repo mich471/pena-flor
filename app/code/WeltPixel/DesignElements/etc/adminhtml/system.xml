@@ -1,0 +1,273 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="weltpixel_design_elements" translate="label" type="text" sortOrder="140" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Design Elements</label>
+            <tab>weltpixel</tab>
+            <resource>WeltPixel_DesignElements::DesignElementsSettings</resource>
+            <group id="notification" translate="label" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Recommended:</label>
+                <fieldset_css>weltpixel-recommended-header active</fieldset_css>
+                <field id="notification_msg" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <frontend_model>WeltPixel\DesignElements\Block\Adminhtml\System\Config\Notification</frontend_model>
+                </field>
+            </group>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
+                <field id="bootstrap_grids" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Bootstrap Grid</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>This is the Bootstrap Grid component. It's used on various Home Pages and facilitates the proper allocation of space on multiple sections of the store.
+                        This Design Element should not be disabled.</comment>
+                </field>
+                <field id="icons_core" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Core Icons</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>This Design Element enables the use of core theme icons. These are used for elements such as the mini cart and search icons.
+                        This Design Element should not be disabled.</comment>
+                </field>
+                <field id="icons_extended" translate="label" type="select" sortOrder="25" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Extended Icons</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[These are optional, additional icons that are not part of the core theme icons. They are not used out of the box unless they've been added via customizations.
+                        For example, a list of Custom Icons can be found here: <a href="http://michalsnik.github.io/aos" target="_blank">Pearl Theme Styled icons</a>]]></comment>
+                </field>
+                <field id="bootstrap_tables" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Tables</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[  This is the Bootstrap Tables Component. It's not actively used out of the box on any theme pages and should only be enabled if you need to use Bootstrap Tables.
+                    An example can be found here: <a href="https://pearl.weltpixel.com/v6/weltpixel-tables" target="_blank">Pearl Theme Tables</a>]]></comment>
+                </field>
+                <field id="toggles_accordions_tabs" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Toggle, Accordion and Tabs</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>This Design Element introduces the Toggles, Accordions, and Tabs component.
+                        This is used on Product Page V2 and should not be disabled unless you don't plan on using this Product Page.</comment>
+                </field>
+                <field id="pricing_boxes" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Pricing Boxes</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[This Design Element is not used anywhere in the theme out of the box and should only be enabled if you need to implement Pricing Boxes.
+                    An example can be found here:  <a href="https://pearl.weltpixel.com/v6/weltpixel-pricing" target="_blank"> Pearl Theme Pricing Boxes</a>]]></comment>
+                </field>
+                <field id="headings_blockquotes" translate="label" type="select" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Headings And Blockquotes</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[This Design Element is not used anywhere in the theme out of the box and should only be enabled if you need to display Headings and Blockquotes.
+                     An example can be found here: <a href="https://pearl.weltpixel.com/v5/weltpixel-headings" target="_blank">Pearl Theme Headings</a>]]></comment>
+                </field>
+                <field id="dividers" translate="label" type="select" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Dividers</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[ This Design Element is not used anywhere in the theme out of the box and should only be enabled if you need to use Dividers on your pages.
+                     An example can be found here: <a href="https://pearl.weltpixel.com/v6/weltpixel-dividers" target="_blank"> Pearl Theme Dividers</a>]]></comment>
+                </field>
+                <field id="brand_lists" translate="label" type="select" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Brand lists</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[Brand Lists are not used anywhere out of the box, however, this Design Element is also tied to the Testimonials Design Element. It's important to keep it enabled if you're using Testimonials anywhere on the store. If you're not using Brand Lists or Testimonials, you can disable it.
+                     An example can be found here:<a href="https://pearl.weltpixel.com/v6/brands-widget" target="_blank"> Pearl Theme Brand Lists</a>]]></comment>
+                </field>
+                <field id="responsive_helpers" translate="label" type="select" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Responsive And Helpers</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>This Design Element is used to implement various CSS classes that allow for responsive designs with the Pearl Theme. It's used on multiple pages and should not be disabled.</comment>
+                </field>
+                <field id="smooth_scrolling" translate="label" type="select" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Smooth Scrolling</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>This Design Element can be used to add Smooth Scrolling animations to anchor links. If you haven't implemented this manually on your website, it should be disabled.</comment>
+                </field>
+                <field id="icon_boxes_core" translate="label" type="select" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Core Icon boxes</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[BThis Design Element is not used anywhere in the theme out of the box and should only be enabled if you need to display Icon Boxes on your pages.
+                    An example can be found here: <a href="https://pearl.weltpixel.com/v5/weltpixel-icon-boxes" target="_blank">Pearl Theme Icon Boxes</a>]]></comment>
+                </field>
+                <field id="icon_boxes_extended" translate="label" type="select" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Extended Icon boxes</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[This Design Element is not used anywhere in the theme out of the box and should only be enabled if you need to display Icon Boxes on your pages.
+                    An example can be found here: <a href="https://pearl.weltpixel.com/v6/brands-widget" target="_blank">Pearl Theme Icon Boxes</a>]]></comment>
+                </field>
+                <field id="alert_boxes" translate="label" type="select" sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Alert boxes</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[These are Bootstrap Alerts. They aren't used out of the box and should be disabled unless you plan on explicitly customizing something to use them.
+                    An example can be found here: <a href="https://pearl.weltpixel.com/v5/weltpixel-alert-boxes" target="_blank">Pearl Theme Alert Boxes</a>]]></comment>
+                </field>
+                <field id="testimonials" translate="label" type="select" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Testimonials</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[ Testimonials are used on Home Page V10 and Home Page V11. If you're not using either of these and don't plan on displaying Testimonials on any other page, you can disable this Design Element.
+                    Other examples can be found here: <a href="https://pearl.weltpixel.com/v5/weltpixel-testimonials" target="_blank">Pearl Theme Testimonials</a>]]></comment>
+                </field>
+                <field id="flexslider" translate="label" type="select" sortOrder="140" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Flex Slider</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>The Flex Slider Design Element is used for the Testimonials Slider (presented on Pearl Theme Testimonials) so if you're using this, it should be kept enabled.
+                        If you're not using the Testimonials Slider, you can disable this Design Element.</comment>
+                </field>
+                <field id="buttons" translate="label" type="select" sortOrder="150" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Buttons</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[This Design Element is not used anywhere in the theme out of the box and should only be enabled if you need to display Custom Buttons on your pages.
+                     An example can be found here: <a href="https://pearl.weltpixel.com/v5/weltpixel-buttons" target="_blank"> Pearl Theme Buttons</a>]]></comment>
+                </field>
+                <field id="sections" translate="label" type="select" sortOrder="160" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Sections</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enable/Disable the Sections component.</comment>
+                </field>
+                <field id="parallax" translate="label" type="select" sortOrder="165" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Parallax</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Used on Home Page V2 (top Hero Banner) for the Parallax effect.
+                        If you're not using this home page or have not manually introduced the Parallax effect via customizations anywhere else on the store, this Design Element should be disabled.</comment>
+                </field>
+                <field id="animations_core" translate="label" type="select" sortOrder="170" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Core Animations</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment> This Design Element introduces core theme animations and should be kept enabled.Extended Animations - Animations that are not part of the core theme Animations.
+                        They are not used out of the box and should be disabled unless they've been added manually via customizations.</comment>
+                </field>
+                <field id="animations_extended" translate="label" type="select" sortOrder="172" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Extended Animations</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enable/Disable the Animations component.</comment>
+                </field>
+                <field id="aos_animation" translate="label comment" type="select" sortOrder="175" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>AOS Animation</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[This Design Element uses an external animation library that is not used anywhere out of the box. If you haven't manually added them to your store, it should be disabled.
+                    An example can be found here: <a href="https://pearl.weltpixel.com/v5/weltpixel-aos-animations" target="_blank">Pearl Theme AOS Animations</a>]]></comment>
+                </field>
+                <field id="btt_button" translate="label" type="select" sortOrder="180" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Activate Back To Top Button</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[Enable Advanced Back To Top On Product Page - Only affects the Product Pages. Adds the Advanced Back to Top button.
+                     An example can be seen here: <a href="https://pearl.weltpixel.com/v6/joust-duffle-bag.html" target="_blank">Advanced Back to Top</a>]]></comment>
+                </field>
+                <field id="btt_offset" translate="label" type="text" sortOrder="190" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show button after "x" pixels of scroll down</label>
+                    <comment> Set when the "Back To Top" button will appear: when the user scrolls down to the 300px mark. The default value: 300</comment>
+                    <depends>
+                        <field id="btt_button">1</field>
+                    </depends>
+                </field>
+                <field id="btt_offset_opacity" translate="label" type="text" sortOrder="200" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Reduce the opacity of "Back To Top" button after "x" pixels of scroll down</label>
+                    <comment>Set number pixels after which the "Back To Top" button opacity is reduced. The default value is 1200.</comment>
+                    <depends>
+                        <field id="btt_button">1</field>
+                    </depends>
+                </field>
+                <field id="btt_duration" translate="label" type="text" sortOrder="210" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Duration of the top scrolling animation</label>
+                    <comment>Duration of the top scrolling animation in milliseconds. The default value is 700.</comment>
+                    <depends>
+                        <field id="btt_button">1</field>
+                    </depends>
+                </field>
+                <field id="collapsible_top_jump" translate="label" type="select" sortOrder="220" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Auto-jump to Top when click on Collapsible Widgets</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="calendar_css" translate="label comment" type="select" sortOrder="230" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Magento calendar.css</label>
+                    <comment>Enable or Disable the loading of the Magento default calendar.css library.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="btt_product_page" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Advanced Back To Top On Product Page</label>
+                <field id="info" type="label" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <comment>Activate Back To Top Button option must be enabled.</comment>
+                </field>
+                <field id="enable" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Advanced Back To Top On Product Page</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="weltpixel_design_elements/general/btt_button">1</field>
+                    </depends>
+                    <comment><![CDATA[Only affects the Product Pages. Adds the Advanced Back to Top button.
+                    An example can be seen here:<a href="https://pearl.weltpixel.com/v6/joust-duffle-bag.html" target="_blank"> Advanced Back to Top</a>]]></comment>
+                </field>
+                <field id="btt_text_label" translate="label" type="text" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Text Label on Back to top</label>
+                    <depends>
+                        <field id="weltpixel_design_elements/general/btt_button">1</field>
+                        <field id="weltpixel_design_elements/btt_product_page/enable">1</field>
+                    </depends>
+                    <comment>Insert custom text to be displayed on Advanced Back to Top button. Leave empty for no label.</comment>
+                </field>
+                <field id="btt_product_img" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show Product image on Back to top</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="weltpixel_design_elements/general/btt_button">1</field>
+                        <field id="weltpixel_design_elements/btt_product_page/enable">1</field>
+                    </depends>
+                </field>
+                <field id="btt_reviews" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show reviews on Back to top</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="weltpixel_design_elements/general/btt_button">1</field>
+                        <field id="weltpixel_design_elements/btt_product_page/enable">1</field>
+                    </depends>
+                </field>
+                <field id="btt_product_price" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show product Price on Back to top</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="weltpixel_design_elements/general/btt_button">1</field>
+                        <field id="weltpixel_design_elements/btt_product_page/enable">1</field>
+                    </depends>
+                </field>
+                <field id="btt_background_color" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Back To Top Background Color</label>
+                    <comment>Set color the background of Back To Top Button . Example: #000000</comment>
+                    <validate>color {required:false, hash:true}</validate>
+                    <depends>
+                        <field id="weltpixel_design_elements/general/btt_button">1</field>
+                        <field id="weltpixel_design_elements/btt_product_page/enable">1</field>
+                    </depends>
+                </field>
+                <field id="btt_box_shadow" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Button Box Shadow</label>
+                    <comment>Insert shadow values for the Back To Top Button on product page. Example: 0px 5px 30px 0px rgba(0,0,0,0.5)</comment>
+                    <depends>
+                        <field id="weltpixel_design_elements/general/btt_button">1</field>
+                        <field id="weltpixel_design_elements/btt_product_page/enable">1</field>
+                    </depends>
+                </field>
+                <field id="btt_border_width" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Back To Top Border Width</label>
+                    <comment>Insert border width for Back To Top Button on product page. Example: 1px</comment>
+                    <depends>
+                        <field id="weltpixel_design_elements/general/btt_button">1</field>
+                        <field id="weltpixel_design_elements/btt_product_page/enable">1</field>
+                    </depends>
+                </field>
+                <field id="btt_border_color" translate="label" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Back To Top Border Color</label>
+                    <validate>color {required:false, hash:true}</validate>
+                    <comment>Select color for Back To Top Button border. Example: #FFFFFF</comment>
+                    <depends>
+                        <field id="weltpixel_design_elements/general/btt_button">1</field>
+                        <field id="weltpixel_design_elements/btt_product_page/enable">1</field>
+                    </depends>
+                </field>
+                <field id="btt_product_mobile_option" translate="label" type="select" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Back to top on Mobile</label>
+                    <source_model>WeltPixel\DesignElements\Model\Config\Source\BackToTopMobileOptions</source_model>
+                    <depends>
+                        <field id="weltpixel_design_elements/general/btt_button">1</field>
+                        <field id="weltpixel_design_elements/btt_product_page/enable">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

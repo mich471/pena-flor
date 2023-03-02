@@ -1,0 +1,50 @@
+<?php
+$_product = $block->getProduct();
+
+$_getPuntuacionWineSpectator = $_product->getResource()->getAttribute('puntuacion_wine_spectator_vi');
+
+$_getPuntuacionParker = $_product->getResource()->getAttribute('puntuacion_parker_vi');
+
+$_getPuntuacionTimAtikin = $_product->getResource()->getAttribute('puntuacion_tim_atkin_vi');
+
+$_getPuntuacionJamesSuckiling = $_product->getResource()->getAttribute('puntuacion_james_suckiling_vi');
+
+$_getPuntuacionDecanter = $_product->getResource()->getAttribute('puntuacion_decanter_vi');
+if (!$_getPuntuacionWineSpectator
+  || !$_getPuntuacionParker
+  || !$_getPuntuacionTimAtikin
+  || !$_getPuntuacionJamesSuckiling
+  || !$_getPuntuacionDecanter
+)
+	return; //out!
+
+$puntuacionWineSpectator = $_getPuntuacionWineSpectator->getFrontend()->getValue($_product);
+$puntuacionParker = $_getPuntuacionParker->getFrontend()->getValue($_product);
+$puntuacionTimAtkin = $_getPuntuacionTimAtikin->getFrontend()->getValue($_product);
+$puntuacionJamesSuckiling = $_getPuntuacionJamesSuckiling->getFrontend()->getValue($_product);
+$puntuacionDecanter = $_getPuntuacionDecanter->getFrontend()->getValue($_product);
+if (isset($puntuacionWineSpectator) || isset($puntuacionParker) || isset($puntuacionTimAtkin) || isset($puntuacionJamesSuckiling) || isset($puntuacionDecanter)) {
+	echo '<table class="data table additional-attributes"><tbody>';
+
+	if(isset($puntuacionWineSpectator)){
+		echo '<tr><th class="col label">Wine Spectator</th><td class="col data">'.$puntuacionWineSpectator.'</td>' ;
+	}
+
+	if(isset($puntuacionParker)){
+		echo '<tr><th class="col label">Parker</th><td class="col data">'.$puntuacionParker.'</td>' ;
+	}
+
+	if(isset($puntuacionTimAtkin)){
+		echo '<tr><th class="col label">Tim Atkin</th><td class="col data">'.$puntuacionTimAtkin.'</td>' ;
+	}
+
+	if(isset($puntuacionJamesSuckiling)){
+		echo '<tr><th class="col label">James Suckiling</th><td class="col data">'.$puntuacionJamesSuckiling.'</td>' ;
+	}
+
+	if(isset($puntuacionDecanter)){
+		echo '<tr><th class="col label">Decanter</th><td class="col data">'.$puntuacionDecanter.'</td>' ;
+	}
+
+	echo '</tbody></table>';
+}

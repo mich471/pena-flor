@@ -1,0 +1,30 @@
+BLOCK TITLE: Venta Institucional - Header Links
+IDENTIFIER: venta-institucional-header-links
+
+CONTENT:
+<div class="vi-links" style="z-index:10;">
+<ul>
+<li class="venta-institucional-link"><a href="#" class="equipo-link"><img src="{{view url='images/media/title_vi.png'}}" width="150"/></a></li>
+<li class="our-team-link"><a href="#" class="equipo-link" id="equipo-link">Conoce nuestro equipo &gt;</a></li>
+</ul>
+</div>
+<script>
+    require([
+        "jquery",
+        "Magento_Ui/js/modal/modal"
+    ], function($, modal){
+	        var options = {
+	            type: 'popup',
+	            responsive: true,
+	            innerScroll: true,
+	            title: "Conoce nuestro equipo",
+	        };
+	        var popupdataContent = `<div>{{block class="Magento\\Cms\\Block\\Block" block_id="venta-institucional-equipo-modal"}}</div>`;
+	        var popupdata = $(popupdataContent);
+	        modal(options, popupdata);
+    	$(".equipo-link").on("click",function(){
+	        popupdata.modal('openModal');
+    	})
+        
+    });
+</script>

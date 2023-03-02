@@ -1,0 +1,635 @@
+.cmspage-block-title(){
+	display:block;
+	.lib-css(font, @f_h1);
+	border-width:0;
+	text-align:center;
+	padding-bottom:15px;
+	strong{
+		padding:0;
+		border-width:0;
+		.lib-css(font, @f_h1);
+		.lib-css(color, @main_title_text);
+		text-transform:uppercase;
+		color:#ffffff;
+	}
+	.field.note{
+		.lib-css(font, @f_note);
+		text-transform:initial;
+	}
+}
+.cmspage-block(){
+	.lib-css(background-color, @main_block_background);
+	padding:30px;
+	max-width:540px;
+	.abs-boxshadow(@box-shadow);
+	.abs-borderradius(@border-radius);
+	.field {
+		.label{display:none}
+		&.choice{
+			.label{display:inline}
+		}
+	}
+
+	#remember-me-box label{
+		display:inline
+	}
+}
+
+//Login, register, forgot password///////////
+.customer-account-forgotpassword,
+.customer-account-login,
+.customer-account-create{
+	.page-title-wrapper{display:none;}
+}
+.customer-account-forgotpassword .page-main,
+.login-container,
+#register-form-now{
+	width:100%;margin:40px auto;
+}
+.customer-account-forgotpassword{
+	.forgot-title{
+		.cmspage-block-title();
+	}
+	.form.password.forget{
+		.cmspage-block();
+	}
+}
+.block-register-account{
+	.block-title{
+		.cmspage-block-title();
+	}
+	.block-content-register{
+		.cmspage-block();
+	}
+	.actions-toolbar{
+		margin-top:20px;
+	}
+}
+.customer-account-login .page-main .block-customer-login{
+	.block-title{
+		.cmspage-block-title();
+	}
+	.block-content{
+		.cmspage-block();
+	}
+}
+.block-new-customer{
+	.block-title{
+		.cmspage-block-title();
+	}
+	.block-content{
+		text-align:center;
+		.actions-toolbar a.primary{
+			.abs-cssall(@btn_default_text, @btn_default_border, @btn_default_background, @btn_default_font);
+			&:hover{
+				.abs-cssall(@btn_hover_text, @btn_hover_border, @btn_hover_background);
+			}
+		}
+
+	}
+}
+//
+//  Desktop
+//  ---------------------------------------------
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+	.customer-account-forgotpassword .page-main,
+	.block-new-customer,
+	.login-container,
+	#register-form-now {
+		width:520px;
+		.actions-toolbar{
+			text-align:center;
+			> div.primary{
+				width:100%;
+				.primary{
+					width:60%;
+					margin:0 20%;
+				}
+				a.primary{
+					margin-top:10px;
+				}
+			}
+			> div.secondary{
+				clear:both;
+			}
+		}
+	}
+}
+
+
+
+//////404 Page //////////
+.cmspage-custom,
+.pagenotfound{
+	width:100%;margin:40px auto;
+	.block.block-cmspage,
+	.block.block-pagenotfound{
+		.block-title{
+			.cmspage-block-title();
+		}
+		.block-content{
+			.cmspage-block();
+		}
+		.block-content{
+			padding:30px 30px 10px!important;
+			.group-link{
+				padding-top:15px;
+				text-align:center;
+				a{margin:0 5px;}
+			}
+		}
+	}
+}
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+	.cmspage-custom,
+	.pagenotfound{
+		width:540px;
+	}
+}
+
+///
+.page-layout-1column{
+	.columns{
+		margin-bottom:40px;
+		.lib-css(background-color, @main_block_background);
+		padding:20px;
+		.abs-boxshadow(@box-shadow);
+		.abs-borderradius(@border-radius);
+		.column.main{
+			padding-bottom:0;
+		}
+	}
+	&.checkout-index-index,
+	&.checkout-cart-index,
+	&.cms-no-route,
+	&.catalog-product-view,
+	&.catalog-category-view,
+	&.customer-account-forgotpassword,
+	&.customer-account-login,
+	&.cms-home,
+	&.customer-account-create{
+		.columns{
+			margin-bottom:0;
+			.lib-css(background-color, transparent);
+			padding:0;
+			.abs-borderradius(0);
+			.abs-boxshadow(none);
+		}
+	}
+}
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+	///
+	.page-layout-1column{
+		.columns{
+			margin-left:0;
+			margin-right:0;
+		}
+		&.cms-home.cms-index-index{
+			.columns{
+				margin-left:0;
+				margin-right:0;
+			}
+		}
+		&.checkout-index-index,
+		&.checkout-cart-index,
+		&.cms-no-route,
+		&.catalog-product-view,
+		&.catalog-category-view,
+		&.customer-account-forgotpassword,
+		&.customer-account-login,
+		&.cms-home,
+		&.customer-account-create{
+			.columns{
+				margin-left:-10px;
+				margin-right:-10px;
+			}
+		}
+	}
+}
+//Contact
+.form.contact{ margin-bottom:20px;}
+#map_canvas{ width:100% !important}
+
+//CREACION
+.cms-about-us .wrapper-breadcrums{ display:none;}
+.creacion-page{
+	.cms-box{
+		margin-bottom:60px;
+		.cms-desc{
+			text-align: justify;
+		}
+	}
+	.box-img{
+	}
+	.aboutus-title{
+		text-transform:uppercase;
+	}
+	.cms-titlesmall{
+		position:relative;
+		margin-bottom:15px;
+		h3{
+			font-size: 36px;
+			font-family: "Josefin Slab";
+			font-weight: 200;
+		}
+
+	}
+	.cls-features{
+		h5{
+			text-transform:uppercase;
+			font-weight:600;
+			margin-bottom:20px;
+			&:before{
+				.abs-iconfont('\f0c5', 14px);
+				.abs-borderradius(100%);
+				border:1px solid #e1e1e1;
+				width: 30px;
+				height: 30px;
+				line-height: 30px;
+				margin-right:10px;
+				text-align: center;
+			}
+			&.title-2{
+				&:before{
+					content:'\f260';
+				}
+			}
+			&.title-3{
+				&:before{
+					content:'\f26c';
+				}
+			}
+		}
+		.items{
+			li{
+				margin:0;
+				padding:7px 0;
+				&:before{
+					.abs-iconfont('\f067', 12px);
+					padding-right:10px;
+				}
+			}
+		}
+	}
+}
+
+// Reconocimientos Page
+.reconocimientos-page{
+	h3{
+		font-family: "Josefin Slab";
+		font-size: 26px;
+		border-bottom:1px solid #b26522;
+		padding-bottom: 10px;
+	}
+	.attribute-items{
+		ul{
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			li{
+				width: 23%;
+				font-family: "Josefin Slab";
+				font-size: 26px;
+				color: #616161;
+				float: left;
+				margin: 0 2%;
+				cursor: pointer;
+
+				/*GRADIENT*/
+				/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#1d1c1c+0,141213+80 */
+				background: #1d1c1c; /* Old browsers */
+				background: -moz-linear-gradient(top, #1d1c1c 0%, #141213 80%); /* FF3.6-15 */
+				background: -webkit-linear-gradient(top, #1d1c1c 0%,#141213 80%); /* Chrome10-25,Safari5.1-6 */
+				background: linear-gradient(to bottom, #1d1c1c 0%,#141213 80%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1d1c1c', endColorstr='#141213',GradientType=0 ); /* IE6-9 */
+				padding: 10px;
+				&.checked{
+					color: #fff;
+					background: #000;
+				}
+				&:first-child,
+				&:last-child{
+					margin: 0;
+				}
+			}
+		}
+
+	}
+
+	.region-items{
+		margin-top: 0px;
+		.item{
+			display: table;
+			.wine-info{
+				width: 45%;
+				padding: 47px 46px 25px 60px;
+				display: table-cell;
+				vertical-align: top;
+				background: #293c49 url("../images/cms/bg_recon_prod.jpg") repeat-x bottom left;
+				.image{
+					float: left;
+					padding-right: 50px;
+					max-width: 120px;
+				}
+				.data{
+					.product-name{
+						font-family: "Josefin Slab";
+						font-size: 28px;
+						font-weight: 600;
+						line-height: 30px;
+						margin-bottom: 10px;
+					}
+					p{
+						text-align: justify;
+					}
+					.action{
+						a{
+							font-weight: 600;
+							color: #fff;
+							&:hover{
+								text-decoration: underline;
+							}
+						}
+					}
+				}
+			}
+			.wine-awards{
+				display: table-cell;
+				vertical-align: middle;
+				width: 55%;
+				padding: 25px 0;
+				background: #000 url("../images/cms/bg_recon_awards.jpg") repeat-x bottom left;
+				ul.award-list{
+					list-style: none;
+					margin: 0;
+					padding: 0;
+					.award-item{
+						float: left;
+						text-align: center;
+						padding: 0 9px;
+						height: 100px;
+						.award-icon{
+							text-transform: uppercase;
+							font-size: 14px;
+							position: relative;
+							display: inline-block;
+							height: 40px;
+							padding-top: 0px;
+							margin-bottom: 6px;
+							line-height: 15px;
+							span{
+								top: 50%;
+								position: relative;
+								display: inline-block;
+								-webkit-transform: translateY(-50%);
+								-moz-transform: translateY(-50%);
+								-ms-transform: translateY(-50%);
+								-o-transform: translateY(-50%);
+								transform: translateY(-50%);
+							}
+
+							&:before, &:after{
+								font-family: "mascota-icons";
+								font-style: normal;
+								font-weight: normal;
+								speak: none;
+
+								display: inline-block;
+								text-decoration: inherit;
+								width: auto;
+								margin-right: .2em;
+								text-align: center;
+								/* opacity: .8; */
+
+								/* For safety - reset parent styles, that can break glyph codes*/
+								font-variant: normal;
+								text-transform: none;
+
+								/* fix buttons height, for twitter bootstrap */
+								line-height: 1em;
+
+								/* Animation center compensation - margins should be symmetric */
+								/* remove if not needed */
+								margin-left: .2em;
+
+								/* you can be more comfortable with increased icons size */
+								/* font-size: 120%; */
+
+								/* Font smoothing. That was taken from TWBS */
+								-webkit-font-smoothing: antialiased;
+								-moz-osx-font-smoothing: grayscale;
+								font-size: 40px;
+								position: absolute;
+								top: 0;
+							}
+							&:before {
+								content: '\6e';
+								left: -30px;
+							}
+							&:after {
+								content: '\6f';
+								right: -30px;
+							}
+
+						}
+						.award-title{
+							text-transform: uppercase;
+							font-weight: 100;
+							font-size: 10px;
+							line-height: 12px;
+							color: #e3e3e3;
+							width: 140px;
+							margin: 0 auto;
+						}
+					}
+				}
+			}
+			&.mascota-award{
+				.wine-info .image img{
+					margin-left: -15px;
+					height: 150px;
+					max-width: none !important;
+					margin-left: -15px;
+					padding-bottom: 70px;
+				}
+			}
+		}
+	}
+	/*MOBILE - TABLET*/
+	@media screen and (max-width:767px) {
+		.attribute-items{
+			ul{
+				li{
+					text-align: center;
+					border-bottom: none;
+					padding-top: 10px;
+					.attr-icon{
+						display: block;
+						line-height: 50px;
+						font-size: 50px;
+					}
+					.attr-title{
+						font-size: 12px;
+					}
+					&.checked{
+						border-bottom: none;
+						background: #000;
+					}
+				}
+			}
+
+		}
+		.region-items{
+			margin-top: 0;
+			.item{
+				background-color: #000;
+				display: block;
+				.wine-info{
+					display: block;
+					width: 96%;
+					padding: 20px;
+					padding-bottom: 80px;
+					margin: 2%;
+					.image{
+						float: right;
+						padding-left: 20px;
+						padding-right: 0;
+					}
+					.data{
+						p{
+							text-align: justify;
+						}
+					}
+				}
+				.wine-awards{
+					display: block;
+					width: 100%;
+					overflow: hidden;
+					ul.award-list{
+						.award-item{
+							width: 50%;
+							margin-bottom: 27px;
+						}
+					}
+				}
+				&.mascota-award{
+					.wine-info .image img{
+						margin-left: 0;
+					}
+				}
+			}
+		}
+	}
+}
+
+//Checkout success
+.checkout-success{
+	text-align:center;
+	font-size:18px;
+	.success-title{
+		font-size:48px;
+		color:#fc7070;
+		padding-top:60px;
+		span{ display:inline-block; clear:both; margin-bottom:0; vertical-align:top;}
+		span.success-title-icon{
+			font-size:0;
+			width:95px;
+			height:95px;
+			line-height:95px;
+			text-align:center;
+			.abs-borderradius(100%);
+			border:2px solid #fc7070;
+			&:before{
+				.abs-iconfont('\f00c', 48px);
+				line-height:95px;
+			}
+		}
+	}
+	p{ margin-bottom:1.5rem}
+	.order-id{
+		.abs-link(#fc7070, #fc7070);
+		&:hover{
+			text-decoration:underline;
+		}
+	}
+	.success-bottom{
+		font-size:14px;
+		padding-top:60px;
+		padding-bottom:60px;
+	}
+	div.primary{ padding-top:15px;}
+}
+
+
+//
+#password-strength-meter-container{
+	overflow: hidden;
+	height: 20px;
+	margin-bottom: 20px;
+	background-color: #f5f5f5;
+	border-radius: 4px;
+	-webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+	box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+	font-size:0;
+	width:100%;
+	margin:10px 0;
+	#password-strength-meter{
+		float: left;
+		height: 100%;
+		font-size: 12px;
+		font-size:0;
+		line-height: 20px;
+		color: #fff;
+		text-align: center;
+		background-color: #959292;
+		-webkit-box-shadow: inset 0 -1px 0 rgba(0,0,0,0.15);
+		box-shadow: inset 0 -1px 0 rgba(0,0,0,0.15);
+		-webkit-transition: width .6s ease;
+		-o-transition: width .6s ease;
+		transition: width .6s ease;
+
+		background-image: -webkit-linear-gradient(45deg, rgba(255,255,255,0.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.15) 50%, rgba(255,255,255,0.15) 75%, transparent 75%, transparent);
+    background-image: -o-linear-gradient(45deg, rgba(255,255,255,0.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.15) 50%, rgba(255,255,255,0.15) 75%, transparent 75%, transparent);
+    background-image: linear-gradient(45deg, rgba(255,255,255,0.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.15) 50%, rgba(255,255,255,0.15) 75%, transparent 75%, transparent);
+    -webkit-background-size: 40px 40px;
+    background-size: 40px 40px;
+
+	-webkit-animation: progress-bar-stripes 2s linear infinite;
+    -o-animation: progress-bar-stripes 2s linear infinite;
+    animation: progress-bar-stripes 2s linear infinite;
+	}
+	#password-strength-meter-label{
+		font-size: 12px;
+		line-height: 20px;
+		color: #fff;
+		padding:0 5px;
+	}
+	&.password-weak{
+		#password-strength-meter{
+			width:25%;
+			background-color:#d9534f;
+		}
+	}
+	&.password-medium{
+		#password-strength-meter{
+			width:50%;
+			background-color:#f0ad4e;
+		}
+	}
+	&.password-strong{
+		#password-strength-meter{
+			width:75%;
+			background-color:#337ab7;
+		}
+	}
+	&.password-very-strong{
+		#password-strength-meter{
+			width:100%;
+			background-color:#5cb85c;
+		}
+	}
+}
+@-webkit-keyframes progress-bar-stripes{from{background-position:40px 0}to{background-position:0 0}}
+@-o-keyframes progress-bar-stripes{from{background-position:40px 0}to{background-position:0 0}}
+@keyframes progress-bar-stripes{from{background-position:40px 0}to{background-position:0 0}}

@@ -1,0 +1,21 @@
+diff --git a/Block/AjaxCart.php b/Block/AjaxCart.php
+index 50194ea..8b3d3eb 100755
+--- a/vendor/codazon/ajaxcartpro/Block/AjaxCart.php
++++ b/vendor/codazon/ajaxcartpro/Block/AjaxCart.php
+@@ -14,14 +14,4 @@ class AjaxCart extends \Magento\Framework\View\Element\Template
+ 		$this->_design = $design;
+ 		parent::__construct($context, $data);
+ 	}
+-	
+-	public function _toHtml(){
+-		$themePath = $this->_design->getDesignTheme()->getFullPath();
+-		if (strpos($themePath, 'Codazon') !== false) {
+-			return parent::_toHtml();
+-		}else{
+-			return '';
+-		}
+-	}
+-	
+-}
+\ No newline at end of file
++}

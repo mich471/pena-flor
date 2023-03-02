@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <weltpixel_productlabels>
+            <general>
+                <enable_category_page>1</enable_category_page>
+                <category_page_display_mode>always</category_page_display_mode>
+                <enable_product_page>1</enable_product_page>
+                <enable_product_widgets>0</enable_product_widgets>
+                <enable_related_products>0</enable_related_products>
+                <enable_upsell_products>0</enable_upsell_products>
+                <enable_crossell_products>0</enable_crossell_products>
+            </general>
+        </weltpixel_productlabels>
+    </default>
+</config>

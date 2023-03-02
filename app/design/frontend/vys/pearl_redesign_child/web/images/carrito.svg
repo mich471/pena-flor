@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="23" height="30" viewBox="0 0 33.381 32">
+  <g id="Componente_110_38" data-name="Componente 110 – 38" transform="translate(1.5 1.5)">
+    <g id="Grupo_1081" data-name="Grupo 1081" transform="translate(0 -3)">
+      <path id="Trazado_2" data-name="Trazado 2" d="M15,31.5A1.5,1.5,0,1,1,13.5,30,1.5,1.5,0,0,1,15,31.5Z" transform="translate(-2.417 -1)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+      <path id="Trazado_3" data-name="Trazado 3" d="M31.5,31.5A1.5,1.5,0,1,1,30,30,1.5,1.5,0,0,1,31.5,31.5Z" transform="translate(-4.119 -1)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+      <path id="Trazado_4" data-name="Trazado 4" d="M1.5,1.5H7.024l3.7,17.853A2.742,2.742,0,0,0,13.487,21.5H26.91a2.742,2.742,0,0,0,2.762-2.147l2.21-11.187H8.4" transform="translate(-1.5 1.5)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+    </g>
+  </g>
+</svg>

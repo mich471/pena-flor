@@ -1,0 +1,322 @@
+.field.field-document_id > .label:after {
+    content: "*";
+    color: #e02b27;
+    font-size: 1.2rem;
+    margin: 0 0 0 5px;
+}
+
+.form-login-fieldset {
+    flex-direction: column
+}
+    
+.field>.label {
+    margin: 0 0 8px;
+    display: inline-block;
+}
+    
+div#recaptcha-f979c2ff515d921c34af9bd2aee8ef076b719d03-container {
+    display: none;
+}
+
+div#ui-datepicker-div {
+    display: none;
+}
+
+.companies-select-align {
+    display: inline-flex;
+}
+
+.register-steps--subtitle {
+    font-weight: 200;
+    margin-top: 1rem;
+}
+
+.register-steps--subcontainer,
+.login-steps--subcontainer {
+    width: 350px;
+    display: inline-table;
+    border: 1px solid lightgrey;
+    padding: 35px;
+}
+
+.companies-select-align {
+    width: 350px !important;
+}
+
+.container-button--continue {
+    margin-top: 2.5rem;
+    float: right;
+}
+
+.container--fields {
+    margin-top: 2rem;
+}
+
+.register-steps--title {
+    font-weight: 400;
+    margin-bottom: 1rem;
+}
+
+.register-steps--container,
+.block-customer-login {
+    text-align-last: center;
+}
+
+.ui-helper-hidden-accessible {
+    display: none !important;
+}
+
+.ui-autocomplete.ui-menu .ui-menu-item {
+    list-style: none !important;
+    text-align: center;
+    padding-top: 8px;
+    max-width: 350px !important;
+}
+
+.ui-autocomplete.ui-menu {
+    padding-left: 0px !important;
+}
+
+.ui-autocomplete {
+    width: 350px !important;
+    border: 1px solid lightgrey;
+}
+
+.disclaimer-select,
+.disclaimer-input {
+    float: left;
+}
+
+.block-title-newlogin {
+    font-size: 2.6rem;
+    line-height: 1.1;
+    font-weight: 400 !important;
+    margin-bottom: 4rem !important;
+}
+
+/* header - login */
+
+.customer-account-login .page-main {
+    padding-top: 50px;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    margin-top: 110px;
+}
+
+.logo {
+    margin-top: 20px !important;
+}
+
+@media (max-width: 780px) {
+    .customer-account-login .logo {
+        float: none;
+        left: 50%;
+        top: 19px;
+        margin: 0 auto !important;
+        transform: translateX(-50%);
+        position: absolute;
+    }
+}
+
+/* fin header - login */
+
+.modal-content {
+    align-self: center;
+}
+
+.newlogin-modal {
+    text-align-last: center;
+}
+
+.button-continue {
+    border-radius: 0;
+    background-color: #bb0606;
+    color: white;
+    width: 155px;
+    padding: 10px;
+    box-shadow: none !important;
+}
+
+.button-continue:focus {
+    background-color: #bb0606;
+    color: white;
+    opacity: 1;
+}
+
+.button-continue:hover {
+    background-color: #bb0606;
+    color: white;
+    opacity: 1;
+}
+
+.button-continue:active {
+    background-color: #bb0606;
+    color: white;
+    opacity: 1;
+}
+
+.container-button--back {
+    margin-top: 10rem;
+}
+
+.register-options--container {
+    margin-top: 3rem;
+}
+
+.back-button,
+.back-button:hover,
+.back-button:focus {
+    background: transparent !important;
+    color: #bb0606 !important;
+    box-shadow: none !important;
+    border: none;
+}
+
+.input-class-register {
+    text-align-last: left;
+    padding-bottom: 8px;
+}
+
+.register-options--container {
+    border-bottom: 1px solid lightgrey;
+    padding-bottom: 2rem;
+}
+
+.register-option--data {
+    border: none !important;
+}
+
+.register-option--data-container {
+    margin-top: 1.5rem;
+}
+
+.flechita {
+    width: 10px;
+}
+
+.ui-corner-all {
+    background: white !important;
+}
+
+.select-container {
+    text-align-last: left;
+    padding-top: 10px;
+}
+
+@media (max-width: 500px) {
+    .register-steps--subcontainer {
+        width: auto;
+        border: none;
+        padding: 0px;
+    }
+
+    .form-create-account {
+        border: none !important;
+        text-align: left;
+    }
+
+    .form-login-fieldset {
+        display: block !important;
+    }
+
+    .align-botones {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .container-button--back {
+        margin-top: 3rem;
+    }
+
+    .container-button--continue {
+        float: inherit;
+    }
+}
+
+.style-name-sur {
+    display: contents !important;
+}
+
+.content-input {
+    -webkit-flex-basis: calc(50% - 18px);
+    display: contents !important;
+}
+
+.form-login-fieldset {
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.align-form {
+    text-align: center;
+}
+
+.field {
+    /* width: 220px; */
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.password-strength-meter {
+    font-size: 10px;
+}
+
+.title-form--createaccount {
+    font-weight: 500;
+    font-size: 2.6rem;
+}
+
+.form-create-account {
+    min-width: 500px !important;
+    width: 65% !important;
+    border: 1px solid lightgrey;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.back-button {
+    background: transparent !important;
+    color: #bb0606 !important;
+    box-shadow: none !important;
+    border: none;
+}
+
+.button-continue {
+    border-radius: 0;
+    background-color: #bb0606;
+    color: white;
+    width: 155px !important;
+    padding: 10px !important;
+    box-shadow: none !important;
+}
+
+.align-botones {
+    text-align: end !important;
+}
+
+.block-customer-login .field {
+    width: 100% !important;
+}
+
+@media (max-width: 780px) {
+    .register-steps--subcontainer,
+    .login-steps--subcontainer {
+        width: auto !important;
+    }
+
+    .form-create-account {
+        width: 80% !important;
+        min-width: auto !important;
+    }
+
+    .form-create-account .field {
+        width: 100%;
+    }
+}
+
+.volver-texto {
+    padding-left: 5px;
+}

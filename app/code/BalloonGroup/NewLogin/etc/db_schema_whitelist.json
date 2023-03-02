@@ -1,0 +1,91 @@
+{
+    "ballon_newlogin_companies": {
+        "column": {
+            "company_id": true,
+            "company": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "ballon_newlogin_email_domains": {
+        "column": {
+            "email_domain_id": true,
+            "company_id": true,
+            "email_domain": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "FK_786405DAF69D23BC51BBF8A88FE8B32E": true
+        }
+    },
+    "ballon_newlogin_authorised_dnis": {
+        "column": {
+            "authorised_dni_id": true,
+            "company_id": true,
+            "authorised_dni": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "FK_5EC368A34F6EC9BF347C8AEC136179D6": true
+        }
+    },
+    "balloon_newlogin_companies": {
+        "column": {
+            "company_id": true,
+            "company": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "balloon_newlogin_email_domains": {
+        "column": {
+            "email_domain_id": true,
+            "company_id": true,
+            "email_domain": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "FK_20EF746392B1AFC20C133D6BE82A403A": true,
+            "BALLOON_NEWLOGIN_EMAIL_DOMAINS_EMAIL_DOMAIN": true
+        }
+    },
+    "balloon_newlogin_authorised_dnis": {
+        "column": {
+            "authorised_dni_id": true,
+            "company_id": true,
+            "authorised_dni": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "FK_578A25B9B3B51E531BD731CE66AEE46F": true
+        }
+    },
+    "balloon_newlogin_authorized_dnis": {
+        "column": {
+            "authorized_dni_id": true,
+            "company_id": true,
+            "authorized_dni": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "FK_26A09AD4559EA6AC49496BE1BF16B39C": true,
+            "BALLOON_NEWLOGIN_AUTHORIZED_DNIS_AUTHORIZED_DNI": true
+        }
+    }
+}

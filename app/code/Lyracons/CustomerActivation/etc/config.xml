@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2018 Lyracons. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <customer>
+            <lyracons_customeractivation>
+                <enabled>0</enabled>
+                <template>customer_lyracons_customeractivation_template</template>
+                <notify_on_register>1</notify_on_register>
+                <notify_to_admin></notify_to_admin>
+                <template_admin>customer_lyracons_customeractivation_template_admin</template_admin>
+            </lyracons_customeractivation>
+        </customer>
+    </default>
+</config>

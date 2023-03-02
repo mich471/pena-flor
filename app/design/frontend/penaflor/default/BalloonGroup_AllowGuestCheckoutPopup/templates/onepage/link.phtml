@@ -1,0 +1,43 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/** @var $block \Magento\Checkout\Block\Onepage\Link */
+?>
+<?php if ($block->isPossibleOnepageCheckout()) :?>
+    <button type="button"
+            data-role="proceed-to-checkout-balloon"
+            title="<?= $block->escapeHtmlAttr(__('Proceed to Checkout')) ?>"
+            data-mage-init='{
+                "BalloonGroup_AllowGuestCheckoutPopup/js/proceed-to-checkout":{
+                    "checkoutUrl":"<?= $block->escapeJs($block->escapeUrl($block->getCheckoutUrl())) ?>"
+                }
+            }'
+            class="action primary checkout<?= ($block->isDisabled()) ? ' disabled' : '' ?>"
+            <?php if ($block->isDisabled()) :?>
+                disabled="disabled"
+            <?php endif; ?>>
+        <span><?= $block->escapeHtml(__('Proceed to Checkout')) ?></span>
+    </button>
+
+    <div class="state-container"></div>
+<?php endif?>
+
+
+<script>
+
+    require(['jquery','domReady!'],function($){
+
+        var btnEvent = {
+            clickEvent: function() {
+                $('button.action.update.old').click();    
+            } 
+        }
+
+        $(document).on('click','.action.update.custom', btnEvent.clickEvent);
+    
+    });
+
+</script>

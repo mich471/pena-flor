@@ -1,0 +1,25 @@
+<?php
+/**
+ * Product list template
+ *
+ * @var  \Magento\Catalog\Block\Product\View $block 
+ */
+?>
+<?php 
+
+$_product = $block->getProduct();
+
+?>
+<div class="exta-content-quickview">
+    <!-- acá va la bodega -->
+    <span class="product bodega product-item-bodega">
+        <?php $_getBodega = $_product->getResource()->getAttribute('bodega'); ?>
+        <?php echo $bodega = $_getBodega->getFrontend()->getValue($_product); ?>
+    </span>
+    <br />
+    <!-- acá va el varietal -->
+    <span class="product varietal product-item-varietal">
+        <?php $_getVarietal = $_product->getResource()->getAttribute('varietal'); ?>
+        <?php echo $varietal = $_getVarietal->getFrontend()->getValue($_product); ?> </span>
+    <br />
+</div>

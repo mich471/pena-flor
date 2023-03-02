@@ -1,0 +1,82 @@
+<!-- ko ifnot: isLastStep -->
+<div class="register-steps--container">
+    <div class="register-steps--subcontainer">
+        <h2 class="register-steps--title" data-bind="i18n: 'Crear cuenta'"></h2>
+        <p class="register-steps--subtitle" data-bind="text: stepDesciption"></p>
+
+        <div class="container--fields">
+            <!-- ko if: isFirstStep -->
+            <p class="disclaimer-select">Nombre de la empresa</p>
+            <div class="companies-select--container companies-select-align">
+                <!-- <input class="companies-select" type="text" data-bind="
+                    companyAutoComplete: {
+                        selected: companySelect.selected,
+                        options: companySelect.options()
+                    },
+                    value: companySelect.selected().label",
+                    /> -->
+                <input class="companies-select" type="text" data-bind="
+                    companyAutoComplete: {
+                        source: firstStep.getCompaniesList(),
+                        select: firstStep.selectCompany
+                    },
+                    value: firstStep.companyName" , />
+            </div>
+            <!-- /ko -->
+        </div>
+
+        <!-- ko if: isSecondStep -->
+        <div class="register-options--container">
+            <div>
+                <span data-bind="text: secondStep.state.errorMessage">
+                </span>
+            </div>
+            <div>
+                <div class="input-class-register" data-bind="visible: secondStep.state.isEmailAvailable"><input id="option-email" type="radio"
+                        name="option-email" value="email" data-bind="checked: secondStep.state.checkedMethod" />
+                    Con tu email corporativo</div>
+                <div class="input-class-register"><input id="option-dni" type="radio" name="option-dni" value="dni"
+                        data-bind="checked: secondStep.state.checkedMethod" />
+                    Con tu DNI</div>
+            </div>
+        </div>
+        <div class="register-option--data-container" data-bind="visible: secondStep.state.checkedMethod">
+            <fieldset class="register-option--data">
+                <label data-bind="i18n: secondStep.state.selectedOptionLabel" for="register-option--input"></label>
+                <!-- ko if: secondStep.state.isEmail -->
+                <input name="register-option--input" type="text" placeholder="Ej: juan.perez@dominio.com" data-bind="value: secondStep.state.email">
+                <!-- /ko -->
+                <!-- ko if: secondStep.state.isDni -->
+                <input name="register-option--input" type="text" minlength="7" maxlength="8" placeholder="Ej: 12345678"
+                    data-bind="value: secondStep.state.dni, event: { input: secondStep.validateDigitsOnly}">
+                <!-- /ko -->
+            </fieldset>
+        </div>
+        <!-- /ko -->
+
+        <div class="actions-toolbar container-button--continue">
+            <div class="primary">
+                <button class="button-continue" data-bind="click: nextStepHandler">Continuar</button>
+            </div>
+        </div>
+        <div class="actions-toolbar container-button--back">
+            <button style="display: none;" data-bind="visible: currentStep() != 0, click: goToPreviousStep" class="back-button" >
+                <svg class="flechita" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                    viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+                <style type="text/css">
+                    .st0{fill-rule:evenodd;clip-rule:evenodd;fill:#BB0606;}
+                </style>
+                <desc>Created with Sketch.</desc>
+                <g transform="matrix(-1, 0, 0, -1, 101.036133, 99.499763)">
+                    <g>
+                        <polygon class="st0" points="101,49.5 50.8,-0.2 42.7,7.9 78.7,43.9 1,43.9 1,55.3 78.7,55.3 42.7,91.3 50.8,99.3 		"/>
+                    </g>
+                </g>
+                </svg>
+
+                Volver
+            </button>
+        </div>
+    </div>
+</div>
+<!-- /ko -->

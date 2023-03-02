@@ -1,0 +1,172 @@
+<?php
+/**
+ * @var $block \Magento\Catalog\Block\Product\ProductList\Toolbar
+ */
+
+/*echo "<PRE>";
+print_r($_SERVER);
+echo "</PRE>";*/
+function url($_key,$_val){
+    $url = explode('?',$_SERVER['REQUEST_URI']);
+    $data = explode("&", $_SERVER['QUERY_STRING']);
+    if(isset($data)) {
+        $url[0] .= "?";
+        foreach ($data as $item) {
+            if(!empty($item)) {
+                if (str_replace($_key . "=", "", $item) == $item) {
+                    $url[0] .= "&" . $item;
+                }
+            }
+        }
+        return $url[0] . "&$_key=$_val";
+    }
+    return $_SERVER['REQUEST_URI']. "?$_key=$_val";
+}
+function _isChecked($_key){
+    $item = $_SERVER['REQUEST_URI'];
+    if(str_replace($_key ,"", $item) != $item){
+        return "checked";
+    };
+    return "";
+}
+$filter = [
+    'Sabor' => [
+        644=>'Limón, Pepino y Jengibre',
+        647=>'Maracuyá, Guayaba y Coriandro',
+        650=>'Pomelo, Rosa Mosqueta y Cardamomo'
+    ],
+    'filtros_de_suelo' => [
+        196=>'Clay',
+        197=>'Pebbles',
+        198=>'Calcareous',
+        199=>'Sandy',
+        200=>'Rocky',
+        201=>'Loam'
+    ]
+]
+?>
+<div class="content-filter" data-action="<?=json_encode($_GET)?>">
+    <span onclick="collapse()" class="span-collapse">
+        <i class="fa-sharp fa-solid fa-sliders"></i>
+        <span class="title-close">FILTRO</span>
+    </span>
+    <form action="" class="collapse" id="form-custom-filters">
+        <div class="ctegory-filter filter-left">
+            <h2 class="titlevin"><?=__('ORDENAR POR')?></h2>
+            <?php foreach ($block->getAvailableOrders() as $_key => $_order) :?>
+                <a class="butvin" href='<?=url('product_list_order',$_key)?>'>
+                     <?= $block->escapeHtml(__($_order)) ?>
+                </a>
+            <?php endforeach; ?>
+            <!--<button class="butvin">Precio: mayor a menor</button>
+                <button class="butvin">Alfabeticamente A-Z</button>
+                <button class="butvin">Alfabeticamente Z-A</button>
+                <button class="butvin">Mas Vendidos</button>-->
+        </div>
+        <div class="ctegory-filter filter-left">
+            <h2 class="titlevin"><?=__('SABOR')?></h2>
+            <?php foreach ($filter['Sabor'] as $_key => $_order) :?>
+                <span>
+                <input type="checkbox" name="" <?=_isChecked('Sabor')?>>
+                <label class="labelvin">
+                    <a class="butvin" href='<?=url('Sabor',$_key)?>'>
+                        <?= $block->escapeHtml(__($_order)) ?>
+                    </a>
+                </label>
+            </span>
+            <?php endforeach; ?>
+            <!--
+            <span>
+                <input type="checkbox" name="">
+                <label class="labelvin">Victoria Mingo</label>
+            </span>
+            <span>
+                <input type="checkbox" name="">
+                <label class="labelvin">Martin Monlteni</label>
+            </span>
+            <span>
+                <input type="checkbox" name="">
+                <label class="labelvin">Eduardo Casademont</label>
+            </span>
+            <span>
+                <input type="checkbox" name="">
+                <label class="labelvin">Pablo Buzzo</label>
+            </span>
+            <span>
+                <input type="checkbox" name="">
+                <label class="labelvin">Martin Mondragon</label>
+            </span>
+            <span>
+                <input type="checkbox" name="">
+                <label class="labelvin">Alejandra Riofrio</label>
+            </span>-->
+        </div>
+        <div class="ctegory-filter filter-left">
+            <h2 class="titlevin"><?=__('SUELO')?></h2>
+            <?php foreach ($filter['filtros_de_suelo'] as $_key => $_order) :?>
+                <span>
+                <input type="checkbox" name="" <?=_isChecked('filtros_de_suelo')?>>
+                <label class="labelvin">
+                    <a class="butvin" href='<?=url('filtros_de_suelo',$_key)?>'>
+                        <?= $block->escapeHtml(__($_order)) ?>
+                    </a>
+                </label>
+            </span>
+            <?php endforeach; ?>
+            <!--<span>
+                <input type="checkbox" name="">
+                <label class="labelvin">Tim Atkin</label>
+            </span>
+            <span>
+                <input type="checkbox" name="">
+                <label class="labelvin">James Suckling</label>
+            </span>-->
+        </div>
+        <div class="ctegory-filter">
+            <script type="text/javascript">
+                window.updatePrice = function(value){
+                    <?php if($_SERVER['QUERY_STRING']):?>
+                        location.href="<?=$_SERVER['REQUEST_URI'].'&price='?>"+value
+                    <?php else:?>
+                        location.href="<?=$_SERVER['REQUEST_URI'].'?price='?>"+value
+                    <?php endif;?>
+                }
+                window.collapse = function (){
+                    if(window.collapsedFilter){
+                        document.getElementById('form-custom-filters').className = "no-collapse"
+                        window.collapsedFilter = false
+                    }else{
+                        document.getElementById('form-custom-filters').className = "collapse"
+                        window.collapsedFilter = true
+                    }
+                    console.log(window.collapsedFilter)
+                }
+                window.collapsedFilter = true;
+            </script>
+            <h2 class="titlevin"><?=__('PRECIO')?></h2>
+            <input name="price" type="hidden" id="priceRange">
+            <input name="price" type="range" max="9999.99" onchange="updatePrice(this.value)" id="range" class="range-price-slider">
+            <div class="content-range">
+                <span>$0</span><span>$<?=number_format(floatval("9999.99"),2,'.',',')?></span>
+            </div>
+        </div>
+        <div class="ctegory-filter filter-left">
+            <h2 class="titlevin"><?=__('STOCK')?></h2>
+            <span>
+                <input type="checkbox" name="" <?=_isChecked('stock_status=1')?>>
+                <label class="labelvin">
+                    <a class="butvin" href='<?=url('stock_status','1')?>'>
+                        <?= $block->escapeHtml(__('Con Stock')) ?>
+                    </a></label>
+            </span>
+            <span>
+                <input type="checkbox" name=""  <?=_isChecked('stock_status=0')?>>
+                <label class="labelvin">
+                    <a class="butvin" href='<?=url('stock_status','0')?>'>
+                        <?= $block->escapeHtml(__('Sin Stock')) ?>
+                    </a></label>
+            </span>
+        </div>
+    </form>
+</div>
+

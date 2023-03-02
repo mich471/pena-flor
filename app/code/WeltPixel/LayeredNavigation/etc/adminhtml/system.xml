@@ -1,0 +1,394 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category    WeltPixel
+ * @package     WeltPixel_LayeredNavigation
+ * @copyright   Copyright (c) 2018 Weltpixel
+ * @author      Weltpixel TEAM
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="weltpixel_layerednavigation" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="210"
+                 translate="label">
+            <label>Layered Navigation Pro</label>
+            <tab>weltpixel</tab>
+            <resource>WeltPixel_LayeredNavigation::LayeredNavigation</resource>
+
+            <group id="general" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label">
+                <label>General Settings</label>
+                <field id="enable" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label"
+                       type="select">
+                    <label>Enable Layered Navigation</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enable/Disable WeltPixel Layered Navigation.</comment>
+                </field>
+
+                <field id="ajax" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="30"
+                       translate="label" type="select">
+                    <label>Enable Ajax</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enable/Disable Ajax Layered Navigation.</comment>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+            </group>
+
+            <group id="sidebar" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="20" translate="label">
+                <label>Sidebar Settings</label>
+                <field id="info_message" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <frontend_model>WeltPixel\LayeredNavigation\Block\Adminhtml\System\Config\InfoMessage</frontend_model>
+                </field>
+                <field id="sb_style" translate="label" type="select" sortOrder="10" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Sidebar Style</label>
+                    <source_model>WeltPixel\LayeredNavigation\Model\Config\Source\SidebarStyle</source_model>
+                    <comment><![CDATA[Select the preferred style for the Layered Navigation sidebar block. <br/>
+                                If one of the 'Slide In' or 'Slide Down' option is selected, the 'Compare Products' and 'Wish List' blocks will be removed from the sidebar. <br/>
+                                Note: Make sure the layout for category/listing pages is set to 2-columns-left.
+                            ]]>
+                    </comment>
+                    <depends>
+                        <field id="weltpixel_layerednavigation/general/enable">1</field>
+                    </depends>
+                </field>
+
+                <field id="slide_down_columns" translate="label" type="select" sortOrder="10" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Columns No.</label>
+                    <source_model>WeltPixel\LayeredNavigation\Model\Config\Source\SlideDownFilterColumns</source_model>
+                    <tooltip>Set the number of columns to appear in slide down box / 1 line.</tooltip>
+                    <comment>Number of columns to appear in Slide Down Filter Box in 1 line.</comment>
+                    <depends>
+                        <field id="sb_style">2</field>
+                    </depends>
+                </field>
+
+                <field id="horizontal_sb_design_version" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Horizontal Design Version</label>
+                    <source_model>WeltPixel\LayeredNavigation\Model\Config\Source\HorizontalSidebarDesignVersion</source_model>
+                    <depends>
+                        <field id="weltpixel_layerednavigation/general/enable">1</field>
+                        <field id="sb_style">3</field>
+                    </depends>
+                </field>
+
+                <field id="horizontal_sb_design_v2_filter_position" translate="label" type="select" sortOrder="25" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Filter Alignment</label>
+                    <source_model>WeltPixel\LayeredNavigation\Model\Config\Source\HorizontalSidebarFilterPosition</source_model>
+                    <depends>
+                        <field id="weltpixel_layerednavigation/general/enable">1</field>
+                        <field id="sb_style">3</field>
+                        <field id="horizontal_sb_design_version">v2</field>
+                    </depends>
+                </field>
+
+                <field id="horizontal_sb_sticky_enable" translate="label comment" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Sticky Filters</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="weltpixel_layerednavigation/general/enable">1</field>
+                        <field id="sb_style">3</field>
+                        <field id="horizontal_sb_design_version">v2</field>
+                    </depends>
+                </field>
+
+                <field id="sb_selected_filters_options" translate="label comment" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Display Selected Filters</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="weltpixel_layerednavigation/general/enable">1</field>
+                    </depends>
+                    <comment>
+                        <![CDATA[If set to "Yes", filters that have been selected will be displayed under the Layered Navigation. </br>
+                        If set to "No", the user will not see the filters they select, and only a "Clear All" button will be shown. ]]>
+                    </comment>
+                </field>
+
+                <field id="slide_down_height" translate="label" type="text" sortOrder="35" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Filter Box Height</label>
+                    <comment>Slide Down Filter Box Height. Eg.500px</comment>
+                    <tooltip>Set the height of slide down box.</tooltip>
+                    <depends>
+                        <field id="sb_style">2</field>
+                    </depends>
+                </field>
+
+                <field id="horizontal_box_shadow" translate="label comment" type="select" sortOrder="36" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Box Shadow</label>
+                    <comment>Enable to display a shadow for the Layered Navigation Slide Down box.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="sb_style">2</field>
+                    </depends>
+                </field>
+
+                <field id="horizontal_v3_filters_button_color" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Filter Button Color</label>
+                    <comment>Choose the color of the filter buttons.</comment>
+                    <depends>
+                        <field id="sb_style">3</field>
+                        <field id="horizontal_sb_design_version">v3</field>
+                    </depends>
+                    <validate>color {required:false, hash:true}</validate>
+                </field>
+
+                <field id="horizontal_v3_filters_text_color" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Filter Button Text Color</label>
+                    <comment>Choose the color of the text displayed on filter buttons.</comment>
+                    <depends>
+                        <field id="sb_style">3</field>
+                        <field id="horizontal_sb_design_version">v3</field>
+                    </depends>
+                    <validate>color {required:false, hash:true}</validate>
+                </field>
+
+                <field id="horizontal_v3_filters_button_hover_color" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Filter Button Hover Color</label>
+                    <comment>Choose the color of the filter buttons when hovered upon.</comment>
+                    <depends>
+                        <field id="sb_style">3</field>
+                        <field id="horizontal_sb_design_version">v3</field>
+                    </depends>
+                    <validate>color {required:false, hash:true}</validate>
+                </field>
+
+                <field id="horizontal_v3_filters_text_hover_color" translate="label" type="text" sortOrder="40" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Filter Button Hover Text Color</label>
+                    <comment>Choose the color of the text displayed on filter buttons when hovered upon.</comment>
+                    <depends>
+                        <field id="sb_style">3</field>
+                        <field id="horizontal_sb_design_version">v3</field>
+                    </depends>
+                    <validate>color {required:false, hash:true}</validate>
+                </field>
+
+                <field id="horizontal_v3_border" translate="label" type="text" sortOrder="40" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Border</label>
+                    <comment>Eg. 1px solid</comment>
+                    <depends>
+                        <field id="sb_style">3</field>
+                        <field id="horizontal_sb_design_version">v3</field>
+                    </depends>
+                </field>
+
+                <field id="horizontal_v3_border_color" translate="label" type="text" sortOrder="45" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Border Color</label>
+                    <comment>Choose the color of the filter buttons border.</comment>
+                    <depends>
+                        <field id="sb_style">3</field>
+                        <field id="horizontal_sb_design_version">v3</field>
+                    </depends>
+                    <validate>color {required:false, hash:true}</validate>
+                </field>
+
+                <field id="horizontal_v3_border_radius" translate="label" type="text" sortOrder="50" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Border Radius</label>
+                    <comment>Eg. 35px</comment>
+                    <depends>
+                        <field id="sb_style">3</field>
+                        <field id="horizontal_sb_design_version">v3</field>
+                    </depends>
+                </field>
+
+
+                <field id="filter_column_height" translate="label" type="text" sortOrder="55" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Filter Column Height</label>
+                    <comment>Slide Down Filter Column Height. Eg.250px</comment>
+                    <tooltip>Set the height of the filter options column.</tooltip>
+                    <depends>
+                        <field id="sb_style">2</field>
+                    </depends>
+                </field>
+
+                <field id="allow_layered_show_hide" translate="label comment" type="select" sortOrder="60" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Allow customer to show/hide Layered Navigation</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="sb_style">0</field>
+                    </depends>
+                </field>
+
+
+                <field id="layered_show_hide_state" translate="label" type="select" sortOrder="65" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Filters default state</label>
+                    <source_model>WeltPixel\LayeredNavigation\Model\Config\Source\FilterShowHideState</source_model>
+                    <depends>
+                        <field id="sb_style">0</field>
+                        <field id="allow_layered_show_hide">1</field>
+                    </depends>
+                </field>
+
+                <field id="compare_block" translate="label comment" type="select" sortOrder="70" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Show Compare Products block</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Show/Hide Compare Products block from Sidebar Style - Default.</comment>
+                    <depends>
+                        <field id="sb_style">0</field>
+                    </depends>
+                </field>
+
+                <field id="wishlist_block" translate="label comment" type="select" sortOrder="75" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Show Wish List block</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Show/Hide Wish List block from Sidebar Style - Default.</comment>
+                    <depends>
+                        <field id="sb_style">0</field>
+                    </depends>
+                </field>
+
+                <field id="recentlyordered_block" translate="label comment" type="select" sortOrder="80" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Show Recently Ordered block</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Show/Hide  Recently Ordered block from Sidebar Style - Default.</comment>
+                    <depends>
+                        <field id="sb_style">0</field>
+                    </depends>
+                </field>
+
+                <field id="category_block" translate="label" type="select" sortOrder="85" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Show Category Filter</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>
+                        <![CDATA[Show/Hide Category Filter section from Layered Navigation sidebar.<br/>
+                        Applicable to Anchor categories. <br/>
+                        Also, if exists, make sure to set Stores > Configuration > Catalog > Catalog > Layered Navigation > Display Category Filter to Yes.
+                    ]]>
+                    </comment>
+                    <depends>
+                        <field id="weltpixel_layerednavigation/general/enable">1</field>
+                    </depends>
+                </field>
+
+                <field id="filter_button" translate="label" type="select" sortOrder="90" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Filter Button</label>
+                    <source_model>WeltPixel\LayeredNavigation\Model\Config\Source\FilterButton</source_model>
+                    <comment>Select the preferred style for the Layered Navigation filter button.</comment>
+                    <depends>
+                        <field id="sb_style" separator=",">1,2</field>
+                    </depends>
+                </field>
+                <comment>
+                    <![CDATA[
+                        <script type="text/javascript">
+                            require(['jquery', 'domReady!'], function(){
+                                if (jQuery('#weltpixel_layerednavigation_general_enable').val() != 1){
+                                     jQuery('#weltpixel_layerednavigation_sidebar').closest('.section-config').hide();
+                                }
+                                jQuery('#weltpixel_layerednavigation_general_enable').on('change', function(){
+                                    if (this.value != 1){
+                                        jQuery('#weltpixel_layerednavigation_sidebar').closest('.section-config').hide();
+                                    } else {
+                                        jQuery('#weltpixel_layerednavigation_sidebar').closest('.section-config').show();
+                                    }
+                                })
+                            });
+                        </script>
+                    ]]>
+                </comment>
+
+                <field id="price_filter" translate="label" type="select" sortOrder="95" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Price Filter</label>
+                    <source_model>WeltPixel\LayeredNavigation\Model\Config\Source\PriceFilter</source_model>
+                    <comment><![CDATA[
+                    Select the preferred style for the Layered Navigation price filter.<br />
+                    Note: If Price Filter is set to “Slider“, the ‘Stores > Configuration > Catalog > Catalog > Layered Navigation > Price Navigation Step Calculation’ setting is ignored.
+                    ]]>
+                    </comment>
+                </field>
+
+                <field id="price_filter_input" translate="label" type="select" sortOrder="100" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Show Price Slider With Input</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Show price slider with input.</comment>
+                    <depends>
+                        <field id="price_filter" separator=",">2</field>
+                    </depends>
+                </field>
+
+                <field id="auto_close_sidebar" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="105" translate="label"
+                       type="select">
+                    <label>AutoClose Sidebar</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Set to AutoClose Sidebar after each filtering.</comment>
+                    <depends>
+                        <field id="sb_style" separator=",">1,2</field>
+                    </depends>
+                </field>
+
+                <field id="rating_filter" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="110" translate="label"
+                       type="select">
+                    <label>Enable Rating Filter</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enable/Disable Rating Filter.</comment>
+                    <depends>
+                        <field id="weltpixel_layerednavigation/general/enable">1</field>
+                    </depends>
+                </field>
+
+                <field id="rating_filter_name" translate="label" type="text" sortOrder="115" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Rating Filter Name</label>
+                    <comment>Rating Filter Name</comment>
+                    <depends>
+                        <field id="rating_filter">1</field>
+                    </depends>
+                </field>
+
+                <field id="rating_filter_display" translate="label" type="select" sortOrder="120" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <source_model>WeltPixel\LayeredNavigation\Model\Config\Source\RatingFilterDisplay</source_model>
+                    <label>Rating Filter Display Options</label>
+                    <comment>Rating Filter Display Options</comment>
+                    <depends>
+                        <field id="rating_filter">1</field>
+                    </depends>
+                </field>
+
+                <field id="rating_filter_position" translate="label" type="text" sortOrder="125" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Rating Filter Position</label>
+                    <comment>Rating Filter Position</comment>
+                    <depends>
+                        <field id="rating_filter">1</field>
+                    </depends>
+                </field>
+
+                <field id="rating_filter_multiselect" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="130" translate="label"
+                       type="select">
+                    <label>Rating Filter Multiselect</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Is Rating Filter multiselect.</comment>
+                    <depends>
+                        <field id="rating_filter">1</field>
+                    </depends>
+                </field>
+                <field id="rating_filter_counter" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="135" translate="label"
+                       type="select">
+                    <label>Show Rating Filter Counter</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Show/Hide Rating Filter counter.</comment>
+                    <depends>
+                        <field id="rating_filter">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

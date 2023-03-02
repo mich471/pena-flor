@@ -1,0 +1,32 @@
+<?php
+/**
+ * Product list template
+ *
+ * @var $block \Magento\Catalog\Block\Product\ListProduct
+ */
+?>
+<?php $mode = $block->getMode() ?>
+<?php if ($mode === 'list') :?>
+<script>
+    require(["jquery"], function ($) {
+        window.wpQwListMode = 'list';
+        $(document).ready(function() {
+            $('.weltpixel-quickview').each(function(key, item) {
+                if (!$(item).hasClass('wp-qw-adjusted')) {
+                    var imageWrapper = $(item).closest('.product-item').find('.product-item-info').get(0);
+                    var imagePhotoLink = $(item).closest('.product-item-info').find('.product-item-photo').get(0);
+
+                    $(imageWrapper).prepend('<div class="product photo product-item-photo product-image-list"></div>');
+                    var imageCustomDiv = $(item).closest('.product-item-info').find('.product-image-list').get(0);
+
+                    $(imagePhotoLink).appendTo(imageCustomDiv)
+                    var imagePhoto = $(item).closest('.product-item-info').find('.product-image-list').get(0);
+                    $(item).show().appendTo(imagePhoto);
+                    $(item).addClass('wp-qw-adjusted');
+                    $(item).css('display','');
+                }
+            });
+        });
+    });
+</script>
+<?php endif;?>

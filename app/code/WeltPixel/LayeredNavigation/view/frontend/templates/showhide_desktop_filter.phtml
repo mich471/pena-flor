@@ -1,0 +1,132 @@
+<?php
+/** @var \WeltPixel\LayeredNavigation\Helper\Data $wpHelper */
+$wpHelper = $this->helper('\WeltPixel\LayeredNavigation\Helper\Data');
+?>
+<?php if (($wpHelper->getSidebarStyle() == 0) && $wpHelper->isShowHideDesktopFilterEnabled()) : ?>
+<div class="show-hide-filter-desktop">
+    <div class="desktop-show-filter">
+        <span class="show-filter-icon"></span>
+        <?=__('Show Filters')?>
+    </div>
+    <div class="desktop-hide-filter active">
+        <span class="show-filter-icon"></span>
+        <?=__('Hide Filters')?>
+    </div>
+</div>
+    <script>
+        require([
+            'jquery','mage/cookies'
+        ], function ($) {
+            var colMainWidth = null, sidebarHideDurationDefault = 500;
+            var desktopHideFilterElm = $('.desktop-hide-filter'),
+                desktopShowFilterElm = $('.desktop-show-filter'),
+                defaultShowHideState = '<?= $wpHelper->getShowHideDesktopFilterState() ?>';
+
+            function desktopHideFilter(element, hideQuickly) {
+                if (!$(element).hasClass('active')) {
+                    return false;
+                }
+                let sidebarHideDuration = sidebarHideDurationDefault;
+                if (hideQuickly) {
+                    sidebarHideDuration = 0;
+                } else {
+                    $.cookie('wp_ln_showhide', 'hide');
+                }
+                $(element).hide().removeClass('active');
+                $('.desktop-show-filter').css('display', 'inline-block');
+                if (!colMainWidth) {
+                    var width = $('.column.main').outerWidth();
+                    var parentWidth = $('.column.main').offsetParent().width();
+                    colMainWidth = (100*width/parentWidth - 0.1) + "%";
+                }
+
+                $(function() {
+                    $('.sidebar').animate(
+                        {
+                            'opacity': '0',
+                            'margin-left': '-300px'
+                        },
+                        {
+                            duration: sidebarHideDuration,
+                            queue: false,
+                            complete: function() {
+                                $(this).hide();
+                            }
+                        }
+                    );
+                    $('.column.main').addClass('no-left-padding').animate(
+                        {
+                            'width': '100%'
+                        },
+                        {
+                            duration: 500,
+                            queue: false,
+                            complete: function() {
+                                if (window.CategoryPage) {
+                                    window.CategoryPage.buttonQuickView();
+                                    window.CategoryPage.itemHeight(true);
+                                }
+                                $('.desktop-show-filter').addClass('active');
+                            }
+                        }
+                    );
+                    $('.toolbar.toolbar-products').addClass('auto-width').animate( {'padding-left' : '0'}, {duration: 500});
+                });
+            }
+            function desktopShowFilter(element) {
+                if (!$(element).hasClass('active')) {
+                    return false;
+                }
+                $(element).hide().removeClass('active');
+                $('.desktop-hide-filter').css('display', 'inline-block');
+                $.cookie('wp_ln_showhide', 'show');
+
+                $(function() {
+                    $('.sidebar').show().css('opacity', '1').animate(
+                        {
+                            'margin-left': '0'
+                        },
+                        {
+                            duration: 500,
+                            queue: false,
+                            complete: function() {
+                                $('.desktop-hide-filter').addClass('active');
+                            }
+                        }
+                    );
+                    $('.column.main').removeClass('no-left-padding').animate(
+                        {
+                            'width': colMainWidth
+                        },
+                        {
+                            duration: 500,
+                            queue: false,
+                            complete: function() {
+                                if (window.CategoryPage) {
+                                    window.CategoryPage.buttonQuickView();
+                                    window.CategoryPage.itemHeight(true);
+                                }
+                            }
+                        }
+                    );
+                });
+                $('.toolbar.toolbar-products').removeClass('auto-width').animate( {'padding-left' : '12px'}, {duration: 500});
+            }
+
+            desktopHideFilterElm.bind('click', function () {
+                desktopHideFilter(this, false);
+            });
+            desktopShowFilterElm.bind('click', function () {
+                desktopShowFilter(this);
+            });
+
+            $('.sidebar').addClass('desktop-showhide-filter-on')
+
+            if ($.cookie('wp_ln_showhide') == 'hide') {
+                desktopHideFilter(desktopHideFilterElm, true);
+            } else if ($.cookie('wp_ln_showhide') != 'show' && defaultShowHideState == 'closed') {
+                desktopHideFilter(desktopHideFilterElm, true);
+            }
+        });
+    </script>
+<?php endif; ?>

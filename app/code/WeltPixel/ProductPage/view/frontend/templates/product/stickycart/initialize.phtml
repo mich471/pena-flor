@@ -1,0 +1,82 @@
+<?php
+/** @var \WeltPixel\ProductPage\Helper\Data $_helper */
+$_helper = $this->helper('WeltPixel\ProductPage\Helper\Data');
+
+/** @var $block \WeltPixel\ProductPage\Block\StickyCart */
+$product = $block->getProduct();
+$tabsLayout = $_helper->getTabsLayout();
+$mobileBreakpoint = $_helper->getMobileThreshold($_helper->getStoreId());
+$isOnDesktopEnabled = ($tabsLayout === 'tab' && $_helper->getTabsVersion() === '2' ? "0" : $_helper->isStickyAddToCartDesktopEnabled());
+$isOnMobileEnabled = $_helper->isStickyAddToCartMobileEnabled();
+$customHeaderVersion = $_helper->getCurrentCustomHeaderVersion();
+$stickyHeaderScrollUp = $_helper->stickyHeaderWhenScrollUpIsEnabled();
+$stickyAddToCartDisplayMode = $_helper->getStickyCartDisplayMode();
+$stickyAddToCartDisplayModeMobile = $_helper->getStickyCartDisplayModeMobile();
+if ($isOnDesktopEnabled || $isOnMobileEnabled) :
+    ?>
+    <div class="fixed-cart-container custom-sticky-box-shadow custom-sticky-addtocart-<?php echo $customHeaderVersion ?>  <?php if (!$isOnDesktopEnabled) { echo 'display-only-mobile'; } ?>">
+        <div class="inner-content columns sticky-max-width">
+            <div class="wp-st-product-image sticky-flex">
+                <?php if ($block->displayProductImage()) : ?>
+                    <div class="thumbnail-wrapper <?= $block->getDisplayClassForProductImage() ?>">
+                        <img src="<?= $block->stripTags($block->getImage($product, 'product_page_image_small')->getImageUrl()); ?>" />
+                    </div>
+                <?php endif; ?>
+            </div>
+            <div class="wp-left-container sticky-flex">
+                <?php if ($block->displayProductName()) : ?>
+                    <div class="wp-st-product-name <?= $block->getDisplayClassForProductName() ?>"><?= $block->escapeHtmlAttr($product->getName()); ?></div>
+                <?php endif; ?>
+                <?php if ($block->displayProductReview()) : ?>
+                    <div class="wp-st-product-review <?= $block->getDisplayClassForProductReview() ?>">
+                        <?= $block->getChildHtml('wp.product.info.review') ?>
+                    </div>
+                <?php endif; ?>
+            </div>
+            <div class="wp-right-container sticky-flex">
+                <?php if ($block->displayProductPrice()) : ?>
+                    <div class="wp-st-product-price <?= $block->getDisplayClassForProductPrice() ?>"></div>
+                <?php endif; ?>
+                <div class="wishlist-add-to-cart-wrapper">
+                    <?php if ($block->displayAddToWishlist()) : ?>
+                        <div class="wp-st-product-wishlist <?= $block->getDisplayClassForAddToWishlist() ?> product-social-links">
+                            <?= $block->getChildHtml('wp.addto.wishlist'); ?>
+                        </div>
+                    <?php endif; ?>
+                    <?php if ($block->displayAddToCartButton()) : ?>
+                        <div class="wp-st-addtocart-container <?= $block->getDisplayClassForAddToCart() ?>">
+                            <a
+                                href="#"
+                                class="primary action"
+                                data-scrollto="#product-addtocart-button"
+                                data-easing="easeInOutExpo"
+                                data-speed="1250"
+                                data-offset="350"
+                            >
+                                <span><span><?= __("Add to Cart");?></span></span>
+                            </a>
+                        </div>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        require([
+            "jquery",
+            "WeltPixel_ProductPage/js/stickyAddToCart"
+        ], function($, stickyAddToCart){
+            $(document).ready(function () {
+                'use strict';
+                var mobileTreshold = "<?= $mobileBreakpoint ?>",
+                    isOnDesktopEnabled = "<?= $isOnDesktopEnabled ?>",
+                    isOnMobileEnabled = "<?= $isOnMobileEnabled ?>",
+                    isStickyScrollUpEnabled = "<?= $stickyHeaderScrollUp ?>",
+                    stickyAddToCartDisplayMode = "<?= $stickyAddToCartDisplayMode ?>",
+                    stickyAddToCartDisplayModeMobile = "<?= $stickyAddToCartDisplayModeMobile ?>";
+                stickyAddToCart.init(mobileTreshold, isOnDesktopEnabled, isOnMobileEnabled, isStickyScrollUpEnabled, stickyAddToCartDisplayMode, stickyAddToCartDisplayModeMobile);
+            });
+
+        });
+    </script>
+<?php endif; ?>

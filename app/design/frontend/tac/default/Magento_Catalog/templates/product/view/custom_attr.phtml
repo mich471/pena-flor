@@ -1,0 +1,65 @@
+<div class="product-details">
+<?php
+$_product = $block->getProduct();
+// $_excludeAttr = ['short_description', 'notas_de_cata', 'maridaje'];
+
+
+ $productAttributes = $_product->getAttributes();
+$data= array();
+ foreach ($productAttributes as $attr){
+ 	try {
+ 		$visible = $attr->getIsVisibleOnFront() ? "true" : "false";
+ 		if ($attr->getIsVisibleOnFront()) {
+ 			$value = $attr->getFrontend()->getValue($_product);
+			 if (is_string($value) && strlen($value)) {
+	            $data[$attr->getAttributeCode()] = [
+	                'label' => __($attr->getStoreLabel()),
+	                'value' => $value,
+	                'code' => $attr->getAttributeCode(),
+	            ];
+        	}	
+ 		} else {
+ 			
+ 		}
+ 	} catch (Exception $e) {
+ 		echo '<span style="color:red;">'.$attr->getAttributeCode(). '</span>';
+ 	}
+}
+echo "<div class='attr-tittle'><h4>Technical Sheet</h4></div>";
+echo '<div class="short-attributes">';
+// echo count ($data);
+$i = 1;
+	foreach ($data as $attribute){
+		if(strlen($attribute["value"]) < 33){
+			echo "<div class='attr-prod item-".$i."'><span>".$block->escapeHtml(__($attribute['label'])).":</span><span>". $attribute["value"] . "</span></div>";
+			$i++;
+		}
+
+	}
+echo '</div>';
+
+echo '<div class="long-attributes">';
+	foreach ($data as $attribute){
+		if(strlen($attribute["value"]) >= 33){
+			echo "<div class='attr-prod'><span>".$block->escapeHtml(__($attribute['label'])).":</span><span>". $attribute["value"] . "</span></div>";		
+		}
+
+	}
+echo '</div>';
+?>
+</div>
+
+<div class="special_notes">
+<?php 
+	// if(isset($data['maridaje'])){
+	// 	echo '<p class="first"><strong>'.$data['maridaje']['label'].':</strong> <span>'.$data['maridaje']['value'].'</span></p>'; 
+	// }
+	// if(isset($data['notas_de_cata'])){
+	// 	echo '<p><strong>'.$data['notas_de_cata']['label'].':</strong> <span>'.$data['maridaje']['value'].'</span></p>'; 
+	// }
+
+	// if(isset($data['detalles_del_suelo'])){
+	// 	echo '<p><strong>'.$data['detalles_del_suelo']['label'].':</strong> <span>'.$data['detalles_del_suelo']['value'].'</span></p>'; 
+	// }
+?>
+</div>

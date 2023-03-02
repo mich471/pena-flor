@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<body>
+        <move element="page.main.title" destination="product.info.main" before="-"/>
+        <move element="product.info.sku" destination="page.main.title"/> 
+        <move element="product.info.stock.sku" destination="product.info.main" after="page.main.title"/>
+        <move element="product.info.review" destination="page.main.title" after="product.info.stock.sku"/>
+		<referenceBlock name="catalog.leftnav" display="false"/>
+		<move element="product.info.overview" destination="product.info.main" after="product.info.review" />
+
+		<referenceBlock name="product.info.overview" template="product/view/short_description.phtml">
+			<arguments>
+				<argument name="at_call" xsi:type="string">getDescription</argument>
+				<argument name="at_code" xsi:type="string">description</argument>
+				<argument name="css_class" xsi:type="string">description</argument>
+				<argument name="at_label" translate="true" xsi:type="string"> </argument>
+				<argument name="title" translate="true" xsi:type="string"> </argument>
+				<argument name="add_attribute" xsi:type="string">itemprop="description"</argument>
+			</arguments>
+		</referenceBlock>
+		<referenceBlock name="product.info.addto" />
+		<move element="product.info.addto" destination="product.info" after="-" />
+		<referenceContainer name="product.info.social">
+			<block class="Magento\Catalog\Block\Product\View" name="product.info.social.links" as="social" template="product/view/social.phtml" after="-" />
+		</referenceContainer>
+		<referenceContainer name="product.info">
+			<container name="product.info.staticblock" label="Product Static Block" htmlTag="div" htmlClass="product-info-staticblock" before="-" />
+		</referenceContainer>
+		<referenceContainer name="content">
+			<container name="product.main.content" htmlTag="div" htmlClass="product-main-content" before='-'></container>
+		</referenceContainer>
+		<move element="product.info.media" destination="product.main.content" before='-'/>
+		<move element="product.info.main" destination="product.main.content" />
+		<referenceBlock name="reviews.tab" remove="true" />
+		<move element="custom" destination="content" after="product.main.content" />
+		<container name="custom">
+				<block class="Magento\Catalog\Block\Product\View" name="custom.sec" as="customsec" template="product/view/custom_attr.phtml" />
+		</container>
+		<move element="bannerprod" destination="product.main.content"/>
+		<container name="bannerprod">
+				<block class="Magento\Catalog\Block\Product\View" name="banner.prod" as="bannerproduct" template="product/view/banner_prod.phtml" />
+		</container>
+		<!-- if you want to remove more info tab add this line otherwise ignore -->
+		<referenceBlock name="product.info.details" remove="true" />
+		<referenceContainer name="calculador_cuotas" remove="true" />
+		<referenceContainer name="content">
+			<referenceBlock name="category.products.list">
+				<action method="setDefaultDirection">
+					<argument name="dir" xsi:type="string">desc</argument>
+				</action>
+			</referenceBlock>
+		</referenceContainer>
+		<move element="category.view.container" destination="content" before="-"/>
+    </body>
+</page>

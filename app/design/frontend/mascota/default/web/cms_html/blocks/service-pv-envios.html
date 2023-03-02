@@ -1,0 +1,68 @@
+<div class="envios-page">
+	<i class="fa fa-times-circle closeer"></i>
+	<div class="page-title-wrapper cms-title-content">
+	    <h1 class="page-title">
+	        <span class="base" data-ui-id="page-title-wrapper">Envíos</span>
+	    </h1>
+	</div>
+
+	<div class="row cms-box envios-box">
+		<div class="col-sm-12">
+			<p>Se realizan envíos en todo el territorio de la República Argentina*. Los plazos de entrega varían según la zona:</p>
+			<div class="zona-items">
+				<div class="item active" data-image="capital">
+					<div class="zona-title">
+						Capital Federal:
+					</div>
+					<div class="zona-info">
+						Envío gratuito.<br>
+						Hasta 72hs. (hábiles) de entrega.<br> 
+						<small>La unidad de compra mínima es 1 caja (6 botellas).</small>
+					</div>
+				</div>
+				<div class="item" data-image="gba">
+					<div class="zona-title">
+						GBA:
+					</div>
+					<div class="zona-info">
+						Envío gratuito.<br>
+						Hasta 7 días (hábiles) de entrega.<br>
+						<small>La unidad de compra mínima es 1 caja (6 botellas).</small>
+					</div>
+				</div>
+				<div class="item" data-image="interior">
+					<div class="zona-title">
+						Interior del país:
+					</div>
+					<div class="zona-info">
+						Envío gratuito.<br>
+						 Hasta 15 días (hábiles) de entrega.<br>
+						<small>La unidad de compra mínima son 3 cajas (18 botellas).</small>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		<div class="col-sm-12 zona-images">
+				<div class="box-img active" id="capital"><img class="img-responsive" src="{{view url='images/cms/mapa-capital.png'}}" alt=""></div>
+				<div class="box-img" id="gba"><img class="img-responsive" src="{{view url='images/cms/mapa-gba.png'}}" alt=""></div>
+				<div class="box-img" id="interior"><img class="img-responsive" src="{{view url='images/cms/mapa-argentina.png'}}" alt=""></div>
+                <p><small>*Excluyendo la provincia de Tierra del Fuego, y las localidades de Comodoro Rivadavia y Rada Tilly.</small></p>
+		</div>
+	</div>
+</div>
+<script>
+require([
+  "jquery",
+], 
+function($) {
+        $(".zona-items .item").on("click, mouseover",function(){
+            mapa = $(this).data("image");
+            $(".zona-items .item").removeClass("active");
+            $(this).addClass("active");
+            $(".zona-images .box-img").removeClass("active");
+            $(".zona-images #"+mapa).addClass("active");
+
+        });
+});
+</script>

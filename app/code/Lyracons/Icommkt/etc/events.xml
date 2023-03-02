@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="customer_save_after_data_object">
+        <observer name="customer_save_after_data_object" instance="Lyracons\Icommkt\Observer\ManageCustomer" />
+    </event>
+    <event name="lyracons_icommkt_external_email_suscribe">
+        <observer name="lyracons_icommkt_external_email_suscribe_send" instance="Lyracons\Icommkt\Observer\SubscribeEmail" />
+    </event>
+</config>

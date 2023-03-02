@@ -1,0 +1,12 @@
+<?php
+
+// @codingStandardsIgnoreFile
+
+/** @var \WeltPixel\UserProfile\Block\Widget\Username $block */
+?>
+<div class="field field-userame<?php if ($block->isRequired()) echo ' required'; ?>">
+    <label class="label" for="username"><span><?= $block->escapeHtml(__('Username')) ?></span></label>
+    <div class="control">
+        <input maxlength="20" type="text" id="username" name="username" value="<?= $block->escapeHtmlAttr($block->getUsername()) ?>" title="<?= $block->escapeHtmlAttr(__('Username')) ?>" class="input-text required-entry validate-length maximum-length-20 validate-code" data-validate="{required:true, 'validate-code':true, 'validate-length':true }" />
+    </div>
+</div>

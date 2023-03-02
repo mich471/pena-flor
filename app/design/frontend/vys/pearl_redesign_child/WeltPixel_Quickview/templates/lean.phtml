@@ -1,0 +1,59 @@
+<?php
+
+/**
+ * Product list template
+ *
+ * @var  \Magento\Catalog\Block\Product\View $block 
+ */
+
+$product = $block->getProduct();
+$attributes = $product->getAttributes();
+
+
+$notas_de_cata = $product->getResource()->getAttribute('notas_de_cata')->getFrontend()->getValue($product);
+$recomender = $product->getResource()->getAttribute('recomender')->getFrontend()->getValue($product);
+$premios = $product->getResource()->getAttribute('premios')->getFrontend()->getValue($product);
+$maridaje = $product->getResource()->getAttribute('maridaje')->getFrontend()->getValue($product);
+
+?>
+
+<?php if (!is_null($notas_de_cata)) : ?>
+    <div class="right">
+        <div class="notas_de_cata separador">
+            <h4 class="titulo">NOTAS DE CATA</h4>
+            <p class="texto">
+                <?php echo $notas_de_cata; ?>
+            </p>
+        </div>
+    <?php endif; ?>
+    <?php if (!is_null($maridaje)) : ?>
+        <div class="maridajes separador">
+            <h4 class="titulo">MARIDAJES</h4>
+            <p class="texto">
+                <?php echo $maridaje; ?>
+            </p>
+        </div>
+    <?php endif; ?>
+    <?php if (!is_null($premios)) : ?>
+        <div class="premios-recomendado separador">
+            <div class="premios">
+                <h4 class="titulo">PREMIOS</h4>
+                <p class="texto">
+                    <?php echo $premios; ?></p>
+            </div>
+        <?php endif; ?>
+
+        <?php if (!is_null($recomender) && (strlen($recomender) > 0)) : ?>
+            <div class="recomendado">
+                <h4 class="titulo">RECOMENDADO POR</h4>
+                <p class="texto">
+                    <?php echo $recomender; ?></p>
+            </div>
+        <?php endif; ?>
+        <?php if (in_array("Calificación", $attributes)) : ?>
+            <div class="calificacion separador">
+                <h4 class="titulo">CALIFICACION</h4>
+                <p class="calificacion_text">* * * * *</p>
+            </div>
+        </div>
+    <?php endif; ?>

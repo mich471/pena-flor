@@ -1,0 +1,20 @@
+{
+    "name": "balloon-group/out-of-stock",
+    "version": "1.0.0",
+    "description": "This module is responsible for filter products collection to set out of stock products in the end",
+    "type": "magento2-module",
+    "require": {
+      "magento/framework": "*"
+    },
+    "license": [
+      "Proprietary"
+    ],
+    "autoload": {
+      "files": [
+        "registration.php"
+      ],
+      "psr-4": {
+        "BalloonGroup\\OutOfStock\\": ""
+      }
+    }
+  }

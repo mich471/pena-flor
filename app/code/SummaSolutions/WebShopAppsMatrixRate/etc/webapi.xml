@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <route url="/V1/rates/:rateId" method="GET">
+        <service class="SummaSolutions\WebShopAppsMatrixRate\Api\RateRepositoryInterface" method="get"/>
+        <resources>
+            <resource ref="SummaSolutions_MatrixRate::api"/>
+        </resources>
+    </route>
+    <route url="/V1/rates/" method="GET">
+        <service class="SummaSolutions\WebShopAppsMatrixRate\Api\RateRepositoryInterface" method="getList"/>
+        <resources>
+            <resource ref="SummaSolutions_MatrixRate::api"/>
+        </resources>
+    </route>
+    <route url="/V1/rates" method="POST">
+        <service class="SummaSolutions\WebShopAppsMatrixRate\Api\RateRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="SummaSolutions_MatrixRate::api"/>
+        </resources>
+    </route>
+    <route url="/V1/rates" method="PUT">
+        <service class="SummaSolutions\WebShopAppsMatrixRate\Api\RateRepositoryInterface" method="update"/>
+        <resources>
+            <resource ref="SummaSolutions_MatrixRate::api"/>
+        </resources>
+    </route>
+    <route url="/V1/rates/:rateId" method="DELETE">
+        <service class="SummaSolutions\WebShopAppsMatrixRate\Api\RateRepositoryInterface" method="delete"/>
+        <resources>
+            <resource ref="SummaSolutions_MatrixRate::api"/>
+        </resources>
+    </route>
+</routes>

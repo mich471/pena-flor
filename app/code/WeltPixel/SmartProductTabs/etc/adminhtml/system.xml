@@ -1,0 +1,207 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+	<system>
+		<section id="weltpixel_smartproducttabs" translate="label" type="text" sortOrder="160" showInDefault="1" showInWebsite="1" showInStore="1">
+			<label>Smart Product Tabs</label>
+			<tab>weltpixel</tab>
+			<resource>WeltPixel_SmartProductTabs::SmartProductTabs</resource>
+			<group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+				<label>General settings for Smart Product Tabs</label>
+				<field id="enable_smartproducttabs" translate="label" type="select" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Enable SmartProductTabs (Deprecated)</label>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+					<comment>Enable/Disable Smart Product Tabs. This functionality can work independently from the SmartProductTabs Grid functionality. Functionality deprecated, you can use the SmartProductTabs Grid functionality.</comment>
+				</field>
+				<field id="block_matching_logic" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Block Matching Logic</label>
+					<source_model>WeltPixel\SmartProductTabs\Model\Config\Source\BlockMatchingLogic</source_model>
+					<depends>
+						<field id="enable_smartproducttabs">1</field>
+					</depends>
+					<comment>Use attribute values from Admin or Store View</comment>
+				</field>
+				<field id="attribute_smartproducttabs_1" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Attributes for SmartProductTabs Tab 1</label>
+					<source_model>WeltPixel\SmartProductTabs\Model\Config\Source\AttributeCollection</source_model>
+					<comment>Select the attribute displayed in first Tab.</comment>
+					<depends>
+						<field id="enable_smartproducttabs">1</field>
+					</depends>
+				</field>
+				<field id="attribute_smartproducttabs_tab_1" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Tab Name for Tab 1</label>
+					<comment>Insert custom name of first Tab.</comment>
+					<depends>
+						<field id="enable_smartproducttabs">1</field>
+					</depends>
+				</field>
+				<field id="attribute_smartproducttabs_2" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Attributes for SmartProductTabs Tab 2</label>
+					<source_model>WeltPixel\SmartProductTabs\Model\Config\Source\AttributeCollection</source_model>
+					<comment>Select the attribute displayed in second Tab.</comment>
+					<depends>
+						<field id="enable_smartproducttabs">1</field>
+					</depends>
+				</field>
+				<field id="attribute_smartproducttabs_tab_2" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Tab Name for Tab 2</label>
+					<comment>Insert custom name of second Tab.</comment>
+					<depends>
+						<field id="enable_smartproducttabs">1</field>
+					</depends>
+				</field>
+				<field id="attribute_smartproducttabs_3" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Attributes for SmartProductTabs Tab 3</label>
+					<comment>Select the attribute displayed in third Tab.</comment>
+					<source_model>WeltPixel\SmartProductTabs\Model\Config\Source\AttributeCollection</source_model>
+					<depends>
+						<field id="enable_smartproducttabs">1</field>
+					</depends>
+				</field>
+				<field id="attribute_smartproducttabs_tab_3" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Tab Name for Tab 3</label>
+					<comment>Insert custom name of third Tab.</comment>
+					<depends>
+						<field id="enable_smartproducttabs">1</field>
+					</depends>
+				</field>
+			</group>
+            <group id="weltpixel_smartproducttabs_grid" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>General settings for Smart Product Tabs Grid</label>
+                <field id="enable_smartproducttabs" translate="label" type="select" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable SmartProductTabs Grid</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enable/Disable Smart Product Tabs Grid. The SmartProductTabs Grid functionality can work independently from the deprecated SmartProductTabs.</comment>
+                </field>
+                <field id="separator_tab_details" translate="button_label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <frontend_model>WeltPixel\SmartProductTabs\Block\Adminhtml\System\Config\SeparatorElement</frontend_model>
+                    <button_label>Details Tab Settings</button_label>
+                    <depends>
+                        <field id="enable_smartproducttabs">1</field>
+                    </depends>
+                </field>
+                <field id="tab_details_changes_enable" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Additional options for default “Details” Tab </label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="enable_smartproducttabs">1</field>
+                    </depends>
+                    <comment>Enable to be able to make a series of changes for the default Magento tabs.</comment>
+                </field>
+                <field id="tab_details_show" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Display the “Details” Tab in frontend</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="enable_smartproducttabs">1</field>
+                        <field id="tab_details_changes_enable">1</field>
+                    </depends>
+                    <comment>Set to Yes, to show the default Magento tab “Details“.</comment>
+                </field>
+                <field id="tab_details_position" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>“Details” Tab Position</label>
+                    <validate>validate-number</validate>
+                    <depends>
+                        <field id="enable_smartproducttabs">1</field>
+                        <field id="tab_details_changes_enable">1</field>
+                        <field id="tab_details_show">1</field>
+                    </depends>
+                    <comment>Insert a custom position for the “Details“ tab. Leave empty for default position. Default position: 10. Note: Default Magento tabs have 10, 20 and 30 as position values. You can insert your Smart Tab in front of Magento tabs by inserting a number lower than 10. Use numbers between 10-30 to insert it between, or higher than 30 to insert it after all default Magento tabs.</comment>
+                </field>
+                <field id="tab_details_title" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>“Details” Tab Title</label>
+                    <depends>
+                        <field id="enable_smartproducttabs">1</field>
+                        <field id="tab_details_changes_enable">1</field>
+                        <field id="tab_details_show">1</field>
+                    </depends>
+                    <comment>Insert a custom title for the “Details“ tab displayed on the frontend. Leave empty for the default value.</comment>
+                </field>
+                <field id="separator_tab_moreinformation" translate="button_label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <frontend_model>WeltPixel\SmartProductTabs\Block\Adminhtml\System\Config\SeparatorElement</frontend_model>
+                    <button_label>More Information Tab Settings</button_label>
+                    <depends>
+                        <field id="enable_smartproducttabs">1</field>
+                    </depends>
+                </field>
+                <field id="tab_moreinformation_changes_enable" translate="label" type="select" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Additional options for default “More Information” Tab</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="enable_smartproducttabs">1</field>
+                    </depends>
+                    <comment>Enable to be able to make a series of changes for the default Magento tabs.</comment>
+                </field>
+                <field id="tab_moreinformation_show" translate="label" type="select" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Display the “More Information” Tab in frontend </label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="enable_smartproducttabs">1</field>
+                        <field id="tab_moreinformation_changes_enable">1</field>
+                    </depends>
+                    <comment>Set to Yes, to show the default Magento tab “More Information“.</comment>
+                </field>
+                <field id="tab_moreinformation_position" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>“More Information“ Tab Position</label>
+                    <validate>validate-number</validate>
+                    <depends>
+                        <field id="enable_smartproducttabs">1</field>
+                        <field id="tab_moreinformation_changes_enable">1</field>
+                        <field id="tab_moreinformation_show">1</field>
+                    </depends>
+                    <comment> Insert a custom position for the “More Information“ tab. Leave empty for default position. Default position: 20. Note: Default Magento tabs have 10, 20 and 30 as position values. You can insert your Smart Tab in front of Magento tabs by inserting a number lower than 10. Use numbers between 10-30 to insert it between, or higher than 30 to insert it after all default Magento tabs.</comment>
+                </field>
+                <field id="tab_moreinformation_title" translate="label" type="text" sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>“More Information” Tab Title</label>
+                    <depends>
+                        <field id="enable_smartproducttabs">1</field>
+                        <field id="tab_moreinformation_changes_enable">1</field>
+                        <field id="tab_moreinformation_show">1</field>
+                    </depends>
+                </field>
+                <field id="separator_tab_reviews" translate="button_label" type="text" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <frontend_model>WeltPixel\SmartProductTabs\Block\Adminhtml\System\Config\SeparatorElement</frontend_model>
+                    <button_label>Reviews Tab Settings</button_label>
+                    <depends>
+                        <field id="enable_smartproducttabs">1</field>
+                    </depends>
+                </field>
+                <field id="tab_reviews_changes_enable" translate="label" type="select" sortOrder="140" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Additional options for default “Review” Tab</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="enable_smartproducttabs">1</field>
+                    </depends>
+                    <comment>Enable to be able to make a series of changes for the default Magento tabs.</comment>
+                </field>
+                <field id="tab_reviews_show" translate="label" type="select" sortOrder="150" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Display the “Reviews” Tab in frontend</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="enable_smartproducttabs">1</field>
+                        <field id="tab_reviews_changes_enable">1</field>
+                    </depends>
+                    <comment>Set to Yes, to show the default Magento tab “Reviews“. </comment>
+                </field>
+                <field id="tab_reviews_position" translate="label" type="text" sortOrder="160" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>“Reviews” Tab Position</label>
+                    <validate>validate-number</validate>
+                    <depends>
+                        <field id="enable_smartproducttabs">1</field>
+                        <field id="tab_reviews_changes_enable">1</field>
+                        <field id="tab_reviews_show">1</field>
+                    </depends>
+                    <comment>Insert a custom position for the “Reviews“ tab. Leave empty for default position. Default position: 30. Note: Default Magento tabs have 10, 20 and 30 as position values. You can insert your Smart Tab in front of Magento tabs by inserting a number lower than 10. Use numbers between 10-30 to insert it between, or higher than 30 to insert it after all default Magento tabs.</comment>
+                </field>
+                <field id="tab_reviews_title" translate="label" type="text" sortOrder="180" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>“Reviews” Tab Title</label>
+                    <depends>
+                        <field id="enable_smartproducttabs">1</field>
+                        <field id="tab_reviews_changes_enable">1</field>
+                        <field id="tab_reviews_show">1</field>
+                    </depends>
+                    <comment>Insert a custom title for the “Reviews“ tab displayed on the frontend. Leave empty for the default value.</comment>
+                </field>
+            </group>
+		</section>
+	</system>
+</config>

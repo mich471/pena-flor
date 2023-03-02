@@ -1,0 +1,12 @@
+<?php
+$_product = $block->getProduct();
+$_getBodega = $_product->getResource()->getAttribute('bodega');
+$bodega = $_getBodega->getFrontend()->getValue($_product);
+if ($bodega) { ?>
+    <div class="info-bodegas">
+        <?php
+        $idBodega = 'bloque_bodega_' . preg_replace('/[^a-z]/', '_', strtolower($bodega));
+        echo  $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId($idBodega)->toHtml(); 
+        ?>
+    </div>
+<?php } ?>

@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <move element="product.info.stock.sku" destination="product.info.price" after="product.price.final"/>
+        <move element="product.info.review" destination="product.info.main" before="product.info.price"/>
+        <referenceBlock name="product.info.review" remove="true" />
+        <referenceBlock name="product.info.addto" remove="true" />
+        <referenceBlock name="product.info.mailto" remove="true" />
+        <referenceBlock name="product.info.overview" remove="true" />
+
+        <referenceBlock name="product.info.description" remove="true" />
+        <!-- Quitar Ribbons -->
+        <referenceBlock name="product.info.ribbon_block" remove="true" />
+
+        <referenceBlock name="product.info.main">
+        	<block class="Magento\Catalog\Block\Product\View" name="product.info.bodega" template="product/view/bodega.phtml" before="-" />
+        	<block class="Magento\Catalog\Block\Product\View" name="product.info.varietal" template="product/view/varietal.phtml"/>
+            <block class="Magento\Catalog\Block\Product\View" name="product.info.qtyincrements" template="product/view/qty_increments.phtml"/>
+        </referenceBlock>
+        <move element="page.main.title" destination="product.info.main" after="product.info.bodega"/>
+        <move element="product.info.varietal" destination="product.info.main" after="page.main.title"/>
+        <move element="product.info.qtyincrements" destination="product.info.main" after="product.info.price"/>
+
+        <referenceBlock name="product.info.details">
+            <block class="Magento\Catalog\Block\Product\View" name="notas.tab" as="notas" template="product/view/acerca_de.phtml" group="detailed_info">
+                <arguments>
+                    <argument name="css_class" xsi:type="string">acerca-de</argument>
+                    <argument name="at_label" xsi:type="string">none</argument>
+                    <argument name="title" translate="true" xsi:type="string">Acerca de la Línea</argument>
+                </arguments>
+            </block>
+            <block class="Magento\Catalog\Block\Product\View" name="puntuacion.tab" as="puntuacion" template="product/view/puntuacion.phtml" group="detailed_info">
+                <arguments>
+                    <argument name="css_class" xsi:type="string">puntuacion</argument>
+                    <argument name="at_label" xsi:type="string">none</argument>
+                    <argument name="title" translate="true" xsi:type="string">Reconocimientos internacionales</argument>
+                </arguments>
+            </block>
+            <block class="Magento\Catalog\Block\Product\View" name="servir.tab" as="servir" template="product/view/como_servir.phtml" group="detailed_info">
+                <arguments>
+                    <argument name="css_class" xsi:type="string">servir</argument>
+                    <argument name="at_label" xsi:type="string">none</argument>
+                    <argument name="title" translate="true" xsi:type="string">Cómo Servir</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+        <move element="product.info.extrahint.qtyincrements" destination="product.info.main" after="product.info.price"/>
+    </body>
+</page>

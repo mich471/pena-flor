@@ -1,0 +1,16 @@
+<?php
+/** @var \WeltPixel\ProductPage\Block\ListedProducts $block */
+?>
+<script>
+    require(['jquery',  'mage/storage', 'jquery/jquery-storageapi'],
+        function ($) {
+            $.cookieStorage.setConf({
+                path: '/',
+                expires: 1,
+                samesite: 'lax'
+            });
+            var wpListedProductIds = <?= /* @noEscape */ $this->helper(\Magento\Framework\Json\Helper\Data::class)
+                    ->jsonEncode($block->getProductIds()); ?>;
+            $.cookieStorage.set('wpListedProductIds', wpListedProductIds);
+    });
+</script>

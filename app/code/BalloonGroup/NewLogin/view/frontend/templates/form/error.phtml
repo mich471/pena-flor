@@ -1,0 +1,17 @@
+<?php
+/**
+ * @var $block \Magento\Framework\View\Element\Template
+ */
+?>
+
+<div class="newlogin-confirmation">
+    <div class="result error">
+        <span class="icon icon-error"></span>
+        <h4 class="title">No pudimos encontrar tu Email/DNI asociado a la empresa seleccionada</h4>
+        <p class="subtitle">Su registro de usuario se encuentra en proceso de aprobación, en breve tu cuenta será habilitada por un administrador. Si tenes alguna consulta escribinos a
+             <a href="mailto: ventasinstitucionales@grupo-penaflor.com.ar">
+                ventasinstitucionales@grupo-penaflor.com.ar
+            </a></p>
+        <a href='<?= $block->getUrl('customer/account/create') ?>' class="action action-login primary">Volver</a>
+    </div>
+</div>

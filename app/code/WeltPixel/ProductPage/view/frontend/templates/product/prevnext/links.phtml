@@ -1,0 +1,12 @@
+<?php
+/** @var \WeltPixel\ProductPage\Helper\Data $_helper */
+$_helper = $this->helper('WeltPixel\ProductPage\Helper\Data');
+$productNameDisplay = $_helper->getPrevNextProductName();
+?>
+<div>
+    <a class="wp-pp-next-link <?= $productNameDisplay ?>" href="javascript:void(0);"></a>
+</div>
+<div>
+    <a class="wp-pp-prev-link <?= $productNameDisplay ?>" href="javascript:void(0);"></a>
+</div>
+</style>

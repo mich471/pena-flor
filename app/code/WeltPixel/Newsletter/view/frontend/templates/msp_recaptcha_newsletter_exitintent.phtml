@@ -1,0 +1,26 @@
+<?php
+/** @var $block Magento\ReCaptchaUi\Block\ReCaptcha */
+?>
+
+<div
+    class="field-recaptcha"
+    id="wpn-exitintent-<?= /* @noEscape */ $block->getRecaptchaId() ?>-container"
+    data-bind="scope:'<?= /* @noEscape */ $block->getRecaptchaId() ?>'"
+>
+    <!-- ko template: getTemplate() --><!-- /ko -->
+</div>
+
+<script type="text/javascript">
+    require(['jquery', 'domReady!'], function ($) {
+        $('#wpn-exitintent-<?= /* @noEscape */ $block->getRecaptchaId() ?>-container')
+            .appendTo('#weltpixel_exitintent');
+    });
+</script>
+
+<script type="text/x-magento-init">
+    {
+        "#wpn-exitintent-<?= /* @noEscape */ $block->getRecaptchaId() ?>-container": {
+            "Magento_Ui/js/core/app": <?= /* @noEscape */ $block->getJsLayout() ?>
+        }
+    }
+</script>

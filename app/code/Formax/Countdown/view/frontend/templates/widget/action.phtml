@@ -1,0 +1,19 @@
+<?php
+/**
+ * @var \Formax\Countdown\Block\Widget\Button $block
+ */
+?>
+<?php
+$label = trim($block->getData('label'));
+$url = trim($block->getData('url'));
+$type = $block->getData('action_type');
+$showMobile = (int) $block->getData('show_on_mobile');
+?>
+<?php if (!empty($label) && !empty($url)) : ?>
+    <?php $label = str_replace('}', 'acute;', str_replace('{', '&', $label)); ?>
+        
+    <a href="<?= $url ?>" class="textslider-action type-<?= $type ?> <?= !$showMobile ? 'show-on-desktop' : '' ?>">
+        <span><?= $label ?></span>
+    </a>
+    
+<?php endif; ?>

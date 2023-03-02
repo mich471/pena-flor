@@ -1,0 +1,50 @@
+BLOCK TITLE: Venta Institucional - Home - Marcas
+IDENTIFIER: venta-institucional-home-marcas
+
+CONTENT:
+<div class="home-block block-brands">
+	<div class="title">Nuestras Marcas</div>
+
+	<div class="brand-carousel owl-carousel">
+		<div>
+			<a href="#"><img src="{{view url='images/cms/brand_01.png'}}" /></a>
+		</div>
+		<div>
+			<a href="#"><img src="{{view url='images/cms/brand_02.png'}}" /></a>
+		</div>
+		<div>
+			<a href="#"><img src="{{view url='images/cms/brand_03.png'}}" /></a>
+		</div>
+		<div>
+			<a href="#"><img src="{{view url='images/cms/brand_04.png'}}" /></a>
+		</div>
+		<div>
+			<a href="#"><img src="{{view url='images/cms/brand_05.png'}}" /></a>
+		</div>
+	</div>
+
+</div>
+
+<script>
+require(['jquery','owlSlider','domReady!'],function($){
+	if($("body").hasClass("mobile-device")){
+		$(".brand-carousel").owlCarousel({
+		    loop:true,
+		    margin:50,
+		    autoWidth:true,
+		    nav: true,
+		    navText: ["<",">"],
+		    center: true
+		});
+	}else{
+		$(".brand-carousel").owlCarousel({
+		    loop:true,
+		    margin:100,
+		    autoWidth:true,
+		    nav: true,
+		    navText: ["<",">"],
+		});
+		
+	}
+});
+</script>

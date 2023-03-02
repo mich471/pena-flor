@@ -1,0 +1,30 @@
+<?php $notLoginPage = $this->getCurrentPageRedirectUrl()?>
+<div class="social-login block-container" id="email_modal">
+    <div class="modal-title" data-role="title">
+        <?= __('Email address is required to login') ?>
+    </div>
+    <div class="block">
+        <div class="block-content">
+            <form class="email-form" id="sociallogin_form_email" data-mage-init='{"validation":{}}'>
+                <fieldset class="fieldset" data-hasrequired="<?= __('* Required Fields') ?>">
+                    <div class="field note"><?= __('Please enter your email address below to create account.'); ?></div>
+                    <div class="field email required">
+                        <label for="email_address" class="label"><span><?= __('Email') ?></span></label>
+                        <div class="control">
+                            <input type="email" name="real-email" alt="email" id="real_email_address" class="input-text sl-input-email"
+                                   data-validate="{required:true, 'validate-email':true}"/>
+                            <input type="hidden" name="redirect-url" value="<?=$notLoginPage?>" />
+                        </div>
+                    </div>
+                </fieldset>
+                <div class="actions-toolbar sl-submit-email">
+                    <div class="primary">
+                        <button type="button" id="sociallogin_send_email" class="action send primary">
+                            <span><?= __('Sign In') ?></span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

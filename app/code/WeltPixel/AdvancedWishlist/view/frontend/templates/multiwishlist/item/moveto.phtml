@@ -1,0 +1,16 @@
+<?php
+// @codingStandardsIgnoreFile
+
+/* @var \WeltPixel\AdvancedWishlist\Block\WishlistMoveTo $block */
+
+/** @var \Magento\Catalog\Model\Product|\Magento\Wishlist\Model\Item $item */
+$item = $block->getParentBlock()->getItem();
+?>
+<?php if ($block->isMultiWishlistEnabled()) : ?>
+<div class="move-to-another-wishlist">
+    <a href="#" title="<?= $block->escapeHtmlAttr(__('Move to')) ?>" data-post='<?=$block->getMoveToWIshlistParams($item)?>' class="btn-moveitem primary action moveitem">
+        <span><?= $block->escapeHtml(__('Move to')) ?></span>
+    </a>
+</div>
+<div class="clearfix"></div>
+<?php endif; ?>

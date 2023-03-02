@@ -1,0 +1,12 @@
+<?php
+
+// @codingStandardsIgnoreFile
+
+/** @var \WeltPixel\UserProfile\Block\Widget\Lastname $block */
+?>
+<div class="field field-lastname<?php if ($block->isRequired()) echo ' required'; ?>">
+    <label class="label" for="lastname"><span><?= $block->escapeHtml(__('Lastname')) ?></span></label>
+    <div class="control">
+        <input type="text" id="lastname" name="lastname" value="<?= $block->escapeHtmlAttr($block->getLastname()) ?>" title="<?= $block->escapeHtmlAttr(__('Lastname')) ?>" class="input-text <?php if ($block->isRequired()) echo ' required-entry' ?> " <?php if ($block->isRequired()) echo ' data-validate="{required:true}"' ?> />
+    </div>
+</div>

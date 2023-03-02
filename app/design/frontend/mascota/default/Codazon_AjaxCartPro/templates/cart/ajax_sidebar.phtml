@@ -1,0 +1,32 @@
+<div class="cart-footer" id="cart-footer" data-bind="scope: 'ajaxcart_content'" style="display:none;" data-block="footer_minicart">
+    <div class="cart-qty" id="footer-cart-trigger" data-bind="click: toggleFooterSidebar.bind(this)">
+        <?php echo __('Tu pedido') ?>
+    </div>
+    <div id="footer-mini-cart" class="footer-mini-cart" style="display:none;">
+    	<span class="cart-icon"></span>
+        <div class="cart-items" id="footer-cart-list">
+            <div class="cart-items-inner">
+            <!-- ko foreach: { data: cartSidebar().items, as: 'item' } -->
+                <!-- ko template: 'Codazon_AjaxCartPro/ajaxcart/cart_items' --><!-- /ko -->
+            <!-- /ko -->
+            </div>
+        </div>
+		<div class="footer-cart-additional">
+			<div class="footer-cart-summary">
+			<!-- ko template: 'Codazon_AjaxCartPro/ajaxcart/summary' --><!-- /ko -->
+			</div>
+			<div class="footer-cart-actions" data-bind="css:{'empty-cart': cartSidebar().summary_count < 1}">
+				<div class="primary">
+					<button
+							id="footer-cart-btn-checkout"
+							type="button"
+							class="action primary checkout"
+							data-bind="attr: {title: $t('Go to Checkout')}, enable: cartSidebar().summary_count > 0">
+						<?php echo __('Go to Checkout') ?>
+					</button>
+					<div data-bind="html: cartSidebar().extra_actions"></div>
+				</div>
+			</div>
+		</div>
+    </div>
+</div>

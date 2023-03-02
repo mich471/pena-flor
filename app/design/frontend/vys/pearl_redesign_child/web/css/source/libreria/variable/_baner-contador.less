@@ -1,0 +1,144 @@
+.media-width(@extremum, @break)
+    when
+    (@extremum = "min")
+    and
+    (@break = @screen__m) {
+    .wf-sourcesanspro-n4-active {
+        .theme-pearl.cms-home {
+            .page-wrapper {
+                .columns {
+                    [data-content-type="row"] {
+                        .btn-contador-ver {
+                            position: absolute;
+                        }
+                        .countdown-box,
+                        .light {
+                            background: none;
+                            .counter-num {
+                                color: #fff;
+                                display: inline-flex;
+                                flex-direction: column;
+                                font-size: 25px;
+                            }
+                        }
+                        .countdown-box.light,
+                        .counter-num:after {
+                            color: #fff;
+                            font-size: 12px;
+                        }
+                        .btn-ver-contador {
+                            position: absolute;
+                            h5 {
+                                position: absolute;
+                                bottom: 14px;
+                                left: 82px;
+                                margin: 0;
+                                padding: 0;
+                                width: 141px;
+                            }
+                        }
+                        .promociones {
+                            width: 160px;
+                        }
+                        .pagebuilder-button-primary {
+                            background: #d4a22c;
+                            position: relative;
+                            border: none;
+                            top: 32px;
+                            left: 18px;
+                            font-size: 16px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+//
+//  Mobile (styles-m.css)
+//  _____________________________________________
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s){
+    .theme-pearl.cms-home {
+        .page-wrapper {
+            .page-main-full-width {
+                .columns {
+                    [data-content-type="row"] {
+                        .block-static-block {
+                            .contenedor-img-mobile {
+                                .pagebuilder-column-group {
+                                    position: relative;
+                                    left: 30px;
+                                    .pagebuilder-column {
+                                        padding: 15px 0 !important;
+                                    }
+                                    .img-expertos-mobile,
+                                    .img-whiskies-mobile,
+                                    .img-vino-mobile,
+                                    .img-spirits-mobile,
+                                    .img-promo-mobile {
+                                        height: 50px;
+                                        width: 445px;
+                                        position: relative;
+                                        top: -47px;
+                                        right: 63px;
+                                    }
+                                    .img-vino-mobile::after {
+                                        content: "VINOS";
+                                        position: absolute;
+                                        top: 55px;
+                                        right: 185px;
+                                        color: #fff;
+                                        font-size: 30px;
+                                        font-weight: 800;
+                                        font-style: italic;
+                                    }
+                                    .img-expertos-mobile::after {
+                                        content: "EXPERTOS";
+                                        position: relative;
+                                        top: -100px;
+                                        left: 130px;
+                                        font-size: 30px;
+                                        font-weight: 800;
+                                        color: #fff;
+                                        font-style: italic;
+                                    }
+                                    .img-whiskies-mobile::after {
+                                        content: "WHISKIES";
+                                        position: relative;
+                                        top: -100px;
+                                        font-size: 30px;
+                                        left: 147px;
+                                        color: #fff;
+                                        font-weight: 800;
+                                        font-style: italic;
+                                    }
+                                    .img-spirits-mobile::after {
+                                        content: "SPIRITS";
+                                        position: relative;
+                                        top: -100px;
+                                        color: #fff;
+                                        left: 150px;
+                                        font-size: 30px;
+                                        font-weight: 800;
+                                        font-style: italic;
+                                    }
+                                    .img-promo-mobile::after {
+                                        content: "PROMOS";
+                                        position: relative;
+                                        top: -100px;
+                                        color: #fff;
+                                        left: 150px;
+                                        font-size: 30px;
+                                        font-weight: 800;
+                                        font-style: italic;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

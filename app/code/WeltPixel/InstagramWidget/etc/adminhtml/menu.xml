@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add
+                id="WeltPixel_Instagram::Instagram_Label"
+                title="Instagram Widget"
+                module="WeltPixel_InstagramWidget"
+                sortOrder="80"
+                parent="WeltPixel_Backend::WeltPixel"
+                resource="WeltPixel_Instagram::Instagram_Label"
+        />
+        <add
+                id="WeltPixel_Instagram::Instagram"
+                title="Instagram Widget Settings"
+                module="WeltPixel_InstagramWidget"
+                action="adminhtml/system_config/edit/section/weltpixel_instagram/"
+                sortOrder="10"
+                parent="WeltPixel_Instagram::Instagram_Label"
+                resource="WeltPixel_Instagram::Instagram"
+        />
+    </menu>
+</config>

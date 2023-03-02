@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="header.panel">
+            <block class="Magento\Framework\View\Element\Html\Links" name="header.links">
+                <arguments>
+                    <argument name="css_class" xsi:type="string">header links</argument>
+                </arguments> 
+            </block>
+        </referenceContainer>
+
+        <referenceContainer name="header-wrapper">
+        
+            <block class="Magento\Framework\View\Element\Template" name="search-mobile" before="-" template="Magento_Theme::html/search-mobile.phtml" />
+        
+        </referenceContainer>
+
+        <referenceBlock name="logo">
+            <arguments>
+                <argument name="logo_img_width" xsi:type="number">148</argument>
+                <argument name="logo_img_height" xsi:type="number">43</argument>
+            </arguments>
+        </referenceBlock>
+        <referenceContainer name="footer">
+            <container name="footer.container-wrapper" htmlTag="div" htmlClass="footer-container-wrapper">
+                <block class="Magento\Store\Block\Switcher" name="store_switcher" as="store_switcher" after="footer_links" template="switch/stores.phtml"/>
+                <container name="footer.container1" htmlTag="div" htmlClass="footer-column footer-container-1" label="Footer Container 1" />
+                <container name="footer.container2b" htmlTag="div" htmlClass="footer-column footer-container-2-b" label="Footer Container 2 b" />
+                <container name="footer.container2" htmlTag="div" htmlClass="footer-column footer-container-2" label="Footer Container 2" />
+                <container name="footer.container3" htmlTag="div" htmlClass="footer-column footer-container-3" label="Footer Container 3" />
+            </container>
+        </referenceContainer>
+        <referenceBlock name="report.bugs" remove="true"/>
+        <container name="footer-bottom" htmlTag="div" htmlClass="footer-bottom" label="Footer Bottom Copyright">
+        
+        </container>
+ 
+        <move element="footer-bottom" destination="before.body.end"/>
+        <move element="header.links" destination="header-wrapper"/> 
+        <move element="top.search" destination="header.panel"/>
+
+        <referenceContainer name="header.container">
+            <container name="main.menu" htmlTag="div" htmlClass="header-main-menu" after="-" />
+            <container name="menu.container" htmlTag="div" htmlClass="menu-container" label="Header Main Menu" />
+        </referenceContainer>
+
+        <move element="navigation.sections" destination="main.menu" />
+        <move element="menu.container" destination="store.menu" />
+        <referenceBlock name="footer_links" remove="true"/>
+        <referenceBlock name="form.subscribe" remove="true"/>
+        <referenceBlock name="copyright" remove="true"/>
+        <referenceBlock name="ajax_cart_sidebar" remove="true"/>
+        <referenceBlock name="sale.reorder.sidebar" remove="true"/>
+        <referenceBlock name="skip_to_content" remove="true"/>
+
+        <referenceContainer name="before.body.end">
+            <block name="woowup2" template="Magento_Theme::woowup.phtml" /> 
+        </referenceContainer>
+    </body>
+</page>

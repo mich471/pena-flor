@@ -1,0 +1,17 @@
+<!--@subject {{trans "Wishlist Products price changed alert"}} @-->
+<!--@vars {
+"var alertContent|raw":"Alert Data Content",
+"var customerName":"Customer Name",
+"template config_path=\"design\/email\/footer_template\"":"Email Footer Template",
+"template config_path=\"design\/email\/header_template\"":"Email Header Template"
+} @-->
+
+{{template config_path="design/email/header_template"}}
+
+<p class="greeting">{{trans "Dear %name," name=$customerName}}</p>
+<p>We wanted you to know that prices have changed for these products:</p>
+
+
+{{var alertContent|raw}}
+
+{{template config_path="design/email/footer_template"}}

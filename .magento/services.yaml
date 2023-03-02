@@ -1,0 +1,18 @@
+# The services of the project.
+#
+# Each service listed will be deployed to power your project.
+
+mysql:
+    type: mysql:10.3
+    disk: 10240
+
+redis:
+    type: redis:5.0
+
+elasticsearch:
+    type: elasticsearch:7.7
+    disk: 1024
+
+rabbitmq:
+    type: rabbitmq:3.8
+    disk: 1024

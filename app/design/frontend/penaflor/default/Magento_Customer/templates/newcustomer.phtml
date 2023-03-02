@@ -1,0 +1,34 @@
+<?php
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+/**
+ * New Customer block template
+ *
+ * @var $block \Magento\Customer\Block\Form\Login\Info
+ */
+?>
+<?php if ($block->getRegistration()->isAllowed()): ?>
+<div class="block block-new-customer">
+    <div class="block-title">
+        <strong id="block-new-customer-heading" role="heading" aria-level="2"><?php /* @escapeNotVerified */ echo __('New Customers') ?></strong>
+    </div>
+    <div class="block-content" aria-labelledby="block-new-customer-heading">
+        <p><?php /* @escapeNotVerified */ echo __('¿Sos nuevo en el sitio?') ?></p>
+        <div class="actions-toolbar">
+            <div class="primary">
+                <a href="<?php /* @escapeNotVerified */ echo $block->getCreateAccountUrl() ?>" class="action create primary"><span><?php /* @escapeNotVerified */ echo __('Create an Account') ?></span></a>
+            </div>
+        </div>
+    </div>
+</div>
+<?php endif; ?>
+<div class="logo-login">
+    <a href="/"><img src="<?php echo $this->getViewFileUrl('images/logo_vys_white.png'); ?>" width="220" alt="Grupo Peñaflor"/></a>
+</div>

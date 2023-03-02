@@ -1,0 +1,85 @@
+//
+//  Mobile (styles-m.css)
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s) {
+    .wf-questrial-n4-active{
+        .theme-pearl.cms-home{
+            .page-wrapper{
+                .page-main-full-width{
+                    .columns{
+                        .block-static-block{
+                            [data-content-type="row"]{
+                                .title-compra-experto{
+                                    .texto-compra{
+                                        p{
+                                            text-align: left !important;
+                                            span{
+                                                font-size: 15px !important;
+                                            }
+                                        }
+                                    }                                    
+                                }
+                                .contenedor-de-texto{
+                                    .texto-premiados {
+                                        display: none;
+                                    }
+                                }
+                                .title-ordenar{
+                                    position: relative;
+                                    bottom: 80px;
+                                }
+                                .ordenar-por{
+                                    p {
+                                        font-size: 13px;
+                                    }
+                                }
+                                .widget-product-carousel{
+                                    position: relative;                                  
+                                    .slick-list, .draggable{
+                                        padding: 0 !important;
+                                    }
+                                }                                
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+//
+//  Desktop (style-l.css)
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .theme-pearl.cms-home{
+        .page-wrapper{
+            #maincontent{
+                .columns{
+                    [data-content-type="row"]{
+                        .pagebuilder-column-group{
+                            justify-content: center;
+                            .title-ordenar{
+                                width: 100px !important;
+                            }
+                        }
+                        .block-static-block{
+                            .baner-img-quiz{
+                                .sentidos-quiz{
+                                   color: #d4a22c;
+                                   font-size: 20px;
+                                }
+                                .quiz-vinos-whiskies {
+                                    width: 383px;
+                                    text-align: center;
+                                    height: 75px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

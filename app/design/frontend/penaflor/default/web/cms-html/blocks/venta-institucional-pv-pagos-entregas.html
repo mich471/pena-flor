@@ -1,0 +1,47 @@
+BLOCK TITLE: Venta Institucional - Product View - Pagos y entregas
+IDENTIFIER: venta-institucional-pv-pagos-entregas
+
+CONTENT:
+<div class="pagos-entregas-wrapper">
+<ul>
+	<li><a href="#" class="envio-link"><img src="{{view url='images/media/icon-clock.svg'}}" width="23"/> Modalidad y Tiempos de Envío &rsaquo; </a></li>
+	<li><a href="#" class="pagos-link"><img src="{{view url='images/media/icon-ccard.svg'}}" width="25"/> Medios de Pago &rsaquo;</a></li>
+</ul>
+</div>
+
+<script>
+    require([
+        "jquery",
+        "Magento_Ui/js/modal/modal"
+    ], function($, modal){
+	        var options = {
+	            type: 'popup',
+	            responsive: true,
+	            innerScroll: true,
+	            title: "Modalidad y Tiempos de Envío",
+	        };
+	        var popupdataContent = `<div>{{block class="Magento\\Cms\\Block\\Block" block_id="venta-institucional-envio-modal"}}</div>`;
+	        var popupdata = $(popupdataContent);
+	        modal(options, popupdata);
+
+	        var optionsPagos = {
+	            type: 'popup',
+	            responsive: true,
+	            innerScroll: true,
+	            title: "Medios de Pago",
+	        };
+	        var popupdataContentPagos = `<div>{{block class="Magento\\Cms\\Block\\Block" block_id="venta-institucional-pagos-modal"}}</div>`;
+	        var popupdatapagos = $(popupdataContentPagos);
+	        modal(optionsPagos, popupdatapagos);
+
+    	$(".envio-link").on("click",function(e){
+    		e.preventDefault();
+	        popupdata.modal('openModal');
+    	})
+    	$(".pagos-link").on("click",function(e){
+    		e.preventDefault();
+	        popupdatapagos.modal('openModal');
+    	})
+
+    });
+</script>

@@ -1,0 +1,16 @@
+#menu-lc-core-general  > a:before{
+    content:'';
+    background:url(img/lyracons-logo.png) no-repeat center center;
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    background-size: 41px 21px;
+}
+#menu-lc-core-general._active > a:before,
+#menu-lc-core-general:hover > a:before{
+    content:'';
+    background:url(img/lyracons-logo.png) no-repeat center center;
+    background-size: 41px 21px;
+    -webkit-filter: brightness(9.28);
+    filter: brightness(9.28);
+}
+.admin__menu .submenu .item-fastest-options a{text-transform:capitalize}

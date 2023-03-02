@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="weltpixelsmartproducttabs_smartproducttabs_listing_data_source" xsi:type="string">WeltPixel\SmartProductTabs\Model\ResourceModel\SmartProductTabs\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="WeltPixel\SmartProductTabs\Model\ResourceModel\SmartProductTabs\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">weltpixel_smartproducttabs</argument>
+            <argument name="eventPrefix" xsi:type="string">weltpixel_smartproducttabs_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">smartproducttabs_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">WeltPixel\SmartProductTabs\Model\ResourceModel\SmartProductTabs</argument>
+        </arguments>
+    </type>
+    <type name="WeltPixel\SmartProductTabs\Model\SmartProductTabs">
+        <plugin name="reindex_ruleid_products" type="WeltPixel\SmartProductTabs\Plugin\Indexer\ReindexRuleIdProducts" sortOrder="1" />
+    </type>
+</config>

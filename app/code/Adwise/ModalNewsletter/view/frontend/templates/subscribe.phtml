@@ -1,0 +1,58 @@
+<?php
+/**
+ * @var $block \Adwise\ModalNewsletter\Block\Subscribe
+ **/
+?>
+
+<div data-bind="scope: 'modalnewsletter'">
+    <div id="custom-modal-newsletter" style="display: none">
+        <div class="modal-body-content">
+            <div class="banner"
+                 style="background-image: url('<?= $block->getImageNewsletter(); ?>'); height: 150px; background-repeat: no-repeat; text-align: center;
+                     background-position: center center;
+                     background-size: cover; display: flex; justify-content: center; align-items: center">
+                <h2 class="text">
+                    <span><?= $block->getText(); ?></span>
+                </h2>
+            </div>
+
+            <div class="content-poppup">
+                <?= $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId($block->getBlockId())->toHtml() ?>
+                <div class="container-newsletter">
+                    <!-- ko template: getTemplate() --><!-- /ko -->
+                    <div id="response-data" style="display: none">
+
+                    </div>
+                    <?= $block->getLayout()->createBlock("Magento\Newsletter\Block\Subscribe")->setTemplate('Magento_Newsletter::subscribe.phtml')->toHtml(); ?>
+                    <div class="check">
+                        <label for="checkbox_cookie">
+                            <input type="checkbox" id="checkbox_cookie">
+                            <span><?= $block->escapeHtml(__("No mostrar este popup otra vez")) ?> </span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script type="text/x-magento-init">
+        {
+            "#custom-modal-newsletter": {
+                "Magento_Ui/js/core/app": {
+                    "components": {
+                        "modalnewsletter": {
+                            "component": "Adwise_ModalNewsletter/js/modalnewsletter",
+                            "template": "Adwise_ModalNewsletter/ajax-response",
+                            "config": {
+                                "time_cookies": <?= $block->getTimeCookies() ?>
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+    </script>
+</div>
+

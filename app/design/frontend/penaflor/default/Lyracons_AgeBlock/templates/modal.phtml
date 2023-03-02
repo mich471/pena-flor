@@ -1,0 +1,31 @@
+<?php /** @var Lyracons\AgeBlock\Block\Modal $block */ ?>
+<?php if ($block->isModalEnabled()) : ?>
+    <div id="modal-age-block" style="display:none;" class="age-container">
+        <div class="logo"><img src="<?php echo $this->getViewFileUrl('images/media/Logo_VyS.png'); ?>" alt="Logo Peñaflor"/></div>
+        <div class="age-message">
+            <p style="font-weight:100;"><?= /* @escapeNotVerified */ $block->getMessage() ?></p>
+            <div class="action btn"><a class="button" href="#">Aceptar</a></div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        window.cookieNameAgeBlock = "<?= /* @escapeNotVerified */ $block->getCookieName() ?>" ;
+        window.isAgeBockModal = true;
+    </script>
+    <script type="text/x-magento-init">
+    {
+        "*": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "modal_age_block": {
+                        "component": "Lyracons_AgeBlock/js/modal-age-block"
+                    }
+                 }
+            }
+        }
+    }
+    </script>
+<?php else: ?>
+    <script type="text/javascript">
+        window.isAgeBockModal = false;
+    </script>
+<?php endif; ?>

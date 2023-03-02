@@ -1,0 +1,241 @@
+.cms-page-view{
+	.page-title-wrapper{
+		background-color: black;
+		background-repeat: no-repeat;
+		background-size: contain;
+		height: 100px;
+		margin-bottom: 30px;
+		.page-title{
+			max-width: 1280px;
+			padding-left: 20px;
+			padding-right: 20px;
+			margin: 0 auto 30px;
+			color: #fff;
+			line-height: 100px;
+			font-size: 24px;
+			font-weight: 600;
+		}
+	}
+
+	//ENTREGAS
+
+	.page-main{
+		.column.main > p{
+			font-size: 16px;
+		}
+		.row{
+			margin: 100px 0 50px;
+		}
+		
+	}
+	&.cms-entregas{
+		.page-title-wrapper{
+			background-image: url("../images/cms/img_entregas_title.jpg");
+		}
+		.row{
+			.entrega-item{
+				margin-bottom: 50px;
+				.mapa{
+					float: left;
+					width: 100px;
+					margin-right: 20px;
+					&.arg{
+						width: 50px;
+						@media screen and (max-width:768px) {
+							padding: 0 25px;
+						}
+					}
+				}
+				h1{
+					margin-bottom: 20px;
+				}
+				h2{
+					font-size: 14px;
+					font-weight: 700;
+					text-transform: uppercase;
+					margin: 0 0 5px;
+				}
+				p{
+					margin-bottom: 0px;
+				}
+				b{
+					font-weight:700;
+					font-size: 11px;
+				}
+			}
+		}
+		
+		.note{
+			text-align: center;
+			font-size: 11px;
+		}
+	}
+
+	//PAGOS
+	&.cms-pagos{
+		.page-title-wrapper{
+			background-image: url("../images/cms/img_pagos_title.jpg");
+		}
+		.pagos-item{
+			text-align: center;
+			h1{
+				margin-bottom: 20px;
+			}
+			.image img{
+				height: 30px;
+			}
+			&.item-tarjeta{
+				border-left: 1px solid #DBDBDB;
+				@media screen and (max-width:768px) {
+					border-left: none;
+				}
+				.tarjetas-link{
+					margin-top: 15px;
+					a{
+						font-size: 11px;
+					}
+				} 
+			}
+		}
+
+		@media screen and (max-width:768px) {
+			.col-6{
+				margin-bottom: 50px;
+			}
+		}
+	}
+
+	//COMO COMPRAR
+	&.cms-como-comprar{
+		.page-title-wrapper{
+			background-color: white;
+			.page-title{
+				color: #000;
+			}
+		}
+		div[class^='col-'], div[class*=' col-']{
+		    box-sizing: border-box;
+		}
+		.col-m-4.last-4{
+			padding: 0 0 0 28px;
+		}
+		.comprar-wrapper{
+			position: relative;
+			.title{
+				text-align: center;
+				h1{
+					display: inline-block;
+					margin-bottom: 20px;
+					background: white;
+					padding: 0 30px;
+					font-size: 18px;
+					text-transform: uppercase;
+					font-weight: 600;
+					&:after{
+						content: "";
+						height: 1px;
+						width: 100%;
+						position: absolute;
+						background: #dbdbdb;
+						left: 0;
+						margin-top: 12px;
+						z-index: -1;
+					}
+				}		
+			}
+		}
+		.page-main .row{
+		 margin: 0 0 20px 0;
+			.last{
+				padding-left: 25px;
+			}
+			.middle{
+				padding: 0 14px;
+			}
+
+			.col-m-4{
+				p{
+					height: 65px;
+				}
+			}
+			h2{
+				text-transform: uppercase;
+				font-weight: 700;
+				font-size: 14px;
+			}
+		}
+		@media screen and (max-width:768px) {
+			.page-main .row{
+				.last{
+					padding-left: 0;
+				}
+				.middle{
+					padding: 0;
+				}
+				.col-m-4{
+					p{
+						height: auto;
+					}
+				}
+			}
+			.col-m-4.last-4{
+				padding: 0 0 0 0;
+			}
+			.col-6{
+				margin-bottom: 50px;
+			}
+		}
+	}
+}
+
+//503 - SERVICEUNAVAILABLE{
+.cms-service-unavailable{
+	.pre-header-wrapper{
+		display: none;
+	}
+	.column.main{
+		text-align: center;
+		margin-top: 40px;
+	}
+}
+
+//NOTAS
+
+.nota-wrapper{
+	margin: 50px 20%;
+	.title{
+		h1{
+			margin-bottom: 5px;
+			font-size: 30px;
+		}
+	}
+	.bajada{
+		font-size: 17px;
+		p{
+			font-size: 17px;
+		}
+	}
+
+	.imagen{
+		float: left;
+		margin-right:25px;
+		max-width: 50%;
+	}
+	.contenido{
+
+	}
+
+	.extra-content{
+		clear: both;
+		iframe{
+			max-width: 100%;
+		}
+	}
+
+	@media screen and (max-width:768px) {
+		margin-top: 0;
+		.imagen{
+			width: 100%;
+		}
+	}
+}

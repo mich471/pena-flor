@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="BalloonGroup_NewLogin::css/new-login.css" />
+    </head>
+    <body>
+        <referenceBlock name="newlogin-popup" remove="true"/>
+        <referenceBlock name="customer_form_register">
+            <action method="setTemplate" ifconfig="newlogin/newlogin/enable">
+                <argument name="template" xsi:type="string">BalloonGroup_NewLogin::form/register.phtml</argument>
+            </action>
+            <arguments>
+                <argument name="view_model" xsi:type="object">BalloonGroup\NewLogin\ViewModel\Agreements</argument>
+                <argument name="jsLayout" xsi:type="array">
+                    <item name="components" xsi:type="array">
+                        <item name="newlogin-register-form" xsi:type="array">
+                            <item name="component" xsi:type="string">BalloonGroup_NewLogin/js/view/form/register</item>
+                            <item name="config" xsi:type="array">
+                                <item name="template" xsi:type="string">BalloonGroup_NewLogin/form/register</item>
+                            </item>
+                            <!-- <item name="children" xsi:type="array">
+                                <item name="company-select" xsi:type="array">
+                                    <item name="sortOrder" xsi:type="string">2</item>
+                                    <item name="component" xsi:type="string">
+                                        BalloonGroup_NewLogin/js/view/form/register/company-select
+                                    </item>
+                                    <item name="config" xsi:type="array">
+                                        <item name="template" xsi:type="string">
+                                            BalloonGroup_NewLogin/form/register/company-select
+                                        </item>
+                                    </item>
+                                </item>
+                              
+                            </item> -->
+                        </item>
+                    </item>
+                </argument>
+            </arguments>
+        </referenceBlock>
+    </body>
+</page>

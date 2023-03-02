@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="category.products.list" >
+            <action method="setTemplate" ifconfig="weltpixel_productlabels/general/enable_category_page">
+                <argument name='template' xsi:type='string'>WeltPixel_ProductLabels::product/list.phtml</argument>
+            </action>
+        </referenceBlock>
+        <referenceBlock name="search_result_list" >
+            <action method="setTemplate" ifconfig="weltpixel_productlabels/general/enable_category_page">
+                <argument name='template' xsi:type='string'>WeltPixel_ProductLabels::product/list.phtml</argument>
+            </action>
+        </referenceBlock>
+        <referenceContainer name="before.body.end">
+            <block
+                    ifconfig="weltpixel_productlabels/general/enable_category_page"
+                    class="Magento\Framework\View\Element\Template"
+                    name="productlables-init-listing"
+                    template="WeltPixel_ProductLabels::product/list/productlabelsinit.phtml"
+            />
+        </referenceContainer>
+        <!-- product labels for cross, related, upsell -->
+        <referenceBlock name="checkout.cart.crosssell" >
+            <action method="setTemplate" ifconfig="weltpixel_productlabels/general/enable_crossell_products">
+                <argument name='template' xsi:type='string'>WeltPixel_ProductLabels::product/list/items.phtml</argument>
+            </action>
+        </referenceBlock>
+        <referenceBlock name="product.info.upsell" >
+            <action method="setTemplate" ifconfig="weltpixel_productlabels/general/enable_upsell_products">
+                <argument name='template' xsi:type='string'>WeltPixel_ProductLabels::product/list/items.phtml</argument>
+            </action>
+        </referenceBlock>
+        <referenceBlock name="catalog.product.related" >
+            <action method="setTemplate" ifconfig="weltpixel_productlabels/general/enable_related_products">
+                <argument name='template' xsi:type='string'>WeltPixel_ProductLabels::product/list/items.phtml</argument>
+            </action>
+        </referenceBlock>
+        <!-- product labels for cross, related, upsell -->
+    </body>
+</page>

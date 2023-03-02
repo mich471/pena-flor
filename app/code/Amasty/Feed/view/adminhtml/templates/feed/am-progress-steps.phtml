@@ -1,0 +1,24 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2022 Amasty (https://www.amasty.com)
+ * @package Product Feed for Magento 2
+ */
+?>
+<?php /** @var \Magento\Framework\Escaper $escaper */ ?>
+<?php
+$countOfSteps = 3;
+$stepTitles = [__('Initialising'), __('In Progress'), __('Success')];
+?>
+<ul class="amsteps-icons-wrapper">
+    <?php for ($stepNumber = 1; $stepNumber <= $countOfSteps; $stepNumber++): ?>
+        <li class="amsteps-icon" data-amsteps-js="step-<?= (int)$stepNumber ?>"></li>
+    <?php endfor; ?>
+</ul>
+<ul class="amsteps-titles-wrapper">
+    <?php foreach ($stepTitles as $stepNumber => $title): ?>
+        <li class="amsteps-title" data-amsteps-js="step-title-<?= (int)($stepNumber + 1) ?>">
+            <?= $escaper->escapeHtml($title); ?>
+        </li>
+    <?php endforeach; ?>
+</ul>

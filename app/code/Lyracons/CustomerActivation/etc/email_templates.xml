@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Email:etc/email_templates.xsd">
+    <template id="customer_lyracons_customeractivation_template" label="Notify customer enable account" file="account_new_confirmed.html" type="html" module="Lyracons_CustomerActivation" area="frontend"/>
+    <template id="customer_lyracons_customeractivation_template_admin" label="New Customer admin Notification" file="new_customer_notification.html" type="html" module="Lyracons_CustomerActivation" area="frontend"/>
+</config>

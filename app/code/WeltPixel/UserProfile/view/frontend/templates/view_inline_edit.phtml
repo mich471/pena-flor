@@ -1,0 +1,188 @@
+<?php
+
+// @codingStandardsIgnoreFile
+
+/** @var \WeltPixel\UserProfile\Block\ViewProfile $block */
+$profile = $block->getProfile();
+$profileCover = $block->getCoverImage();
+$profileAvatar = $block->getAvatarImage();
+$profileName = $block->getProfileName();
+$isprofileCoverEnabled = $block->isCoverEnabled();
+$isprofileAvatarEnabled = $block->isAvatarEnabled();
+$isProfileNameEnabled = $block->isNameEnabled();
+$isProfileDetailsEnabled = $block->isDetailsEnabled();
+$isProfileLocationEnabled = $block->isLocationEnabled();
+$isProfileBioEnabled = $block->isBioEnabled();
+/** @var \WeltPixel\UserProfile\Helper\Data  $profileHelper */
+$profileHelper = $this->helper('WeltPixel\UserProfile\Helper\Data');
+$isWishlistDisplayEnabled = $profileHelper->isWishlistDisplayEnabled();
+?>
+<div class="profile-wrapper <?php if (!$isprofileCoverEnabled) : echo 'profile-wrapper-no-cover'; endif;?>">
+    <input type="hidden" name="profile_id"  id="profile_id" value="<?= $profile->getId() ?>" />
+    <input type="hidden" name="customer_id"  id="customer_id" value="<?= $profile->getCustomerId() ?>" />
+    <div class="validation-errors"></div>
+    <?php if ($isprofileCoverEnabled) : ?>
+    <div class="profile-cover-img image-fixture"
+         data-ce-tag="img-fixture"
+         data-fixture
+         data-name="cover_image"
+         style="background-image: url('<?= $profileCover ?>');">
+        <img src="<?= $profileCover ?>" alt="<?= __('Profile Cover') ?>">
+    </div>
+    <?php endif; ?>
+    <div class="profile-header-container ">
+        <?php if ($isprofileAvatarEnabled) : ?>
+        <div class="profile-avatar image-fixture"
+             data-ce-tag="img-fixture"
+             data-fixture
+             data-name="avatar"
+             style="background-image: url('<?= $profileAvatar ?>');"
+        >
+            <img src="<?= $profileAvatar ?>" alt="<?= __('Profile Avatar Image')?>" />
+        </div>
+        <?php endif; ?>
+        <div class="profile-titles">
+            <div class="username-inline-edit ct-editable ct-not-visible" data-editable data-name="username">
+                <p data-ce-placeholder="<?= __('Edit Username') ?>"><?= $block->escapeHtml($profile->getUsername()); ?></p>
+            </div>
+            <?php if ($isProfileNameEnabled) : ?>
+            <div>
+                <h1 class="profile-name"><?= $block->escapeHtml($profileName); ?></h1>
+                <?php if ($block->isFirstNameEnabled()) : ?>
+                <div class="ct-editable ct-not-visible" data-editable data-name="first_name">
+                    <p data-ce-placeholder="<?= __('Edit First Name') ?>"><?= $block->escapeHtml($profile->getFirstName()); ?></p>
+                </div>
+                <?php endif; ?>
+                <?php if ($block->isLastNameEnabled()) : ?>
+                <div class="ct-editable ct-not-visible" data-editable data-name="last_name">
+                    <p data-ce-placeholder="<?= __('Edit Last Name') ?>"><?= $block->escapeHtml($profile->getLastName()); ?></p>
+                </div>
+                <?php endif; ?>
+            </div>
+            <?php endif; ?>
+            <div class="profile-details">
+                <span class="profile-details-content"><?= $block->escapeHtml($block->getProfileDetails()); ?></span>
+                <?php if ($block->isGenderEnabled()) : ?>
+                <div class="ct-not-visible gender-inline-edit">
+                    <?php foreach ($block->getGenderOptions() as $key => $value) : ?>
+                    <input <?php if ($profile->getGender() == $key) echo 'CHECKED="CHECKED"' ?> type="radio" name="gender" id="<?= $key ?>" value="<?= $key ?>"> <label for="<?= $key ?>" ><?= $value ?></label>
+                    <?php endforeach; ?>
+                </div>
+                <?php endif; ?>
+                <?php if ($block->isDobEnabled()) : ?>
+                    <?php $dobBlock = $block->getLayout()->createBlock('\WeltPixel\UserProfile\Block\Widget\Dob')->initBlock($profile);?>
+                    <div class="dob-inline-edit ct-not-visible">
+                        <?= $dobBlock->setDob($profile->getDob())->toHtml(); ?>
+                    </div>
+                <?php endif; ?>
+            </div>
+            <?php if ($isProfileLocationEnabled) : ?>
+            <div class="profile-location ct-editable" data-editable data-name="location">
+                <p data-ce-placeholder="<?= __('Edit Location') ?>"><?= $block->escapeHtml($profile->getLocation()); ?></p>
+            </div>
+            <?php endif; ?>
+        </div>
+    </div>
+    <div id="profile-details-tabs" class="profile-feed-container">
+        <?php if ($isWishlistDisplayEnabled) : ?>
+            <ul class="ui-tabs-nav">
+                <li data-role="title" class="ui-state-active">
+                    <a href="#tabs-activity"><?php echo $block->escapeHtml(__('Activity')) ?></a>
+                </li>
+                <li data-role="title">
+                    <a href="#tabs-collections"><?php echo $block->escapeHtml(__('Collections')) ?></a>
+                </li>
+            </ul>
+        <?php endif; ?>
+        <div class="profile-feed" id="tabs-activity">
+        <?php if ($isProfileBioEnabled): ?>
+            <div class="profile-feed-wrapper">
+                <div class="profile-bio profile-feed-padding">
+                    <h2 class="biography-header"><?= $profileName .'\'s ' . __('Bio') ?></h2>
+                    <div class="profile-bio-content ct-editable" data-editable data-name="bio">
+                        <?= $block->filterHtmlOutput($profile->getBio()); ?>
+                    </div>
+                </div>
+            </div>
+        <?php endif; ?>
+            <div class="loader-wrapper activity-loader">
+                <img src="<?= $block->escapeUrl($block->getViewFileUrl('images/loader-2.gif')) ?>" />
+            </div>
+        </div>
+        <?php if ($isWishlistDisplayEnabled) : ?>
+        <div class="collections-feed" id="tabs-collections">
+            <div class="loader-wrapper collections-loader">
+                <img src="<?= $block->escapeUrl($block->getViewFileUrl('images/loader-2.gif')) ?>" />
+            </div>
+        </div>
+        <?php endif; ?>
+    </div>
+</div>
+<?php if ($block->isLoggedIn()) : ?>
+<script>
+    require(['jquery','WeltPixel_UserProfile/js/content-tools', 'WeltPixel_UserProfile/js/content-init'],
+        function ($, contentTools, contentInit) {
+            $(document).ready(function () {
+                var requestUrl = '<?= $block->getEditableVerificationUrl() ?>';
+                $.ajax({
+                    url: requestUrl,
+                    method: 'GET',
+                    cache: false,
+                    global: false,
+                    data: {
+                        profile_id: $('#profile_id').val()
+                    },
+                    success: function (result) {
+                        var isEditable = result.editable;
+                        if (isEditable) {
+                            contentInit.initialize({
+                                userprofileId: <?= $profile->getId() ?>,
+                                customerId: <?= $profile->getCustomerId() ?>,
+                                saveUrl: '<?= $block->getSaveUrl() ?>',
+                                imgUploadUrl: '<?= $block->getUploadImageUrl() ?>'
+                            });
+                        }
+                    }
+                });
+            });
+        }
+    );
+</script>
+<?php endif; ?>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "WeltPixel_UserProfile/js/process-reviews": {
+                "customerReviewsUrl": "<?= $block->escapeJs($block->escapeUrl($block->getCustomerReviewsUrl())) ?>",
+                "reiewsElementSelector": ".profile-feed",
+                "loaderSelector": ".loader-wrapper"
+            }
+        }
+    }
+</script>
+<?php if ($isWishlistDisplayEnabled) : ?>
+    <script>
+        require([
+            'jquery',
+            'jquery-ui-modules/tabs'
+        ], function($){
+            $("#profile-details-tabs").tabs({
+                'active': 0
+            });
+            $('ul.ui-tabs-nav a').click(function(e) {
+                e.preventDefault();
+            });
+        });
+    </script>
+    <script type="text/x-magento-init">
+        {
+            "*": {
+                "WeltPixel_UserProfile/js/process-collections": {
+                    "wishlistCollectionsUrl": "<?= $block->escapeJs($block->escapeUrl($block->getCustomerWishlistsUrl(true))) ?>",
+                    "wishlistsElementSelector": ".collections-feed",
+                    "loaderSelector": ".collections-loader"
+                }
+            }
+        }
+    </script>
+<?php endif; ?>

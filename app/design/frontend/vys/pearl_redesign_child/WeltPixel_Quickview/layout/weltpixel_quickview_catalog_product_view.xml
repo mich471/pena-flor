@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="WeltPixel_Quickview::css/styles.css" />
+    </head>
+    <body>
+        <move element="block.extra.content.quickview" destination="product.info.main" after="page.main.title"></move> 
+        <referenceContainer name="content">
+            <block class="Magento\Catalog\Block\Product\View" name="leanblock" template="WeltPixel_Quickview::lean.phtml">
+            </block>
+        </referenceContainer>
+
+        <!-- <block class="Magento\Catalog\Block\Product\View" name="block.extra.content.quickview" template="WeltPixel_Quickview::extra-content.phtml"></block> -->
+
+        <move element="block.extra.content.quickview" destination="product.info.main" after="page.main.title"></move>
+        <move element="bundle.options.container" destination="before.body.end" />
+    </body>
+</page>

@@ -1,0 +1,104 @@
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+ -->
+
+ <div class="custom-authentication-balloon"
+ data-bind="afterRender: setModalElement, blockLoader: isLoading"
+ style="display: none">
+ <div class="block-authentication balloon" >
+    <div class="block-content" style="padding-left: 2rem; padding-right: 2rem; padding-bottom: 2rem;" aria-labelledby="block-customer-login-heading" id="login_section">
+        <div class="block-title">
+            <h2 style="font-weight: 600;">Ingresar</h2>
+        </div>
+        <form class="form form-login"
+              method="post"
+              data-bind="event: {submit: login }"
+              id="ajaxlogin-form">
+            <div class="fieldset login">
+                <div class="field email required">
+                    <label class="label" for="ajaxlogin-email"><span style="font-weight: 600;" data-bind="i18n: 'Email Address'"></span></label>
+                    <div class="control">
+                        <input name="username"
+                                placeholder="Ingresá tu nombre de usuario"
+                               id="ajaxlogin-email"
+                               type="email"
+                               class="input-text input-text-username"
+                               data-bind="attr: {autocomplete: autocomplete}"
+                               data-validate="{required:true, 'validate-email':true}">
+                    </div>
+                </div>
+                <div class="field password required">
+                    <label for="ajaxlogin-pass" class="label"><span style="font-weight: 600;" data-bind="i18n: 'Password'"></span></label>
+                    <div class="control">
+                        <input name="password"
+                                placeholder="Ingresá tu contraseña"
+                               type="password"
+                               class="input-text input-text-password"
+                               id="ajaxlogin-pass"
+                               data-bind="attr: {autocomplete: autocomplete}"
+                               data-validate="{required:true}">
+                    </div>
+                </div>
+                <!-- ko foreach: getRegion('additional-login-form-fields') -->
+                <!-- ko template: getTemplate() --><!-- /ko -->
+                <!-- /ko -->
+                <div class="actions-toolbar">
+                    <div class="secondary" style="display: flex;">
+                        <input type="checkbox"
+                        class="checkbox"><p>Recordar</p>
+                        </input>
+                    </div>
+                    <div style="padding-top: 1rem;" class="primary">
+                        <a class="action" data-bind="attr: {href: forgotPasswordUrl}">
+                            <span data-bind="i18n: 'Forgot Your Password?'" style="color: #303030;"></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="sign-in">
+                    <button type="submit" style="width: 460px;margin-top: 20px;" class="action login primary button-sigin" name="send" id="ajaxlogin-send">
+                        <span data-bind="i18n: 'Sign In'"></span>
+                    </button>
+                </div>
+            </div>
+            <div class="block block-new-customer"
+            data-bind="attr: {'data-label': $t('or')}">
+           <div class="block-forgot" style="padding-bottom: 15px;">
+   <!--             <a href="#" id="sl_login_tab_title">
+                   <strong id="block-customer-ajaxlogin-heading alink"
+                       role="heading"
+                       aria-level="2"
+                       class="sl-ajaxlogin-title"
+                       data-bind="i18n: 'Login',click: showLogin, css: {active :logClicked() > 0}"></strong>
+               </a>
+               <span class="sl-ajaxlogin-title-space" data-bind="i18n: 'or'"></span> -->
+               <p>¿No estas registrado?</p>
+               <a href="#"  data-bind="attr: {href: registerUrl}"  id="sl_register_tab_title">
+                   <strong id="alink"
+                           role="heading"
+                           aria-level="2"
+                           class="sl-ajaxlogin-title"
+                       data-bind="i18n: 'Create an Account'"></strong>
+               </a>
+           </div>
+   
+        </form>
+        <div class="block block-customer-login"
+        data-bind="attr: {'data-label': $t('or')}">
+
+            <div class="block-content">
+                <div class="sociallogin-or">
+                    <span data-bind="i18: 'OR'"></span>
+                </div>
+                <div data-bind="html: socialloginButtons"></div>
+            </div>
+            
+        </div>
+        <button data-bind="click: proceedToCheckout" class="action login primary guest-sign-in">
+            <span data-bind="i18n: 'Continue as guest'"></span>
+        </button>
+    </div>
+ </div>
+</div>

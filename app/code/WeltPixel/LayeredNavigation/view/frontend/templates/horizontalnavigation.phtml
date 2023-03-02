@@ -1,0 +1,17 @@
+<script>
+    require([
+        "jquery",
+    ], function($){
+        $(document).ready(function () {
+            $(document).on('click', '.filter-options-item .filter-options-title', function() {
+                var that = this;
+                $('.filter-options-item.active > .filter-options-title').each(function(key, value) {
+                     if (that != value) {
+                         $(value).parent().removeClass('active');
+                     }
+                 });
+            });
+        });
+
+    });
+</script>

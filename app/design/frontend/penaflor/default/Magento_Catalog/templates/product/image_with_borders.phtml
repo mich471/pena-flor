@@ -1,0 +1,21 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+?>
+<?php
+/** @var $block \Magento\Catalog\Block\Product\Image */
+/** @var $escaper \Magento\Framework\Escaper */
+?>
+
+<span class="product-image-container"
+      style="width:<?= /* @escapeNotVerified */ $block->getWidth() ?>px;">
+      <span class="product-image-wrapper">
+        <img class="product-image-photo"
+            <?php foreach ($block->getCustomAttributes() as $name => $value): ?>
+                <?= $escaper->escapeHtmlAttr($name) ?>="<?= $escaper->escapeHtmlAttr($value) ?>"
+            <?php endforeach; ?>
+            src="<?= /* @escapeNotVerified */ $block->getImageUrl() ?>"
+            alt="<?= /* @escapeNotVerified */ $block->stripTags($block->getLabel(), null, true) ?>"/></span>
+</span>

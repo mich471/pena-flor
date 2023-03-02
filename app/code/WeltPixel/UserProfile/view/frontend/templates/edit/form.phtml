@@ -1,0 +1,87 @@
+<?php
+// @codingStandardsIgnoreFile
+/** @var \WeltPixel\UserProfile\Block\EditProfile $block */
+?>
+<?php
+$userProfile = $block->getUserProfile();
+/** @var WeltPixel\UserProfile\Helper\Renderer $rendererHelper */
+$rendererHelper = $this->helper('WeltPixel\UserProfile\Helper\Renderer');
+?>
+<form class="form form-edit-profile" action="<?= $block->escapeUrl($block->getUrl('profile/account/edit')) ?>" method="post" id="form-validate" enctype="multipart/form-data" data-hasrequired="<?= $block->escapeHtmlAttr(__('* Required Fields')) ?>" autocomplete="off">
+    <fieldset class="fieldset info">
+        <?= $block->getBlockHtml('formkey') ?>
+        <input type="hidden" name="profile_id" value="<?= $userProfile->getProfileId(); ?>" />
+        <input type="hidden" name="customer_id" value="<?= $block->getLoggedInCustomerId(); ?>" />
+        <legend class="legend"><span><?= $block->escapeHtml(__('Profile Information')) ?></span></legend>
+
+        <?php if ($userProfile->getUsername()) : ?>
+        <?php $profileLink = $rendererHelper->getUserProfileLink($userProfile->getUsername()); ?>
+        <div class="public-profile-link">
+            <a target="_blank" class="action view primary" href="<?= $profileLink ?>" >
+                <span><?= __("View Public Profile") ?></span>
+            </a>
+        </div>
+        <?php endif; ?>
+
+
+        <?php $usernameBlock = $block->getLayout()->createBlock('\WeltPixel\UserProfile\Block\Widget\Username')->initBlock($userProfile);?>
+        <?php $avatarBlock = $block->getLayout()->createBlock('\WeltPixel\UserProfile\Block\Widget\Avatar')->initBlock($userProfile);?>
+        <?php $coverImageBlock = $block->getLayout()->createBlock('\WeltPixel\UserProfile\Block\Widget\CoverImage')->initBlock($userProfile);?>
+        <?php $firstNameBlock = $block->getLayout()->createBlock('\WeltPixel\UserProfile\Block\Widget\Firstname')->initBlock($userProfile);?>
+        <?php $lastNameBlock = $block->getLayout()->createBlock('\WeltPixel\UserProfile\Block\Widget\Lastname')->initBlock($userProfile);?>
+        <?php $genderBlock = $block->getLayout()->createBlock('\WeltPixel\UserProfile\Block\Widget\Gender')->initBlock($userProfile);?>
+        <?php $locationBlock = $block->getLayout()->createBlock('\WeltPixel\UserProfile\Block\Widget\Location')->initBlock($userProfile);?>
+        <?php $dobBlock = $block->getLayout()->createBlock('\WeltPixel\UserProfile\Block\Widget\Dob')->initBlock($userProfile);?>
+        <?php $bioBlock = $block->getLayout()->createBlock('\WeltPixel\UserProfile\Block\Widget\Bio')->initBlock($userProfile);?>
+
+
+        <?php  if ($usernameBlock->isEnabled()) : ?>
+            <?= $usernameBlock->setUsername($userProfile->getUsername())->toHtml(); ?>
+        <?php  endif; ?>
+
+        <?php  if ($avatarBlock->isEnabled()) : ?>
+            <?= $avatarBlock->setAvatar($userProfile->getAvatar())->toHtml(); ?>
+        <?php  endif; ?>
+        <?php  if ($coverImageBlock->isEnabled()) : ?>
+            <?= $coverImageBlock->setCoverImage($userProfile->getCoverImage())->toHtml(); ?>
+        <?php  endif; ?>
+        <?php  if ($firstNameBlock->isEnabled()) : ?>
+            <?= $firstNameBlock->setFirstname($userProfile->getFirstName())->toHtml(); ?>
+        <?php  endif; ?>
+        <?php  if ($lastNameBlock->isEnabled()) : ?>
+            <?= $lastNameBlock->setLastname($userProfile->getLastName())->toHtml(); ?>
+        <?php  endif; ?>
+        <?php  if ($genderBlock->isEnabled()) : ?>
+            <?= $genderBlock->setGender($userProfile->getGender())->toHtml(); ?>
+        <?php  endif; ?>
+        <?php  if ($locationBlock->isEnabled()) : ?>
+            <?= $locationBlock->setLocation($userProfile->getLocation())->toHtml(); ?>
+        <?php  endif; ?>
+        <?php  if ($dobBlock->isEnabled()) : ?>
+            <?= $dobBlock->setDob($userProfile->getDob())->toHtml(); ?>
+        <?php  endif; ?>
+        <?php  if ($bioBlock->isEnabled()) : ?>
+            <?= $bioBlock->setBio($userProfile->getBio())->toHtml(); ?>
+        <?php  endif; ?>
+
+    </fieldset>
+
+    <?= $block->getChildHtml('form_additional_info') ?>
+    <div class="actions-toolbar">
+        <div class="primary">
+            <button type="submit" class="action save primary" title="<?= $block->escapeHtmlAttr(__('Save')) ?>"><span><?= $block->escapeHtml(__('Save')) ?></span></button>
+        </div>
+        <div class="secondary">
+            <a class="action back" href="<?= $block->escapeUrl($block->getBackUrl()) ?>"><span><?= $block->escapeHtml(__('Go back')) ?></span></a>
+        </div>
+    </div>
+</form>
+<script>
+    require([
+        "jquery",
+        "mage/mage"
+    ], function($){
+        var dataForm = $('#form-validate');
+        dataForm.mage('validation', {});
+    });
+</script>

@@ -1,0 +1,63 @@
+.sign-in {
+    display: flex;
+    justify-content: center;
+}
+
+aside.modal-popup.popup-authentication.modal-slide._inner-scroll._show .modal-content, .modals-wrapper .block-authentication.sl-popup .field , .modals-wrapper .sociallogin-padding, .modals-wrapper button.action.primary, .modals-wrapper button.action.primary {
+    width: 100% !important;
+}
+
+@media only screen and (min-width: 768px){
+	.theme-pearl.cms-home .modals-wrapper .modal-inner-wrap {
+		width: 35%;
+	}
+}
+
+@media only screen and (min-width: 1024px){
+	.theme-pearl.cms-home .modals-wrapper .modal-inner-wrap {
+		width: 35%;
+	}
+}
+
+@media only screen and (max-width: 767px){
+	.modal-popup.modal-slide {
+		top: 10px;
+		height: fit-content;
+	}
+	.block-authentication .block-title {
+		justify-content: center!important;
+		display: flex;
+	}
+	button.action.login.primary.guest-sign-in {
+		width: 100%;
+	}
+	.sign-in {
+		display: flex;
+		justify-content: center;
+	}
+	button#ajaxlogin-send {
+		width: 100%!important;
+	}
+
+}
+
+@media only screen and (max-width: 390px){
+	.fieldset.login {
+		margin: 0px 0 20px;
+	}
+	.block-authentication .actions-toolbar>.secondary {
+		padding-top: 10px;
+	}
+	.actions-toolbar>.primary, .actions-toolbar>.secondary {
+		margin-bottom: 50px !important;
+	}
+	body.wp-sl .popup-authentication .modal-inner-wrap .sl-popup .block-content .sociallogin-or {
+		margin-top: 0px!important;
+	}
+	body.wp-sl div.sociallogin-wrapper {
+		margin-bottom: 5px!important;
+	}
+	button#ajaxlogin-send {
+		margin-top: 5px;
+	}
+}

@@ -1,0 +1,158 @@
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .theme-pearl .page-wrapper .page-header-v1 {
+        transition: none;
+        .header.content {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 21px 0;
+
+            &:before {
+                display: none;
+            }
+
+            &:after {
+                display: none;
+            }
+
+            .desktop-logo {
+                margin-right: auto;
+                a.logo {
+                    position: relative;
+                    margin: 0;
+                    float: none;
+                    max-width: 100%;
+
+                    img {
+                        min-width: 96px; // to be modified we need this value to be dynamic
+                    }
+                }
+            }
+
+            .block-search {
+                transition: none;
+                float: none;
+                padding-left: 0;
+                order: 2;
+            }
+
+            .compare.wrapper {
+                margin: 0 15px 0 ;
+                .item.link.compare {
+                    order: 1;
+                    margin-bottom: 0;
+                }
+            }
+
+            .minicart-wrapper {
+                order: 3;
+                float: none;
+            }
+        }
+    }
+    .theme-pearl .page-wrapper .page-header-v1.sticky-header {
+        .header.content {
+            .desktop-logo {
+                margin-right: 0;
+            }
+            .nav-sections.sticky-header-nav {
+                order: 2;
+                margin-left: 25px;
+            }
+            .block-search {
+                margin-left: auto;
+                order: 3;
+            }
+            .minicart-wrapper {
+                order: 4;
+            }
+        }
+    }
+
+    .theme-pearl.mobile-nav .page-wrapper .page-header-v1 {
+        .header.content {
+            .nav-toggle {
+                position: relative;
+                left: 0;
+                top: 0;
+                margin-right: 10px;
+            }
+        }
+    }
+
+    .theme-pearl.checkout-index-index .page-wrapper .page-header-v1 {
+        .panel.header {
+            display: none;
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .theme-pearl .page-wrapper .page-header-v1 {
+        .header.content {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 0;
+
+            &:before {
+                display: none;
+            }
+
+            &:after {
+                display: none;
+            }
+            .action.nav-toggle {
+                position: relative;
+                left: 0;
+                top: 0;
+            }
+
+            .desktop-logo {
+                display: none;
+                margin-left: 10px;
+                a.logo {
+                    margin: 0;
+                    float: none;
+                    max-width: 100%;
+                }
+            }
+
+            .block-search {
+                float: none;
+                margin: 0 10px 0 auto;
+                transition: none;
+                order: 3;
+                z-index: 10;
+                label:before {
+                    margin: 0;
+                }
+                #search_mini_form {
+                    .control {
+                        position: absolute;
+                        top: 75%;
+                        left: 0;
+                        right: 0;
+                        text-align: center;
+                        padding: 0 15px;
+
+                    }
+                    label.active+.control input {
+                        width: 100%;
+                        margin: 0;
+                        background-color: #FFFFFF;
+                    }
+                    #searchautocomplete {
+                        width: 100%;
+                        margin: 0 auto !important;
+                    }
+                }
+            }
+            .minicart-wrapper {
+                order: 4;
+            }
+        }
+    }
+}

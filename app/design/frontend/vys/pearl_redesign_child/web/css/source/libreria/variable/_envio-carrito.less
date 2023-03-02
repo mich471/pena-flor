@@ -1,0 +1,72 @@
+//
+//  Desktop (style-l.css)
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m){
+    .wf-sourcesanspro-n4-active {
+        .theme-pearl.cms-home {
+            .page-wrapper {
+                .columns {                        
+                        [data-content-type="row"] {
+                            .pagebuilder-column.texto-envio-gratis,
+                            .pagebuilder-column.texto-coutas-interes,
+                            .pagebuilder-column.texto-descuento {
+                                width: 280px !important;
+                            }
+                            .envio-cuotas-interes-descuento {
+                                align-items: center;
+                                .pagebuilder-column.carro-de-envio,
+                                .pagebuilder-column.tarjeta-coutas,
+                                .pagebuilder-column.descuento-mensuales {
+                                    width: 127px !important;
+                                }
+                                .envio-gra, .cuotas {
+                                    border-right: 1px solid !important;
+                                }
+                            }
+                        }
+                    
+                }
+            }
+        }
+    }
+}
+
+    .row-envios-cuotas-mobile {
+    display: none !important; 
+    }
+    
+    @media (max-width: 599px) {
+    .row-envios-cuotas-mobile {
+    display: block !important;
+    }
+    
+    .envio-cuotas-interes-descuento{
+    display: none !important;
+    }
+    
+    .img-descu {
+    width: 50px;
+    }
+    
+    .column-envios-mobile {
+    border-right: 1px solid #000;
+    }
+    
+    .row-envios-cuotas-mobile .pagebuilder-column-group {
+    flex-wrap: inherit;
+    align-items: center;
+    }
+    
+    .row-envios-cuotas-mobile .pagebuilder-column-group .pagebuilder-column {
+    align-items: center;
+    }
+    .img-descu-cuotas {
+    width: 40px;
+    }
+    
+    .img-descu-promo {
+    width: 35px;
+    }
+    }
+

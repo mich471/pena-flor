@@ -1,0 +1,22 @@
+<?php
+
+use Lyracons\Recommender\Block\Recommender;
+
+/**
+ * @var $block Recommender
+ */
+
+$recommender = $block->getRecommender();
+
+if (!$recommender)  {
+    return;
+}
+?>
+<div class="recomendador">
+    <div class="recomendador-item">
+        <img src="<?= $this->getViewFileUrl("images/Trazado_1750.png") ?>" alt="" />
+    </div>
+    <div class="recomendador-item">
+        <p>Recomendado por: </p>  <?= $block->escapeHtml($recommender) ?>
+    </div>
+</div>

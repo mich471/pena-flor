@@ -1,0 +1,82 @@
+<?php $_helper = $this->helper('Magento\Catalog\Helper\Output'); ?>
+<?php $_product = $block->getProduct(); ?>
+
+<?php
+$prod_name = str_replace(".", "</br>", $_helper->productAttribute($_product, $_product->getName(), 'name'));
+
+$_getVarietal = $_product->getResource()->getAttribute('varietal'); 
+$varietal = $_getVarietal->getFrontend()->getValue($_product);
+
+$_getComposicion = $_product->getResource()->getAttribute('composicion_blend'); 
+$composicion = $_getComposicion->getFrontend()->getValue($_product);
+
+$_getBarrica = $_product->getResource()->getAttribute('barrica'); 
+$barrica = $_getBarrica->getFrontend()->getValue($_product);
+
+$_getTiempoBarrica = $_product->getResource()->getAttribute('tiempo_en_barrica'); 
+$tiempobarrica = $_getTiempoBarrica->getFrontend()->getValue($_product);
+
+$_getPais = $_product->getResource()->getAttribute('pais'); 
+$pais = $_getPais->getFrontend()->getValue($_product);
+
+$_getRegion = $_product->getResource()->getAttribute('region'); 
+$region = $_getRegion->getFrontend()->getValue($_product);
+
+$_getProvincia = $_product->getResource()->getAttribute('provincia'); 
+$provincia = $_getProvincia->getFrontend()->getValue($_product);
+
+$_getValle = $_product->getResource()->getAttribute('valle'); 
+$valle = $_getValle->getFrontend()->getValue($_product);
+
+$_getVinedo = $_product->getResource()->getAttribute('vi_edo'); 
+$vinedo = $_getVinedo->getFrontend()->getValue($_product);
+
+$_getMedallas = $_product->getResource()->getAttribute('medallas'); 
+$medallas = $_getMedallas->getFrontend()->getValue($_product);
+?>
+<div class="product-info-data">
+	<h1 class="title">
+		<?php /* @escapeNotVerified */ echo $prod_name; ?>
+	</h1>
+	<div class="description">
+		<?php /* @escapeNotVerified */ echo $_helper->productAttribute($_product, $_product->getDescription(), 'description') ?>
+	</div>
+	<div class="main-attr">
+		<ul>
+            <?php if ( $varietal != "No") : ?>
+			<li>
+				<span class="attr-icon icon-varietal"></span> <span class="attr-value"><?php echo $varietal; ?></span>
+			</li>
+            <?php endif; ?>
+			<?php if (
+				 $composicion && 
+				!is_null($composicion)
+				&& $composicion != "."
+                 && !empty($composicion)
+                 && $composicion != "No"
+            ) : ?>
+
+			<li>
+				<span class="attr-icon icon-copa"></span> <span class="attr-value"><?php echo $composicion; ?></span>
+			</li>
+
+			<?php endif; ?>
+            <?php if ( $varietal != "No") : ?>
+                <li>
+                    <span class="attr-icon icon-barrica"></span> <span class="attr-value"><?php echo $barrica;?>: <?php echo $tiempobarrica;?></span>
+                </li>
+            <?php endif; ?>
+            <?php if ( $varietal != "No") : ?>
+                <li>
+                    <span class="attr-icon icon-ubicacion"></span> <span class="attr-value"><?php echo $valle; ?>, <?php echo $vinedo;?>, <?php echo $provincia;?>, <?php echo $pais; ?></span>
+                </li>
+            <?php endif; ?>
+		</ul>
+	</div>
+	<?php if($medallas): ?>
+		<div class="awards">
+			<p>Reconocimientos Internacionales:</p>
+			<?php echo $medallas; ?>
+		</div>
+	<?php endif;?>
+</div>

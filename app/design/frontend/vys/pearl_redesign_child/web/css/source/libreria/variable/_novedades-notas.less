@@ -1,0 +1,165 @@
+//
+//  Desktop (style-l.css)
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .theme-pearl.cms-home{
+        .page-wrapper{
+            #maincontent{
+                .columns{
+                    .contenedor-novedades{
+                        .pagebuilder-column-group{
+                            justify-content: center;
+                            .trapiche-el-mejor{
+                                margin: 0 30px;
+                                .trapiche-mundo {
+                                    width: 276px;
+                                }
+                            }
+                            .navarro-correa{
+                                margin: 0 30px;
+                                .navarro-correa{
+                                    width: 254px;
+                                }
+                            }
+                            .recetas-simples{
+                                margin: 0 30px;
+                                .recetas-casa{
+                                    width: 258px;
+                                }
+                            }
+                            .finca-coletto{
+                                margin: 0 30px;
+                                .finca-coletto{
+                                    width: 300px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+//
+//  Mobile (styles-m.css)
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s){
+    .theme-pearl.cms-home{
+        .page-wrapper{
+            .page-main-full-width{
+                .columns{
+                    .contenedor-novedades{
+                        .slick-track{
+                            .trapiche-el-mejor, .navarro-correa, .recetas-simples, .finca-coletto{
+                                margin: 0 15px;
+                            }
+                            .trapiche-el-mejor{
+                                .trapiche-mundo{
+                                    width: 155px;
+                                    h3{
+                                        font-size: 15px;
+                                        font-weight: 600;
+                                    }
+                                }
+                                .calidad-prestigio{
+                                    width: 120px;
+                                    p {
+                                        font-size: 9px;
+                                        color: #b1b1b1;
+                                        width: 158px;
+                                    }
+                                }
+                                .leer-mas-b1{
+                                    .leer1{
+                                        color: #d4a22c;
+                                        font-size: 13px;
+                                        position: relative;
+                                        // top: 8px;                                            
+                                    }
+                                }
+                            }
+                            .pagebuilder-column{
+                                .navarro-correa{
+                                    width: 150px;
+                                    h3{
+                                        font-size: 15px;
+                                        font-weight: 600;
+                                    }
+
+                                }
+                                .encuentro-libre{
+                                    p {
+                                        font-size: 9px;
+                                        color: #b1b1b1;
+                                        width: 158px;
+                                    }
+                                }  
+                                .leer-mas-b2{
+                                    .leer2{
+                                        color: #d4a22c;
+                                        position: relative;
+                                        // top: 52px;
+                                        font-size: 13px;
+                                    }
+                                }                                  
+                            }
+                            .pagebuilder-column{
+                                .recetas-casa{
+                                    h3{
+                                        font-size: 15px;
+                                        font-weight: 600;
+                                    }                                        
+                                }
+                                .comida-jornada{
+                                    p {
+                                        font-size: 9px;
+                                        color: #b1b1b1;
+                                        width: 158px;
+                                    }
+                                }
+                                .leer-mas-b3{
+                                    .leer3{
+                                        color: #d4a22c;
+                                        position: relative;
+                                        // top: 21px;
+                                        font-size: 13px;
+                                    }
+                                }
+                            }
+                            .pagebuilder-column{
+                                .finca-coletto{
+                                    h3{
+                                        font-size: 15px;
+                                        font-weight: 600;
+                                    }
+                                }
+                                .text-trapiche-francia {
+                                    p {
+                                        font-size: 9px;
+                                        color: #b1b1b1;
+                                        width: 158px;
+                                    }
+                                }
+                                .leer-mas-b4{
+                                    .leer4{
+                                        color: #d4a22c;
+                                        position: relative;
+                                        // top: 35px;
+                                        font-size: 13px;
+                                    }
+                                }                 
+                            }
+                        }
+                    }
+                    .novedades-left-rigth{
+                        .pagebuilder-column.linea-left, .pagebuilder-column.linea-rigth {
+                            display: none !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,14 @@
+<div class="companies" data-bind="visible: $parent.currentStep() == 0">
+    <input class="companies-select" type="text" 
+        data-bind="
+            companyAutoComplete: { 
+                selected: $parent.companiesSelect.selected, 
+                options: $parent.companiesSelect.options() 
+            }" 
+    />
+    <!-- <button data-bind="click: $parent.goToNextStep">continuar</button> -->
+</div>
+
+<div class="companies" data-bind="visible: $parent.currentStep() == 1">
+    <p>step 1</p>
+</div>

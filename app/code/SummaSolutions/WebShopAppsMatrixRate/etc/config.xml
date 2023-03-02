@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2018 Lyracons. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+ <default>
+     <carriers>
+         <matrixrate>
+             <shipping_method_labels>
+                 {
+                     "item1":{"shipping_method":"GlamitEnvios_saires_N_D","label":"Saires (24-48hs)"},
+                     "item2":{"shipping_method":"GlamitEnvios_saires_P_D","label":"Saires Prioritario (12-24hs)"},
+                     "item3":{"shipping_method":"GlamitEnvios_treggo_P_D","label":"Treggo Prioritario (12-24hs)"}
+                 }
+             </shipping_method_labels>
+             <condition_from_inclusive>1</condition_from_inclusive>
+         </matrixrate>
+     </carriers>
+ </default>
+</config>

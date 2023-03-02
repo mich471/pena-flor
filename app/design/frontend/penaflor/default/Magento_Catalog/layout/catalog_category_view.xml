@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+<!--        <move element="page.main.title" destination="sidebar.main" before="-"/>-->
+        <move element="catalog.leftnav" destination="sidebar.main" after="page.main.title"/>
+        <referenceBlock name="sale.reorder.sidebar" remove="true"/>
+        <move element="category.view.container" destination="top.container" before="-"/>
+
+        <move element="category.description" destination="columns.top" after="page.main.title"/>
+        <referenceBlock name="category.products.list">
+            <arguments>
+                <argument name="salable_qty_checker" xsi:type="object">SummaSolutions\FrontendCustomizations\ViewModel\SalableQuantityCheck</argument>
+            </arguments>
+        </referenceBlock>
+    </body>
+</page>

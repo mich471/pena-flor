@@ -1,0 +1,41 @@
+{
+    "wishlist": {
+        "column": {
+            "wishlist_name": true,
+            "disable_share": true,
+            "disable_price_alert": true,
+            "disable_public": true
+        },
+        "index": {
+            "MULTIPLE_WISHLIST_CUSTOMER_ID": true,
+            "WISHLIST_CUSTOMER_ID": true
+        },
+        "constraint": {
+            "WISHLIST_CUSTOMER_ID_CUSTOMER_ENTITY_ENTITY_ID": true,
+            "WISHLIST_CUSTOMER_ID": true
+        }
+    },
+    "wishlist_product_alert_price": {
+        "column": {
+            "alert_id": true,
+            "customer_id": true,
+            "product_id": true,
+            "price": true,
+            "website_id": true,
+            "wishlist_id": true
+        },
+        "index": {
+            "WISHLIST_PRODUCT_ALERT_PRICE_CUSTOMER_ID": true,
+            "WISHLIST_PRODUCT_ALERT_PRICE_PRODUCT_ID": true,
+            "WISHLIST_PRODUCT_ALERT_PRICE_WEBSITE_ID": true,
+            "WISHLIST_PRODUCT_ALERT_PRICE_WISHLIST_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "WISHLIST_PRODUCT_ALERT_PRICE_CUSTOMER_ID_CUSTOMER_ENTITY_ENTITY_ID": true,
+            "WISHLIST_PRODUCT_ALERT_PRICE_PRODUCT_ID_CATALOG_PRODUCT_ENTITY_ENTITY_ID": true,
+            "WISHLIST_PRODUCT_ALERT_PRICE_WEBSITE_ID_STORE_WEBSITE_WEBSITE_ID": true,
+            "WISHLIST_PRODUCT_ALERT_PRICE_WISHLIST_ID_WISHLIST_WISHLIST_ID": true
+        }
+    }
+}

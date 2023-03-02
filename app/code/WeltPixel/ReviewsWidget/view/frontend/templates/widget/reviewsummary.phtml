@@ -1,0 +1,10 @@
+<?php
+/** @var \WeltPixel\ReviewsWidget\Block\Widget\ReviewSummary $block */
+$productId = $block->getProductId();
+
+/** @var WeltPixel\ReviewsWidget\Helper\Widget $helper */
+$helper = $this->helper('WeltPixel\ReviewsWidget\Helper\Widget');
+$product = $helper->getProductInfo($productId);
+?>
+
+<?= $block->getReviewsSummaryHtml($product, \Magento\Catalog\Block\Product\ReviewRendererInterface::FULL_VIEW, true) ?>

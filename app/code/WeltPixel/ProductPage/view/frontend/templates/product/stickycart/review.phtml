@@ -1,0 +1,27 @@
+<?php
+// @codingStandardsIgnoreFile
+?>
+<?php /** @var $block \Magento\Catalog\Block\Product\AbstractProduct */ ?>
+<?php
+$product = $block->getProduct();
+$rating = (int)$product->getRatingSummary();
+$reviewCount = (int)$product->getReviewsCount();
+$reviewsUrl = $product->getUrlModel()->getUrl($product, ['_ignore_category' => true]) . '#reviews';
+?>
+<?php if ($rating || $reviewCount) : ?>
+<div class="product-reviews-summary">
+    <div class="rating-summary">
+        <div class="rating-result" title="<?= $block->escapeHtmlAttr($rating) ?>%">
+            <span style="width:<?= $block->escapeHtmlAttr($rating) ?>%"><span><?= $block->escapeHtml($rating) ?>%</span></span>
+        </div>
+    </div>
+    <div class="reviews-actions">
+        <a class="action view"
+           href="<?= $block->escapeUrl($reviewsUrl) ?>"><?= $block->escapeHtml($reviewCount) ?>
+            &nbsp;<span><?= ($reviewCount == 1) ?
+                    $block->escapeHtml(__('Review')) : $block->escapeHtml(__('Reviews')) ?>
+            </span>
+        </a>
+    </div>
+</div>
+<?php endif; ?>

@@ -1,0 +1,115 @@
+<?php
+// @codingStandardsIgnoreFile
+
+/* @var \WeltPixel\AdvancedWishlist\Block\WishlistMoveTo $block */
+
+$isMultiWishslitEnabled = $block->isMultiWishlistEnabled();
+$wishlistId = $block->getCurrentWishlistId();
+
+$isShareWishlistEnabled = $block->isShareWishlistEnabled();
+$isPriceAlertEnabled = $block->isPriceAlertEnabled();
+$isPublicWishlistEnabled = $block->isPublicWishlistEnabled();
+?>
+<?php if ($isMultiWishslitEnabled && $wishlistId) : ?>
+    <div class="multiple-wishlists-moveto-selector-container">
+        <div class="modal-title" data-role="title">
+            <?= __('Select Wishlist') ?>
+        </div>
+        <select class="wp-wishlist-moveto-selector" name="wp-multi-wishlist-moveto-id">
+        </select>
+
+        <div class="moveto-add-new-wishlist-container">
+            <form class="form form-wishlist-moveto-add"
+                  action="<?= $block->getUrl('wp_collection/multiwishlist/update', ['_secure' =>  true]) ?>"
+                  method="post"
+                  id="form-wishlist-moveto-add"
+                  data-mage-init='{"validation":{}}'>
+                <?php echo $block->getBlockHtml('formkey'); ?>
+                <input type="hidden" name="wishlist-moveto-add-id" id="wishlist-moveto-add-id" value="" />
+                <input type="hidden" name="wishlist-moveto-add-new" id="wishlist-moveto-add-new" value="1" />
+                <fieldset class="fieldset wishlist-edit" data-hasrequired="* Required Fields">
+                    <div class="field wishlist-moveto-new-name required">
+                        <label class="label" for="wishlist-name"><span><?= __('Wishlist Name'); ?></span></label>
+                        <div class="control">
+                            <input name="wishlist-moveto-new-name" value="" placeholder="<?= __('Wishlist Name'); ?>" autocomplete="off" id="wishlist-moveto-new-name" type="text" class="input-text" title="<?= __('Wishlist Name'); ?>" data-validate="{required:true}">
+                        </div>
+                    </div>
+                    <?php if ($isShareWishlistEnabled) : ?>
+                        <div class="field wishlist-moveto-disable-share required">
+                            <label class="label" for="wishlist-moveto-new-disable-share"><span><?= __('Disable Share'); ?></span></label>
+                            <div class="control">
+                                <select name="wishlist-moveto-new-disable-share" id="wishlist-moveto-new-disable-share">
+                                    <option value="0"><?= __('No') ?></option>
+                                    <option value="1"><?= __('Yes') ?></option>
+                                </select>
+                            </div>
+                        </div>
+                    <?php else: ?>
+                        <input type="hidden" name="wishlist-moveto-new-disable-share" id="wishlist-moveto-new-disable-share" value="" >
+                    <?php endif; ?>
+
+                    <?php if ($isPublicWishlistEnabled) : ?>
+                        <div class="field wishlist-moveto-new-disable-public required">
+                            <label class="label" for="wishlist-moveto-new-disable-public"><span><?= __('This Collection is'); ?></span></label>
+                            <div class="control">
+                                <select name="wishlist-moveto-new-disable-public" id="wishlist-moveto-new-disable-public">
+                                    <option value="0"><?= __('Public') ?></option>
+                                    <option value="1"><?= __('Private') ?></option>
+                                </select>
+                            </div>
+                        </div>
+                    <?php else: ?>
+                        <input type="hidden" name="wishlist-moveto-new-disable-public" id="wishlist-moveto-new-disable-public" value="" >
+                    <?php endif; ?>
+
+                    <?php if ($isPriceAlertEnabled) : ?>
+                        <div class="field wishlist-moveto-disable-pricealert required">
+                            <label class="label" for="wishlist-moveto-new-disable-pricealert"><span><?= __('Disable Price Alert'); ?></span></label>
+                            <div class="control">
+                                <select name="wishlist-moveto-new-disable-pricealert" id="wishlist-moveto-new-disable-pricealert">
+                                    <option value="0"><?= __('No') ?></option>
+                                    <option value="1"><?= __('Yes') ?></option>
+                                </select>
+                            </div>
+                        </div>
+                    <?php else : ?>
+                        <input type="hidden" name="wishlist-moveto-new-disable-pricealert" id="wishlist-moveto-new-disable-pricealert" value="" >
+                    <?php endif; ?>
+                    <div class="wp-errors"></div>
+                    <div class="actions-toolbar">
+                        <div class="primary">
+                            <button type="submit" class="action savewishlist primary" name="addmovetonewwishlist" id="addmovetonewwishlist">
+                                <span><?php echo __('Save and move'); ?></span>
+                            </button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    <script>
+        requirejs(['jquery',  'WeltPixel_AdvancedWishlist/js/weltpixel_wishlist_moveto'],
+            function   ($, wishlistMoveTo) {
+                $(document).ready(function() {
+                    wishlistMoveTo.initMultiWishlistMoveTo({
+                        getWishlistsUrl: "<?= $block->getUrl('wp_collection/multiwishlist/get', ['_secure' =>  true]) ?>",
+                        currentWishlist: <?= $block->escapeJs($block->getCurrentWishlistId()); ?>
+                    });
+
+                    $('.form-wishlist-moveto-add').submit(function(e) {
+                        var form = $(this);
+                        wishlistMoveTo.submitWishlistCreation(form);
+                        e.preventDefault();
+                    });
+
+                    $('#wishlist-moveto-new-disable-share').bind('change', function() {
+                        if ($(this).val() == 1) {
+                            $('.wishlist-moveto-new-disable-public').hide();
+                        } else {
+                            $('.wishlist-moveto-new-disable-public').show();
+                        }
+                    });
+                });
+            });
+    </script>
+<?php endif; ?>

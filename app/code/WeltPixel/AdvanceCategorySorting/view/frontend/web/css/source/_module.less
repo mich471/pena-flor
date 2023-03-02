@@ -1,0 +1,26 @@
+& when (@media-common = true) {
+    .wp-acs {
+        .toolbar-sorter {
+            .sorter-action {
+                display: none !important;
+            }
+        }
+    }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .sort-by-desktop {
+        display: inline-block;
+    }
+    .sort-by-desktop-disabled {
+        display: none;
+    }
+}
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .sort-by-mobile {
+        display: inline-block;
+    }
+    .sort-by-mobile-disabled {
+        display: none;
+    }
+}

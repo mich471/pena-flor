@@ -1,0 +1,57 @@
+<?php
+
+// @codingStandardsIgnoreFile
+
+/** @var \WeltPixel\AdvancedWishlist\Block\Wishlist\ProductList $block */
+$wishlistTitle = $block->getWishlistTitle();
+$wishlistModel = $block->getWishlistModel();
+
+
+$customerName = $block->getCustomerName();
+$wishlistItems = $block->getWishlistItems();
+$columns = $block->getColumns();
+?>
+<div class="page-title-wrapper wishlist-share-title">
+    <h1 class="page-title">
+        <?= /* @escapeNotVerified */ $wishlistTitle ?>
+    </h1>
+    <?php if ($customerName) : ?>
+    <p><?= __('Collection by') ?> <b><?= $customerName ?></b></p>
+    <?php endif; ?>
+</div>
+
+
+<?php if ($wishlistModel) : ?>
+    <?php if  ($wishlistModel->getDisableShare()) : ?>
+        <div class="wishlist-share-items-block wishlist-not-shareble">
+            <p>
+                <?= __('The wishlist is not shareable.'); ?>
+            </p>
+        </div>
+    <?php elseif ($wishlistItems->count()) : ?>
+        <div class="block widget block-products-list grid wishlist-share-items-block">
+            <div class="block-content">
+                <div class="products-grid grid">
+                    <ol class="product-items widget-product-grid">
+                        <?php $iterator = 1; ?>
+                        <?php foreach ($wishlistItems as $item): ?>
+                            <?= /* @noEscape */ ($iterator++ == 1) ? '<li class="product-item">' : '</li><li class="product-item">' ?>
+                                <div class="product-item-info">
+                                    <?php foreach ($columns as $column): ?>
+                                        <?= $column->setItem($item)->toHtml();?>
+                                    <?php endforeach; ?>
+                                </div>
+                            <?= ($iterator == count($wishlistItems) + 1) ? '</li>' : '' ?>
+                        <?php endforeach; ?>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    <?php else : ?>
+    <div class="wishlist-share-items-block">
+        <p>
+            <?= __('There are no items to share.'); ?>
+        </p>
+    </div>
+    <?php endif; ?>
+<?php endif; ?>

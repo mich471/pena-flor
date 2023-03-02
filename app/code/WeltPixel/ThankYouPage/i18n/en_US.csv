@@ -1,0 +1,68 @@
+"Exception thrown by %1 :: The element with the ""%2"" ID wasn't found.","Exception thrown by %1 :: The element with the ""%2"" ID wasn't found."
+"This email address is already assigned to another user.","This email address is already assigned to another user."
+"This email address is already subscribed.","This email address is already subscribed."
+"The confirmation request has been sent.","The confirmation request has been sent."
+"Thank you for your subscription.","Thank you for your subscription."
+"There was a problem with the subscription: %1","There was a problem with the subscription: %1"
+"Something went wrong with the subscription.","Something went wrong with the subscription."
+Downloads,Downloads
+SKU,SKU
+Price,Price
+Qty,Qty
+Subtotal,Subtotal
+"Print Order","Print Order"
+"Customer Information","Customer Information"
+"Shipping Address","Shipping Address"
+"No shipping address","No shipping address"
+"Billing Address","Billing Address"
+"Shipping Method","Shipping Method"
+"No shipping method","No shipping method"
+"Payment Method","Payment Method"
+Image,Image
+"Product Name","Product Name"
+"Subtotal Excl. Tax","Subtotal Excl. Tax"
+"Subtotal Incl. Tax","Subtotal Incl. Tax"
+"Discount (%1)","Discount (%1)"
+"Shipping Excl. Tax (%1)","Shipping Excl. Tax (%1)"
+"Shipping (%1)","Shipping (%1)"
+"Shipping Incl. Tax (%1)","Shipping Incl. Tax (%1)"
+Tax,Tax
+"Grand Total","Grand Total"
+"Grand Total Incl. Tax","Grand Total Incl. Tax"
+"Grand Total Excl. Tax","Grand Total Excl. Tax"
+"Successfully ordered","Successfully ordered"
+"Ship to:","Ship to:"
+"No shipping required.","No shipping required."
+"Continue Shopping","Continue Shopping"
+"Sign Up for Our Newsletter:","Sign Up for Our Newsletter:"
+"Enter your email address","Enter your email address"
+Subscribe,Subscribe
+"Success Page","Success Page"
+"General Success Page Settings","General Success Page Settings"
+"Enable module","Enable module"
+"Success Message","Success Message"
+Enable,Enable
+Title,Title
+Subtitle,Subtitle
+Description,Description
+"Show 'Continue Shopping'","Show 'Continue Shopping'"
+"Show 'Print Order' button","Show 'Print Order' button"
+"Button is visible only to the logged-in customers. For security reasons, the Print Order button is not available to guest customers.","Button is visible only to the logged-in customers. For security reasons, the Print Order button is not available to guest customers."
+"Sort Order","Sort Order"
+"Google Map","Google Map"
+"Show Shipping Address on Google Map","Show Shipping Address on Google Map"
+"Google API Key","Google API Key"
+"Allow Map Dragging","Allow Map Dragging"
+Zoom,Zoom
+Width,Width
+Height,Height
+"Order Details","Order Details"
+"Show Customer Info","Show Customer Info"
+"Show Product(s) Grid","Show Product(s) Grid"
+"Create Account","Create Account"
+"Email Label","Email Label"
+"Message displayed after account creation","Message displayed after account creation"
+"Newsletter Subscribe","Newsletter Subscribe"
+"When enabled, if user not subscribed to newsletter, show option to subscribe to newsletter.","When enabled, if user not subscribed to newsletter, show option to subscribe to newsletter."
+"Custom CMS Block","Custom CMS Block"
+"Select Block","Select Block"

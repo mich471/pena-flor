@@ -1,0 +1,12 @@
+<?php
+
+// @codingStandardsIgnoreFile
+
+/** @var \WeltPixel\UserProfile\Block\Widget\Bio $block */
+?>
+<div class="field field-bio<?php if ($block->isRequired()) echo ' required'; ?>">
+    <label class="label" for="bio"><span><?= $block->escapeHtml(__('Biography')) ?></span></label>
+    <div class="control">
+        <textarea  id="bio" name="bio" rows="10" title="<?= $block->escapeHtmlAttr(__('Biography')) ?>" class="input-text <?php if ($block->isRequired()) echo ' required-entry' ?> " <?php if ($block->isRequired()) echo ' data-validate="{required:true}"' ?> ><?= $block->escapeHtmlAttr($block->getBio()) ?></textarea>
+    </div>
+</div>

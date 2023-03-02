@@ -1,0 +1,85 @@
+<?php
+$currentProduct = $block->getProduct();
+$_imagehelper = $this->helper('Magento\Catalog\Helper\Image');
+$_helper = $this->helper('WeltPixel\DesignElements\Helper\Data');
+$productImg = $_imagehelper->init($currentProduct, 'product_thumbnail_image')->getUrl();
+$productImgAlt = $_helper->getAltImage($currentProduct, 'thumbnail');
+$pricingHelper = $this->helper('Magento\Framework\Pricing\Helper\Data');
+$options = $_helper->getBttOptionsJson();
+$showProductImage = $_helper->isBttProductPageImageEnabled();
+$showProductReviews = $_helper->isBttProductPageReviewsEnabled();
+$showProductPrice = $_helper->isBttProductPagePriceEnabled();
+$rating = $currentProduct->getRatingSummary();
+
+$bttBgColor = trim($_helper->getBttProductPageBackgroundColor());
+$bttBoxShadow = trim($_helper->getBttProductPageButtonBoxShadow());
+$bttBorderWidth = trim($_helper->getBttProductPageButtonBorderWidth());
+$bttBorderColor = trim($_helper->getBttProductPageButtonBorderColor());
+
+$bttDisplayOption = $_helper->getBttMobileProductPageDisplayOption();
+$displayOptionsCssClassPostfix = '';
+switch ($bttDisplayOption) {
+    case 'default' :
+        $displayOptionsCssClassPostfix = '-default';
+        break;
+        case 'hide' :
+            $displayOptionsCssClassPostfix = '-desktop-only';
+        break;
+}
+?>
+
+<button type="button" title="<?php /* @escapeNotVerified */ echo __('Back To Top') ?>" class="btt-button btt-button-image<?= $displayOptionsCssClassPostfix ?>">
+    <p class="btt-label<?= $displayOptionsCssClassPostfix ?>"><?= $block->escapeHtml($_helper->getBttProductPageLabel()) ?></p>
+    <?php if ($showProductImage) : ?>
+        <img class="btt-img<?= $displayOptionsCssClassPostfix ?>" src="<?php echo $productImg; ?>" alt="<?= $productImgAlt ?>"/>
+    <?php endif; ?>
+    <?php if ($showProductReviews && $rating) :?>
+        <div class="btt-review product-reviews-summary<?= $displayOptionsCssClassPostfix ?>">
+            <div class="rating-summary">
+                <div class="rating-result" title="<?= $block->escapeHtmlAttr($rating) ?>%">
+                    <span style="width:<?= $block->escapeHtmlAttr($rating) ?>%"><span><?= $block->escapeHtml($rating) ?>%</span></span>
+                </div>
+            </div>
+        </div>
+    <?php endif;?>
+    <?php if ($showProductPrice) : ?>
+        <?php
+        if ($currentProduct->getTypeId() == \Magento\Bundle\Model\Product\Type::TYPE_CODE) :
+            $bundleObj=$currentProduct->getPriceInfo()->getPrice('final_price');
+            $minRaw = $bundleObj->getMinimalPrice()->getValue();
+            $maxRaw = $bundleObj->getMaximalPrice()->getValue();
+        ?>
+        <p class="btt-price<?= $displayOptionsCssClassPostfix ?>"><?= $pricingHelper->currency($minRaw, true, false) . ' - ' . $pricingHelper->currency($maxRaw, true, false) ?></p>
+        <?php else: ?>
+        <p class="btt-price<?= $displayOptionsCssClassPostfix ?>"><?= $pricingHelper->currency($currentProduct->getFinalPrice(), true, false)?></p>
+        <?php endif; ?>
+    <?php endif; ?>
+</button>
+
+<style>
+    .theme-pearl .page-wrapper .btt-button.btt-button-image,
+    .theme-pearl .page-wrapper .btt-button.btt-button-image-desktop-only {
+        <?php if ($bttBgColor): ?>
+            background-color: <?= $bttBgColor ?>;
+        <?php endif; ?>
+        <?php if ($bttBoxShadow): ?>
+            box-shadow: <?= $bttBoxShadow ?>;
+        <?php endif; ?>
+        <?php if ($bttBorderWidth): ?>
+            border-width: <?= $bttBorderWidth ?>;
+        <?php endif; ?>
+        <?php if ($bttBorderColor): ?>
+            border-color: <?= $bttBorderColor ?>;
+        <?php endif; ?>
+    }
+</style>
+
+<script>
+    require(['jquery','btt_button'],
+        function ($, SEMICOLONBTTBUTTON) {
+            var options = '<?php echo $options ?>';
+            $(document).ready(
+                SEMICOLONBTTBUTTON.widget.init(options)
+            );
+        });
+</script>

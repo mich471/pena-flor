@@ -1,0 +1,311 @@
+ // Comun (para estilos usados tanto en móvil como en escritorio)
+ & when (@media-common = true) {
+    .header {
+        .quickcart-wrapper {
+            .block-quickcart {
+                .block-content-quickcart {
+                    .quickcart-items-wrapper {
+                        .quickcart-items {
+                            .quickcart-product-item {
+                                .product-item-details {
+                                    .action {
+                                        &.delete {
+                                            top: auto;
+                                            bottom: -25px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .cart.table-wrapper .actions-toolbar > .action-edit,
+    .cart.table-wrapper .actions-toolbar > .action-delete {
+        position: unset !important;
+    }
+    .iconos-carrito {
+        margin-left: auto !important;
+        display: flex;
+        margin-left: 55px;
+        margin-top: 10px;
+    }
+    .theme-pearl {
+        &.store-view-penaflor {
+            h3 {
+                text-align: center;
+                font-weight: bold;
+            }
+        }
+    }
+    .cart {
+        &.table-wrapper {
+            .cart {
+                thead {
+                    tr {
+                        th {
+                            &.col {
+                                color: #b1b1b1;
+                                font-weight: normal;
+                            }
+                        }
+                    }
+                }
+            }
+            .col {
+                &.qty {
+                    .input-text {
+                        background-color: transparent !important;
+                        border: none;
+                        border-top: 1px solid #707070;
+                        border-bottom: 1px solid #707070;
+                        width: 70px;
+                        height: 30px;
+                        margin-left: -4px;
+                        margin-right: -4px;
+                        margin-top: 0px !important;
+                    }
+                }
+                &.price {
+                    display: none;
+                }
+            }
+        }
+    }
+    .theme-pearl.store-view-penaflor button.sub-cart,
+    .theme-pearl.store-view-penaflor button.plus-cart {
+        background-color: transparent !important;
+        border: #707070 1px solid !important;
+        color: #000000;
+        font-weight: bold;
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        padding: 0px;
+        margin-top: -4px;
+    }
+    .cart-summary {
+        .checkout-methods-items {
+            .action {
+                &.primary {
+                    &.checkout {
+                        border: #d4a22c 1px solid !important;
+                        background-color: #d4a22c !important;
+                        span {
+                            font-weight: 900;
+                            letter-spacing: 2.52px;
+                            color: #ffffff;
+                            text-transform: uppercase;
+                            opacity: 1;
+                        }
+                        &:hover {
+                            border: #000000 1px solid !important;
+                            background-color: #000000 !important;
+                        }
+                    }
+                }
+            }
+        }
+        .action {
+            &.continue {
+                span {
+                    display: none;
+                }
+            }
+        }
+    }
+    .cart.table-wrapper .col.price,
+    .order-items.table-wrapper .col.price,
+    .cart.table-wrapper .col.qty,
+    .order-items.table-wrapper .col.qty,
+    .cart.table-wrapper .col.subtotal,
+    .order-items.table-wrapper .col.subtotal,
+    .cart.table-wrapper .col.msrp,
+    .order-items.table-wrapper .col.msrp {
+        text-align: left;
+    }
+    .control {
+        &.qty {
+            input {
+                &.input-text {
+                    &.qty {
+                        color: #000000 !important;
+                    }
+                }
+            }
+        }
+    }
+    .title-checkout-cart {
+        text-align: center;
+        margin-bottom: 0px;
+    }
+    .fieldset {
+        &.coupon {
+            display: flex;
+            input#coupon_code {
+                background-color: #ffffff;
+            }
+        }
+    }
+    #discount-coupon-form {
+        .actions-toolbar {
+            .action {
+                &.primary {
+                    margin-left: 10px;
+                    margin-right: 0px !important;
+                    border: #d4a22c 1px solid !important;
+                    background-color: #d4a22c !important;
+                    text-transform: uppercase;
+                    span {
+                        font-size: 16px !important;
+                    }
+                    &:hover {
+                        border: #000000 1px solid !important;
+                        background-color: #000000 !important;
+                    }
+                }
+            }
+        }
+    }
+    #shipping-method-buttons-container {
+        .action {
+            &.continue {
+                span {
+                    display: block !important;
+                }
+            }
+        }
+    }
+    td {
+        &.col {
+            &.col-error {
+                width: 100% !important;
+            }
+        }
+    }
+    .amcheckout-step-container {
+        input[type="text"] {
+            color: #1d1d1d !important;
+        }
+    }
+    
+ }
+
+//
+//  Desktop (style-l.css)
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .checkout-cart-index.theme-pearl.store-view-penaflor {
+        .item-info {
+            span.price {
+                color: @color-black;
+                font-weight: 800;
+            }
+            strong.product-item-name a {
+                color: @color-black;
+                font-weight: 800;
+                font-size: 25px;
+            }
+            p.product-item-bodega {
+                color: @color-black;
+                font-size: 20px;
+            }
+            p.product-item-varietal {
+                color: @color-grey;
+                font-size: 20px;
+            }
+            button.action.update {
+                border: #d4a22c 1px solid;
+                background-color: #D4A22C;
+            }
+            .control.qty {
+                display: flex;
+                align-items: flex-end;
+            }
+            .cart-container .form-cart .actions.main .action.update {
+                margin-left: 15px;
+                color: white;
+                background: #d4a22c;
+            }
+        }
+    }
+    .page-header{
+        .quickcart-bottom-container{
+            .envios-minicart{
+                a:hover{
+                    color: @color-black;
+                    font-weight: 700;
+                }
+            }
+        }
+    }
+}
+
+
+//
+//  Mobile (styles-m.css)
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+
+
+    a.action.viewcart {
+        color: @color-black;
+    }
+
+    .block-content.block-content-quickcart .quickcart-top {
+        background: @color-white;
+        display: flex;
+        margin: 0 20px;
+        font-weight: 900;
+        
+    }
+
+    .block-content-quickcart .quickcart-top button.close span {
+        color: @color-black !important;
+    }
+
+    span.text {
+        color: @color-black;
+    }
+
+    .page-header{
+        .quickcart-bottom-container{
+            .envios-minicart{
+                color: @color-black;
+                display: flex;
+                flex-direction: column;
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+
+                a{
+                    text-decoration: auto;
+                }
+            }
+        }
+    }       
+}
+
+
+@media (max-width: 599px) {
+    .columns {
+        display: flex !important;
+        padding-top: 0px !important;
+    }
+    .cart.table-wrapper .col.price {
+        display: block;
+    }
+    .cart.item .product-item-details {
+        text-align: center;
+    }
+    .cart .table.items .col.qty {
+        text-align: left;
+    }
+    .cart.table-wrapper .col.qty .input-text {
+        margin-top: -7px !important;
+    }
+}

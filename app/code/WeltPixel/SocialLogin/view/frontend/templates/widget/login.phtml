@@ -1,0 +1,114 @@
+<?php $buttons = $this->getButtons()?>
+<?php $notLoginPage = $this->getCurrentPageRedirectUrl()?>
+<?php $buttonsCount = count($buttons)?>
+<?php $style = $buttonsCount > $this->getLimit() ? 'display: none' : 'display: block';
+$actionStyle = $buttonsCount > $this->getLimit() ? 'display: block' : 'display: none';
+?>
+
+
+
+<?php if(!$this->isCustomerLoggedIn()):?>
+    <div class="block block-customer-login sl-login-section" id="popup-modal">
+        <div class="block-heading">
+            <strong id="block-customer-login-heading" role="heading" aria-level="1"><?= $block->escapeHtml(__('Sign in to your account')) ?></strong>
+        </div>
+        <div class="block-content" aria-labelledby="block-customer-login-heading">
+            <form class="form form-login"
+                  action="<?= $block->escapeUrl($block->getPostActionUrl()) ?>"
+                  method="post"
+                  data-mage-init='{"validation":{}}'>
+                <?= $block->getBlockHtml('formkey') ?>
+                <fieldset class="fieldset login" data-hasrequired="<?= $block->escapeHtml(__('* Required Fields')) ?>">
+                    <div class="field email required">
+                        <div class="control">
+                            <input
+                                    class="arv-centered-content-input"
+                                    placeholder="<?= $block->escapeHtml(__('Enter your email address')) ?>"
+                                    name="login[username]"
+                                    value="<?= $block->escapeHtmlAttr($block->getUsername()) ?>" <?php if ($block->isAutocompleteDisabled()): ?>
+                                    autocomplete="off"<?php endif; ?>
+                                    type="email" class="input-text"
+                                    title="<?= $block->escapeHtmlAttr(__('Email')) ?>"
+                                    data-mage-init='{"mage/trim-input":{}}'
+                                    data-validate="{required:true, 'validate-email':true}">
+                        </div>
+                    </div>
+                    <div class="field password required" style="display: none">
+                        <div class="control">
+                            <input
+                                    placeholder="<?= $block->escapeHtml(__('Password')) ?>"
+                                    name="login[password]"
+                                    type="password" <?php if ($block->isAutocompleteDisabled()): ?>
+                                    autocomplete="off"<?php endif; ?>
+                                    class="input-text arv-centered-content-input"
+                                    title="<?= $block->escapeHtmlAttr(__('Password')) ?>"
+                                    data-validate="{required:true}">
+                        </div>
+                    </div>
+                    <?= $block->getChildHtml('form_additional_info') ?>
+                    <div class="actions-toolbar sl-actions-toolbar" >
+                        <div class="secondary proceed">
+                            <button class="action primary login remind">
+                                <span><?= $block->escapeHtml(__('Proceed')) ?></span>
+                            </button>
+                        </div>
+                        <div class="primary arv-login-submit" style="display:none">
+                            <button type="submit" class="action login primary" name="send" ><span><?= $block->escapeHtml(__('Log In')) ?></span></button></div>
+                        <div class="secondary arv-login-secondary" id="arv_change_email" style="display:none"><a class="action remind" href="#"><span><?= $block->escapeHtml(__('Use a different email!')) ?></span></a></div>
+                        <div class="secondary arv-login-secondary" style="display:none"><a class="action remind" href="<?= $block->escapeUrl($block->getForgotPasswordUrl()) ?>"><span><?= $block->escapeHtml(__('Forgot Your Password?')) ?></span></a></div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+<?php endif;?>
+
+<?php if(!empty($buttons) && !$this->isCustomerLoggedIn()):?>
+
+    <div class="sociallogin-wrapper block-customer-login login-container">
+        <div class="block sociallogin-block">
+            <div class="sl-buttons-wrapper" style="<?=$style?>">
+                <div class="block-heading">
+                    <strong role="heading" aria-level="2"><?= $block->escapeHtml(__('Log in with your social accounts'))?></strong>
+                </div>
+                <div class="sl-login-back" style="<?=$actionStyle?>"><?= $block->escapeHtml(__('Back'))?></div>
+                <div class="sociallogin-padding">
+                    <?php foreach ($buttons as $type => $data):?>
+                        <div class="sociallogin-box">
+                            <a class="sociallogin-button button-<?=$type?>"
+                               rel="nofollow"
+                               href="javascript:void(0);"
+                               data-href="<?=$data['endpoint']?>"
+                            >
+                                <span class="sociallogin-icon sl-<?=$type?>"></span>
+
+                            </a>
+                        </div>
+                    <?php endforeach;?>
+                </div>
+            </div>
+
+            <div class="sl-show-action" style="<?=$actionStyle?>">
+                <div class="block-heading">
+                    <strong role="heading" aria-level="2"><?= $block->escapeHtml(__('or'))?></strong>
+                </div>
+                <button class="action primary login remind show-sl-buttons" id="show-sl-buttons">
+                    <span><?= $block->escapeHtml(__('Login with social account')) ?></span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <script>
+        if (window.socialloginButtons) {
+            window.emailFormUrl = "<?=$this->getEmailFormUrl()?>";
+            window.twitterOauthUrl = "<?=$this->getTwitterOauthUrl()?>";
+            require(['sociallogin'], function(){
+                sl.slWidgetInit('<?=$buttonsCount?>');
+                sl.socialLoginClick();
+                sl.slWidgetInit('<?=$buttonsCount?>');
+                sl.sendEmailClick();
+                sl.emailPopUp();
+            });
+        }
+    </script>
+<?php endif;?>

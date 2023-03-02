@@ -1,0 +1,30 @@
+<script>
+    require(
+        [
+            'jquery',
+            'Magento_Ui/js/modal/modal'
+        ],
+        function(
+            $,
+            modal
+        ) {
+            var options = {
+                type: 'popup',
+                responsive: true,
+                innerScroll: true,
+                trigger: '.popup-open',
+                title: 'Cyber Monday 2021',
+                buttons: [{
+                    text: $.mage.__('Close'),
+                    class: '',
+                    click: function () {
+                        this.closeModal();
+                    }
+                }]
+            };
+ 
+            var popup = modal(options, $('#popup-modal'));
+ 
+        }
+    );
+</script>

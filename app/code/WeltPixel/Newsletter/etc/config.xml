@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <weltpixel_newsletter>
+            <general>
+                <enable>0</enable>
+                <version>1</version>
+                <overlay_color>#000</overlay_color>
+                <overlay_opacity>0.8</overlay_opacity>
+                <display_mode>1</display_mode>
+                <display_mobile>1</display_mobile>
+                <mobile_version>1</mobile_version>
+                <display_after_pages>1</display_after_pages>
+                <display_after_seconds>1</display_after_seconds>
+                <display_block>weltpixel_newsletter</display_block>
+                <popup_cookie_lifetime>4</popup_cookie_lifetime>
+                <disable_popup>1</disable_popup>
+                <terms_conditions_consent>0</terms_conditions_consent>
+                <terms_conditions_text><![CDATA[<a href="https://pearl.weltpixel.com/privacy-policy-cookie-restriction-mode" target="_blank">I agree to the Privacy Policy. </a>]]></terms_conditions_text>
+                <terms_conditions_checkbox>0</terms_conditions_checkbox>
+                <signup_steps>1</signup_steps>
+                <signup_step_1_proceed_button_label>I WANT IT</signup_step_1_proceed_button_label>
+                <signup_step_1_close_button>1</signup_step_1_close_button>
+                <signup_step_1_close_button_label>NO THANKS</signup_step_1_close_button_label>
+                <newsletter_submit_button_label>SIGN UP</newsletter_submit_button_label>
+                <newsletter_close_button>0</newsletter_close_button>
+                <newsletter_close_button_label>NO THANKS</newsletter_close_button_label>
+                <enable_trigger_button>1</enable_trigger_button>
+                <trigger_button_title>WANT A DISCOUNT?</trigger_button_title>
+                <trigger_button_color>#FFFFFF</trigger_button_color>
+                <trigger_button_backgroundcolor>#000000</trigger_button_backgroundcolor>
+                <popup_enable_gtm_tracking>0</popup_enable_gtm_tracking>
+            </general>
+            <exitintent>
+                <enable_exitintent>0</enable_exitintent>
+                <exitintent_disable_popup>1</exitintent_disable_popup>
+                <exitintent_display_user_subscribed>0</exitintent_display_user_subscribed>
+                <exitintent_display_closed_popup>0</exitintent_display_closed_popup>
+                <exitintent_version>1</exitintent_version>
+                <exitintent_overlay_color>#000</exitintent_overlay_color>
+                <exitintent_overlay_opacity>0.8</exitintent_overlay_opacity>
+                <exitintent_terms_conditions_consent>0</exitintent_terms_conditions_consent>
+                <exitintent_terms_conditions_text><![CDATA[<a href="https://pearl.weltpixel.com/privacy-policy-cookie-restriction-mode" target="_blank">I agree to the Privacy Policy. </a>]]></exitintent_terms_conditions_text>
+                <exitintent_terms_conditions_checkbox>0</exitintent_terms_conditions_checkbox>
+                <exitintent_signup_steps>1</exitintent_signup_steps>
+                <exitintent_signup_step_1_proceed_button_label>YES! I LOVE DISCOUNTS</exitintent_signup_step_1_proceed_button_label>
+                <exitintent_signup_step_1_close_button>1</exitintent_signup_step_1_close_button>
+                <exitintent_signup_step_1_close_button_label>NO, I PREFER TO PAY FULL PRICE</exitintent_signup_step_1_close_button_label>
+                <exitintent_newsletter_submit_button_label>SIGN UP</exitintent_newsletter_submit_button_label>
+                <exitintent_newsletter_close_button>0</exitintent_newsletter_close_button>
+                <exitintent_newsletter_close_button_label>NO THANKS</exitintent_newsletter_close_button_label>
+                <exitintent_enable_gtm_tracking>0</exitintent_enable_gtm_tracking>
+            </exitintent>
+            <sociallogin>
+                <sociallogin_integration>3</sociallogin_integration>
+                <sociallogin_integration_applies_to>3</sociallogin_integration_applies_to>
+            </sociallogin>
+        </weltpixel_newsletter>
+    </default>
+</config>

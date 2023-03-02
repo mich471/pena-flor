@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Indexer/etc/indexer.xsd">
+    <indexer id="weltpixel_smartproducttabs_rule" view_id="weltpixel_smartproducttabs_rule" class="WeltPixel\SmartProductTabs\Model\Indexer\Rule\RuleProductIndexer">
+        <title translate="true">WeltPixel Smart Product Tabs Rule Product</title>
+        <description translate="true">Indexed smart product tabs rule/product association</description>
+    </indexer>
+    <indexer id="weltpixel_smartproducttabs_product" view_id="weltpixel_smartproducttabs_product" class="WeltPixel\SmartProductTabs\Model\Indexer\Product\ProductRuleIndexer">
+        <title translate="true">WeltPixel Smart Product Tabs Product Rule</title>
+        <description translate="true">Indexed smart product tabs product/rule association</description>
+    </indexer>
+</config>

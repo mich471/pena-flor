@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<head>
+		<!-- Google Fonts -->
+	    <link src="https://fonts.googleapis.com/css?family=Poppins:200,200italic,300,300italic,400,400italic,500,500italic,600italic,600italic,700,700italic,800,800italic,900,900italic" src_type="url" rel="stylesheet" type="text/css" />
+	    <css src="Magento_Theme::css/mascota-ie.css" ie_condition="IE" />
+		<css src="Magento_Theme::css/slick.css" media="all" />
+	</head>
+    <body>
+		<referenceContainer name="page.wrapper">
+			<container name="pt.perspective" label="Page Perspective Area"  /> <!--htmlTag="div" htmlId="pt-main" htmlClass="pt-perspective"-->
+		</referenceContainer>
+
+		<referenceContainer name="header.container">
+			<container name="test-container" htmlTag="div" before="-" htmlClass="test-container">
+				<container label="Header Before Slideshow" name="header.before.slidershow" htmlTag="div" htmlClass="before-slideshow-area" before="-">
+					<container name="header.box" htmlClass="box-header" htmlTag="div" before="-">
+						<container name="panel.wrapper.top" htmlClass="panel wrapper" htmlTag="div" before="-">
+						</container>
+						<container name="header.wrapper.middle" htmlClass="header-wrapper-middle sticky-menu" htmlTag="div" after="-">
+						</container>
+					</container>
+				</container>
+				<container label="Header Slideshow" name="header.slidershow" htmlTag="div" htmlClass="slideshow-area slideshow-area-pos" after="header.wrapper.content" />
+			</container>
+		</referenceContainer>
+
+        <referenceContainer name="footer-container">
+            <container name="footer.container.top" before="-" htmlTag="div" htmlId="topfooter" htmlClass="top-footer-wrapper" label="Footer Container Top Full">
+				 <container name="footer.content.top" htmlTag="div" htmlClass="footer content footer-content-top" label="Footer Container Top" after="-"/>
+				 <block class="Magento\Framework\View\Element\Template" name="startphoto" template="Magento_Theme::html/footer.phtml"></block>
+
+			</container>
+			<container name="footer.container.wrapper" label="Footer Container Wrapper" after="footer.container.top" htmlTag="div" htmlClass="footer content footer-container-wrapper" />
+
+            <container name="footer.container.bottom" label="Footer Container Bottom" after="footer.container.wrapper" htmlTag="div" htmlId="bottomfooter" htmlClass="bottom-footer-wrapper">
+
+                <container name="footer.content.bottom" htmlTag="div" htmlClass="footer content" >
+                    <container name="footer.custom.block" htmlTag="div" htmlClass="footer-custom-block" label="Footer Custom Block" after="copyright" />
+                </container>
+            </container>
+        </referenceContainer>
+		
+		<referenceBlock name="store.menu">
+			<container name="store.menu.links" htmlTag="ul" htmlClass="mobile-links-wrapper">
+				<block class="Magento\Customer\Block\Account\Link" name="my-account-link-mobile">
+				    <arguments>
+				        <argument name="label" xsi:type="string" translate="true">My Account</argument>
+				    </arguments>
+				</block>
+				<block class="Magento\Customer\Block\Account\RegisterLink" name="register-link-mobile">
+				    <arguments>
+				        <argument name="label" xsi:type="string" translate="true">Create an Account</argument>
+				    </arguments>
+				</block>
+				<block class="Magento\Customer\Block\Account\AuthorizationLink" name="authorization-link-mobile"
+				       template="account/link/authorization_mobile.phtml"/>
+		   </container>
+		</referenceBlock>
+
+
+
+
+        <referenceContainer name="footer.container.bottom" remove="true"/>
+		<referenceContainer name="header.panel.store" remove="true"/>
+		<referenceContainer name="header.wrapper.bottom" remove="true"/>
+
+		<move element="header.panel.store" destination="header-wrapper" after="logo"/>
+		<move element="header.links" destination="header-wrapper" after="minicart"/>
+		<move element="main.menu" destination="header-wrapper" after="logo"/>
+		<move element="minicart" destination="header-wrapper" before="header.links"/>
+		<move element="catalog.topnav" destination="store.menu" before="store.menu.links"/>
+		
+		<!--<referenceBlock name="header-wrapper" htmlClass="header content sticky-menu" />-->
+		
+    </body>
+</page>

@@ -1,0 +1,27 @@
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "weltpixel_confirmation_popup": {
+                        "component": "WeltPixel_Quickview/js/weltpixel_confirmation_popup"
+                    }
+                }
+            }
+        }
+    }
+</script>
+<script>
+    window.weltpixel_quickview = window.weltpixel_quickview || {};
+    window.weltpixel_quickview.baseUrl = "<?= $block->getBaseUrl() ?>";
+</script>
+<?php
+/** @var \WeltPixel\Quickview\Helper\Data $_helper */
+$_helper = $this->helper('WeltPixel\Quickview\Helper\Data');
+?>
+<style scoped>
+    .mfp-bg {
+        opacity: <?= $_helper->getLoadingOverlayOpacity() ?>;
+        background: <?= $_helper->getLoadingOverlayBgColor() ?>;
+    }
+</style>

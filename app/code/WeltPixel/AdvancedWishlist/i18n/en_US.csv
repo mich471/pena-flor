@@ -1,0 +1,64 @@
+"Manage Wish Lists","Manage Wish Lists"
+"Collection by","Collection by"
+Wishlist,Wishlist
+"Wishlist Not Available","Wishlist Not Available"
+"My Wish List","My Wish List"
+"Your item has been moved successfully.","Your item has been moved successfully."
+"There was an issue with the wishlist item move.","There was an issue with the wishlist item move."
+"Wishlist Share","Wishlist Share"
+"Wishlist Name","Wishlist Name"
+"Disable Share","Disable Share"
+No,No
+Yes,Yes
+"This Collection is","This Collection is"
+Public,Public
+Private,Private
+"Disable Price Alert","Disable Price Alert"
+Save,Save
+"%1 items","%1 items"
+"There are no collections available.","There are no collections available."
+"Wishlist ","Wishlist "
+"Old Price","Old Price"
+"New Price","New Price"
+Back,Back
+"Move to","Move to"
+"Save and move","Save and move"
+"Add New Wishlist","Add New Wishlist"
+Delete,Delete
+"The wishlist is not shareable.","The wishlist is not shareable."
+"There are no items to share.","There are no items to share."
+"Share Your Wishlist","Share Your Wishlist"
+"Copy link","Copy link"
+"Wishlist Products price changed alert","Wishlist Products price changed alert"
+"Dear %name,","Dear %name,"
+Copied!,Copied!
+"Edit Wishlist","Edit Wishlist"
+"Delete Wishlist","Delete Wishlist"
+"Are you sure you want to delete","Are you sure you want to delete"
+"Add Wishlist","Add Wishlist"
+"Select Wishlist","Select Wishlist"
+Add,Add
+"Create new wishlist","Create new wishlist"
+"Move To","Move To"
+"Advanced Wishlist Pro","Advanced Wishlist Pro"
+"Advanced Wishlist General Settings","Advanced Wishlist General Settings"
+"Enable Multiple Wishlist","Enable Multiple Wishlist"
+"Enable/Disable Multiple Wishlist.","Enable/Disable Multiple Wishlist."
+"Enable Ajax Wishlist","Enable Ajax Wishlist"
+"Enable/Disable Ajax Wishlist.","Enable/Disable Ajax Wishlist."
+"Disable Default Share Wishlist Button","Disable Default Share Wishlist Button"
+"Enable/Disable Default Share Wishlist Button.","Enable/Disable Default Share Wishlist Button."
+"Enable Share Wishlist","Enable Share Wishlist"
+"Enable/Disable Share Wishlist.","Enable/Disable Share Wishlist."
+"Sharethis Javascript Code","Sharethis Javascript Code"
+"Paste here the initialization code from <a href=""https://www.sharethis.com"" target=""_blank"">https://www.sharethis.com</a>.
+                    <br/> Based on your customization the <a href=""https://platform.sharethis.com/inline-share-buttons"">Inline Share Buttons</a> will be rendered.
+                    <br/> <b>Js initialization code example</b>: <br/> &lt;script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=5c66d6fd7056550011c4a337&amp;product=inline-share-buttons' async='async'&gt;&lt;/script&gt;","Paste here the initialization code from <a href=""https://www.sharethis.com"" target=""_blank"">https://www.sharethis.com</a>.
+                    <br/> Based on your customization the <a href=""https://platform.sharethis.com/inline-share-buttons"">Inline Share Buttons</a> will be rendered.
+                    <br/> <b>Js initialization code example</b>: <br/> &lt;script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=5c66d6fd7056550011c4a337&amp;product=inline-share-buttons' async='async'&gt;&lt;/script&gt;"
+"Enable Wishlist Privacy","Enable Wishlist Privacy"
+"Enable/Disable Wishlist Privacy. <br/> If set to Yes, enables the option to make Wishlists  Private or Public. If Public, Wishlists will be displayed in the User Profile. <br/>Requires the <a href=""https://www.weltpixel.com/magento-2-user-profile.html"" target=""_blank"">User Profile Extension</a> and ""Enable Wishlist Collection Display"" option enabled.","Enable/Disable Wishlist Privacy. <br/> If set to Yes, enables the option to make Wishlists  Private or Public. If Public, Wishlists will be displayed in the User Profile. <br/>Requires the <a href=""https://www.weltpixel.com/magento-2-user-profile.html"" target=""_blank"">User Profile Extension</a> and ""Enable Wishlist Collection Display"" option enabled."
+"Enable Price Alert","Enable Price Alert"
+"Enable/Disable Price Alert For Wishlist Items.","Enable/Disable Price Alert For Wishlist Items."
+"Cron Job Frequency","Cron Job Frequency"
+"Specify a valid cron schedule expression. It can be verified <a target=""_blank"" href=""https://crontab.guru"">here</a>.","Specify a valid cron schedule expression. It can be verified <a target=""_blank"" href=""https://crontab.guru"">here</a>."

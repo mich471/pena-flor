@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="category.products.list">
+            <block class="Lyracons\Recommender\Block\Recommender" name="category.product.recommender"
+                   as="recommender_renderer" template="Lyracons_Recommender::recommender.phtml"/>
+        </referenceBlock>
+    </body>
+</page>

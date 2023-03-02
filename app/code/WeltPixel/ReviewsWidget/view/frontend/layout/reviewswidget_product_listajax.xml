@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/layout_generic.xsd">
+    <container name="root">
+        <block class="Magento\Review\Block\Product\View\ListView" name="wp.product.info.product_additional_data" as="wp_product_additional_data" template="WeltPixel_ReviewsWidget::widget/product/view/list.phtml" ifconfig="catalog/review/active"/>
+    </container>
+</layout>

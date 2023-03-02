@@ -1,0 +1,23 @@
+<?php
+/** @var \Magento\Theme\Block\Html\Breadcrumbs $block */
+/** @var \WeltPixel\GoogleCards\ViewModel\Product\Breadcrumbs $viewModel */
+$viewModel = $block->getData('viewModel');
+$breadCrumbs = $viewModel->getBreadCrumbs();
+?>
+<div class="breadcrumbs">
+    <?php if ($breadCrumbs && count($breadCrumbs)) : ?>
+    <ul class="items">
+        <?php foreach ($breadCrumbs as $breadcrumbKey => $breadCrumb): ?>
+        <li class="item <?= $breadcrumbKey ?>">
+            <?php if (isset($breadCrumb['link'])) : ?>
+            <a href="<?= $breadCrumb['link'] ?>" title="<?= $breadCrumb['label'] ?>">
+                <?= $breadCrumb['label'] ?>
+            </a>
+            <?php else : ?>
+                <strong><?= $breadCrumb['label'] ?></strong>
+            <?php endif ?>
+        </li>
+        <?php endforeach; ?>
+    </ul>
+    <?php endif; ?>
+</div>

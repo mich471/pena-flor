@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="WeltPixel\UserProfile\Controller\Account">
+        <plugin name="authentication" type="WeltPixel\UserProfile\Plugin\Authentication"/>
+    </type>
+    <type name="Magento\Review\Model\Review">
+        <plugin name="weltpixel-userprofile-review"
+                type="WeltPixel\UserProfile\Plugin\Review"
+                sortOrder="10"/>
+    </type>
+</config>

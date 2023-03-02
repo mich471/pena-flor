@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="category.product.list.additional">
+            <block ifconfig="weltpixel_quickview/general/enable_prevnext_product" class="WeltPixel\Quickview\Block\ListedProducts" name="category.product.list.weltpixel.quickview" template="WeltPixel_Quickview::product/list.phtml" />
+            <block class="Magento\Catalog\Block\Product\ListProduct" name="category.product.list.weltpixel.quickview.image" template="WeltPixel_Quickview::listing/retailjs.phtml" />
+        </referenceContainer>
+    </body>
+</page>

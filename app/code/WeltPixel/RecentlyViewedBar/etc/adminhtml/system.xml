@@ -1,0 +1,182 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="weltpixel_RecentlyViewedBar" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10"
+                 translate="label">
+            <label>Recently Viewed Bar</label>
+            <tab>weltpixel</tab>
+            <resource>WeltPixel_RecentlyViewedBar::RecentlyViewedBar</resource>
+
+            <group id="general" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label">
+                <label>General Settings</label>
+                <field id="enable" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label"
+                       type="select">
+                    <label>Enable Recently Viewed Bar</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enable/Disable WeltPixel Recently Viewed Bar extension.</comment>
+                </field>
+
+                <field id="display_on" translate="label" type="multiselect" sortOrder="25" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Display On</label>
+                    <source_model>WeltPixel\RecentlyViewedBar\Model\Config\Source\DisplayOn</source_model>
+                    <comment><![CDATA[Select Recently Viewed block display locations. <br/>]]>
+                    </comment>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+
+                <field id="show_attributes" translate="label" type="multiselect" sortOrder="27" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Show Attributes</label>
+                    <source_model>WeltPixel\RecentlyViewedBar\Model\Config\Source\ShowAttributes</source_model>
+                    <comment><![CDATA[Select attributes to be diplayed in the Recenly Viewed items. <br/>]]>
+                    </comment>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+
+                <field id="show_buttons" translate="label" type="multiselect" sortOrder="28" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Show Buttons</label>
+                    <source_model>WeltPixel\RecentlyViewedBar\Model\Config\Source\ShowButtons</source_model>
+                    <comment><![CDATA[Select buttons to be diplayed in the Recenly Viewed items. <br/>]]>
+                    </comment>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+
+                <field id="enable_cms" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="30"
+                       translate="label"
+                       type="select">
+                    <label>Enable CMS Block</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enable/Disable WeltPixel CMS Block in Recently Viewed section.</comment>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+
+                <field id="cms_block" translate="label" type="select" sortOrder="35" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Select CMS Block</label>
+                    <source_model>WeltPixel\RecentlyViewedBar\Model\Config\Source\CmsBlock</source_model>
+                    <comment><![CDATA[Select the preferred cms block to be included. <br/>
+For sample block use: <strong>Recently Viewed Bar - Sample block</strong>
+]]>
+                    </comment>
+                    <depends>
+                        <field id="enable_cms">1</field>
+                    </depends>
+                </field>
+
+                <field id="enable_sl" translate="label" type="select" sortOrder="35" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Social Login Integration</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[If enabled, Social Login block will replace the CMS Block for not logged in users. The content of CMS Block will be visible after the user has logged in.<br />Requires the <a href="https://www.weltpixel.com/magento2-free-social-login-extension.html" title="Social Login">Social Login PRO Extension</a> installed and enabled.]]>
+                    </comment>
+                </field>
+
+                <field id="button_color" translate="label" type="text" sortOrder="40" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Button Color</label>
+                    <comment>Advanced Recently Viewed action button color. Eg.#000000</comment>
+                    <tooltip>Set the color of slide up box button.</tooltip>
+                    <validate>color {required:false, hash:true}</validate>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+
+                <field id="button_text_color" translate="label" type="text" sortOrder="45" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Button Text Color</label>
+                    <comment>Advanced Recently Viewed action button text color. Eg.#FFFFFF</comment>
+                    <tooltip>Set the color of slide up box button text.</tooltip>
+                    <validate>color {required:false, hash:true}</validate>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+
+                <field id="button_label" translate="label" type="text" sortOrder="50" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Button Label</label>
+                    <comment>Advanced Recently Viewed action button label.</comment>
+                    <tooltip>Set the label of slide up box button.</tooltip>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+
+                <field id="button_position" translate="label" type="select" sortOrder="55" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Button position</label>
+                    <comment>Select the position of the Recently Viewed button on the bottom of the screen.</comment>
+                    <source_model>WeltPixel\RecentlyViewedBar\Model\Config\Source\ButtonPosition</source_model>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+
+                <field id="button_margin_left" translate="label" type="text" sortOrder="56" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Margin left percent</label>
+                    <comment> Insert the margin percent. Default: 5%</comment>
+                    <depends>
+                        <field id="enable">1</field>
+                        <field id="button_position">left</field>
+                    </depends>
+                </field>
+
+                <field id="button_margin_right" translate="label" type="text" sortOrder="57" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Margin right percent</label>
+                    <comment> Insert the margin percent. Default: 5%</comment>
+                    <depends>
+                        <field id="enable">1</field>
+                        <field id="button_position">right</field>
+                    </depends>
+                </field>
+
+                <field id="button_label_icon" translate="label" type="select" sortOrder="60" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Show Icon</label>
+                    <comment>
+                        <![CDATA[Show an icon on the button. If the Button Label field is empty only the icon will be displayed.</br>
+                       The icon is visible only if using <a href="https://www.weltpixel.com/magento-2-theme-pearl">Pearl Theme</a>.]]>
+                    </comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+
+                <field id="button_tooltip_text" translate="label" type="text" sortOrder="65" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Button Tooltip text on hover</label>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+
+                <field id="item_limit" translate="label" type="text" sortOrder="70" showInDefault="1"
+                       showInWebsite="1" showInStore="1">
+                    <label>Number of items in Recently Viewed Block</label>
+                    <comment>Limit no of items in Advanced Recently Viewed block.</comment>
+                    <tooltip>Set the no of items to appear in Advanced Recently Viewed block.</tooltip>
+                    <validate>validate-number</validate>
+                    <depends>
+                        <field id="enable">1</field>
+                    </depends>
+                </field>
+
+            </group>
+
+        </section>
+    </system>
+</config>

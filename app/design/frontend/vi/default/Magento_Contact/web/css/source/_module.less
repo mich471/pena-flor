@@ -1,0 +1,66 @@
+.contact-index-index{
+	.page-title-wrapper{
+		background-color: black;
+		background-image: url("../images/bg_contact.jpg");
+		background-repeat: no-repeat;
+		background-size: contain;
+		height: 100px;
+		margin-bottom: 30px;
+		.page-title{
+			max-width: 1280px;
+			padding-left: 20px;
+			padding-right: 20px;
+			margin: 0 auto 30px;
+			color: #fff;
+			line-height: 100px;
+			font-size: 24px;
+			font-weight: 600;
+		}
+	}
+	.form.contact{
+		.legend{
+			display: none;
+		}
+		.field{
+			margin-bottom: 20px;
+			&.note{
+				font-size: 16px;
+				margin-bottom: 20px;
+			}
+			em{
+				font-style: normal;
+				margin-left: 5px;
+			}
+		}
+		.required-fields{
+			font-size: 11px;
+		}
+		.col-left{
+			width: 48%;
+			float: left;
+		}
+		.col-right{
+			width: 48%;
+			float: right;
+		}
+		.actions-toolbar{
+			.primary{
+				float: right;
+				button{
+					margin: 0;
+				}
+			}
+		}
+
+		@media screen and (max-width:767px) {
+			.col-left{
+				width: 100%;
+				float: none;
+			}
+			.col-right{
+				width: 100%;
+				float: none;
+			}
+		}
+	}
+}

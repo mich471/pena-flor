@@ -1,0 +1,18 @@
+.account .column.main .block:not(.widget) .box-title > span {
+    text-transform: uppercase;
+}
+
+.account .column.main .block:not(.widget) .block-title > strong {
+    border-bottom: none !important;
+    font-weight: 600;
+
+}
+
+.account .column.main .block:not(.widget) .block-title {
+    border-bottom: none;
+}
+
+.box-actions .edit > span, .box-actions .change-password {
+    color: #D4A22C;
+    text-decoration: underline;
+}

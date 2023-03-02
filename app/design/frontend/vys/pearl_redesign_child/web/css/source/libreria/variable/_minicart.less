@@ -1,0 +1,234 @@
+& when (@media-common = true) {
+    .theme-pearl.store-view-penaflor {
+        .quickcart-wrapper {
+            .block-quickcart {
+                .varietalb {
+                    color: @color-grey;
+                    font-weight: 500;
+                    font-size: 11px;
+                }
+                .product-item-bodega {
+                    color: @color-black;
+                    font-weight: bold;
+                    font-size: 16px;
+                }
+                .product.actions.delete {
+                    color: @color-delete;
+                    position: static;
+                    float: none;
+                    margin: 0;
+                    line-height: inherit;
+                    display: flex;
+                    .secondary {
+                        display: inline-block;
+                        .action.delete {
+                            position: static;
+                            .button-delete {
+                                position: static;
+                                min-width: fit-content;
+                                color: @color-grey;
+                                display: flex;
+                                flex-direction: row;
+                                align-items: center;
+                                font-size: 10px;
+                                column-gap: 0.4rem;
+                                span {
+                                    color: @color-grey;
+                                    position: static;
+                                    width: fit-content;
+                                    font-size: 10px;
+                                    text-decoration: underline;
+                                }
+                            }
+                        }
+                    }
+                    
+                }
+                .product-item-pricing.minicart-delete {
+                    display: flex;
+                    flex-wrap: nowrap;
+                    margin: 0;
+                    align-items: flex-end;
+                    column-gap: 11px;
+                }
+                .block-content.block-content-quickcart {
+                    .quickcart-top {
+                        background: @color-white;
+                        .close span {
+                            color: @color-black;
+                        }
+                    }
+
+                    .subtitle {
+                        display: none !important;
+                    }
+        
+                    a.action.viewcart {
+                        color: @color-black;
+                    }
+        
+                    span.price {
+                        color: @color-black;
+                        font-weight: 600;
+                        font-size: 20px;
+                    }
+        
+                    span.text {
+                        color: @color-black;
+                        font-weight: 900;
+                        display: flex;
+                        margin: 0 25px;
+                    }
+        
+                    h1.message-alert {
+                        height: 40px;
+                        background: @color-purple;
+                        line-height: 40px;
+                        padding: 0px 25px;
+                        font-weight: 500;
+                        font-size: 1.2rem !important;
+                        margin-bottom: 4px;
+                        color: @color-white;
+                    }
+        
+                    .secondary {
+                        display: none;
+                    }
+        
+                    .envios-minicart {
+                        color: @color-black;
+                        line-height: 30px;
+        
+                    }
+        
+                    .envios-minicart span {
+                        font-size: 13px;
+                    }
+        
+                    .envios-minicart a {
+                        font-size: 16px;
+                        font-weight: 600;
+                    }
+        
+
+        
+                    span.item-minus.qty-update {
+                        height: 30px !important;
+                        width: 36px !important;
+                    }
+                    span.item-plus.qty-update {
+                        height: 30px !important;
+                        width: 36px !important;
+                    }
+        
+                    ::after {
+                        font-size: 20px;
+                    }
+        
+                    .product-item-details .product-item-name a {
+                        color: @color-black;
+                        font-weight: 500;
+                        font-size: 11px;
+                    }
+                    
+                    .box-message-alert {
+                        width: 100%;
+                        text-align: center;
+                        h1.message-alert {
+                            width: 291px;
+                            height: 24px;
+                            background: @color-purple;
+                            line-height: 25px;
+                            padding: 0px 20px;
+                            font-weight: 500;
+                            font-size: 8px;
+                            width: 100%;
+                            text-align: center;
+                        }
+                    }
+                    .quickcart-items-wrapper {
+                        .minicart-items.quickcart-items {
+                            .product-item-details {
+                                position: static;
+                                display: flex;
+                                flex-direction: column;
+                                .product.options {
+                                    color: @color-black;
+                                }
+                                .product-item-name a {
+                                    color: @color-black;
+                                    font-weight: 700;
+                                }
+                                .price-container {
+                                    float: none;
+                                    .price-including-tax {
+                                        display: flex;
+                                        flex-wrap: nowrap;
+                                        max-width: 125px;
+                                        column-gap: 15px;
+                                        .minicart-old-price {
+                                            order: -1;
+                                            span {
+                                                color: @color-grey;
+                                                text-decoration:line-through;
+                                            }
+                                        }
+                                    }
+                                }
+
+                            }
+                            .quickcart-product-item {
+                                .cart-item-qty {
+                                    width: 48px;
+                                    height: 30px;
+                                    font-size: 17px;
+                                }
+                                .details-qty {
+                                    margin-top: 0;
+                                }
+                            }
+                            .quickcart-product-item {
+                                &:not(:first-child) {
+                                    border-top: none;
+                                }
+                                &:last-child {
+                                    border-bottom: none;
+                                }
+                            }
+                        }
+                    }
+
+                }
+            }
+        }
+
+    }
+}
+
+
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .theme-pearl.store-view-penaflor {
+        .quickcart-wrapper {
+            .block-quickcart {
+                .block-content.block-content-quickcart {
+                    .quickcart-items-wrapper {
+                        .minicart-items.quickcart-items {
+                            .product-item-details { 
+                                padding-left: 7px;
+                            }
+                            h1.message-alert {
+                                font-size: 1.0rem !important;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+

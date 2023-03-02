@@ -1,0 +1,139 @@
+//
+//  Desktop (style-l.css)
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+    .page-footer {
+        .block.newsletter {
+            #newsletter-validate-detail {
+                display: flex;
+                flex-wrap: wrap;
+            }
+            .action.subscribe {
+                height: 42px;
+            }
+            #newsletterButon {
+                background: @yellow-main;
+                border-color: @yellow-main;
+                height: 35px;
+                right: 62px;
+                top: 5px;
+                margin-top: 8px;
+                margin-left: 0;
+            }
+            .field.newsletter {
+                width: 255px;
+                right: 63px;
+            }
+            .actions {
+                min-width: fit-content;
+            }
+            .field {
+                .control {
+                    &::before {
+                        content: none;
+                    }
+                }
+            }
+            input#newsletter {
+                padding-left: 12px;
+            }
+        }
+    }
+
+
+
+    .theme-pearl.cms-home{
+        .page-wrapper{
+            .page-footer{
+                .container_footer{
+                    .row-full-width-inner{
+                        .pagebuilder-column-group{
+                            .pagebuilder-column.footer-links.right-column{
+                                .newsletter{
+                                    .content{
+                                        form#newsletter-validate-detail {
+                                            display: flex;
+                                            flex-direction: column;
+                                        }
+                                        .field.newsletter {
+                                            width: 255px;
+                                           // position: relative;
+                                            right: 63px;
+                                        }
+                                        .actions{
+                                            .form.subscribe{
+                                                display: flex;
+                                                flex-wrap: wrap;
+                                                .button#newsletterButon {
+                                                    background: @yellow-main;
+                                                    height: 35px;
+                                                    position: relative;
+                                                    right: 62px;
+                                                    top: 5px;
+                                                }
+                                            }                                            
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .newsletter-wrapper{
+                        .pagebuilder-column-group{
+                            .pagebuilder-column{
+                                .field.newsletter{
+                                    width: 375px;
+                                }
+                                .actions{
+                                    button#newsletterButon {
+                                        margin: 0 0 0px 7px;
+                                        width: 191px;
+                                        text-transform: uppercase;
+                                    }
+                                }
+                                form#newsletter-validate-detail {
+                                    position: relative;
+                                    top: 50px;
+                                    right: 100px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.mercadopago_core-checkout-page #box-mercadopago a {
+    color: #000;
+    font-weight: bold;
+}
+
+.mercadopago_core-checkout-page .action.continue span{
+    display:block
+}
+
+//
+//  Mobile (styles-m.css)
+//  _____________________________________________
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+    .footer-mobile {
+        .newsletter-subscribe {
+            #newsletter-footer {
+                button.button {
+                    color: @color-white;
+                }
+            }
+        }
+    }
+}
+
+.theme-pearl .block.newsletter .field .control:before {
+    content: none;
+}
+
+.theme-pearl .block.newsletter .field .control #newsletter{
+    padding-left: 15px;
+}

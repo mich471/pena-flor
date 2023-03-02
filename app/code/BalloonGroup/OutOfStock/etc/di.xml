@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!--
+  ~   @author Gilberto Aguirre <gilberto.aguirre@balloon-group.com> || Ballon Group Team
+  ~   @copyright Copyright (c) 2022 Ballon Group (https://www.balloon-group.com/)
+  ~   @package BalloonGroup_OutOfStock
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Catalog\Model\Layer">
+        <plugin name="catalog_model_category_sort_out_of_stock_last" type="BalloonGroup\OutOfStock\Plugin\Catalog\Model\Layer" sortOrder="1000"/>
+    </type>
+</config>

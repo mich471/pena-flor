@@ -1,0 +1,20 @@
+.account .page-main .page-title-wrapper .page-title {
+    margin-bottom: 20px;
+    font-size: 2.2rem;
+}
+
+.form-save .save > span {
+    text-transform: uppercase;
+    font-size: 1.5rem !important;
+}
+
+.account legend {
+    padding-bottom: 0px !important;
+    border-bottom: none !important;
+}
+
+.form-newsletter-manage .legend > span {
+    font-size: 1.6rem !important;
+    text-transform: uppercase;
+    font-weight: 600;
+}

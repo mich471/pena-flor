@@ -1,0 +1,20 @@
+<?php
+/**
+ * @var $block \BalloonGroup\NewLogin\Block\Success
+ */
+
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$customerSession = $objectManager->get(\Magento\Customer\Model\Session::class);
+$email = $customerSession->getRegisterEmail();
+
+?>
+
+<div class="newlogin-confirmation">
+    <div class="result error">
+        <span class="icon icon-success"></span>
+        <h4 class="title">¡Ya casi!</h4>
+        <p class="subtitle">Ahora revisá tu email para finalizar el registro</p>
+        <!-- <h5 class="email">Te enviamos un link a <?= $customerSession->getRegisterEmail(); ?></h5> -->
+        <p class="remainder">Recordá revisar la carpeta de correo no deseado</p>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+<?php
+/** @var \BalloonGroup\NewLogin\Block\Popup $block */
+
+/**
+ * function datafunction
+ * @todo hide popup on page load
+ */
+?>
+
+<?php if (!$block->isLoggedIn()) : ?>
+
+    <div class="newlogin-modal" data-role="newlogin-modal" style="display:none;"
+        data-mage-init='{"BalloonGroup_NewLogin/js/view/modal/newlogin": {"modalDelay":"<?= /* @noEscape */ $block->getDelay(); ?>"}}'>
+        <div class="login-modal--inner">
+            <div class="newlogin-modal--title">
+                <h2>Bienvenido</h2>
+                <p>a Venta institucional de grupo Peñaflor</p>
+            </div>
+            <div class="newlogin-modal--alert warning"><span>Importante: Recodrá iniciar sesión para conocer nuestros precios y comprar</span></div>
+            <div class="newlogin-modal--actions">
+                <div class="newlogin-modal--action-register">
+                    <div class="action-box">
+                        <p data-role="heading">Todavía no tengo una cuenta</p>
+                    </div>
+                    <div class="action-box">
+                        <a class="action action-register primary" href="/customer/account/create">
+                            <span>Crear cuenta</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="newlogin-modal--action-login">
+                    <div class="action-box">
+                        <p data-role="heading">Ya tengo una cuenta</p>
+                    </div>
+                    <div class="action-box">
+                        <a class="action action-login primary" href="/customer/account/login">
+                            <span>Iniciar sesión</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<?php endif; ?>

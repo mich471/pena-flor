@@ -1,0 +1,20 @@
+{
+  "name": "summa-solutions/module-frontend-customizations",
+  "version": "1.0.0",
+  "description": "Module to group backend customizations that are commonly used in frontend",
+  "type": "magento2-module",
+  "require": {
+    "magento/framework": "*"
+  },
+  "license": [
+    "Matias Somoza"
+  ],
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "SummaSolutions\\FrontendCustomizations\\": ""
+    }
+  }
+}

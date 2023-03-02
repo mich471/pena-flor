@@ -1,0 +1,16 @@
+<?php
+$_product = $block->getProduct();
+
+$_getBodega = $_product->getResource()->getAttribute('bodega');
+if (!$_getBodega)
+    return; //out
+
+$bodega = $_getBodega->getFrontend()->getValue($_product);
+?>
+<div class="bodega">
+	<?php
+	if($bodega !="No"){
+		echo $bodega ;
+	} 
+	?>
+</div>

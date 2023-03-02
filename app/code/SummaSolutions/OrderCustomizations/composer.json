@@ -1,0 +1,21 @@
+{
+  "name": "summa-solutions/module-order-customizations",
+  "version": "1.0.0",
+  "description": "Module to add customizations to Order Object and processes relateds",
+  "type": "magento2-module",
+  "require": {
+    "magento/framework": "*",
+    "magento/module-sales": "103.0.*"
+  },
+  "license": [
+    "Matias Somoza"
+  ],
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "SummaSolutions\\OrderCustomizations\\": ""
+    }
+  }
+}

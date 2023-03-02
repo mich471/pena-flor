@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="BalloonGroup_NewLogin::newlogin" title="New Login" translate="title" module="BalloonGroup_NewLogin" parent="Magento_Customer::customer" sortOrder="50" dependsOnModule="BalloonGroup_NewLogin" resource="BalloonGroup_NewLogin::newlogin"/>
+        <add id="BalloonGroup_NewLogin::newlogin_companies" title="Companies" translate="title" module="BalloonGroup_NewLogin" parent="BalloonGroup_NewLogin::newlogin" sortOrder="10" dependsOnModule="BalloonGroup_NewLogin" action="newlogin/company/index" resource="BalloonGroup_NewLogin::newlogin"/>
+        <add id="BalloonGroup_NewLogin::newlogin_emaildomains" title="Email Domains" translate="title" module="BalloonGroup_NewLogin" parent="BalloonGroup_NewLogin::newlogin" sortOrder="15" dependsOnModule="BalloonGroup_NewLogin" action="newlogin/emailDomain/index" resource="BalloonGroup_NewLogin::newlogin"/>
+        <add id="BalloonGroup_NewLogin::newlogin_dnis" title="DNIs" translate="title" module="BalloonGroup_NewLogin" parent="BalloonGroup_NewLogin::newlogin" sortOrder="20" dependsOnModule="BalloonGroup_NewLogin" action="newlogin/dni/index" resource="BalloonGroup_NewLogin::newlogin"/>
+        <add id="BalloonGroup_NewLogin::newlogin_import" title="Import" translate="title" module="BalloonGroup_NewLogin" parent="BalloonGroup_NewLogin::newlogin" sortOrder="25" dependsOnModule="BalloonGroup_NewLogin" action="newlogin/import/index" resource="BalloonGroup_NewLogin::newlogin"/>
+    </menu>
+</config>

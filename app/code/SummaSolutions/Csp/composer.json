@@ -1,0 +1,20 @@
+{
+  "name": "summa-solutions/module-csp",
+  "version": "1.0.0",
+  "description": "Add the capability to allow or disallow third party request",
+  "type": "magento2-module",
+  "require": {
+    "magento/framework": "*"
+  },
+  "license": [
+    "Matias Somoza"
+  ],
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "SummaSolutions\\Csp\\": ""
+    }
+  }
+}

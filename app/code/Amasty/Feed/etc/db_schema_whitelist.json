@@ -1,0 +1,144 @@
+{
+    "amasty_feed_entity": {
+        "column": {
+            "entity_id": true,
+            "name": true,
+            "filename": true,
+            "feed_type": true,
+            "is_active": true,
+            "store_id": true,
+            "execute_mode": true,
+            "csv_column_name": true,
+            "csv_header": true,
+            "csv_enclosure": true,
+            "csv_delimiter": true,
+            "format_price_currency": true,
+            "csv_field": true,
+            "xml_header": true,
+            "xml_item": true,
+            "xml_content": true,
+            "xml_footer": true,
+            "format_price_currency_show": true,
+            "format_price_decimals": true,
+            "format_price_decimal_point": true,
+            "format_price_thousands_separator": true,
+            "format_date": true,
+            "conditions_serialized": true,
+            "generated_at": true,
+            "delivery_enabled": true,
+            "delivery_host": true,
+            "delivery_type": true,
+            "delivery_user": true,
+            "delivery_password": true,
+            "delivery_path": true,
+            "delivery_passive_mode": true,
+            "utm_source": true,
+            "utm_medium": true,
+            "utm_term": true,
+            "utm_content": true,
+            "utm_campaign": true,
+            "is_template": true,
+            "compress": true,
+            "exclude_disabled": true,
+            "exclude_subdisabled": true,
+            "exclude_out_of_stock": true,
+            "exclude_not_visible": true,
+            "products_amount": true,
+            "generation_type": true,
+            "status": true
+        },
+        "index": {
+            "AMASTY_FEED_ENTITY_STORE_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "amasty_feed_category": {
+        "column": {
+            "feed_category_id": true,
+            "code": true,
+            "name": true,
+            "use_taxonomy": true,
+            "taxonomy_source": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "amasty_feed_category_mapping": {
+        "column": {
+            "entity_id": true,
+            "feed_category_id": true,
+            "category_id": true,
+            "variable": true,
+            "skip": true
+        },
+        "index": {
+            "AMASTY_FEED_CATEGORY_FEED_CATEGORY_ID": true,
+            "CATALOG_CATEGORY_ENTITY_CATEGORY_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "FK_357DB4125516E63AE530B276D68369F7": true
+        }
+    },
+    "amasty_feed_valid_products": {
+        "column": {
+            "entity_id": true,
+            "feed_id": true,
+            "valid_product_id": true
+        },
+        "index": {
+            "AMASTY_FEED_VALID_PRODUCTS_VALID_PRODUCT_ID": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "AMASTY_FEED_VALID_PRODUCTS_FEED_ID_AMASTY_FEED_ENTITY_ENTITY_ID": true
+        }
+    },
+    "amasty_feed_field": {
+        "column": {
+            "feed_field_id": true,
+            "code": true,
+            "name": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "AMASTY_FEED_FIELD_CODE": true
+        }
+    },
+    "amasty_feed_field_conditions": {
+        "column": {
+            "entity_id": true,
+            "feed_field_id": true,
+            "conditions_serialized": true,
+            "result_serialized": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "amasty_feed_google_taxonomy": {
+        "column": {
+            "id": true,
+            "category": true,
+            "language_code": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "amasty_feed_schedule": {
+        "column": {
+            "id": true,
+            "cron_time": true,
+            "cron_day": true,
+            "feed_id": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "AMASTY_FEED_SCHEDULE_FEED_ID_AMASTY_FEED_ENTITY_ENTITY_ID": true
+        }
+    }
+}

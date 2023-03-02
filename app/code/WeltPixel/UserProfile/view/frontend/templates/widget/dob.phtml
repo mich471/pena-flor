@@ -1,0 +1,33 @@
+<?php
+
+// @codingStandardsIgnoreFile
+
+/** @var \WeltPixel\UserProfile\Block\Widget\Dob $block */
+
+$fieldCssClass = 'field date field-' . $block->getHtmlId();
+$fieldCssClass .= $block->isRequired() ? ' required' : '';
+?>
+<div class="field date field-dob<?php if ($block->isRequired()) echo ' required'; ?>"">
+    <label class="label" for="dob"><span><?= $block->escapeHtml(__('Date of Birth')) ?></span></label>
+    <div class="control customer-dob">
+        <input type="text"
+               class="input-text <?php if ($block->isRequired()) echo ' required-entry' ?> hasDatepicker"
+               id="dob"
+               value="<?= $block->escapeHtmlAttr($block->getDob()) ?>"
+               name="dob"
+               data-validate='{<?php if ($block->isRequired()) echo ' "required":true,' ?>"validate-date":{"dateFormat":"Y-mm-dd"}}'
+               />
+        <script>
+
+            require(["jquery", "mage/calendar"], function($){
+                $("#dob").calendar({
+                    showsTime: false,
+                    dateFormat: "Y-mm-dd",
+                    buttonImage: '<?= $block->getViewFileUrl('Magento_Theme::calendar.png') ?>',
+                    yearRange: "-120y:c+nn",
+                    buttonText: "Select Date", maxDate: "-1d", changeMonth: true, changeYear: true, showOn: "both"})
+            });
+
+        </script>
+    </div>
+</div>

@@ -1,0 +1,10 @@
+<?php $_helper = $this->helper('WeltPixel\CustomHeader\Helper\Data'); ?>
+<script>
+    window.stickyMobileEnabled = '<?php /* @escapeNotVerified */ echo $_helper->stickyHeaderMobileIsEnabled($_helper->getStoreId()); ?>';
+    window.stickyHeaderScrollUpEnabled = '<?php /* @escapeNotVerified */ echo $_helper->stickyHeaderWhenScrollUpIsEnabled($_helper->getStoreId()); ?>';
+    require(['jquery', 'WeltPixel_CustomHeader/js/sticky_header_js', ''], function ($, stickyHeader) {
+        $(document).ready(function() {
+            stickyHeader.stickyHeader();
+        });
+    });
+</script>

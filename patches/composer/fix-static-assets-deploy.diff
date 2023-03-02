@@ -1,0 +1,12 @@
+diff --git /vendor/codazon/module-theme-options/etc/di.xml /vendor/codazon/module-theme-options/etc/di.xml
+index 02450a3..b420d75 100755
+--- /vendor/codazon/module-theme-options/etc/di.xml
++++ /vendor/codazon/module-theme-options/etc/di.xml
+@@ -85,6 +85,6 @@
+         <plugin name="codazon_framework_css_pre_less_processor"
+         type="Codazon\ThemeOptions\Plugin\Framework\Css\PreProcessor\Adapter\Less\Processor"
+         sortOrder="10"
+-        disabled="false"/>
++        disabled="true"/>
+     </type>
+ </config>

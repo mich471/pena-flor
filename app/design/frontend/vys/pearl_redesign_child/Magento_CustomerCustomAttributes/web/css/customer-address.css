@@ -1,0 +1,30 @@
+.theme-pearl.store-view-penaflor h1 {
+    font-size: 2.2rem;
+}
+
+.fieldset > .legend {
+padding-bottom: 0;
+border-bottom: none;
+}
+
+.account .legend > span {
+    font-size: 1.6rem !important;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.fieldset > .field > .label {
+    font-weight: 500;
+}
+
+.form-address-edit .fieldset .field .control > input {
+    width: 70%;
+    background: #F4F4F4;
+    border: 1px solid #F4F4F4;
+}
+
+.form-address-edit .fieldset .field .control > select {
+    width: 70%;
+    background: #F4F4F4;
+    border: 1px solid #F4F4F4;
+}

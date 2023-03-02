@@ -1,0 +1,255 @@
+<?php
+/** @var  \WeltPixel\Newsletter\Helper\Data $_helper */
+$_helper = $this->helper('WeltPixel\Newsletter\Helper\Data');
+$isTriggerButtonEnabled = $_helper->isTriggerButtonEnabled();
+$countPages = $_helper->canShowPopup(true);
+$justTriggerButton = true;
+?>
+<?php if (!$_helper->canShowPopup()) : ?>
+    <?php
+    if ($countPages) :
+        $visitedPages = $_helper->getVisitedPages();
+        ?>
+        <span class="justCountPage" style="display: none"></span>
+        <script type="text/x-magento-init">
+            {
+                ".justCountPage": {
+                    "WeltPixel_Newsletter/js/widget/newsletterpopup": {
+                        "newsletterPopup": true,
+                        "justCountPages": true,
+                        "visitedPages": "<?php echo $visitedPages ?>"
+                    }
+                }
+            }
+        </script>
+    <?php endif; ?>
+<?php else : ?>
+    <?php $justTriggerButton = false; ?>
+<?php endif; ?>
+
+
+<?php if ($isTriggerButtonEnabled || !$justTriggerButton): ?>
+    <?php
+    $displayBlockId = $_helper->getDisplayBlock();
+    $displayBlockStep1 = $_helper->getDisplayBlockStep1();
+    $lightboxDivId = 'wpn-lightbox-content';
+    $closeDivId = 'wpn-lightbox-close-newsletter';
+    $version = $_helper->getVersion();
+    $cookieLifeTime = $_helper->getLifeTime();
+    $cookieName = $_helper->getCookieName();
+    $cookieNameSubscried = $_helper->getCookieNameSubscribed();
+    $blockContent = $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId($displayBlockId)->toHtml();
+    $blockContentStep1 = $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId($displayBlockStep1)->toHtml();
+    $visitedPages = $_helper->getVisitedPages();
+    $secondsToDisplay = $_helper->getSecondsToDisplay();
+    $closeOption = $_helper->getCloseOption();
+    $isRequestAjax = $_helper->isRequestAjax();
+    $overlayColor = $_helper->getOverlayColor();
+    $overlayOpacity = $_helper->getOverlayOpacity();
+    $signupSteps = $_helper->getSignupSteps();
+    $step1ProceedButtonLabel = $_helper->getStep1ProceedButtonLabel();
+    $step1CloseButtonEnabled = $_helper->isStep1CloseButtonEnabled();
+    $step1CloseButtonLabel = $_helper->getStep1CloseButtonLabel();
+    $triggerButtonTitle = $_helper->getTriggerButtonTitle();
+    $triggerButtonColor = $_helper->getTriggerButtonColor();
+    $triggerButtonBackgroundColor = $_helper->getTriggerButtonBackgroundColor();
+    $isGtmTrackingEnabled = $_helper->isPopupGtmTrackingEnabled();
+    $slIntegration = $_helper->getSocialLoginIntegration();
+    $slAppliesTo = $_helper->getSocialLoginAppliesTo();
+
+    switch ($version) {
+        case '2':
+            $lightboxDivId .= '-v2';
+            $closeDivId .= '-v2';
+            break;
+        case '3':
+            $lightboxDivId .= '-v3';
+            break;
+        case '4':
+            $lightboxDivId .= '-v4';
+            $closeDivId .= '-v4';
+            break;
+    }
+
+    $closeOnOverlayAlso = false;
+    if ($closeOption == \WeltPixel\Newsletter\Model\Config\Source\DisplayDisableOptions::MODE_CLOSE_BUTTON_AND_OUTSIDE_CLICK) {
+        $closeOnOverlayAlso = true;
+    }
+    ?>
+    <div class="wp_newsletter_container">
+        <?php if ($signupSteps != \WeltPixel\Newsletter\Model\Config\Source\SignupSteps::STEP_1) : ?>
+            <div class="weltpixel_newsletter_step1">
+                <?php echo $blockContentStep1; ?>
+                <div class="step1-buttons">
+                    <button class="action primary wp-nl-next-step wp-newsletter-button"
+                            title="<?= $block->escapeHtml($step1ProceedButtonLabel) ?>" type="button">
+                        <span><?= $block->escapeHtml($step1ProceedButtonLabel) ?></span>
+                    </button>
+                    <?php if ($step1CloseButtonEnabled) : ?>
+                        <button class="action primary wp-nl-close-popup wp-newsletter-button"
+                                title="<?= $block->escapeHtml($step1CloseButtonLabel) ?>" type="button">
+                            <span><?= $block->escapeHtml($step1CloseButtonLabel) ?></span>
+                        </button>
+                    <?php endif; ?>
+                </div>
+            </div>
+        <?php endif; ?>
+        <div id="wpx-newsletter-popup" class="weltpixel_newsletter wp_newsletter_v<?php echo $version ?>">
+            <style scoped>
+                #wpn-lightbox-overlay {
+                    background: <?php echo $overlayColor; ?>;
+                    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=<?php echo $overlayOpacity*100; ?>)";
+                    filter: alpha(opacity=<?php echo $overlayOpacity*100; ?>);
+                    -moz-opacity: <?php echo $overlayOpacity; ?>;
+                    -khtml-opacity: <?php echo $overlayOpacity; ?>;
+                    opacity: <?php echo $overlayOpacity; ?>;
+                }
+
+                <?php if ($isTriggerButtonEnabled) : ?>
+                .wp_newsletter_trigger_button a.wp_newsletter_trigger span {
+                    color: <?php echo $triggerButtonColor ?>;
+                    background-color: <?php echo $triggerButtonBackgroundColor; ?>;
+                }
+
+                <?php endif; ?>
+            </style>
+            <?php echo $blockContent; ?>
+        </div>
+    </div>
+    <?php if ($isTriggerButtonEnabled) : ?>
+        <div class="wp_newsletter_trigger_button">
+            <a class="wp_newsletter_trigger" href="#">
+                <span class="wp_triggerbtn_title"><?php echo $triggerButtonTitle; ?></span>
+            </a>
+        </div>
+    <?php endif; ?>
+    <script type="text/x-magento-init">
+        {
+            "#wpx-newsletter-popup": {
+                "WeltPixel_Newsletter/js/widget/newsletterpopup": {
+                    "newsletterPopup": true,
+                    "justCountPages": false,
+                    "justTriggerButton": <?php echo $justTriggerButton ? 'true' : 'false' ?>,
+                    "triggerButtonEnabled": <?php echo $isTriggerButtonEnabled ? 'true' : 'false'; ?>,
+                    "closeOnOverlayAlso": "<?php echo $closeOnOverlayAlso ?>",
+                    "cookieName": "<?php echo $cookieName ?>",
+                    "cookieNameSubscribed": "<?php echo $cookieNameSubscried ?>",
+                    "cookieLifetime": "<?php echo $cookieLifeTime ?>",
+                    "visitedPages": "<?php echo $visitedPages ?>",
+                    "secondsToDisplay": "<?php echo $secondsToDisplay ?>",
+                    "isAjax": "<?php echo $isRequestAjax ?>",
+                    "steps": "<?php echo $signupSteps ?>",
+                    "version": <?php echo $version ?>,
+                    "lightboxDivId": "<?php echo $lightboxDivId ?>",
+                    "closeDivId": "<?php echo $closeDivId ?>",
+                    "gtmTracking": "<?php echo $isGtmTrackingEnabled ?>",
+                    "slIntegration": "<?php echo $slIntegration ?>",
+                    "slAppliesTo": "<?php echo $slAppliesTo ?>"
+                }
+            }
+        }
+    </script>
+<?php endif; ?>
+
+<?php
+$cookieLifeTime = $_helper->getLifeTime();
+$cookieNameSubscried = $_helper->getCookieNameSubscribed();
+$isExitIntentEnabled = $_helper->isExitIntentEnabled();
+$exitIntentLightboxDivId = 'wpn-exitintent-lightbox-content';
+$exitIntentCloseDivId = 'wpn-lightbox-close-exitintent';
+$exitIntentCookieName = $_helper->getExitIntentCookieName();
+$exitIntentDisplayUserSubscribed = $_helper->exitIntenDisplayUserSubscribed();
+$exitIntentDisplayClosedPopup= $_helper->exitIntenDisplayClosedPopup();
+$exitIntentCloseOption = $_helper->getExitIntentCloseOption();
+$exitIntentVersion = $_helper->getExitIntentVersion();
+$exitIntentOverlayColor = $_helper->getExitIntentOverlayColor();
+$exitIntentOverlayOpacity = $_helper->getExitIntentOverlayOpacity();
+$exitIntentDisplayBlockId = $_helper->getExitIntentDisplayBlock();
+$exitIntentDisplayBlockStep1 = $_helper->getExitIntentDisplayBlockStep1();
+$exitIntentBlockContent = $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId($exitIntentDisplayBlockId)->toHtml();
+$exitIntentBlockContentStep1 = $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId($exitIntentDisplayBlockStep1)->toHtml();
+$exitIntentSignupSteps = $_helper->getExitIntentSignupSteps();
+$exitIntentStep1ProceedButtonLabel = $_helper->getExitIntentStep1ProceedButtonLabel();
+$exitIntentStep1CloseButtonLabel = $_helper->getExitIntentStep1CloseButtonLabel();
+$exitIntentStep1CloseButtonEnabled = $_helper->isExitIntentStep1CloseButtonEnabled();
+$isExitIntentGtmTrackingEnabled = $_helper->isExitIntentGtmTrackingEnabled();
+$exitIntentCloseOnOverlayAlso = false;
+$slIntegration = $_helper->getSocialLoginIntegration();
+$slAppliesTo = $_helper->getSocialLoginAppliesTo();
+
+if ($exitIntentCloseOption ==  \WeltPixel\Newsletter\Model\Config\Source\DisplayDisableOptions::MODE_CLOSE_BUTTON_AND_OUTSIDE_CLICK) {
+    $exitIntentCloseOnOverlayAlso = true;
+}
+
+switch ($exitIntentVersion) {
+    case '2':
+        $exitIntentLightboxDivId .= '-v2';
+        $exitIntentCloseDivId .= '-v2';
+        break;
+    case '3':
+        $exitIntentLightboxDivId .= '-v3';
+        break;
+    case '4':
+        $exitIntentLightboxDivId .= '-v4';
+        $exitIntentCloseDivId .= '-v4';
+        break;
+}
+
+
+?>
+<?php if ($isExitIntentEnabled) : ?>
+<div class="wp_exitintent_container">
+    <div id="wpx-exitintent-popup" class="weltpixel_newsletter wp_newsletter_v<?php echo $exitIntentVersion ?>">
+        <style scoped>
+            #wpn-exitintent-lightbox-overlay {
+                background: <?php echo $exitIntentOverlayColor; ?>;
+                -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=<?php echo $exitIntentOverlayOpacity*100; ?>)";
+                filter: alpha(opacity=<?php echo $exitIntentOverlayOpacity*100; ?>);
+                -moz-opacity: <?php echo $exitIntentOverlayOpacity; ?>;
+                -khtml-opacity: <?php echo $exitIntentOverlayOpacity; ?>;
+                opacity: <?php echo $exitIntentOverlayOpacity; ?>;
+            }
+        </style>
+        <?php echo $exitIntentBlockContent; ?>
+    </div>
+    <?php if ($exitIntentSignupSteps != \WeltPixel\Newsletter\Model\Config\Source\SignupSteps::STEP_1) : ?>
+        <div class="weltpixel_exitintent_newsletter_step1">
+            <?php echo $exitIntentBlockContentStep1; ?>
+            <div class="step1-buttons">
+                <button class="action primary wp-ei-next-step wp-newsletter-button"
+                        title="<?= $block->escapeHtml($exitIntentStep1ProceedButtonLabel) ?>" type="button">
+                    <span><?= $block->escapeHtml($exitIntentStep1ProceedButtonLabel) ?></span>
+                </button>
+                <?php if ($exitIntentStep1CloseButtonEnabled) : ?>
+                    <button class="action primary wp-ei-close-popup wp-newsletter-button"
+                            title="<?= $block->escapeHtml($exitIntentStep1CloseButtonLabel) ?>" type="button">
+                        <span><?= $block->escapeHtml($exitIntentStep1CloseButtonLabel) ?></span>
+                    </button>
+                <?php endif; ?>
+            </div>
+        </div>
+    <?php endif; ?>
+</div>
+    <script type="text/x-magento-init">
+        {
+            ".wp_exitintent_container": {
+                "WeltPixel_Newsletter/js/widget/newsletterpopup": {
+                    "cookieNameSubscribed": "<?php echo $cookieNameSubscried ?>",
+                    "cookieLifetime": "<?php echo $cookieLifeTime ?>",
+                    "exitIntent": "<?php echo $isExitIntentEnabled ?>",
+                    "exitIntentCookieName": "<?php echo $exitIntentCookieName ?>",
+                    "exitIntentDisplayUserSubscribed": "<?php echo $exitIntentDisplayUserSubscribed ?>",
+                    "exitIntentDisplayClosedPopup": "<?php echo $exitIntentDisplayClosedPopup ?>",
+                    "exitIntentVersion": <?php echo $exitIntentVersion ?>,
+                    "exitIntentLightboxDivId": "<?php echo $exitIntentLightboxDivId ?>",
+                    "exitIntentCloseDivId": "<?php echo $exitIntentCloseDivId ?>",
+                    "exitIntentSteps": "<?php echo $exitIntentSignupSteps ?>",
+                    "exitIntentCloseOnOverlayAlso": "<?php echo $exitIntentCloseOnOverlayAlso ?>",
+                    "exitIntentGtmTracking": "<?php echo $isExitIntentGtmTrackingEnabled ?>",
+                    "slIntegration": "<?php echo $slIntegration ?>",
+                    "slAppliesTo": "<?php echo $slAppliesTo ?>"
+                }
+            }
+        }
+    </script>
+<?php endif; ?>

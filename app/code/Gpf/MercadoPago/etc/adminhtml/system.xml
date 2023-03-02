@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!--
+ - Copyright © 2019, Summa Solutions SRL. All rights reserved.
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+
+    <system>
+        <section id="payment">
+            <group id="mercadopago_configurations" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                <group id="custom_checkout_ag" translate="label" type="text" sortOrder="35" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <field id="deactivate_installments" translate="label comment" type="select" sortOrder="41" showInDefault="1" showInWebsite="1" showInStore="0">
+                        <label>Deactivate Installments</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <comment>Meant for testing environments only</comment>
+                        <depends>
+                            <field id="payment/mercadopago/test_mode">1</field>
+                        </depends>
+                    </field>
+                </group>
+            </group>
+        </section>
+    </system>
+
+</config>

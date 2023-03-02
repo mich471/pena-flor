@@ -1,0 +1,20 @@
+title,identifier,content,is_active
+"WeltPixel Global Promo Message 2",weltpixel_global_promo_message_2,"
+<div class=""wpx-static-content"">
+    <div class=""wpx-check"">
+        <i class=""icon-line-check wpx-i""></i>
+        <span>Fast & Free Delivery</span>
+    </div>
+    <div class=""wpx-check"">
+        <i class=""icon-line-check wpx-i""></i>
+        <span>24/7 Support 1-8-000-000-000</span>
+    </div>
+    <div class=""wpx-check"">
+        <i class=""icon-line-check wpx-i""></i>
+        <span>Best Price Guaranteed</span>
+    </div>
+    <div class=""wpx-check"">
+        <i class=""icon-line-check wpx-i""></i>
+        <span>30 Days Return Policy</span>
+    </div>
+</div>",1

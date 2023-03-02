@@ -1,0 +1,81 @@
+"You saved the user profile information.","You saved the user profile information."
+"There was a problem saving your account.","There was a problem saving your account."
+"Avatar image cannot be saved","Avatar image cannot be saved"
+"Avatar image could not be resized","Avatar image could not be resized"
+"Cover image cannot be saved","Cover image cannot be saved"
+"Username already taken.","Username already taken."
+"Please make sure you enter a valid username and it should contain less then 20 characters","Please make sure you enter a valid username and it should contain less then 20 characters"
+"Please make sure you enter a valid username. Please use only letters (a-z), numbers (0-9) or underscore (_) in this field, and the first character should be a letter.","Please make sure you enter a valid username. Please use only letters (a-z), numbers (0-9) or underscore (_) in this field, and the first character should be a letter."
+"Avatar is a required field.","Avatar is a required field."
+"Cover Image is a required field.","Cover Image is a required field."
+"First Name is a required field.","First Name is a required field."
+"Last Name is a required field.","Last Name is a required field."
+"Gender is a required field.","Gender is a required field."
+"Location is a required field.","Location is a required field."
+"Date of Birth is a required field.","Date of Birth is a required field."
+"Biography is a required field.","Biography is a required field."
+"Edit Profile","Edit Profile"
+"Profile Not Available","Profile Not Available"
+"Profile Page","Profile Page"
+"User cannot edit this profile","User cannot edit this profile"
+"Please make sure you enter a valid username. Please use only letters (a-z), numbers (0-9) or underscore (_) in this field, and the first character should be a letter and should not exceed 20 caharacters.","Please make sure you enter a valid username. Please use only letters (a-z), numbers (0-9) or underscore (_) in this field, and the first character should be a letter and should not exceed 20 caharacters."
+Male,Male
+Female,Female
+"wrote a review of","wrote a review of"
+on,on
+"No Activity Yet","No Activity Yet"
+"did not post any reviews or created a public product collection","did not post any reviews or created a public product collection"
+"* Required Fields","* Required Fields"
+"Profile Information","Profile Information"
+"View Public Profile","View Public Profile"
+Save,Save
+"Go back","Go back"
+"Customer Reviews","Customer Reviews"
+"Review by","Review by"
+"Posted on","Posted on"
+Activity,Activity
+Collections,Collections
+Bio,Bio
+"Profile unavailable.","Profile unavailable."
+"Profile Cover","Profile Cover"
+"Profile Avatar Image","Profile Avatar Image"
+"Edit Username","Edit Username"
+"Edit First Name","Edit First Name"
+"Edit Last Name","Edit Last Name"
+"Edit Location","Edit Location"
+Avatar,Avatar
+"Avatar Preview","Avatar Preview"
+Biography,Biography
+Cover,Cover
+"Cover Image","Cover Image"
+"Cover Image Preview","Cover Image Preview"
+"Date of Birth","Date of Birth"
+Firstname,Firstname
+Gender,Gender
+Lastname,Lastname
+Location,Location
+Username,Username
+"User Profile","User Profile"
+"User Profile General Settings","User Profile General Settings"
+"Enable User Profile","Enable User Profile"
+"Enable User Profile Inline Edit","Enable User Profile Inline Edit"
+"Enable User Profile on Reviews","Enable User Profile on Reviews"
+"Enable Wishlist Collection Display","Enable Wishlist Collection Display"
+"Requires the <a href=""https://www.weltpixel.com/magento-2-multiple-ajax-wishlist-and-share-extension.html"" target=""_blank"">Multiple Ajax Wishlist &amp; Share PRO Extension</a> and ""Enable Wishlist Privacy"" option enabled. It displays public wishlists for the user.","Requires the <a href=""https://www.weltpixel.com/magento-2-multiple-ajax-wishlist-and-share-extension.html"" target=""_blank"">Multiple Ajax Wishlist &amp; Share PRO Extension</a> and ""Enable Wishlist Privacy"" option enabled. It displays public wishlists for the user."
+"Enable Profile Picture","Enable Profile Picture"
+"Profile Picture is Required","Profile Picture is Required"
+"Enable Cover Image","Enable Cover Image"
+"Cover Image is Required","Cover Image is Required"
+"Enable First Name","Enable First Name"
+"First Name is Required","First Name is Required"
+"Enable Last Name","Enable Last Name"
+"Last Name is Required","Last Name is Required"
+"Enable Gender","Enable Gender"
+"Gender is Required","Gender is Required"
+"Enable Location","Enable Location"
+"Location Required","Location Required"
+"Enable Date of Birth","Enable Date of Birth"
+"Date of Birth Required","Date of Birth Required"
+"Enable Biography","Enable Biography"
+"Biography Required","Biography Required"
+"My Profile","My Profile"

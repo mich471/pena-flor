@@ -1,0 +1,156 @@
+/* error and success pages */
+
+.newlogin-confirmation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* margin-top: 10px; */
+    padding-top: 50px;
+    border-top: 1px solid;
+    margin-top: 80px;
+    /* margin-top: 50px; */
+}
+
+.newlogin-confirmation .result {
+    padding: 50px;
+    border: 1px #c3c3c3 solid;
+    max-width: 450px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.newlogin-confirmation .result .icon {
+    font-size: 65px;
+    line-height: 119px;
+    width: 119px;
+    height: 119px;
+    border-radius: 50%;
+}
+
+.newlogin-confirmation .result .icon-error {
+    color: #b60630;
+    background-color: #f8e6ea;
+}
+.newlogin-confirmation .result .icon-success {
+    color: #80b6ad;
+    background-color: #e6f0ef;
+}
+
+.newlogin-confirmation h4 {
+    font-size: 22px;
+    line-height: 20px;
+    color: #333;
+    font-weight: 499;
+    text-align: center;
+}
+
+.newlogin-confirmation .subtitle {
+    font-size: 14px;
+    line-height: 17px;
+    color: #333;
+    max-width: 320px;
+    margin-bottom: 26px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.newlogin-confirmation .btn {
+    background: #d27f45;
+    border: 1px solid #d27f45;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 400;
+    padding: 12px 20px;
+    font-size: 1.4rem;
+    line-height: 1.4rem;
+    box-sizing: border-box;
+    vertical-align: middle;
+    text-transform: none;
+    min-width: 175px;
+    font-size: 16px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.newlogin-confirmation span.icon.icon-error::before {
+    font-size: 70px;
+    line-height: 80px;
+    color: #b30000;
+    content: '\e61f';
+    font-family: 'luma-icons';
+    vertical-align: middle;
+    display: inline-block;
+    font-weight: normal;
+    overflow: hidden;
+    speak: none;
+    text-align: center;
+    width: 100%;
+    margin-top: -10px;
+}
+
+.newlogin-confirmation span.icon.icon-success::before {
+    font-size: 70px;
+    line-height: 80px;
+    color: #006400;
+    content: '\e60e';
+    font-family: 'luma-icons';
+    margin: -12px 0 0;
+    vertical-align: middle;
+    display: inline-block;
+    font-weight: normal;
+    overflow: hidden;
+    speak: none;
+    width: 100%;
+    text-align: center
+}
+
+.newlogin-confirmation .remainder {
+    font-weight: 500;
+    font-size: 13px;
+    color: grey;
+}
+
+@media (max-width: 778px) {
+    .columns {
+        display: block !important;
+    }
+    .newlogin-confirmation {
+        display: block;
+    }
+}
+
+/* fin - error and success pages */
+
+
+/* fix header */
+
+.customer-account-login .page-main {
+    padding-top: 50px;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    margin-top: 110px;
+}
+
+.logo {
+    margin-top: 20px !important;
+    bottom: initial !important;
+}
+
+@media (max-width: 780px) {
+    .customer-account-login .logo {
+        float: none;
+        left: 50%;
+        top: 19px;
+        margin: 0 auto!important;
+        transform: translateX(-50%);
+        position: absolute;
+    }
+}
+
+/* fin - fix header */

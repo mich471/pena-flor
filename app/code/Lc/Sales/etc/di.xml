@@ -1,0 +1,10 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magento\Sales\Cron\CleanExpiredQuotes" type="Lc\Sales\Cron\CleanExpiredQuotes" />
+    <!-- <type name="Magento\Framework\Console\CommandListInterface">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="sendNotificationCommand" xsi:type="object">Lc\Sales\Console\Command\SendNotificationCommand</item>
+            </argument>
+        </arguments>
+    </type> -->
+</config>

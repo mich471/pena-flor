@@ -1,0 +1,43 @@
+Tags,Tags
+"Add New Tag","Add New Tag"
+"Save Tag","Save Tag"
+Delete,Delete
+"Save and Continue Edit","Save and Continue Edit"
+"Tag Details","Tag Details"
+Title,Title
+"Edit Tag '%1'","Edit Tag '%1'"
+"New Tag","New Tag"
+"Tag Information","Tag Information"
+"Tag ID","Tag ID"
+CSV,CSV
+XML,XML
+Excel,Excel
+"Are you sure?","Are you sure?"
+"Delete successfully !","Delete successfully !"
+"This Tag no longer exists.","This Tag no longer exists."
+"Please select tag(s).","Please select tag(s)."
+"A total of %1 tag(s) have been deleted.","A total of %1 tag(s) have been deleted."
+"The tag has been saved.","The tag has been saved."
+"Something went wrong while saving the tag.","Something went wrong while saving the tag."
+"The widget instance has been saved.","The widget instance has been saved."
+" "," "
+Tag,Tag
+"This feature is disabled. To enable it go to ""WeltPixel > CMS Block Scheduler > Configuration"" and change setting of ""Enable Tag"".","This feature is disabled. To enable it go to ""WeltPixel > CMS Block Scheduler > Configuration"" and change setting of ""Enable Tag""."
+"Add a custom tag to be easier to find this CMS block in the list.","Add a custom tag to be easier to find this CMS block in the list."
+"Valid From","Valid From"
+"This feature is disabled. To enable it go to ""WeltPixel > CMS Block Scheduler > Configuration"" and change setting of ""Enable Date Range"".","This feature is disabled. To enable it go to ""WeltPixel > CMS Block Scheduler > Configuration"" and change setting of ""Enable Date Range""."
+"Set the start date and time when this CMS block becomes visible in store front.","Set the start date and time when this CMS block becomes visible in store front."
+"Valid To","Valid To"
+"This feature is disabled. To enable it go to ""WeltPixel > CMS Block Scheduler > Configuration"" and change setting of ""Enable Date Range""","This feature is disabled. To enable it go to ""WeltPixel > CMS Block Scheduler > Configuration"" and change setting of ""Enable Date Range"""
+"Set the end date and time when this CMS block will stop being visible in store front.","Set the end date and time when this CMS block will stop being visible in store front."
+"Customer Group","Customer Group"
+"This feature is disabled. To enable it go to ""WeltPixel > CMS Block Scheduler > Configuration"" and change setting of ""Enable Customer Group""","This feature is disabled. To enable it go to ""WeltPixel > CMS Block Scheduler > Configuration"" and change setting of ""Enable Customer Group"""
+"Target your audience and display this CMS block only for the selected customer group(s).","Target your audience and display this CMS block only for the selected customer group(s)."
+"Use Default Value","Use Default Value"
+"CMS Block Scheduler","CMS Block Scheduler"
+"General Configuration","General Configuration"
+"Enable Tag","Enable Tag"
+"Enable Date Range","Enable Date Range"
+"Enable Customer Group","Enable Customer Group"
+"CMS Block Settings","CMS Block Settings"
+"CMS Block Scheduler Settings","CMS Block Scheduler Settings"

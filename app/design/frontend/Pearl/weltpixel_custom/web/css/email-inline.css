@@ -1,0 +1,7 @@
+.payment-method caption.table-caption {
+    text-align: left;
+}
+
+.payment-method table.data.table {
+    width: -webkit-fill-available;
+}

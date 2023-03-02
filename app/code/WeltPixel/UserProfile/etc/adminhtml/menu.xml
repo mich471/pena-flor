@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add
+                id="WeltPixel_UserProfile::UserProfile_Label"
+                title="User Profile"
+                module="WeltPixel_UserProfile"
+                sortOrder="280"
+                parent="WeltPixel_Backend::WeltPixel"
+                resource="WeltPixel_UserProfile::UserProfile_Label"
+        />
+        <add
+                id="WeltPixel_UserProfile::UserProfile"
+                title="User Profile Settings"
+                module="WeltPixel_UserProfile"
+                action="adminhtml/system_config/edit/section/weltpixel_userprofile/"
+                sortOrder="10"
+                parent="WeltPixel_UserProfile::UserProfile_Label"
+                resource="WeltPixel_UserProfile::UserProfile"
+        />
+    </menu>
+</config>

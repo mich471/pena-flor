@@ -1,0 +1,50 @@
+@import '_palettes';
+
+.countdown-box {
+    display: inline-block;
+    padding: 4px 9px 2px;
+    line-height: 1;
+    vertical-align: middle;
+    font-weight: bold;
+    margin: 0 5px;
+    text-transform: uppercase;
+
+    .counter-label {
+        font-size: 12px;
+    }
+
+    .counter-num {
+        &::after {
+            content: attr(data-symbol);
+            text-transform: lowercase;
+        }
+    }
+}
+
+.generatePalettes();
+
+.generatePalettes(@i: 1) when (@i <= length(@palette)) {
+    @selected: extract(@palette, @i);
+
+    @palette--name: extract(@selected, 1);
+    @palette--bg: extract(@selected, 2);
+    @palette--txts: extract(@selected, 3);
+    @palette--nums: extract(@selected, 4);
+
+    .countdown-box {
+        &.@{palette--name} {
+            background: @palette--bg;
+            color: @palette--txts;
+
+            .counter-num {
+                color: @palette--nums;
+        
+                &::after {
+                    color: @palette--txts;
+                }
+            }
+        }
+    }
+
+    .generatePalettes(@i + 1);
+}

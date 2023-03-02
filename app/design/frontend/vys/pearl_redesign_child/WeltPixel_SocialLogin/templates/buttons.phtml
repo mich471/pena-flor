@@ -1,0 +1,76 @@
+<?php $buttons = $this->getButtons()?>
+<?php $buttonsCount = count($buttons)?>
+<?php $notLoginPage = $this->getCurrentPageRedirectUrl()?>
+<?php $cartPageAccordionState = $this->accordionStateOnCart()?>
+<?php if(!empty($buttons) && !$this->isCustomerLoggedIn()):?>
+    <div class="sociallogin-wrapper block-customer-login login-container" style="border-top: 1px solid #e8e8e8;">
+        <div class="block sociallogin-block">
+            <div class="sociallogin-block-title block-title" style="border-bottom: 0px;">
+                <strong role="heading" class="title-span-sl" aria-level="2"><?= $block->escapeHtml(__('Login With Social Profile'))?></strong>
+            </div>
+            <div class="sociallogin-padding" style="display: flex;">
+                <?php foreach ($buttons as $type => $data):?>
+                    <div class="sociallogin-box">
+                        <a class="sociallogin-button button-<?=$type?>"
+                           rel="nofollow"
+                           href="javascript:void(0);"
+                           data-href="<?=$data['endpoint']?>"
+                        >
+                            <img class="button-cutom-<?=$type?>" src="/media/wysiwyg/vysRedesign/<?=$type?>.svg" />
+                        </a>
+                    </div>
+                <?php endforeach;?>
+            </div>
+        </div>
+    </div>
+    <script>
+        if (window.socialloginButtons) {
+            window.emailFormUrl = "<?=$this->getEmailFormUrl()?>";
+            window.twitterOauthUrl = "<?=$this->getTwitterOauthUrl()?>";
+            window.cartPageAccordionState = "<?=$cartPageAccordionState?>";
+            window.isCustomer = "<?=$this->helper('WeltPixel\SocialLogin\Helper\Data')->loggedIn(); ?>";
+            window.isSlCustomPopupUsed = "<?=$this->helper('WeltPixel\SocialLogin\Helper\Data')->isPopupUsed(); ?>";
+            require(['sociallogin'], function(){
+                sl.socialLoginClick();
+                sl.slWidgetInit('<?=$buttonsCount?>');
+                sl.sendEmailClick();
+                sl.emailPopUp();
+            });
+        }
+    </script>
+<?php endif;?>
+
+
+<style>
+    .login-container {
+        padding-top: 10px !important;
+    }
+
+    .title-span-sl {
+        text-transform: initial !important;
+        font-size: 1.4rem !important;
+    }
+
+    .sociallogin-padding {
+        width: 400px;
+    }
+
+    .button-cutom-google {
+        width: 45px;
+        height: 45px;
+    }
+
+    .button-cutom-fb {
+        width: 37px;
+    }
+
+    .sociallogin-button {
+        box-shadow: none !important;
+    }
+
+    .sociallogin-padding {
+        place-content:center;
+    }
+
+
+</style>

@@ -1,0 +1,21 @@
+--- /vendor/codazon/module-theme-options/Framework/Config/View/Plugin.php
++++ /vendor/codazon/module-theme-options/Framework/Config/View/Plugin.php
+@@ -19,9 +19,9 @@ class Plugin
+             }
+             elseif($var == 'gallery/allowfullscreen'){
+                 if($this->_helper->getConfig('general_section/product_view/disable_product_zoom')){
+-                    return 'false';
++                    return false;
+                 }else{
+-                    return 'true';
++                    return true;
+                 }
+             }
+         }
+@@ -59,4 +59,4 @@ class Plugin
+         }
+         return $result;
+     }
+-}
+\ No newline at end of file
++}

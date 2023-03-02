@@ -1,0 +1,16 @@
+/****** Cucardas Fix ******/
+
+
+/****** Fin - Cucardas Fix ******/
+
+@media (min-width: 768px) {
+    .fotorama__stage__frame .fotorama__img {
+        top: 0;
+        left: 0;
+        transform: none;
+        position: initial !important;
+    }
+    .gallery-placeholder .fotorama-item .fotorama__wrap .fotorama__stage {
+        max-height: 490px;
+    }
+}

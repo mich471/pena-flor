@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Catalog\Observer\MenuCategoryData">
+        <plugin name="weltpixel-navigationlinks-catalog-observer-menucategorydata"
+                type="WeltPixel\NavigationLinks\Plugin\CatalogObserverMenuCategoryData" sortOrder="1"/>
+    </type>
+    <preference for="Magento\Theme\Block\Html\Topmenu" type="WeltPixel\NavigationLinks\Block\Html\Topmenu" />
+    <preference for="Magento\Catalog\Plugin\Block\Topmenu" type="WeltPixel\NavigationLinks\Plugin\Block\Topmenu" />
+    <type name="Magento\Framework\View\Page\Config\Structure">
+        <plugin name="weltpixel-navigationlinks-page-config-structure"
+                type="WeltPixel\NavigationLinks\Plugin\PageConfigStructure" sortOrder="5"/>
+    </type>
+    <type name="Magento\Catalog\Model\Design">
+        <plugin name="weltpixel-navigationlinks-catalog-model-design"
+                type="WeltPixel\NavigationLinks\Plugin\CatalogModelDesign" sortOrder="1"/>
+    </type>
+    <type name="Magento\LayeredNavigation\Block\Navigation">
+        <plugin name="weltpixel-navigationlinks-layerednavigation-block-navigation"
+                type="WeltPixel\NavigationLinks\Plugin\LayeredNavigation" sortOrder="1"/>
+    </type>
+    <type name="Magento\Catalog\Block\Category\View">
+        <plugin name="weltpixel-navigationlinks-catalog-block-category-view"
+                type="WeltPixel\NavigationLinks\Plugin\CatalogCategoryView" sortOrder="1"/>
+    </type>
+    <type name="Magento\Catalog\Helper\Data">
+        <plugin name="weltpixel-navigationlinks-catalog-helper-date"
+                type="WeltPixel\NavigationLinks\Plugin\CatalogHelperData" sortOrder="1"/>
+    </type>
+    <preference for="\Magento\Catalog\Model\ResourceModel\Category\Flat" type="WeltPixel\NavigationLinks\Model\CategoryFlat" />"
+    <preference for="\Magento\Catalog\Model\ResourceModel\Category" type="WeltPixel\NavigationLinks\Model\CategoryResource" />"
+</config>

@@ -1,0 +1,13 @@
+<?php
+
+// @codingStandardsIgnoreFile
+
+/**
+ * @var $block \Magento\CatalogInventory\Block\Qtyincrements
+ */
+?>
+<?php if ($block->getProductQtyIncrements()) : ?>
+    <div class="product pricing">
+        <?php /* @escapeNotVerified */ echo __('Compra mínima: %2 botellas', $block->getProductName(), $block->getProductQtyIncrements()) ?>
+    </div>
+<?php endif ?>

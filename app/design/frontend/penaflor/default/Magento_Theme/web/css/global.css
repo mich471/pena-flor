@@ -1,0 +1,35 @@
+.category-image .image {
+    width: 100%;
+}
+
+/* Fix mobile pagination */
+.products.wrapper ~ .toolbar-products .pages {
+    display: block !important;
+}
+
+.continue-as-guest {
+    margin-top: 20px;
+}
+
+.continue-as-guest .primary .action {
+    font-size: 12px;
+    width: 100%;
+    height: 40px;
+    font-weight: 700;
+    background: #000;
+    border-radius: 5px;
+    border: transparent;
+    font-family: initial;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    padding: 0 12px;
+}
+
+@media (max-width: 768px) {
+    .continue-as-guest .primary {
+        width: 100%;
+    }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "lyracons/magento2-customeractivation",
+  "description": "Lyracons Customer Activation Module",
+  "require": {
+    "magento/project-community-edition": "*"
+  },
+  "type": "magento2-module",
+  "version": "1.0.2",
+  "extra": {
+    "map": [
+      [
+        "*",
+        "Lyracons/CustomerActivation/"
+      ]
+    ]
+  },
+  "authors": [
+    {
+      "name": "Juan Pablo Gimenez Giaimo",
+      "email": "jgimenezgiaimo@lyracons.com",
+      "homepage": "http://www.lyracons.com/",
+      "role": "Core Developer"
+    }
+  ]
+}
